@@ -1,0 +1,22 @@
+name: List costume images
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  list:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: List image files
+        run: |
+          git clone --depth 1 --filter=blob:none --no-checkout https://github.com/PokeMiners/pogo_assets.git assets
+          git -C assets ls-tree -r --name-only HEAD -- "Images/Pokemon" | grep -E '\.f[A-Za-z0-9_]+' | sed 's#^Images/Pokemon/##' > costume-files.txt || true
+          rm -rf assets
+      - name: Save list to repo
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add costume-files.txt
+          git commit -m "Update costume file list" || echo "nothing to commit"
+          git push
