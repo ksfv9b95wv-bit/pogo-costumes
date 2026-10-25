@@ -11,12 +11,14 @@ jobs:
       - name: List image files
         run: |
           git clone --depth 1 --filter=blob:none --no-checkout https://github.com/PokeMiners/pogo_assets.git assets
-          git -C assets ls-tree -r --name-only HEAD -- "Images/Pokemon" | grep -E '\.f[A-Za-z0-9_]+' | sed 's#^Images/Pokemon/##' > costume-files.txt || true
-          rm -rf assets
-      - name: Save list to repo
+          git -C assets ls-tree -r --name-only HEAD -- "Images/Pokemon" | sed 's#^Images/Pokemon/##' > all.txt
+          grep -E '\.[cf][A-Za-z0-9_]+' all.txt | grep -v 'portrait' > costume-files.txt || true
+          grep -v 'Addressable Assets' all.txt | grep -vE '^pokemon_icon_[0-9]+_[0-9]+(_shiny)?\.png$' > other-files.txt || true
+          rm -rf assets all.txt
+      - name: Save lists to repo
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add costume-files.txt
-          git commit -m "Update costume file list" || echo "nothing to commit"
+          git add costume-files.txt other-files.txt
+          git commit -m "Update costume file lists" || echo "nothing to commit"
           git push
