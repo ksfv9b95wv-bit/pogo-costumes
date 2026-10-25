@@ -124,7 +124,7 @@ footer button{background:#1380b5}
 [data-theme=shadow] label.c::before{content:"";position:absolute;left:10px;top:92px;width:34px;height:40px;opacity:.55;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%238E6FD0' d='M12 1c1.2 4-3.5 6-3.5 11a5.5 5.5 0 0 0 11 0c0-2.4-1.2-4-2.4-5.6.1 2-.8 3-1.9 3.3 1-4.2-.3-6.6-3.2-8.7z'/%3E%3C/svg%3E") no-repeat center/contain}
 .tile b{background:none!important;overflow:hidden}.tile b svg{width:100%;height:100%;display:block}
 .tile b.e{background:radial-gradient(circle at 50% 30%,#fff,#bdeee3)!important;font-size:32px}
-#credits{padding:calc(env(safe-area-inset-top) + 18px) 16px 40px;max-width:560px;margin:0 auto;color:var(--ink)}
+#credits,#settings{padding:calc(env(safe-area-inset-top) + 18px) 16px 40px;max-width:560px;margin:0 auto;color:var(--ink)}
 .cb,.cl{color:#1380b5;font-weight:700;text-decoration:none}.cl{font-size:15px;text-decoration:underline}
 .cc{background:rgba(255,255,255,.62);border:2px solid rgba(255,255,255,.8);border-radius:20px;padding:12px 16px;margin:12px 0}
 .cc h3{margin:0 0 4px;font-size:16px;color:var(--ink)}.cc p{margin:0;font-size:14px;line-height:1.5;color:var(--ink)}.cc a{color:#1380b5;font-weight:700}
@@ -154,7 +154,7 @@ body{zoom:var(--z,1)}
 #bc{position:absolute;top:1px;right:-2px;min-width:18px;height:18px;border-radius:9px;background:#e21c25;color:#fff;font-size:11px;font-weight:800;line-height:18px;text-align:center;padding:0 4px}
 body{padding-top:calc(env(safe-area-inset-top) + 56px)}
 header{margin-top:6px!important;top:calc(env(safe-area-inset-top) + 62px)!important}
-#home,#credits,#info,#collections{padding-top:12px!important}
+#home,#credits,#info,#collections,#settings{padding-top:12px!important}
 #collections{padding:12px 16px 40px;max-width:560px;margin:0 auto;color:var(--ink)}
 #net{top:calc(env(safe-area-inset-top) + 56px)!important}
 .nw{position:relative;margin:10px 0;border-radius:20px;overflow:hidden}
@@ -170,13 +170,14 @@ header{margin-top:6px!important;top:calc(env(safe-area-inset-top) + 62px)!import
 @media(prefers-color-scheme:dark){#topbar{background:rgba(10,50,80,.75)}#topbar .ttl{color:#d9f2ff}.ni{background:#10364f}}
 #topbar .r{display:flex;align-items:center;gap:8px}
 #ver{font-size:10px;font-weight:700;color:#4f8fb0;margin-left:3px}
+#gear{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.8);display:grid;place-items:center}@media(prefers-color-scheme:dark){#gear{background:rgba(10,50,80,.8)}#gear path{fill:#d9f2ff}}
 #wn{font-weight:800;font-size:13px;color:#1578a6;background:rgba(255,255,255,.85);border-radius:18px;padding:11px 12px;text-decoration:none;line-height:1}
 .mt{min-height:64px}.mt b{width:46px;height:46px;border-radius:50%;overflow:hidden;display:grid;place-items:center;flex:none;font-size:0}.mt b img{width:100%;height:100%;object-fit:contain}
 @media(prefers-color-scheme:dark){#wn{background:rgba(10,50,80,.8);color:#d9f2ff}#ver{color:#8fc0dc}}
 </style>
 </head>
 <body>
-<div id="topbar"><a class="ttl" href="#">GO Lists<sub id="ver"></sub></a><div class="r"><a id="wn" href="#whatsnew">What’s new</a><button id="bell" aria-label="Notifications" onclick="location.hash='notifications'"><svg viewBox="0 0 24 24" width="24" height="24"><path fill="#1578a6" d="M12 22a2.5 2.5 0 0 0 2.4-2H9.6A2.5 2.5 0 0 0 12 22zm7-6v-5a7 7 0 0 0-5.5-6.8V3a1.5 1.5 0 0 0-3 0v1.2A7 7 0 0 0 5 11v5l-2 2v1h18v-1z"/></svg><span id="bc" hidden>0</span></button></div></div>
+<div id="topbar"><a class="ttl" href="#">GO Lists<sub id="ver"></sub></a><div class="r"><a id="wn" href="#whatsnew">What’s new</a><a id="gear" href="#settings" aria-label="Settings"><svg viewBox="0 0 24 24" width="24" height="24"><path fill="#1578a6" d="M19.4 13a7.6 7.6 0 0 0 0-2l2.1-1.6a.5.5 0 0 0 .1-.6l-2-3.5a.5.5 0 0 0-.6-.2l-2.5 1a7.4 7.4 0 0 0-1.7-1l-.4-2.6a.5.5 0 0 0-.5-.4h-4a.5.5 0 0 0-.5.4l-.4 2.6a7.4 7.4 0 0 0-1.7 1l-2.5-1a.5.5 0 0 0-.6.2l-2 3.5a.5.5 0 0 0 .1.6L4.6 11a7.6 7.6 0 0 0 0 2l-2.1 1.6a.5.5 0 0 0-.1.6l2 3.5c.1.2.4.3.6.2l2.5-1c.5.4 1.1.7 1.7 1l.4 2.6c0 .2.3.4.5.4h4c.3 0 .5-.2.5-.4l.4-2.6c.6-.3 1.2-.6 1.7-1l2.5 1c.2.1.5 0 .6-.2l2-3.5a.5.5 0 0 0-.1-.6L19.4 13zM12 15.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7z"/></svg></a><button id="bell" aria-label="Notifications" onclick="location.hash='notifications'"><svg viewBox="0 0 24 24" width="24" height="24"><path fill="#1578a6" d="M12 22a2.5 2.5 0 0 0 2.4-2H9.6A2.5 2.5 0 0 0 12 22zm7-6v-5a7 7 0 0 0-5.5-6.8V3a1.5 1.5 0 0 0-3 0v1.2A7 7 0 0 0 5 11v5l-2 2v1h18v-1z"/></svg><span id="bc" hidden>0</span></button></div></div>
 <svg width="0" height="0" style="position:absolute"><defs><symbol id="i-star" viewBox="0 0 24 24"><path d="M12 1l2.6 8.4L23 12l-8.4 2.6L12 23l-2.6-8.4L1 12l8.4-2.6z"/></symbol><symbol id="i-flame" viewBox="0 0 24 24"><path d="M12 1c1.2 4-3.5 6-3.5 11a5.5 5.5 0 0 0 11 0c0-2.4-1.2-4-2.4-5.6.1 2-.8 3-1.9 3.3 1-4.2-.3-6.6-3.2-8.7z"/></symbol></defs></svg>
 
 <section id="home"><h1 class="hh">GO Lists</h1>
@@ -185,11 +186,16 @@ header{margin-top:6px!important;top:calc(env(safe-area-inset-top) + 62px)!import
 <a class="tile" href="#cd"><b class="e">🎉</b><span>Community Days<small>Past and upcoming</small></span></a>
 <a class="tile" href="#raids"><b class="e">⚔️</b><span>Raid bosses<small>Current bosses and counters</small></span></a>
 <a class="tile" href="#remote"><b class="e">🌐</b><span>Remote raid checker<small>Is a remote raid or trade worth it?</small></span></a>
-<p style="text-align:center;margin:18px 0 0"><a class="cl" href="#credits">Credits, what's new and settings</a></p></section>
+<p style="text-align:center;margin:18px 0 0"><a class="cl" href="#credits">Credits and sources</a></p></section>
 <section id="collections" hidden><a href="#" class="cb">‹ Home</a><h1 class="hh">My collections</h1>
 <a class="tile" href="#stats"><b class="e">📊</b><span>My progress<small>How much you have completed</small></span></a>
 <h2 class="hs2">Collections</h2>
 <div class="mg"><a class="mt" href="#costume"><b style="background:#8CC9EE"><img src="https://raw.githubusercontent.com/PokeMiners/pogo_assets/master/Images/Pokemon/Addressable%20Assets/pm25.cHALLOWEEN_2017.icon.png" alt="" loading="lazy" onerror="this.remove()"></b>Costume</a><a class="mt" href="#shiny"><b style="background:#EBD07F"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/6.png" alt="" loading="lazy" onerror="this.remove()"></b>Shiny</a><a class="mt" href="#lucky"><b style="background:#E8C9A0"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/113.png" alt="" loading="lazy" onerror="this.remove()"></b>Lucky</a><a class="mt" href="#shadow"><b style="background:#BDA0E3"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/94.png" alt="" loading="lazy" onerror="this.remove()"></b>Shadow</a><a class="mt" href="#purified"><b style="background:#F4B6D2"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/468.png" alt="" loading="lazy" onerror="this.remove()"></b>Purified</a><a class="mt" href="#dex"><b style="background:#BDE3F5"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png" alt="" loading="lazy" onerror="this.remove()"></b>Pokédex</a><a class="mt" href="#forms"><b style="background:#BDE3F5"><img src="https://raw.githubusercontent.com/PokeMiners/pogo_assets/master/Images/Pokemon/Addressable%20Assets/pm37.fALOLA.icon.png" alt="" loading="lazy" onerror="this.remove()"></b>Regional forms</a><a class="mt" href="#mega"><b style="background:#BDE3F5"><img src="https://raw.githubusercontent.com/PokeMiners/pogo_assets/master/Images/Pokemon/Addressable%20Assets/pm6.fMEGA_X.icon.png" alt="" loading="lazy" onerror="this.remove()"></b>Mega</a><a class="mt" href="#gmax"><b style="background:#BDE3F5"><img src="https://raw.githubusercontent.com/PokeMiners/pogo_assets/master/Images/Pokemon/Addressable%20Assets/pm6.fGIGANTAMAX.icon.png" alt="" loading="lazy" onerror="this.remove()"></b>Gigantamax</a><a class="mt" href="#dynamax"><b style="background:#BDE3F5"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/68.png" alt="" loading="lazy" onerror="this.remove()"></b>Dynamax</a><a class="mt" href="#legendary"><b style="background:#BDE3F5"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/150.png" alt="" loading="lazy" onerror="this.remove()"></b>Legendary &amp; Mythical</a><a class="mt" href="#perfect"><b style="background:#BDE3F5"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/151.png" alt="" loading="lazy" onerror="this.remove()"></b>100% IV</a><a class="mt" href="#xxl"><b style="background:#BDE3F5"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/143.png" alt="" loading="lazy" onerror="this.remove()"></b>XXL</a><a class="mt" href="#xxs"><b style="background:#BDE3F5"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/19.png" alt="" loading="lazy" onerror="this.remove()"></b>XXS</a></div></section>
+<section id="settings" hidden><a href="#" class="cb">‹ Home</a><h1 class="hh">Settings</h1>
+<div class="cc"><h3>Back up everything</h3><p>Saves the ticks from every list in one file. Keep a copy somewhere safe, because clearing your browser data would erase them.</p><p><button class="retry" onclick="dlBackup()">Download backup file</button> <button class="retry" onclick="copyBackup()">Copy backup</button></p><p><button class="retry" onclick="$('#rf').click()">Restore from file</button> <button class="retry" onclick="pasteRestore()">Restore from pasted text</button></p><input type="file" id="rf" accept=".json,application/json" hidden></div>
+<div class="cc"><h3>Picture style</h3><p>Show the shiny version of each Pokémon where one exists.</p><p><button class="retry picb"></button></p></div>
+<div class="cc"><h3>Text size</h3><p><button class="retry" onclick="setZ(.9)">Smaller</button> <button class="retry" onclick="setZ(1)">Normal</button> <button class="retry" onclick="setZ(1.15)">Larger</button></p></div>
+<div class="cc"><h3>Report a problem</h3><p>Wrong costume, missing Pokémon or a bug? <a href="https://github.com/ksfv9b95wv-bit/pogo-costumes/issues/new?title=Problem%20report&body=What%20is%20wrong%3F%0A%0AList%3A%0AItem%3A" target="_blank" rel="noopener">Tell us on GitHub</a> (free GitHub account needed).</p></div></section>
 <section id="credits" hidden><a href="#" class="cb">‹ Home</a><h1 class="hh">Credits and sources</h1>
 <p class="hs">An unofficial fan project for personal use. It is not made, endorsed or sponsored by Nintendo, Game Freak, Creatures, The Pokémon Company or Scopely.</p>
 <div class="cc"><h3>Pokémon and Pokémon GO</h3><p>Pokémon, Pokémon GO, all character names and images, and the Poké Ball design are trademarks and copyrights of Nintendo, Creatures Inc., Game Freak and The Pokémon Company, and The Pokémon Company. Pokémon GO is developed and operated by Scopely (its game team, formerly Niantic, now Scopely Explore), which acquired Niantic’s games business in May 2025.</p></div>
@@ -197,10 +203,6 @@ header{margin-top:6px!important;top:calc(env(safe-area-inset-top) + 62px)!import
 <div class="cc"><h3>Pokémon pictures</h3><p>Standard and shiny pictures come from <a href="https://github.com/PokeAPI/sprites" target="_blank" rel="noopener">PokeAPI sprites</a>, also served through jsDelivr. Exact costume pictures come from <a href="https://github.com/PokeMiners/pogo_assets" target="_blank" rel="noopener">PokeMiners pogo_assets</a>.</p></div>
 <div class="cc"><h3>Shiny, Lucky and Shadow lists</h3><p>Loaded live from <a href="https://pogoapi.net" target="_blank" rel="noopener">PoGoAPI</a>. Some newer releases may be missing.</p></div>
 
-<div class="cc"><h3>Back up everything</h3><p>Saves the ticks from every list in one file. Keep a copy somewhere safe, because clearing your browser data would erase them.</p><p><button class="retry" onclick="dlBackup()">Download backup file</button> <button class="retry" onclick="copyBackup()">Copy backup</button></p><p><button class="retry" onclick="$('#rf').click()">Restore from file</button> <button class="retry" onclick="pasteRestore()">Restore from pasted text</button></p><input type="file" id="rf" accept=".json,application/json" hidden></div>
-<div class="cc"><h3>Picture style</h3><p>Show the shiny version of each Pokémon where one exists.</p><p><button class="retry picb"></button></p></div>
-<div class="cc"><h3>Text size</h3><p><button class="retry" onclick="setZ(.9)">Smaller</button> <button class="retry" onclick="setZ(1)">Normal</button> <button class="retry" onclick="setZ(1.15)">Larger</button></p></div>
-<div class="cc"><h3>Report a problem</h3><p>Wrong costume, missing Pokémon or a bug? <a href="https://github.com/ksfv9b95wv-bit/pogo-costumes/issues/new?title=Problem%20report&body=What%20is%20wrong%3F%0A%0AList%3A%0AItem%3A" target="_blank" rel="noopener">Tell us on GitHub</a> (free GitHub account needed).</p></div>
 <div class="cc"><h3>Events, raids and data</h3><p>Events come from <a href="https://github.com/bigfoott/ScrapedDuck" target="_blank" rel="noopener">ScrapedDuck</a>, a feed of <a href="https://leekduck.com" target="_blank" rel="noopener">LeekDuck</a> events. Raid bosses and the Pokédex data come from <a href="https://github.com/pokemon-go-api/pokemon-go-api" target="_blank" rel="noopener">pokemon-go-api</a>. Community Days and the Shiny, Lucky and Shadow lists come from PoGoAPI. The data refreshes automatically each day.</p></div>
 <div class="cc"><h3>Design</h3><p>Colours and layout are inspired by the in-game Pokédex. The app icon and menu symbols were drawn for this project. Built with help from Claude, made by Anthropic.</p></div></section>
 <section id="info" hidden><a href="#" class="cb">‹ Home</a><h1 class="hh" id="it">Info</h1><div id="ib"></div></section>
@@ -352,9 +354,9 @@ async function loadList(m){
  return Object.entries(rel).map(([k,p])=>({k:+k,name:p.name,f:m==="shiny"?sh[k]:null})).filter(p=>m!=="shiny"||sh[p.k]).sort((a,b)=>a.k-b.k).map(p=>({id:m+":"+p.k,name:p.name,event:gen(p.k),dex:p.k,kind:m,shiny:m==="shiny",src:src(p.f)}));
 }
 async function route(){
- BS=null;picLabel();const v=(location.hash||"").slice(1),home=!TITLES[v],cr=v==="credits",pg=INFO[v],col=v==="collections";
+ BS=null;picLabel();const v=(location.hash||"").slice(1),home=!TITLES[v],cr=v==="credits",pg=INFO[v],col=v==="collections",st=v==="settings";
  document.body.dataset.theme=home?"home":v;
- $("#home").hidden=!home||cr||!!pg||col;$("#collections").hidden=!col;$("#info").hidden=!pg;$("#credits").hidden=!cr;
+ $("#home").hidden=!home||cr||!!pg||col||st;$("#settings").hidden=!st;$("#collections").hidden=!col;$("#info").hidden=!pg;$("#credits").hidden=!cr;
  for(const t of ["header","main","footer"])document.querySelector(t).hidden=home;
  if(pg){document.title=pg.t;$("#it").textContent=pg.t;showInfo(pg);window.scrollTo(0,0);return}
  if(home){document.title=col?"My collections":"GO Lists";window.scrollTo(0,0);return}
@@ -467,8 +469,8 @@ async function pageNotifs(b){
   out.append($$("p","hs","Swipe right to delete, left to "+(tab==="inbox"?"archive":"move back to inbox")+". Let go early to cancel."));L.forEach(n=>out.append(item(n)))};
  bi.onclick=()=>{tab="inbox";draw()};ba.onclick=()=>{tab="archived";draw()};bm.onclick=()=>{save(nget().map(x=>x.s==="unread"?{...x,s:"read"}:x));draw()};
  b.append(tabs,out);draw()}
-const VER="v18b";
-const CHANGES=[["v18","A yellow ? now marks any costume picture that might not match exactly. Added real pictures for Absol and Blitzle (Fashionable), Charizard and Charmander (Friede’s Goggles), Charjabug (Winter) and Chimchar (Lucas’s and Dawn’s hats)."],["v17","New top bar with the version and What’s new, Remote raid checker, tidier My collections with Pokémon pictures, and a Dynamax list that builds up over time."],["v16","The app checks for updates every time you open it."],["v15","New home screen and a notification bell with swipe to delete or archive."],["v14","My progress, backup of all lists, CSV export and a shiny picture switch."],["v13","Pokédex, Regional forms, Mega, Gigantamax, Legendary & Mythical, Purified, 100%, XXL and XXS lists."],["v12","Events, Community Days and Raid bosses pages."],["v11","Works offline, desktop layout and text size."],["v10","Many more exact costume pictures."]];
+const VER="v19";
+const CHANGES=[["v19","Settings moved to a cog icon in the top bar, between What’s new and the bell."],["v18","A yellow ? now marks any costume picture that might not match exactly. Added real pictures for Absol and Blitzle (Fashionable), Charizard and Charmander (Friede’s Goggles), Charjabug (Winter) and Chimchar (Lucas’s and Dawn’s hats)."],["v17","New top bar with the version and What’s new, Remote raid checker, tidier My collections with Pokémon pictures, and a Dynamax list that builds up over time."],["v16","The app checks for updates every time you open it."],["v15","New home screen and a notification bell with swipe to delete or archive."],["v14","My progress, backup of all lists, CSV export and a shiny picture switch."],["v13","Pokédex, Regional forms, Mega, Gigantamax, Legendary & Mythical, Purified, 100%, XXL and XXS lists."],["v12","Events, Community Days and Raid bosses pages."],["v11","Works offline, desktop layout and text size."],["v10","Many more exact costume pictures."]];
 async function pageRemote(b){
  const [nm,N]=await Promise.all([nameMap(),getD("names")]);
  const OPT=[["shiny","Shiny"],["lucky","Lucky"],["shadow","Shadow"],["purified","Purified"],["mega","Mega"],["gmax","Gigantamax"],["dynamax","Dynamax"],["perfect","100% IV"],["xxl","XXL"],["xxs","XXS"],["forms","Regional form"]];
@@ -517,5 +519,5 @@ $("#ver").textContent=VER;
 onhashchange=route;route();bell();genNotifs();document.addEventListener("visibilitychange",()=>{if(!document.hidden)genNotifs()});
 fetch("costume-images.json").then(r=>r.ok?r.json():null).then(j=>{if(j){window.CIMG=j;if(location.hash==="#costume")render()}}).catch(()=>{});
 </script>
-<p id="dbg" style="text-align:center;font-size:11px;color:var(--mute);padding-bottom:24px">v18b</p></body>
+<p id="dbg" style="text-align:center;font-size:11px;color:var(--mute);padding-bottom:24px">v19</p></body>
 </html>
