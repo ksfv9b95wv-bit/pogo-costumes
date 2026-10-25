@@ -40,7 +40,9 @@ jobs:
               if isinstance(rf,list): rf={(x.get('formId') or str(i)):x for i,x in enumerate(rf)}
               me=e.get('megaEvolutions') or []
               if isinstance(me,dict): me=list(me.values())
-              r={'i':e['dexNr'],'f':e['formId'],'n':nm(e),'c':C.get(e.get('pokemonClass'),''),'im':im(e)}
+              ty=lambda x:x['type'].replace('POKEMON_TYPE_','').title() if x else None
+              t=[v for v in (ty(e.get('primaryType')),ty(e.get('secondaryType'))) if v]
+              r={'t':t,'i':e['dexNr'],'f':e['formId'],'n':nm(e),'c':C.get(e.get('pokemonClass'),''),'im':im(e)}
               if rf: r['rf']=[{'f':k,'n':nm(v),'im':im(v)} for k,v in rf.items()]
               if me: r['me']=[{'f':m.get('id'),'n':nm(m),'im':im(m)} for m in me]
               if e.get('hasGigantamaxEvolution'):
