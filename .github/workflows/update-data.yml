@@ -23,6 +23,7 @@ jobs:
           get raid_exclusive.json $B/raid_exclusive_pokemon.json
           get types.json $B/pokemon_types.json
           get events.json https://raw.githubusercontent.com/bigfoott/ScrapedDuck/data/events.min.json
+          get maxbattles.json https://pokemon-go-api.github.io/pokemon-go-api/api/maxbattles.json
           get raidboss.json https://pokemon-go-api.github.io/pokemon-go-api/api/raidboss.json
           get pokedex.json https://pokemon-go-api.github.io/pokemon-go-api/api/pokedex.json
           for f in data/*.json; do echo "=== $f ($(wc -c < "$f") bytes)"; head -c 1500 "$f"; echo; done > data/_samples.txt
@@ -52,6 +53,46 @@ jobs:
               out.append(r)
           json.dump(out,open('data/dex.json','w'),separators=(',',':'),ensure_ascii=False)
           print(len(out),'entries')
+          PY
+      - name: Build Dynamax list and data report
+        run: |
+          python3 - <<'PY'
+          import json,re
+          dex=json.load(open('data/dex.json'))
+          byf={e['f']:e for e in dex}
+          try: cur=json.load(open('data/maxbattles.json'))
+          except Exception: cur={}
+          try: old={e['i']:e for e in json.load(open('data/dynamax.json'))}
+          except Exception: old={}
+          acc=[]
+          def walk(x):
+              if isinstance(x,dict):
+                  if isinstance(x.get('id'),str): acc.append(x)
+                  for v in x.values(): walk(v)
+              elif isinstance(x,list):
+                  for v in x: walk(v)
+          walk(cur)
+          for x in acc:
+              e=byf.get(x['id'])
+              if e and e['i'] not in old: old[e['i']]={'i':e['i'],'n':e['n'],'im':e['im']}
+          json.dump(sorted(old.values(),key=lambda e:e['i']),open('data/dynamax.json','w'),separators=(',',':'),ensure_ascii=False)
+          d=json.load(open('data/pokedex.json')); rel=json.load(open('data/released.json')); sh=json.load(open('data/shiny.json'))
+          ids={e['dexNr'] for e in d}
+          hs={e['dexNr'] for e in d if (e.get('assets') or {}).get('shinyImage')}
+          nm=lambda i:(next((e['names']['English'] for e in d if e['dexNr']==i),str(i)))
+          o=['dex %d, released %d, shiny %d, dynamax list %d'%(len(ids),len(rel),len(sh),len(old))]
+          o.append('RELEASED but not in pokedex.json: '+', '.join(rel[k]['name'] for k in rel if int(k) not in ids))
+          o.append('HAS shiny image but NOT in shiny.json ('+str(len([i for i in hs if str(i) not in sh]))+'): '+', '.join(nm(i) for i in sorted(hs) if str(i) not in sh))
+          o.append('IN shiny.json but no shiny image: '+', '.join(sh[k]['name'] for k in sh if int(k) not in hs))
+          try: used=set(re.findall(r'\.c([A-Z0-9_]+)\.icon',open('costume-images.json').read()))
+          except Exception: used=set()
+          codes={}
+          for e in d:
+              for a in e.get('assetForms') or []:
+                  c=a.get('costume')
+                  if c and not a.get('isFemale') and c not in used: codes.setdefault(c,[]).append(str(e['dexNr']))
+          o.append('COSTUME CODES not yet used ('+str(len(codes))+'): '+'; '.join(c+': '+','.join(v[:12]) for c,v in sorted(codes.items())))
+          open('data/_report.txt','w').write('\n\n'.join(o))
           PY
       - name: Save data to repo
         run: |
