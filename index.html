@@ -185,7 +185,7 @@ header{margin-top:6px!important;top:calc(env(safe-area-inset-top) + 62px)!import
 <a class="tile" href="#events"><b class="e">📅</b><span>Events<small>What is on now and coming up</small></span></a>
 <a class="tile" href="#cd"><b class="e">🎉</b><span>Community Days<small>Past and upcoming</small></span></a>
 <a class="tile" href="#raids"><b class="e">⚔️</b><span>Raid bosses<small>Current bosses and counters</small></span></a>
-<a class="tile" href="#remote"><b class="e">🌐</b><span>Remote raid checker<small>Is a remote raid or trade worth it?</small></span></a>
+<a class="tile" href="#remote"><b class="e">🌐</b><span>Remote trade checker<small>Will their Pokémon fill your gaps?</small></span></a>
 <p style="text-align:center;margin:18px 0 0"><a class="cl" href="#credits">Credits and sources</a></p></section>
 <section id="collections" hidden><a href="#" class="cb">‹ Home</a><h1 class="hh">My collections</h1>
 <a class="tile" href="#stats"><b class="e">📊</b><span>My progress<small>How much you have completed</small></span></a>
@@ -470,26 +470,45 @@ async function pageNotifs(b){
   out.append($$("p","hs","Swipe right to delete, left to "+(tab==="inbox"?"archive":"move back to inbox")+". Let go early to cancel."));L.forEach(n=>out.append(item(n)))};
  bi.onclick=()=>{tab="inbox";draw()};ba.onclick=()=>{tab="archived";draw()};bm.onclick=()=>{save(nget().map(x=>x.s==="unread"?{...x,s:"read"}:x));draw()};
  b.append(tabs,out);draw()}
-const VER="v19b";
-const CHANGES=[["v19b","Pokémon that are not yet released in Pokémon GO are now greyed out, marked “Not yet in Pokémon GO”, can’t be ticked and don’t count in your totals."],["v19","Settings moved to a cog icon in the top bar, between What’s new and the bell."],["v18","A yellow ? now marks any costume picture that might not match exactly. Added real pictures for Absol and Blitzle (Fashionable), Charizard and Charmander (Friede’s Goggles), Charjabug (Winter) and Chimchar (Lucas’s and Dawn’s hats)."],["v17","New top bar with the version and What’s new, Remote raid checker, tidier My collections with Pokémon pictures, and a Dynamax list that builds up over time."],["v16","The app checks for updates every time you open it."],["v15","New home screen and a notification bell with swipe to delete or archive."],["v14","My progress, backup of all lists, CSV export and a shiny picture switch."],["v13","Pokédex, Regional forms, Mega, Gigantamax, Legendary & Mythical, Purified, 100%, XXL and XXS lists."],["v12","Events, Community Days and Raid bosses pages."],["v11","Works offline, desktop layout and text size."],["v10","Many more exact costume pictures."]];
+const VER="v20";
+const CHANGES=[["v20","Remote raid checker is now the Remote trade checker: add the Pokémon another trainer has for trade (typed or pasted) and see which Pokédex, Shiny, Lucky and Purified gaps it would fill."],["v19b","Pokémon that are not yet released in Pokémon GO are now greyed out, marked “Not yet in Pokémon GO”, can’t be ticked and don’t count in your totals."],["v19","Settings moved to a cog icon in the top bar, between What’s new and the bell."],["v18","A yellow ? now marks any costume picture that might not match exactly. Added real pictures for Absol and Blitzle (Fashionable), Charizard and Charmander (Friede’s Goggles), Charjabug (Winter) and Chimchar (Lucas’s and Dawn’s hats)."],["v17","New top bar with the version and What’s new, Remote raid checker, tidier My collections with Pokémon pictures, and a Dynamax list that builds up over time."],["v16","The app checks for updates every time you open it."],["v15","New home screen and a notification bell with swipe to delete or archive."],["v14","My progress, backup of all lists, CSV export and a shiny picture switch."],["v13","Pokédex, Regional forms, Mega, Gigantamax, Legendary & Mythical, Purified, 100%, XXL and XXS lists."],["v12","Events, Community Days and Raid bosses pages."],["v11","Works offline, desktop layout and text size."],["v10","Many more exact costume pictures."]];
 async function pageRemote(b){
  const [nm,N]=await Promise.all([nameMap(),getD("names")]);
- const OPT=[["shiny","Shiny"],["lucky","Lucky"],["shadow","Shadow"],["purified","Purified"],["mega","Mega"],["gmax","Gigantamax"],["dynamax","Dynamax"],["perfect","100% IV"],["xxl","XXL"],["xxs","XXS"],["forms","Regional form"]];
- const on=new Set(),inp=$$("input","sel"),dlist=document.createElement("datalist"),out=$$("div"),chips=$$("div"),go=$$("button","retry","Check");
+ const OPT=[["shiny","Shiny"],["lucky","Lucky"],["purified","Purified"]];
+ let T=[];try{T=JSON.parse(localStorage.getItem("pogo-trade")||"[]")}catch(x){}
+ const saveT=()=>{try{localStorage.setItem("pogo-trade",JSON.stringify(T))}catch(x){}};
+ const on=new Set(),inp=$$("input","sel"),dlist=document.createElement("datalist"),chips=$$("div"),add=$$("button","retry","Add to trade list"),
+  paste=document.createElement("textarea"),pbtn=$$("button","retry","Add pasted list"),listEl=$$("div"),out=$$("div");
  inp.placeholder="Pokémon name or number";inp.setAttribute("list","pl");inp.setAttribute("aria-label","Pokémon name or number");inp.style.cssText="width:100%;box-sizing:border-box";dlist.id="pl";Object.values(N).forEach(p=>dlist.append(new Option(p.name)));
- const L=async m=>{try{return cache[m]=cache[m]||await loadList(m)}catch(e){return null}};
- const run=async()=>{out.replaceChildren();const q=inp.value.trim().toLowerCase();if(!q)return;
-  const id=/^\d+$/.test(q)?+q:nm[q];if(!id||!N[id]){out.append($$("p","msg","Pokémon not found. Check the spelling or try its number."));return}
-  const keys=on.size?[...on]:OPT.map(o=>o[0]),rows=$$("div");let good=0;
-  const chk=async(m,label)=>{const l=await L(m);if(!l)return;const it=l.filter(d=>d.dex===id),o=rd("pogo-"+m+"-owned");
-   if(!it.length){if(on.has(m))rows.append($$("p",null,"⚪ "+label+": none exists for "+N[id].name+" in the data."));return}
-   for(const d of it){const h=o.has(d.id);if(!h)good++;rows.append($$("p",null,(h?"⛔ Already have ":"✅ Need ")+d.name+" ("+label+")"))}};
-  await chk("dex","Pokédex");for(const k of keys)await chk(k,OPT.find(o=>o[0]===k)[1]);
-  const c=$$("div","cc");c.append($$("h3",null,"#"+id+" "+N[id].name),$$("p",null,good?"Worth it: "+good+" thing"+(good>1?"s":"")+" you still need.":"No benefit: you already have everything checked."),rows);out.append(c)};
- OPT.forEach(([k,l])=>{const x=$$("button","retry off",l);x.onclick=()=>{on.has(k)?on.delete(k):on.add(k);x.className="retry"+(on.has(k)?"":" off");if(inp.value)run()};chips.append(x)});
- go.onclick=run;inp.onkeydown=e=>{if(e.key==="Enter")run()};
- b.append($$("p","hs","Type a Pokémon, tick what the remote raid or trade would give you, then check it against your saved ticks."),inp,dlist,chips,go,out)}
-const INFO={remote:{t:"Remote raid checker",f:pageRemote},whatsnew:{t:"What’s new",f:b=>{CHANGES.forEach(([v,t])=>{const c=$$("div","cc");c.append($$("h3",null,v),$$("p",null,t));b.append(c)})}},notifications:{t:"Notifications",f:pageNotifs},stats:{t:"My progress",f:pageStats},events:{t:"Events",f:pageEvents},cd:{t:"Community Days",f:pageCD},raids:{t:"Raid bosses",f:pageRaids}};
+ paste.placeholder="Or paste their list, one per line, e.g.\nShiny Pikachu\nLucky Eevee\n25";paste.rows=4;paste.style.cssText="width:100%;box-sizing:border-box;margin-top:10px;border-radius:12px;padding:10px;font:inherit";
+ const L=async m=>{try{return cache[m]=cache[m]||await loadList(m)}catch(x){return null}};
+ const FL=Object.fromEntries(OPT.map(o=>[o[0],o[1]]));
+ const label=t=>(t.f.length?t.f.map(k=>FL[k]).join(" ")+" ":"")+N[t.id].name;
+ const draw=()=>{listEl.replaceChildren();if(!T.length){listEl.append($$("p","msg","No Pokémon added yet."));out.replaceChildren();return}
+  T.forEach((t,i)=>{const r=$$("p",null,"#"+t.id+" "+label(t)+" ");const x=$$("button","retry off","✕");x.setAttribute("aria-label","Remove");x.onclick=()=>{T.splice(i,1);saveT();draw()};r.append(x);listEl.append(r)});
+  const c=$$("button","retry","Check against my collection");c.onclick=run;listEl.append(c);const cl=$$("button","retry off","Clear list");cl.onclick=()=>{T=[];saveT();draw()};listEl.append(cl);out.replaceChildren()};
+ const run=async()=>{out.replaceChildren(out.appendChild($$("p","msg","Checking…")));
+  const dexO=rd("pogo-dex-owned"),filled=new Set(),rows=$$("div");
+  for(const t of T){const lines=[];
+   const need=async(m,lab)=>{const l=await L(m);if(!l)return;const d=l.find(x=>x.dex===t.id&&!x.na);const o=rd("pogo-"+m+"-owned");
+    if(!d){lines.push("⚪ No "+lab+" version of "+N[t.id].name+" in the data.");return}
+    if(o.has(d.id)){lines.push("⛔ Already have "+lab);return}
+    if(filled.has(d.id)){lines.push("🔁 "+lab+" already filled by another Pokémon in this list");return}
+    filled.add(d.id);lines.push("✅ Fills your "+lab+" gap")};
+   if(t.f.length===0||true){const id="dex:"+t.id;if(dexO.has(id))lines.push("⛔ Already have in Pokédex");else if(filled.has(id))lines.push("🔁 Pokédex gap already filled by another Pokémon in this list");else{const l=await L("dex"),d=l&&l.find(x=>x.dex===t.id);if(d&&d.na)lines.push("⚪ Not yet released in Pokémon GO");else{filled.add(id);lines.push("✅ Fills your Pokédex gap")}}}
+   for(const k of t.f)await need(k,FL[k]);
+   const c=$$("div","cc");c.append($$("h3",null,"#"+t.id+" "+label(t)));lines.forEach(x=>c.append($$("p",null,x)));rows.append(c)}
+  const sum=$$("div","cc");sum.append($$("h3",null,filled.size?"Worth it: fills "+filled.size+" gap"+(filled.size>1?"s":""):"No benefit"),$$("p",null,filled.size?"Trading for this list would complete "+filled.size+" thing"+(filled.size>1?"s":"")+" you are missing.":"You already have everything on this list."));
+  out.replaceChildren(sum,rows)};
+ const addOne=(id,f)=>{if(!id||!N[id])return false;f=[...new Set(f)];if(!T.some(t=>t.id===id&&t.f.slice().sort().join()===f.slice().sort().join()))T.push({id,f});return true};
+ const parse=line=>{let q=line.trim().toLowerCase();if(!q)return null;const f=[];for(const k of Object.keys(FL)){const re=new RegExp("\\b"+k+"\\b","g");if(re.test(q)){f.push(k);q=q.replace(re,"")}}q=q.replace(/[#,]/g," ").replace(/\s+/g," ").trim();const id=/^\d+$/.test(q)?+q:nm[q];return id&&N[id]?{id,f}:{bad:line.trim()}};
+ OPT.forEach(([k,l])=>{const x=$$("button","retry off",l);x.onclick=()=>{on.has(k)?on.delete(k):on.add(k);x.className="retry"+(on.has(k)?"":" off")};chips.append(x)});
+ const msg=$$("p","msg");
+ add.onclick=()=>{msg.textContent="";const q=inp.value.trim().toLowerCase(),id=/^\d+$/.test(q)?+q:nm[q];if(!addOne(id,[...on])){msg.textContent="Pokémon not found. Check the spelling or try its number.";return}inp.value="";saveT();draw()};
+ inp.onkeydown=e=>{if(e.key==="Enter")add.onclick()};
+ pbtn.onclick=()=>{msg.textContent="";const bad=[];paste.value.split("\n").forEach(l=>{const r=parse(l);if(!r)return;if(r.bad)bad.push(r.bad);else addOne(r.id,r.f)});paste.value="";saveT();draw();if(bad.length)msg.textContent="Could not read: "+bad.join(", ")};
+ b.append($$("p","hs","Enter the Pokémon another trainer has for trade, tick Shiny, Lucky or Purified if it applies, and see which gaps in your collection the trade would fill."),inp,dlist,chips,add,paste,pbtn,msg,listEl,out);draw()}
+const INFO={remote:{t:"Remote trade checker",f:pageRemote},whatsnew:{t:"What’s new",f:b=>{CHANGES.forEach(([v,t])=>{const c=$$("div","cc");c.append($$("h3",null,v),$$("p",null,t));b.append(c)})}},notifications:{t:"Notifications",f:pageNotifs},stats:{t:"My progress",f:pageStats},events:{t:"Events",f:pageEvents},cd:{t:"Community Days",f:pageCD},raids:{t:"Raid bosses",f:pageRaids}};
 async function showInfo(pg){const b=$("#ib");b.replaceChildren($$("p","msg","Loading…"));
  try{const x=document.createElement("div");await pg.f(x);b.replaceChildren(...x.childNodes)}
  catch(e){const p=$$("p","msg","Couldn’t load this page. "),t=$$("button","retry","Try again");t.onclick=()=>showInfo(pg);p.append(t);b.replaceChildren(p)}}
@@ -520,5 +539,5 @@ $("#ver").textContent=VER;
 onhashchange=route;route();bell();genNotifs();document.addEventListener("visibilitychange",()=>{if(!document.hidden)genNotifs()});
 fetch("costume-images.json").then(r=>r.ok?r.json():null).then(j=>{if(j){window.CIMG=j;if(location.hash==="#costume")render()}}).catch(()=>{});
 </script>
-<p id="dbg" style="text-align:center;font-size:11px;color:var(--mute);padding-bottom:24px">v19b</p></body>
+<p id="dbg" style="text-align:center;font-size:11px;color:var(--mute);padding-bottom:24px">v20</p></body>
 </html>
