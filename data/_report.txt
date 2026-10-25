@@ -1,0 +1,9 @@
+dex 1024, released 937, shiny 863, dynamax list 0
+
+RELEASED but not in pokedex.json: 
+
+HAS shiny image but NOT in shiny.json (82): Phione, Manaphy, Arceus, Victini, Honedge, Doublade, Aegislash, Hawlucha, Klefki, Zygarde, Diancie, Hoopa, Volcanion, Comfey, Mimikyu, Cosmog, Cosmoem, Solgaleo, Lunala, Marshadow, Poipole, Naganadel, Zeraora, Scorbunny, Raboot, Cinderace, Sobble, Drizzile, Inteleon, Nickit, Thievul, Gossifleur, Eldegoss, Yamper, Boltund, Rolycoly, Carkol, Coalossal, Applin, Flapple, Appletun, Sizzlipede, Centiskorch, Clobbopus, Grapploct, Mr. Rime, Snom, Frosmoth, Stonjourner, Dreepy, Drakloak, Dragapult, Eternatus, Kubfu, Urshifu, Zarude, Ursaluna, Enamorus, Tarountula, Spidops, Nacli, Naclstack, Garganacl, Wattrel, Kilowattrel, Shroodle, Grafaiai, Toedscool, Toedscruel, Klawf, Varoom, Revavroom, Glimmet, Glimmora, Greavard, Houndstone, Flamigo, Tatsugiri, Dipplin, Poltchageist, Sinistcha, Hydrapple
+
+IN shiny.json but no shiny image: Unown, Burmy, Wormadam
+
+COSTUME CODES not yet used (16): ANNIVERSARY_2024: 88,89; COSTUME_1: 25,26; COSTUME_2: 25,26,172; FASHION_2021_NOEVOLVE: 12,215,522; FASHION_2025: 572,573; FEB_2019: 25,26; GEMS_1_2021_NOEVOLVE: 387,390,393; GEMS_2_2021_NOEVOLVE: 387,390,393; GOTOUR_2023_BANDANA_NOEVOLVE: 25; GOTOUR_2023_HAT_NOEVOLVE: 25; HALLOWEEN_2025: 216,217,714,715,901; May_2023: 133; NIGHTCAP: 143; PI: 25,26; PI_NOEVOLVE: 79; SPRING_2024: 546,547
