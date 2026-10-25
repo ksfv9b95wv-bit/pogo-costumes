@@ -1,4 +1,4 @@
-const V="go-v12",SHELL=["./","index.html","manifest.webmanifest","apple-touch-icon.png","icon-512.png","costume-images.json"];
+const V="go-v13",SHELL=["./","index.html","manifest.webmanifest","apple-touch-icon.png","icon-512.png","costume-images.json"];
 self.addEventListener("install",e=>{e.waitUntil(caches.open(V).then(c=>Promise.all(SHELL.map(u=>c.add(u).catch(()=>{})))).then(()=>self.skipWaiting()))});
 self.addEventListener("activate",e=>{e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==V&&x!=="go-img").map(x=>caches.delete(x)))).then(()=>clients.claim()))});
 const fresh=(r)=>fetch(r).then(n=>{const cp=n.clone();if(n.ok)caches.open(V).then(c=>c.put(r,cp));return n}).catch(()=>caches.match(r));
