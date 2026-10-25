@@ -26,6 +26,25 @@ jobs:
           get raidboss.json https://pokemon-go-api.github.io/pokemon-go-api/api/raidboss.json
           get pokedex.json https://pokemon-go-api.github.io/pokemon-go-api/api/pokedex.json
           for f in data/*.json; do echo "=== $f ($(wc -c < "$f") bytes)"; head -c 1500 "$f"; echo; done > data/_samples.txt
+      - name: Inspect Pokedex structure
+        run: |
+          python3 - <<'PY'
+          import json
+          d=json.load(open('data/pokedex.json'))
+          t=lambda x:json.dumps(x)[:1500]
+          o=['entries '+str(len(d)),'keys '+str(list(d[0].keys()))]
+          c={}
+          for e in d: c[str(e.get('pokemonClass'))]=c.get(str(e.get('pokemonClass')),0)+1
+          o.append('classes '+str(c))
+          for k in ('regionForms','megaEvolutions','assetForms','assets'):
+              for e in d:
+                  if e.get(k):
+                      o.append(k+' sample ('+e['id']+'): '+t(e[k])); break
+          p=[e for e in d if e.get('dexNr')==25][0]
+          skip=('quickMoves','cinematicMoves','eliteQuickMoves','eliteCinematicMoves','names','stats','primaryType','secondaryType')
+          o.append('pikachu '+t({k:v for k,v in p.items() if k not in skip}))
+          open('data/_pokedex-structure.txt','w').write('\n\n'.join(o))
+          PY
       - name: Save data to repo
         run: |
           git config user.name "github-actions"
@@ -33,3 +52,4 @@ jobs:
           git add data
           git commit -m "Update data" || echo "nothing to commit"
           git push
+
