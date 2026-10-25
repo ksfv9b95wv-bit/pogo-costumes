@@ -136,6 +136,10 @@ body{zoom:var(--z,1)}
 @media(min-width:700px){header,main,footer{max-width:1100px;margin-left:auto;margin-right:auto}.grid{grid-template-columns:repeat(3,1fr)!important}}
 @media(min-width:1000px){.grid{grid-template-columns:repeat(4,1fr)!important}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+#info{padding:calc(env(safe-area-inset-top) + 18px) 16px 40px;max-width:700px;margin:0 auto;color:var(--ink)}
+.sp{width:48px;height:48px;object-fit:contain;flex:none}.row{display:flex;align-items:center;gap:10px}.row h3{margin:0}
+.sel{font:inherit;padding:10px 12px;border-radius:14px;border:2px solid rgba(255,255,255,.8);background:rgba(255,255,255,.85);color:#1578a6;margin:6px 0;max-width:100%}
+.cc p+p{margin-top:4px}.cc>a{display:inline-block;margin-top:6px}
 </style>
 </head>
 <body>
@@ -145,6 +149,9 @@ body{zoom:var(--z,1)}
 <a class="tile" href="#shiny"><b><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="32" fill="#EBD07F"/><g fill="#fff"><use href="#i-star" x="12" y="12" width="20" height="20"/><use href="#i-star" x="34" y="24" width="18" height="18"/><use href="#i-star" x="17" y="34" width="20" height="20"/></g></svg></b><span>Shiny<small>Every shiny released in GO</small></span></a>
 <a class="tile" href="#lucky"><b><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="32" fill="#E8C9A0"/><g fill="#fff"><circle cx="30" cy="31" r="7"/><circle cx="21" cy="24" r="3.5"/><circle cx="39" cy="22" r="3.5"/><circle cx="37" cy="40" r="4.5"/><circle cx="24" cy="42" r="3"/><circle cx="14" cy="32" r="2"/><circle cx="50" cy="38" r="1.8"/><use href="#i-star" x="40" y="26" width="12" height="12"/></g></svg></b><span>Lucky<small>Every released Pokémon</small></span></a>
 <a class="tile" href="#shadow"><b><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="32" fill="#BDA0E3"/><use href="#i-flame" x="14" y="12" width="36" height="40" fill="#fff"/></svg></b><span>Shadow<small>Shadow Pokémon from Team GO Rocket</small></span></a>
+<a class="tile" href="#events"><b class="e">📅</b><span>Events<small>What is on now and coming up</small></span></a>
+<a class="tile" href="#cd"><b class="e">🎉</b><span>Community Days<small>Past and upcoming</small></span></a>
+<a class="tile" href="#raids"><b class="e">⚔️</b><span>Raid bosses<small>Current bosses and counters</small></span></a>
 <p style="text-align:center;margin:18px 0 0"><a class="cl" href="#credits">Credits, what's new and settings</a></p></section>
 <section id="credits" hidden><a href="#" class="cb">‹ Home</a><h1 class="hh">Credits and sources</h1>
 <p class="hs">An unofficial fan project for personal use. It is not made, endorsed or sponsored by Nintendo, Game Freak, Creatures, The Pokémon Company or Scopely.</p>
@@ -152,10 +159,12 @@ body{zoom:var(--z,1)}
 <div class="cc"><h3>Costume list and dates</h3><p>Built from <a href="https://bulbapedia.bulbagarden.net/wiki/Event_Pok%C3%A9mon_(GO)" target="_blank" rel="noopener">Bulbapedia</a>, the community Pokémon encyclopedia, whose text is shared under CC BY-NC-SA 2.5. Some 2026 additions were checked against public event news.</p></div>
 <div class="cc"><h3>Pokémon pictures</h3><p>Standard and shiny pictures come from <a href="https://github.com/PokeAPI/sprites" target="_blank" rel="noopener">PokeAPI sprites</a>, also served through jsDelivr. Exact costume pictures come from <a href="https://github.com/PokeMiners/pogo_assets" target="_blank" rel="noopener">PokeMiners pogo_assets</a>.</p></div>
 <div class="cc"><h3>Shiny, Lucky and Shadow lists</h3><p>Loaded live from <a href="https://pogoapi.net" target="_blank" rel="noopener">PoGoAPI</a>. Some newer releases may be missing.</p></div>
-<div class="cc"><h3>What's new</h3><p>v10: many more exact costume pictures, Floragato picture fixed. v9: this credits page. v8: Shadow list. v7: separate colours for Shiny and Lucky. v6: home screen with four lists. Works offline once opened, and can be installed to the Home Screen.</p></div>
+<div class="cc"><h3>What's new</h3><p>v12: Events, Community Days and Raid bosses pages; lists now load faster from saved data and Shiny shows where each can be found. v11: works offline, desktop layout, text size. v10: many more exact costume pictures, Floragato picture fixed. v9: this credits page. v8: Shadow list. v7: separate colours for Shiny and Lucky. v6: home screen with four lists. Works offline once opened, and can be installed to the Home Screen.</p></div>
 <div class="cc"><h3>Text size</h3><p><button class="retry" onclick="setZ(.9)">Smaller</button> <button class="retry" onclick="setZ(1)">Normal</button> <button class="retry" onclick="setZ(1.15)">Larger</button></p></div>
 <div class="cc"><h3>Report a problem</h3><p>Wrong costume, missing Pokémon or a bug? <a href="https://github.com/ksfv9b95wv-bit/pogo-costumes/issues/new?title=Problem%20report&body=What%20is%20wrong%3F%0A%0AList%3A%0AItem%3A" target="_blank" rel="noopener">Tell us on GitHub</a> (free GitHub account needed).</p></div>
+<div class="cc"><h3>Events, raids and data</h3><p>Events come from <a href="https://github.com/bigfoott/ScrapedDuck" target="_blank" rel="noopener">ScrapedDuck</a>, a feed of <a href="https://leekduck.com" target="_blank" rel="noopener">LeekDuck</a> events. Raid bosses and the Pokédex data come from <a href="https://github.com/pokemon-go-api/pokemon-go-api" target="_blank" rel="noopener">pokemon-go-api</a>. Community Days and the Shiny, Lucky and Shadow lists come from PoGoAPI. The data refreshes automatically each day.</p></div>
 <div class="cc"><h3>Design</h3><p>Colours and layout are inspired by the in-game Pokédex. The app icon and menu symbols were drawn for this project. Built with help from Claude, made by Anthropic.</p></div></section>
+<section id="info" hidden><a href="#" class="cb">‹ Home</a><h1 class="hh" id="it">Info</h1><div id="ib"></div></section>
 <header>
   <h1><span><a href="#" id="back" style="color:inherit;text-decoration:none;margin-right:8px">‹</a><span id="ttl">Costume Dex</span></span><span id="count"></span></h1>
   <div class="bar"><i id="fill"></i></div>
@@ -176,7 +185,7 @@ body{zoom:var(--z,1)}
 </footer>
 <script>
 try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist()}catch(e){}
-function dbg(){const e=document.getElementById("dbg");if(e)e.textContent="v11 · pictures loaded: "+(window.__o||0)+" · failed: "+(window.__b||0)}
+function dbg(){const e=document.getElementById("dbg");if(e)e.textContent="v12 · pictures loaded: "+(window.__o||0)+" · failed: "+(window.__b||0)}
 let KEY="pogo-costumes-owned";
 const RAW="Festive Hat|Pichu,Pikachu,Raichu|Holiday 2016, Dec 2016|Winter Holiday Part 1, Dec 2025\nParty Hat|Pichu,Pikachu,Raichu|Pokémon Day, Feb 2017|Spotlight Hour, Jul 2025\nCap (Anniversary)|Pichu,Pikachu,Raichu|1st Anniversary, Jul 2017|Spotlight Hour, Oct 2020\nAsh's Original Cap|Pikachu,Raichu|Spotlight Hour, Oct 2020|Animation Week, Nov 2020\nAsh's Hoenn Cap|Pikachu|Autumn 2020 (unverified)|Nov 2020\nAsh's Sinnoh Cap|Pikachu|Autumn 2020 (unverified)|Nov 2020\nAsh's Unova Cap|Pikachu|Autumn 2020 (unverified)|Nov 2020\nAsh's Kalos Cap|Pikachu|Autumn 2020 (unverified)|Nov 2020\nAsh's Alola Cap|Pikachu|Autumn 2020 (unverified)|Nov 2020\nAsh's Partner Cap|Pikachu|Autumn 2020 (unverified)|Nov 2020\nAsh's World Cap|Pikachu|Autumn 2020 (unverified)|Nov 2020\nWitch Hat|Pichu,Pikachu,Raichu,Teddiursa,Ursaring|Halloween, Oct 2017|Halloween Part II, Nov 2025 (Teddiursa line)\nSummer Style|Pichu,Pikachu,Raichu|2nd Anniversary, Jul 2018|Holiday Part 1, Dec 2024 (Pichu)\nSunglasses (Squirtle Squad)|Squirtle,Wartortle,Blastoise|Squirtle Community Day, Jul 2018|Community Day Classic Make Up, Jul 2023\nH.F. Custom Cap|Pikachu,Raichu|H.F. Custom tie-in, Oct 2018|Oct 2018\nFlower Crown|Pichu,Pikachu,Raichu,@E,Togepi,Togetic,Togekiss,Buneary,Lopunny,Happiny,Chansey,Blissey,Cottonee,Whimsicott|Pokémon Day, Feb 2019|Spring into Spring, Apr 2025\nDetective Pikachu Outfit|Pikachu,Raichu|Detective Pikachu movie, May 2019|Detective Pikachu Returns, Oct 2023\nArmored|Mewtwo||\nStraw Hat|Pikachu||\nShedinja Costume|Bulbasaur|Halloween, Oct 2019|Halloween, Nov 2020\nCubone Costume|Charmander|Halloween, Oct 2019|Halloween, Nov 2020\nYamask Costume|Squirtle|Halloween, Oct 2019|Halloween, Nov 2020\nMimikyu Costume|Pikachu|Halloween, Oct 2019|Halloween, Nov 2020\nMega Banette Costume|Gengar|Halloween, Oct 2020|Nov 2020\nLitwick Costume|Sableye|Halloween, Oct 2020|Nov 2020\nBeanie Hat|Pichu,Pikachu,Raichu|Holiday, Dec 2019|New Year's, Jan 2025\nHoliday Outfit|Stantler,Spheal,Pikachu,Raichu,Psyduck,Golduck|Holiday, Dec 2019|Holiday Part 1, Dec 2024\nParty Hat (Green)|Raticate,Wobbuffet,Wurmple|Adventure Sync Hatchathon, Jan 2020|New Year's, Jan 2026\nParty Hat (Red)|Bulbasaur,Ivysaur,Venusaur,Charmander,Charmeleon,Charizard,Squirtle,Wartortle,Blastoise,Pikachu,Eevee,Nidorino,Gengar,Grimer,Muk|Pokémon Day, Feb 2020|New Year's, Jan 2026\nClone|Venusaur,Charizard,Blastoise,Pikachu|Pokémon Day, Feb 2020|Mar 2020\nCosplay Rock Star|Pikachu|GO Fest 2021, Jul 2021 (unverified)|Wild Area, Nov 2024 (unverified)\nCosplay Pop Star|Pikachu|GO Fest 2021, Jul 2021 (unverified)|Wild Area, Nov 2024 (unverified)\nCosplay Libre|Pikachu|GO Fest 2021, Jul 2021 (unverified)|Wild Area, Nov 2024 (unverified)\nCosplay Belle|Pikachu|GO Fest 2021, Jul 2021 (unverified)|Wild Area, Nov 2024 (unverified)\nCosplay Ph.D.|Pikachu|Showcase medal reward, Feb 2024|Ongoing medal reward (2026)\nSafari Hat|Pikachu|GO Safari Zone, Mar 2020|GO Safari Zone, Oct 2022\nFlower Hat|Pikachu|Spring, Apr 2020|Apr 2020\nCharizard Hat|Pikachu|Throwback Challenge, May 2020|May 2020\nUmbreon Hat|Pikachu|Throwback Challenge, May 2020|May 2020\nRayquaza Hat|Pikachu|Throwback Challenge, May 2020|May 2020\nLucario Hat|Pikachu|Throwback Challenge, May 2020|May 2020\nFlying Pikachu|Pikachu|4th Anniversary, Jul 2020|GO Safari Zone, Nov 2022\nPikachu's Indonesia Journey|Pikachu|Bali, Mar 2024|Yogyakarta, Aug 2024\nVisor (GO Fest 2020)|Bulbasaur,Ivysaur,Venusaur,Charmander,Charmeleon,Charizard,Squirtle,Wartortle,Blastoise|GO Fest 2020, Jul 2020|GO Fest 2026, Jun 2026\nFashionable Costume|Smoochum,Kirlia,Shinx,Croagunk,Toxicroak,Butterfree,Sneasel,Blitzle,Diglett,Dugtrio,Absol,Dragonite,Wooper,Quagsire,Minccino,Cinccino|Paris Fashion Week, Oct 2020|Fashion Raid Day, Apr 2026\nExplorer Pikachu|Pikachu|Secrets of the Jungle, Dec 2020|Oct 2021\nWinter Carnival|Pikachu|Holiday, Dec 2020|Holiday Part 1, Dec 2024\nHoliday Ribbon|Delibird,Cubchoo,Beartic|Holiday, Dec 2020|Winter Holiday Part 1, Dec 2025\nNew Year's Hat|Pichu,Pikachu,Raichu|New Year's, Jan 2021|Jan 2022\nNew Year's Outfit|Hoothoot,Noctowl|New Year's, Jan 2022|New Year's, Jan 2026\n2020/2021/2022 Glasses|Slowpoke,Slowking,Slowbro|New Year's, Jan 2021|Community Day, Dec 2024\nGO Fest 2021 Costume|Pikachu (Meloetta Hat),Ponyta,Zigzagoon,Gardevoir,Flygon|GO Fest 2021, Jul 2021|Jul 2021\nHalloween Mischief|Pikachu,Piplup,Drifblim|Halloween, Oct 2021|Halloween Part II, Nov 2025\nLucas's Hat|Turtwig,Chimchar,Piplup,Pikachu|Brilliant Diamond/Shining Pearl event, Nov 2021|Pokémon 30th Anniversary, Mar 2026\nDawn's Hat|Turtwig,Chimchar,Piplup,Pikachu|Brilliant Diamond/Shining Pearl event, Nov 2021|Pokémon 30th Anniversary, Mar 2026\nUndersea Holiday|Glaceon|Holiday, Dec 2021|Holiday Part 1, Dec 2024\nKariyushi Shirt|Pikachu||\nScarf|Lapras|Water Festival, May 2022|Water Festival, Jun 2025\nGracidea Flower|Pikachu|GO Fest 2022, Jun 2022|Jun 2022\nPokémon TCG Hat|Pikachu|TCG Crossover, Jun 2022|Jun 2022\nCowboy Hat|Snorlax|GO Fest 2022 Berlin, Jul 2022|GO Fest 2023 Global, Aug 2023\nCake Costume|Pikachu|6th Anniversary, Jul 2022|9th Anniversary, Jul 2025\nWorld Championships|Pikachu||\nShaymin Scarf|Pikachu|GO Fest 2022 Finale, Aug 2022|Aug 2022\nT-Shirt|Pikachu|Air Adventures, Oct 2022|Indonesia Journey, Mar 2024\nSpooky Festival|Vulpix,Gengar,Pumpkaboo,Gourgeist|Halloween, Oct 2022|GO Pass Halloween, Nov 2025\nCempasúchil Crown|Duskull,Dusclops,Dusknoir,Cubone,Marowak|Día de Muertos, Nov 2022|Día de Muertos, Nov 2024\nHoliday Hat|@E|Winter Holiday, Dec 2022|Holiday Part 1, Dec 2024\nParty Top Hat|Pikachu|New Year's, Dec 2022|New Year's, Jan 2026\nBrendan's Hat|Pikachu|Hoenn Tour, Feb 2023|Pokémon 30th Anniversary, Mar 2026\nMay's Bow|Pikachu|Hoenn Tour, Feb 2023|Pokémon 30th Anniversary, Mar 2026\nCherry Blossoms|Pichu,Pikachu,Raichu,@E|Spring, Apr 2023|Wonder Ticket Research, Jun 2024 (Eevee line)\nTeam Accessory (Blanche)|Lapras|A Mystic Hero, Apr 2023|Triumph Together, Aug 2024\nTeam Accessory (Spark)|Elekid,Electabuzz,Electivire|An Instinctive Hero, May 2023|Triumph Together, Aug 2024\nTeam Accessory (Candela)|Ponyta,Rapidash|A Valorous Hero, May 2023|Triumph Together, Aug 2024\nNightcap|Snorlax|GO Plus + link research, Jul 2023|Slumbering Sands, Mar 2024\nSatchel|Aerodactyl|GO Fest 2023, Aug 2023|Aug 2023\nGem Crown|Pikachu|GO Fest 2023, Aug 2023|Aug 2023\nDetective Returns Hat|Slowpoke|Detective Pikachu Returns, Oct 2023|Oct 2023\nExplorer Hat|@E|GO Safari Zone Seoul, Oct 2023|Safari Zone Mexico City, Nov 2023\nTricks & Treats|Pikachu,Gengar|Halloween Part II, Oct 2023|Halloween Part II, Nov 2025\nRibbon|Jigglypuff,Wigglytuff|New Year's, Jan 2024|New Year's, Jan 2026\nRei's Cap|Pikachu|Sinnoh Tour, Feb 2024|Pokémon 30th Anniversary, Mar 2026\nAkari's Kerchief|Pikachu|Sinnoh Tour, Feb 2024|Pokémon 30th Anniversary, Mar 2026\nCaptain Pikachu|Pikachu||\nSun/Moon Crown|Pikachu,Eevee|GO Fest 2024 Sendai, May 2024|GO Fest 2024 Global, Jul 2024\nSun Scarf|Espeon|GO Fest 2024 Sendai, May 2024|GO Fest 2024 Global, Jul 2024\nMoon Scarf|Umbreon|GO Fest 2024 Sendai, May 2024|Dancing in the Moonlight, Oct 2025\nVisor (Slumbering Sands)|Slakoth,Vigoroth,Slaking|Slumbering Sands, Jun 2024|Sunkissed Shores, Aug 2025\nHalloween Costume (2024)|Froakie,Frogadier,Greninja,Rowlet,Dartrix,Decidueye|Halloween Part I, Oct 2024|Halloween Part II, Nov 2025\nSaree|Pikachu|Festival of Lights, Nov 2024|Festival of Colors, Mar 2026\nStudded Jacket|Snorlax|Wild Area, Nov 2024|Nov 2024\nHoliday Attire|Dedenne|Holiday Part 1, Dec 2024|Dec 2024\nWinter Holiday Costume|Wooloo,Dubwool,Sudowoodo,Charjabug,Vikavolt|Holiday Part 2, Dec 2024|Winter Holiday Part 1, Dec 2025\nHilbert's Hat|Pikachu|Unova Tour, Feb 2025|Pokémon 30th Anniversary, Mar 2026\nHilda's Hat|Pikachu|Unova Tour, Feb 2025|Pokémon 30th Anniversary, Mar 2026\nNate's Visor|Pikachu|Unova Tour, Feb 2025|Pokémon 30th Anniversary, Mar 2026\nRosa's Visor|Pikachu|Unova Tour, Feb 2025|Pokémon 30th Anniversary, Mar 2026\nKurta|Pikachu|Festival of Colors, Mar 2025|Festival of Colors, Mar 2026\nHat with Liko's Pin|Floragato||\nCrown|Nidoqueen,Nidoking|Crown Clash, May 2025|Valentine's Day, Feb 2026\nFormal (Red Accents)|Pikachu|GO Fest 2025 Osaka, May 2025|GO Fest 2025 Paris, Jun 2025\nFormal (Blue Accents)|Pikachu|GO Fest 2025 Osaka, May 2025|GO Fest 2025 Paris, Jun 2025\nFormal (Yellow Accents)|Pikachu|GO Fest 2025 Osaka, May 2025|GO Fest 2025 Paris, Jun 2025\nDapper (Red Accents)|Pikachu|GO Pass Ancients Recovered, Jun 2025|GO Fest 2025 Max Finale, Aug 2025\nDapper (Blue Accents)|Pikachu|GO Pass Ancients Recovered, Jun 2025|GO Fest 2025 Max Finale, Aug 2025\nDapper (Yellow Accents)|Pikachu|GO Pass Ancients Recovered, Jun 2025|GO Fest 2025 Max Finale, Aug 2025\nTrain Conductor|Falinks|GO Fest 2025 Osaka, May 2025|GO Fest 2025 Max Finale, Aug 2025\n9th Anniversary Coin|Gimmighoul|9th Anniversary Party, Jul 2025|Jul 2025\nIndonesia Football Jersey|Pikachu|Goal Time with Pikachu, Aug 2025|Aug 2025\nVarsity Jacket|Pikachu||\nSwim Ring|Psyduck|Pokémon Concierge event, Sep 2025|Sep 2025\nHeadband|Noibat,Noivern|GO Pass Halloween, Oct 2025|Halloween Part II, Nov 2025\nWilderness Cape|Bewear|Wild Area Nagasaki, Nov 2025|Wild Area Global, Nov 2025\nCalem's Hat|Pikachu|Kalos Tour, Feb 2026|Pokémon 30th Anniversary, Mar 2026\nSerena's Hat|Pikachu|Kalos Tour, Feb 2026|Pokémon 30th Anniversary, Mar 2026\nRed's Hat|Pikachu|Road to Kalos, Feb 2026|Pokémon 30th Anniversary, Mar 2026\nLeaf's Hat|Pikachu|Road to Kalos, Feb 2026|Pokémon 30th Anniversary, Mar 2026\nEthan's Hat|Pikachu|Road to Kalos, Feb 2026|Pokémon 30th Anniversary, Mar 2026\nLyra's Hat|Pikachu|Road to Kalos, Feb 2026|Pokémon 30th Anniversary, Mar 2026\nPokopia Hat|Ditto||\nPokopia Cap|Ditto||\nBaseball Shirt|Pikachu|Pro Baseball collaboration, Apr 2026|Aug 2026\nTeam Mystic Hat|Pikachu|GO Fest 2026 Tokyo, May 2026|Jun 2026\nTeam Instinct Hat|Pikachu|GO Fest 2026 Chicago, Jun 2026|Jun 2026\nTeam Valor Hat|Pikachu|GO Fest 2026 Copenhagen, Jun 2026|Jun 2026\nPoké Ball Hat|Caterpie|GO Fest 2026 Tokyo, May 2026|2026\nProfessor Willow's Assistant|Pikachu|Willow's Birthday, Jul 2026|Jul 2026\nCosmog Spacesuit|Pikachu|World Championships event, Aug 2026|Aug 2026\nWorld Championships 2026|Pikachu|World Championships event, Aug 2026|Aug 2026\nFriede's Goggles|Charmander,Charmeleon,Charizard|Pokémon Horizons event, Sep 2026|Sep 2026\nAstronaut|Pikachu|World Space Week, Oct 2026|Oct 2026";
 const DEX=Object.fromEntries("Absol 359,Aerodactyl 142,Beartic 614,Bewear 760,Blastoise 9,Blissey 242,Blitzle 522,Bulbasaur 1,Buneary 427,Butterfree 12,Caterpie 10,Chansey 113,Charizard 6,Charjabug 737,Charmander 4,Charmeleon 5,Chimchar 390,Cinccino 573,Cottonee 546,Croagunk 453,Cubchoo 613,Cubone 104,Dartrix 723,Decidueye 724,Dedenne 702,Delibird 225,Diglett 50,Ditto 132,Dragonite 149,Drifblim 426,Dubwool 832,Dugtrio 51,Dusclops 356,Dusknoir 477,Duskull 355,Eevee 133,Electabuzz 125,Electivire 466,Elekid 239,Espeon 196,Falinks 870,Flareon 136,Floragato 907,Flygon 330,Froakie 656,Frogadier 657,Gardevoir 282,Gengar 94,Gimmighoul 999,Glaceon 471,Golduck 55,Gourgeist 711,Greninja 658,Grimer 88,Happiny 440,Hoothoot 163,Ivysaur 2,Jigglypuff 39,Jolteon 135,Kirlia 281,Lapras 131,Leafeon 470,Lopunny 428,Marowak 105,Mewtwo 150,Minccino 572,Muk 89,Nidoking 34,Nidoqueen 31,Nidorino 33,Noctowl 164,Noibat 714,Noivern 715,Pichu 172,Pikachu 25,Piplup 393,Ponyta 77,Psyduck 54,Pumpkaboo 710,Quagsire 195,Raichu 26,Rapidash 78,Raticate 20,Rowlet 722,Sableye 302,Shinx 403,Slaking 289,Slakoth 287,Slowbro 80,Slowking 199,Slowpoke 79,Smoochum 238,Sneasel 215,Snorlax 143,Spheal 363,Squirtle 7,Stantler 234,Sudowoodo 185,Sylveon 700,Teddiursa 216,Togekiss 468,Togepi 175,Togetic 176,Toxicroak 454,Turtwig 387,Umbreon 197,Ursaring 217,Vaporeon 134,Venusaur 3,Vigoroth 288,Vikavolt 738,Vulpix 37,Wartortle 8,Whimsicott 547,Wigglytuff 40,Wobbuffet 202,Wooloo 831,Wooper 194,Wurmple 265,Zigzagoon 263".split(",").map(x=>{const p=x.split(" ");return[p[0],+p[1]]}));
@@ -237,7 +246,7 @@ function render(){
   stats();
 }
 const yr=x=>{const m=/(\d{4})\)?\s*$/.exec(x||"");return m?+m[1]:0};
-function info(d){if(d.kind)return "#"+String(d.dex).padStart(4,"0");if(String(d.id).startsWith("custom:"))return "Added by you";if(!d.f&&!d.l)return "Dates not listed in sources";const y=yr(d.l);const st=y>=2026?"Seen in 2026":y===2025?"Seen in 2025":"Probably trade only";return "Released: "+d.f+" \u00b7 Last seen: "+d.l+" \u00b7 "+st}
+function info(d){if(d.kind)return "#"+String(d.dex).padStart(4,"0")+(d.src?" · "+d.src:"");if(String(d.id).startsWith("custom:"))return "Added by you";if(!d.f&&!d.l)return "Dates not listed in sources";const y=yr(d.l);const st=y>=2026?"Seen in 2026":y===2025?"Seen in 2025":"Probably trade only";return "Released: "+d.f+" \u00b7 Last seen: "+d.l+" \u00b7 "+st}
 function stats(){
   const n=data.filter(d=>owned.has(d.id)).length;
   $("#count").textContent=`${n} / ${data.length}`;
@@ -278,17 +287,22 @@ const gen=n=>{for(const[m,g]of GENS)if(n<=m)return g;return "Newer"};
 const TITLES={costume:"Costume Dex",shiny:"Shiny Dex",lucky:"Lucky Dex",shadow:"Shadow Dex"};
 const cache={};
 async function getJ(u){const k="pogo-cache:"+u;try{const r=await fetch(u);if(!r.ok)throw 0;const j=await r.json();try{localStorage.setItem(k,JSON.stringify(j))}catch(e){}return j}catch(e){const c=localStorage.getItem(k);if(c)return JSON.parse(c);throw e}}
+const API={released:"released_pokemon.json",shiny:"shiny_pokemon.json",shadow:"shadow_pokemon.json",names:"pokemon_names.json"};
+const getD=n=>getJ("data/"+n+".json").catch(()=>getJ("https://pogoapi.net/api/v1/"+API[n]));
+const SRC=[["found_wild","Wild"],["found_raid","Raid"],["found_egg","Egg"],["found_research","Research"],["found_evolution","Evolution"],["found_photobomb","Photobomb"]];
+const src=f=>f?SRC.filter(([k])=>f[k]).map(x=>x[1]).join(" · "):"";
 async function loadList(m){
  const B="https://pogoapi.net/api/v1/";
- if(m==="shadow"){const sh=await getJ(B+"shadow_pokemon.json"),seen={};return(Array.isArray(sh)?sh:Object.values(sh)).filter(p=>p&&p.id&&p.name&&!seen[p.id]&&(seen[p.id]=1)).sort((a,b)=>a.id-b.id).map(p=>({id:"shadow:"+p.id,name:p.name,event:gen(+p.id),dex:+p.id,kind:"shadow"}))}
- const [rel,sh]=await Promise.all([getJ(B+"released_pokemon.json"),m==="shiny"?getJ(B+"shiny_pokemon.json"):null]);
- return Object.entries(rel).map(([k,p])=>({k:+k,name:p.name})).filter(p=>m!=="shiny"||sh[p.k]).sort((a,b)=>a.k-b.k).map(p=>({id:m+":"+p.k,name:p.name,event:gen(p.k),dex:p.k,kind:m,shiny:m==="shiny"}));
+ if(m==="shadow"){const sh=await getD("shadow"),seen={};return(Array.isArray(sh)?sh:Object.values(sh)).filter(p=>p&&p.id&&p.name&&!seen[p.id]&&(seen[p.id]=1)).sort((a,b)=>a.id-b.id).map(p=>({id:"shadow:"+p.id,name:p.name,event:gen(+p.id),dex:+p.id,kind:"shadow"}))}
+ const [rel,sh]=await Promise.all([getD("released"),m==="shiny"?getD("shiny"):null]);
+ return Object.entries(rel).map(([k,p])=>({k:+k,name:p.name,f:m==="shiny"?sh[k]:null})).filter(p=>m!=="shiny"||sh[p.k]).sort((a,b)=>a.k-b.k).map(p=>({id:m+":"+p.k,name:p.name,event:gen(p.k),dex:p.k,kind:m,shiny:m==="shiny",src:src(p.f)}));
 }
 async function route(){
- const v=(location.hash||"").slice(1),home=!TITLES[v],cr=v==="credits";
+ const v=(location.hash||"").slice(1),home=!TITLES[v],cr=v==="credits",pg=INFO[v];
  document.body.dataset.theme=home?"home":v;
- $("#home").hidden=!home||cr;$("#credits").hidden=!cr;
+ $("#home").hidden=!home||cr||!!pg;$("#info").hidden=!pg;$("#credits").hidden=!cr;
  for(const t of ["header","main","footer"])document.querySelector(t).hidden=home;
+ if(pg){document.title=pg.t;$("#it").textContent=pg.t;showInfo(pg);window.scrollTo(0,0);return}
  if(home){document.title="GO Checklists";return}
  document.title=TITLES[v];
  KEY=v==="costume"?"pogo-costumes-owned":"pogo-"+v+"-owned";
@@ -302,6 +316,52 @@ async function route(){
   catch(e){$("#list").innerHTML='<p class="msg">Couldn’t load this list. Check your connection.<br><button class="retry" onclick="route()">Try again</button></p>'}}
  window.scrollTo(0,0);
 }
+const $$=(t,c,x)=>{const e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e};
+const fmt=d=>d.toLocaleString([],{weekday:"short",day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"});
+const fd=x=>new Date(x+"T12:00:00").toLocaleDateString([],{weekday:"short",day:"numeric",month:"short",year:"numeric"});
+let NM=null;
+async function nameMap(){if(!NM){const n=await getD("names"),m={};for(const k in n)m[n[k].name.toLowerCase()]=n[k].id;NM=m}return NM}
+function pic(u){const i=document.createElement("img");i.className="sp";i.loading="lazy";i.alt="";i.src=u;i.onerror=()=>i.remove();return i}
+async function pageEvents(b){
+ const ev=await getJ("data/events.json"),now=new Date();
+ const E=ev.map(e=>({...e,s:new Date(e.start),z:new Date(e.end)})).filter(e=>!isNaN(e.s)&&e.z>=now).sort((a,c)=>a.s-c.s);
+ const sel=$$("select","sel");sel.setAttribute("aria-label","Event type");sel.append(new Option("All types",""));[...new Set(E.map(e=>e.heading))].sort().forEach(t=>sel.append(new Option(t,t)));
+ const out=$$("div");
+ const draw=()=>{out.replaceChildren();const L=E.filter(e=>!sel.value||e.heading===sel.value);
+  for(const [h,list] of [["Happening now",L.filter(e=>e.s<=now)],["Coming up",L.filter(e=>e.s>now)]]){
+   if(!list.length)continue;out.append($$("h2",null,h));
+   for(const e of list){const c=$$("div","cc");c.append($$("h3",null,e.name),$$("p",null,e.heading+" · "+fmt(e.s)+" to "+fmt(e.z)));
+    const a=$$("a",null,"Details");a.href=e.link;a.target="_blank";a.rel="noopener";c.append(a);out.append(c)}}
+  if(!out.children.length)out.append($$("p","msg","No events found."))};
+ sel.onchange=draw;b.append(sel,out);draw()}
+async function pageCD(b){
+ const [cd,nm]=await Promise.all([getD("community_days"),nameMap()]);
+ const today=new Date().toISOString().slice(0,10),L=cd.slice().sort((a,c)=>c.start_date.localeCompare(a.start_date));
+ for(const [h,list] of [["Upcoming",L.filter(c=>c.end_date>=today).reverse()],["Past",L.filter(c=>c.end_date<today)]]){
+  if(!list.length)continue;b.append($$("h2",null,h));
+  for(const c of list){const d=$$("div","cc"),top=$$("div","row");
+   for(const n of c.boosted_pokemon||[]){const id=nm[n.toLowerCase()];if(id)top.append(pic(IMG+id+".png"))}
+   top.append($$("h3",null,"#"+c.community_day_number+" "+(c.boosted_pokemon||[]).join(", ")));d.append(top,$$("p",null,fd(c.start_date)+(c.end_date!==c.start_date?" to "+fd(c.end_date):"")));
+   const mv=(c.event_moves||[]).map(m=>m.move+" ("+m.pokemon+")").join(", ");if(mv)d.append($$("p",null,"Moves: "+mv));
+   if((c.bonuses||[]).length)d.append($$("p",null,"Bonuses: "+c.bonuses.join(", ")));b.append(d)}}}
+async function pageRaids(b){
+ const r=await getJ("data/raidboss.json");
+ for(const [key,title] of [["currentList","Now"],["comingNextList","Coming next"]]){const g=r[key];if(!g)continue;
+  for(const lvl of Object.keys(g)){const L=g[lvl];if(!Array.isArray(L)||!L.length)continue;
+   b.append($$("h2",null,title+" · "+(isNaN(lvl)?lvl[0].toUpperCase()+lvl.slice(1):lvl+"-star")));
+   for(const e of L){const c=$$("div","cc"),top=$$("div","row");
+    if(e.assets&&e.assets.image)top.append(pic(e.assets.image));
+    top.append($$("h3",null,((e.names&&e.names.English)||e.id)+(e.shiny?" ✨":"")));c.append(top);
+    if(e.types)c.append($$("p",null,"Type: "+e.types.join(" / ")));
+    if(e.counter)c.append($$("p",null,"Hit with: "+Object.keys(e.counter).join(", ")));
+    if(e.cpRange)c.append($$("p",null,"CP "+e.cpRange.join(" to ")+(e.cpRangeBoost?" (boosted "+e.cpRangeBoost.join(" to ")+")":"")));
+    if(e.weather&&e.weather.length)c.append($$("p",null,"Weather boost: "+e.weather.join(", ")));
+    b.append(c)}}}
+ if(!b.querySelector(".cc"))b.append($$("p","msg","No raid data found."))}
+const INFO={events:{t:"Events",f:pageEvents},cd:{t:"Community Days",f:pageCD},raids:{t:"Raid bosses",f:pageRaids}};
+async function showInfo(pg){const b=$("#ib");b.replaceChildren($$("p","msg","Loading…"));
+ try{const x=document.createElement("div");await pg.f(x);b.replaceChildren(...x.childNodes)}
+ catch(e){const p=$$("p","msg","Couldn’t load this page. "),t=$$("button","retry","Try again");t.onclick=()=>showInfo(pg);p.append(t);b.replaceChildren(p)}}
 function setZ(z){document.documentElement.style.setProperty("--z",z);try{localStorage.setItem("pogo-z",z)}catch(e){}}
 try{const z=localStorage.getItem("pogo-z");if(z)setZ(z)}catch(e){}
 function net(){$("#net").hidden=navigator.onLine}
@@ -310,5 +370,5 @@ if("serviceWorker"in navigator)addEventListener("load",()=>navigator.serviceWork
 onhashchange=route;route();
 fetch("costume-images.json").then(r=>r.ok?r.json():null).then(j=>{if(j){window.CIMG=j;if(location.hash==="#costume")render()}}).catch(()=>{});
 </script>
-<p id="dbg" style="text-align:center;font-size:11px;color:var(--mute);padding-bottom:24px">v11</p></body>
+<p id="dbg" style="text-align:center;font-size:11px;color:var(--mute);padding-bottom:24px">v12</p></body>
 </html>
