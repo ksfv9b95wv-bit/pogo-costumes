@@ -1,0 +1,679 @@
+=== data/community_days.json (63703 bytes)
+[
+    {
+        "bonuses": [
+            "Double XP"
+        ],
+        "boosted_pokemon": [
+            "Pikachu"
+        ],
+        "community_day_number": 1,
+        "end_date": "2018-01-20",
+        "event_moves": [
+            {
+                "move": "Surf",
+                "move_type": "charged",
+                "pokemon": "Pikachu"
+            }
+        ],
+        "start_date": "2018-01-20"
+    },
+    {
+        "bonuses": [
+            "Triple Catch Stardust"
+        ],
+        "boosted_pokemon": [
+            "Dratini"
+        ],
+        "community_day_number": 2,
+        "end_date": "2018-02-24",
+        "event_moves": [
+            {
+                "move": "Draco Meteor",
+                "move_type": "charged",
+                "pokemon": "Dragonite"
+            }
+        ],
+        "start_date": "2018-02-24"
+    },
+    {
+        "bonuses": [
+            "Triple Catch XP"
+        ],
+        "boosted_pokemon": [
+            "Bulbasaur"
+        ],
+        "community_day_number": 3,
+        "end_date": "2018-03-25",
+        "event_moves": [
+            {
+                "move": "Frenzy Plant",
+                "move_type": "charged",
+                "pokemon": "Venusaur"
+            }
+        ],
+        "start_date": "2018-03-25"
+    },
+    {
+        "bonuses": [
+            "Quadruple Incubator effectiveness"
+        ],
+        "boosted_pokemon": [
+            "Mareep"
+        ],
+        "community_day_number": 4,
+        "end_date": "2018-04-15",
+        "event_move
+=== data/events.json (38387 bytes)
+[{"eventID":"dynamax-uxie-mesprit-azelf-max-battle-day-2026","name":"Dynamax Uxie, Mesprit, and Azelf Max Battle Day","eventType":"max-battles","heading":"Max Battles","link":"https://leekduck.com/events/dynamax-uxie-mesprit-azelf-max-battle-day-2026/","image":"https://cdn.leekduck.com/assets/img/events/article-images/2026/2026-10-24-dynamax-uxie-mesprit-azelf-max-battle-day-2026/dynamax-uxie-mesprit-azelf-max-battle-day.jpg","start":"2026-10-24T14:00:00.000","end":"2026-10-24T17:00:00.000","extraData":{"generic":{"hasSpawns":false,"hasFieldResearchTasks":false}}},{"eventID":"pokemon-night-out-2026-twitch-drops","name":"Twitch Drops for Pokémon Night Out 2026","eventType":"twitch-drops","heading":"Twitch Drops","link":"https://leekduck.com/events/pokemon-night-out-2026-twitch-drops/","image":"https://cdn.leekduck.com/assets/img/events/article-images/2026/2026-10-24-pokemon-night-out-2026-twitch-drops/pokemon-night-out.jpg","start":"2026-10-25T02:30:00.000Z","end":"2026-10-25T06:59:00.000Z","extraData":{"generic":{"hasSpawns":false,"hasFieldResearchTasks":false}}},{"eventID":"pokemon-night-out-los-angeles-2026","name":"Pokémon Night Out 2026 - Los Angeles","eventType":"event","heading":"Event","link":"https://leekduck.com/events/pokemon-night-out-los-angeles-2026/","image":"https://cdn.leekduck.com/assets/img/events/pokemon-night-out-2026.jpg","start":"2026-10-25T02:30:00.000Z","end":"2026-10-25T06:59:59.000Z","extraData":{"generic":{"hasSpawns":true,"hasFieldResearchTasks":
+=== data/names.json (67173 bytes)
+{
+    "1": {
+        "id": 1,
+        "name": "Bulbasaur"
+    },
+    "10": {
+        "id": 10,
+        "name": "Caterpie"
+    },
+    "100": {
+        "id": 100,
+        "name": "Voltorb"
+    },
+    "1000": {
+        "id": 1000,
+        "name": "Gholdengo"
+    },
+    "1001": {
+        "id": 1001,
+        "name": "Wo-Chien"
+    },
+    "1002": {
+        "id": 1002,
+        "name": "Chien-Pao"
+    },
+    "1003": {
+        "id": 1003,
+        "name": "Ting-Lu"
+    },
+    "1004": {
+        "id": 1004,
+        "name": "Chi-Yu"
+    },
+    "1005": {
+        "id": 1005,
+        "name": "Roaring Moon"
+    },
+    "1006": {
+        "id": 1006,
+        "name": "Iron Valiant"
+    },
+    "1007": {
+        "id": 1007,
+        "name": "Koraidon"
+    },
+    "1008": {
+        "id": 1008,
+        "name": "Miraidon"
+    },
+    "1009": {
+        "id": 1009,
+        "name": "Walking Wake"
+    },
+    "101": {
+        "id": 101,
+        "name": "Electrode"
+    },
+    "1010": {
+        "id": 1010,
+        "name": "Iron Leaves"
+    },
+    "1011": {
+        "id": 1011,
+        "name": "Dipplin"
+    },
+    "1012": {
+        "id": 1012,
+        "name": "Poltchageist"
+    },
+    "1013": {
+        "id": 1013,
+        "name": "Sinistcha"
+    },
+    "1014": {
+        "id": 1014,
+        "name": "Okidogi"
+    },
+    "1015": {
+        "id": 1015,
+        "name": "Munkidori"
+    },
+    "1016": {
+        "id": 1016,
+        "name": "Fezandipiti"
+    },
+    "1017": {
+        "id": 1017,
+        "name": "Ogerpon"
+  
+=== data/pokedex.json (14941729 bytes)
+[
+    {
+        "id": "BULBASAUR",
+        "formId": "BULBASAUR",
+        "dexNr": 1,
+        "generation": 1,
+        "names": {
+            "English": "Bulbasaur",
+            "German": "Bisasam",
+            "French": "Bulbizarre",
+            "Italian": "Bulbasaur",
+            "Japanese": "\u30d5\u30b7\u30ae\u30c0\u30cd",
+            "Korean": "\uc774\uc0c1\ud574\uc528",
+            "Spanish": "Bulbasaur"
+        },
+        "stats": {
+            "stamina": 128,
+            "attack": 118,
+            "defense": 111
+        },
+        "primaryType": {
+            "type": "POKEMON_TYPE_GRASS",
+            "names": {
+                "English": "Grass",
+                "German": "Pflanze",
+                "French": "Plante",
+                "Italian": "Erba",
+                "Japanese": "\u304f\u3055",
+                "Korean": "\ud480",
+                "Spanish": "Planta"
+            }
+        },
+        "secondaryType": {
+            "type": "POKEMON_TYPE_POISON",
+            "names": {
+                "English": "Poison",
+                "German": "Gift",
+                "French": "Poison",
+                "Italian": "Veleno",
+                "Japanese": "\u3069\u304f",
+                "Korean": "\ub3c5",
+                "Spanish": "Veneno"
+            }
+        },
+        "pokemonClass": null,
+        "quickMoves": {
+            "VINE_WHIP_FAST": {
+                "id": "VINE_WHIP_FAST",
+                "power": 6,
+                "energy": 5,
+                "durationMs
+=== data/raid_exclusive.json (3328 bytes)
+{
+    "144": {
+        "id": 144,
+        "name": "Articuno",
+        "raid_level": 5
+    },
+    "145": {
+        "id": 145,
+        "name": "Zapdos",
+        "raid_level": 5
+    },
+    "146": {
+        "id": 146,
+        "name": "Moltres",
+        "raid_level": 5
+    },
+    "150": {
+        "id": 150,
+        "name": "Mewtwo",
+        "raid_level": 5
+    },
+    "243": {
+        "id": 243,
+        "name": "Raikou",
+        "raid_level": 5
+    },
+    "244": {
+        "id": 244,
+        "name": "Entei",
+        "raid_level": 5
+    },
+    "245": {
+        "id": 245,
+        "name": "Suicune",
+        "raid_level": 5
+    },
+    "249": {
+        "id": 249,
+        "name": "Lugia",
+        "raid_level": 5
+    },
+    "250": {
+        "id": 250,
+        "name": "Ho-Oh",
+        "raid_level": 5
+    },
+    "377": {
+        "id": 377,
+        "name": "Regirock",
+        "raid_level": 5
+    },
+    "378": {
+        "id": 378,
+        "name": "Regice",
+        "raid_level": 5
+    },
+    "379": {
+        "id": 379,
+        "name": "Registeel",
+        "raid_level": 5
+    },
+    "380": {
+        "id": 380,
+        "name": "Latias",
+        "raid_level": 5
+    },
+    "381": {
+        "id": 381,
+        "name": "Latios",
+        "raid_level": 5
+    },
+    "382": {
+        "id": 382,
+        "name": "Kyogre",
+        "raid_level": 5
+    },
+    "383": {
+        "id": 383,
+        "name": "Groudon",
+        "raid_level": 5
+    },
+    "384": {
+        "id": 384,
+        "name": "Rayquaza",
+       
+=== data/raidboss.json (40320 bytes)
+{
+    "currentList": {
+        "mega": [
+            {
+                "id": "CHARIZARD",
+                "form": "CHARIZARD_MEGA_X",
+                "costume": null,
+                "assets": {
+                    "image": "https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm6.fMEGA_X.icon.png",
+                    "shinyImage": "https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm6.fMEGA_X.s.icon.png"
+                },
+                "level": "mega",
+                "names": {
+                    "English": "Mega Charizard X",
+                    "German": "Mega-Glurak X",
+                    "French": "M\u00e9ga-Dracaufeu X",
+                    "Italian": "MegaCharizard X",
+                    "Japanese": "\u30e1\u30ac\u30ea\u30b6\u30fc\u30c9\u30f3\uff38",
+                    "Korean": "\uba54\uac00\ub9ac\uc790\ubabdX",
+                    "Spanish": "Mega-Charizard X"
+                },
+                "shiny": true,
+                "types": [
+                    "Fire",
+                    "Dragon"
+                ],
+                "counter": {
+                    "Dragon": 1.6,
+                    "Ground": 1.6,
+                    "Rock": 1.6
+                },
+                "weather": [
+                    "sunny",
+                    "windy"
+                ],
+                "cpRange": [
+                    1574,
+                    1651
+                ],
+                "cpRangeBoost": [
+                    1968,
+       
+=== data/released.json (61247 bytes)
+{
+    "1": {
+        "id": 1,
+        "name": "Bulbasaur"
+    },
+    "2": {
+        "id": 2,
+        "name": "Ivysaur"
+    },
+    "3": {
+        "id": 3,
+        "name": "Venusaur"
+    },
+    "4": {
+        "id": 4,
+        "name": "Charmander"
+    },
+    "5": {
+        "id": 5,
+        "name": "Charmeleon"
+    },
+    "6": {
+        "id": 6,
+        "name": "Charizard"
+    },
+    "7": {
+        "id": 7,
+        "name": "Squirtle"
+    },
+    "8": {
+        "id": 8,
+        "name": "Wartortle"
+    },
+    "9": {
+        "id": 9,
+        "name": "Blastoise"
+    },
+    "10": {
+        "id": 10,
+        "name": "Caterpie"
+    },
+    "11": {
+        "id": 11,
+        "name": "Metapod"
+    },
+    "12": {
+        "id": 12,
+        "name": "Butterfree"
+    },
+    "13": {
+        "id": 13,
+        "name": "Weedle"
+    },
+    "14": {
+        "id": 14,
+        "name": "Kakuna"
+    },
+    "15": {
+        "id": 15,
+        "name": "Beedrill"
+    },
+    "16": {
+        "id": 16,
+        "name": "Pidgey"
+    },
+    "17": {
+        "id": 17,
+        "name": "Pidgeotto"
+    },
+    "18": {
+        "id": 18,
+        "name": "Pidgeot"
+    },
+    "19": {
+        "id": 19,
+        "name": "Rattata"
+    },
+    "20": {
+        "id": 20,
+        "name": "Raticate"
+    },
+    "21": {
+        "id": 21,
+        "name": "Spearow"
+    },
+    "22": {
+        "id": 22,
+        "name": "Fearow"
+    },
+    "23": {
+        "id": 23,
+        "name": "Ekans"
+    },
+    "24": {
+        "id": 24,
+        "name": "Ar
+=== data/shadow.json (15891 bytes)
+{
+    "1": {
+        "id": 1,
+        "name": "Bulbasaur"
+    },
+    "2": {
+        "id": 2,
+        "name": "Ivysaur"
+    },
+    "3": {
+        "id": 3,
+        "name": "Venusaur"
+    },
+    "4": {
+        "id": 4,
+        "name": "Charmander"
+    },
+    "5": {
+        "id": 5,
+        "name": "Charmeleon"
+    },
+    "6": {
+        "id": 6,
+        "name": "Charizard"
+    },
+    "7": {
+        "id": 7,
+        "name": "Squirtle"
+    },
+    "8": {
+        "id": 8,
+        "name": "Wartortle"
+    },
+    "9": {
+        "id": 9,
+        "name": "Blastoise"
+    },
+    "13": {
+        "id": 13,
+        "name": "Weedle"
+    },
+    "14": {
+        "id": 14,
+        "name": "Kakuna"
+    },
+    "15": {
+        "id": 15,
+        "name": "Beedrill"
+    },
+    "19": {
+        "id": 19,
+        "name": "Rattata"
+    },
+    "20": {
+        "id": 20,
+        "name": "Raticate"
+    },
+    "23": {
+        "id": 23,
+        "name": "Ekans"
+    },
+    "24": {
+        "id": 24,
+        "name": "Arbok"
+    },
+    "27": {
+        "id": 27,
+        "name": "Sandshrew"
+    },
+    "28": {
+        "id": 28,
+        "name": "Sandslash"
+    },
+    "29": {
+        "id": 29,
+        "name": "Nidoran\u2640"
+    },
+    "30": {
+        "id": 30,
+        "name": "Nidorina"
+    },
+    "31": {
+        "id": 31,
+        "name": "Nidoqueen"
+    },
+    "32": {
+        "id": 32,
+        "name": "Nidoran\u2642"
+    },
+    "33": {
+        "id": 33,
+        "name": "Nidorino"
+    },
+    "34": {
+        "id": 34,
+     
+=== data/shiny.json (214772 bytes)
+{
+    "1": {
+        "found_egg": true,
+        "found_evolution": false,
+        "found_photobomb": true,
+        "found_raid": true,
+        "found_research": true,
+        "found_wild": true,
+        "id": 1,
+        "name": "Bulbasaur"
+    },
+    "2": {
+        "found_egg": false,
+        "found_evolution": true,
+        "found_photobomb": true,
+        "found_raid": true,
+        "found_research": true,
+        "found_wild": true,
+        "id": 2,
+        "name": "Ivysaur"
+    },
+    "3": {
+        "found_egg": false,
+        "found_evolution": true,
+        "found_photobomb": true,
+        "found_raid": true,
+        "found_research": true,
+        "found_wild": true,
+        "id": 3,
+        "name": "Venusaur"
+    },
+    "4": {
+        "found_egg": true,
+        "found_evolution": false,
+        "found_photobomb": true,
+        "found_raid": true,
+        "found_research": true,
+        "found_wild": true,
+        "id": 4,
+        "name": "Charmander"
+    },
+    "5": {
+        "found_egg": false,
+        "found_evolution": true,
+        "found_photobomb": true,
+        "found_raid": true,
+        "found_research": true,
+        "found_wild": true,
+        "id": 5,
+        "name": "Charmeleon"
+    },
+    "6": {
+        "found_egg": false,
+        "found_evolution": true,
+        "found_photobomb": true,
+        "found_raid": true,
+        "found_research": true,
+        "found_wild": true,
+        "id": 6,
+        "name": "Charizard"
+    },
+    "7": {
+        "found_egg
+=== data/types.json (227815 bytes)
+[
+    {
+        "form": "Fall_2019",
+        "pokemon_id": 1,
+        "pokemon_name": "Bulbasaur",
+        "type": [
+            "Grass",
+            "Poison"
+        ]
+    },
+    {
+        "form": "Normal",
+        "pokemon_id": 1,
+        "pokemon_name": "Bulbasaur",
+        "type": [
+            "Grass",
+            "Poison"
+        ]
+    },
+    {
+        "form": "Normal",
+        "pokemon_id": 2,
+        "pokemon_name": "Ivysaur",
+        "type": [
+            "Grass",
+            "Poison"
+        ]
+    },
+    {
+        "form": "Copy_2019",
+        "pokemon_id": 3,
+        "pokemon_name": "Venusaur",
+        "type": [
+            "Grass",
+            "Poison"
+        ]
+    },
+    {
+        "form": "Normal",
+        "pokemon_id": 3,
+        "pokemon_name": "Venusaur",
+        "type": [
+            "Grass",
+            "Poison"
+        ]
+    },
+    {
+        "form": "Fall_2019",
+        "pokemon_id": 4,
+        "pokemon_name": "Charmander",
+        "type": [
+            "Fire"
+        ]
+    },
+    {
+        "form": "Normal",
+        "pokemon_id": 4,
+        "pokemon_name": "Charmander",
+        "type": [
+            "Fire"
+        ]
+    },
+    {
+        "form": "Normal",
+        "pokemon_id": 5,
+        "pokemon_name": "Charmeleon",
+        "type": [
+            "Fire"
+        ]
+    },
+    {
+        "form": "Copy_2019",
+        "pokemon_id": 6,
+        "pokemon_name": "Charizard",
+        "type": [
+            "Fire",
+            "Flying"
+        ]
+    },
+    {
+        "for
