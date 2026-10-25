@@ -26,24 +26,30 @@ jobs:
           get raidboss.json https://pokemon-go-api.github.io/pokemon-go-api/api/raidboss.json
           get pokedex.json https://pokemon-go-api.github.io/pokemon-go-api/api/pokedex.json
           for f in data/*.json; do echo "=== $f ($(wc -c < "$f") bytes)"; head -c 1500 "$f"; echo; done > data/_samples.txt
-      - name: Inspect Pokedex structure
+      - name: Build slim Pokedex
         run: |
           python3 - <<'PY'
           import json
           d=json.load(open('data/pokedex.json'))
-          t=lambda x:json.dumps(x)[:1500]
-          o=['entries '+str(len(d)),'keys '+str(list(d[0].keys()))]
-          c={}
-          for e in d: c[str(e.get('pokemonClass'))]=c.get(str(e.get('pokemonClass')),0)+1
-          o.append('classes '+str(c))
-          for k in ('regionForms','megaEvolutions','assetForms','assets'):
-              for e in d:
-                  if e.get(k):
-                      o.append(k+' sample ('+e['id']+'): '+t(e[k])); break
-          p=[e for e in d if e.get('dexNr')==25][0]
-          skip=('quickMoves','cinematicMoves','eliteQuickMoves','eliteCinematicMoves','names','stats','primaryType','secondaryType')
-          o.append('pikachu '+t({k:v for k,v in p.items() if k not in skip}))
-          open('data/_pokedex-structure.txt','w').write('\n\n'.join(o))
+          nm=lambda x:(x.get('names') or {}).get('English') or x.get('id')
+          im=lambda x:(x.get('assets') or {}).get('image','')
+          C={'POKEMON_CLASS_LEGENDARY':'L','POKEMON_CLASS_MYTHIC':'M','POKEMON_CLASS_ULTRA_BEAST':'U'}
+          out=[]
+          for e in sorted(d,key=lambda e:(e['dexNr'],e['id'])):
+              rf=e.get('regionForms') or {}
+              if isinstance(rf,list): rf={(x.get('formId') or str(i)):x for i,x in enumerate(rf)}
+              me=e.get('megaEvolutions') or []
+              if isinstance(me,dict): me=list(me.values())
+              r={'i':e['dexNr'],'f':e['formId'],'n':nm(e),'c':C.get(e.get('pokemonClass'),''),'im':im(e)}
+              if rf: r['rf']=[{'f':k,'n':nm(v),'im':im(v)} for k,v in rf.items()]
+              if me: r['me']=[{'f':m.get('id'),'n':nm(m),'im':im(m)} for m in me]
+              if e.get('hasGigantamaxEvolution'):
+                  r['gm']=1
+                  for a in e.get('assetForms') or []:
+                      if a.get('form')=='GIGANTAMAX' and not a.get('isFemale'): r['gi']=a.get('image','')
+              out.append(r)
+          json.dump(out,open('data/dex.json','w'),separators=(',',':'),ensure_ascii=False)
+          print(len(out),'entries')
           PY
       - name: Save data to repo
         run: |
@@ -52,3 +58,4 @@ jobs:
           git add data
           git commit -m "Update data" || echo "nothing to commit"
           git push
+
