@@ -541,53 +541,77 @@ async function pageNotifs(b){
   out.append($$("p","hs","Swipe right to delete, left to "+(tab==="inbox"?"archive":"move back to inbox")+". Let go early to cancel."));L.forEach(n=>out.append(item(n)))};
  bi.onclick=()=>{tab="inbox";draw()};ba.onclick=()=>{tab="archived";draw()};bm.onclick=()=>{save(nget().map(x=>x.s==="unread"?{...x,s:"read"}:x));draw()};
  b.append(tabs,out);draw()}
-const VER="v26g";
-const CHANGES=[["v26e","Added the missing Pokémon: Basculegion, Arrokuda, Barraskewda, Flittle and Espathra. Any released Pokémon missing from the data are now filled in automatically."],["v26d","My collections tiles reordered into two columns."],["v26c","Squawkabilly, Maschiff, Mabosstiff, Bramblin, Brambleghast, Orthworm and Flamigo are now marked as available."],["v26b","Minior, Mimikyu, Zeraora, Blipbug, Dottler, Orbeetle, Silicobra, Sandaconda, Toxel, Toxtricity and Sinistea are now marked as available. Meltan and Melmetal sit under an Unknown region, and Galar and Hisui are separate regions."],["v26","Lock selections switch in Settings. Region filter on every Dex. Regional Pokémon now lists only Pokémon that are exclusive to certain regions, with where each is found."],["v25b","The main Pokédex filters now include Region: choose one or more regions, then Show selected."],["v25","Filter box has Collect all shown and Clear all shown for the current Dex. You confirm by sliding, and each Dex is changed on its own."],["v24","Tidier Dex pages: a thin title bar with your progress and % complete, a home button in the top bar, and a ▼ button that opens the filters. Pin keeps them open, ▲ Close tucks them away."],["v23","New illustrated welcome screen. The hologram still shows a random Pokémon from your collection."],["v22","New welcome screen with a Pokédex hologram showing a random Pokémon from your collection. Tap Enter Dex to start. After 10 minutes of no use the app returns to it."],["v21","Remote trade checker now has Normal or Guaranteed lucky trade, and a screenshot upload that reads the other trainer’s Pokémon names and ranks them by how many Pokédex (and Lucky) gaps they fill. A ? marks names it was not sure about."],["v20","Remote raid checker is now the Remote trade checker: add the Pokémon another trainer has for trade (typed or pasted) and see which Pokédex, Shiny, Lucky and Purified gaps it would fill."],["v19b","Pokémon that are not yet released in Pokémon GO are now greyed out, marked “Not yet in Pokémon GO”, can’t be ticked and don’t count in your totals."],["v19","Settings moved to a cog icon in the top bar, between What’s new and the bell."],["v18","A yellow ? now marks any costume picture that might not match exactly. Added real pictures for Absol and Blitzle (Fashionable), Charizard and Charmander (Friede’s Goggles), Charjabug (Winter) and Chimchar (Lucas’s and Dawn’s hats)."],["v17","New top bar with the version and What’s new, Remote raid checker, tidier My collections with Pokémon pictures, and a Dynamax list that builds up over time."],["v16","The app checks for updates every time you open it."],["v15","New home screen and a notification bell with swipe to delete or archive."],["v14","My progress, backup of all lists, CSV export and a shiny picture switch."],["v13","Pokédex, Regional Pokémon, Mega, Gigantamax, Legendary & Mythical, Purified, 100%, XXL and XXS lists."],["v12","Events, Community Days and Raid bosses pages."],["v11","Works offline, desktop layout and text size."],["v10","Many more exact costume pictures."]];
+const VER="v27";
+const CHANGES=[["v27","Remote trade checker now spots the three-star shiny marker in screenshots and counts those Pokémon towards your Shiny Dex. Tap ✨ on a result to correct it."],["v26i","Remote trade checker: tap ✨ on a result to mark it as shiny, so it counts towards your Shiny Dex."],["v26h","Remote trade checker: cleaner results, Shiny Dex hints, and XXL / XXS suggestions when a nickname contains XL, XXL, XS or XXS."],["v26e","Added the missing Pokémon: Basculegion, Arrokuda, Barraskewda, Flittle and Espathra. Any released Pokémon missing from the data are now filled in automatically."],["v26d","My collections tiles reordered into two columns."],["v26c","Squawkabilly, Maschiff, Mabosstiff, Bramblin, Brambleghast, Orthworm and Flamigo are now marked as available."],["v26b","Minior, Mimikyu, Zeraora, Blipbug, Dottler, Orbeetle, Silicobra, Sandaconda, Toxel, Toxtricity and Sinistea are now marked as available. Meltan and Melmetal sit under an Unknown region, and Galar and Hisui are separate regions."],["v26","Lock selections switch in Settings. Region filter on every Dex. Regional Pokémon now lists only Pokémon that are exclusive to certain regions, with where each is found."],["v25b","The main Pokédex filters now include Region: choose one or more regions, then Show selected."],["v25","Filter box has Collect all shown and Clear all shown for the current Dex. You confirm by sliding, and each Dex is changed on its own."],["v24","Tidier Dex pages: a thin title bar with your progress and % complete, a home button in the top bar, and a ▼ button that opens the filters. Pin keeps them open, ▲ Close tucks them away."],["v23","New illustrated welcome screen. The hologram still shows a random Pokémon from your collection."],["v22","New welcome screen with a Pokédex hologram showing a random Pokémon from your collection. Tap Enter Dex to start. After 10 minutes of no use the app returns to it."],["v21","Remote trade checker now has Normal or Guaranteed lucky trade, and a screenshot upload that reads the other trainer’s Pokémon names and ranks them by how many Pokédex (and Lucky) gaps they fill. A ? marks names it was not sure about."],["v20","Remote raid checker is now the Remote trade checker: add the Pokémon another trainer has for trade (typed or pasted) and see which Pokédex, Shiny, Lucky and Purified gaps it would fill."],["v19b","Pokémon that are not yet released in Pokémon GO are now greyed out, marked “Not yet in Pokémon GO”, can’t be ticked and don’t count in your totals."],["v19","Settings moved to a cog icon in the top bar, between What’s new and the bell."],["v18","A yellow ? now marks any costume picture that might not match exactly. Added real pictures for Absol and Blitzle (Fashionable), Charizard and Charmander (Friede’s Goggles), Charjabug (Winter) and Chimchar (Lucas’s and Dawn’s hats)."],["v17","New top bar with the version and What’s new, Remote raid checker, tidier My collections with Pokémon pictures, and a Dynamax list that builds up over time."],["v16","The app checks for updates every time you open it."],["v15","New home screen and a notification bell with swipe to delete or archive."],["v14","My progress, backup of all lists, CSV export and a shiny picture switch."],["v13","Pokédex, Regional Pokémon, Mega, Gigantamax, Legendary & Mythical, Purified, 100%, XXL and XXS lists."],["v12","Events, Community Days and Raid bosses pages."],["v11","Works offline, desktop layout and text size."],["v10","Many more exact costume pictures."]];
 const nrm=x=>x.toLowerCase().replace(/[^a-zà-ÿ]/g,"");
 const lev=(a,b)=>{const m=a.length,n=b.length;let p=Array.from({length:n+1},(_,j)=>j);for(let i=1;i<=m;i++){const c=[i];for(let j=1;j<=n;j++)c[j]=Math.min(p[j]+1,c[j-1]+1,p[j-1]+(a[i-1]===b[j-1]?0:1));p=c}return p[n]};
 let TESS;const loadTess=()=>TESS||(TESS=new Promise((ok,no)=>{if(window.Tesseract)return ok(window.Tesseract);const x=document.createElement("script");x.src="https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js";x.onload=()=>ok(window.Tesseract);x.onerror=()=>{TESS=null;no(new Error("load"))};document.head.append(x)}));
+
+async function sparkleBlobs(file){
+ const bm=await createImageBitmap(file),sc=Math.min(1,1300/bm.width),w=Math.round(bm.width*sc),h=Math.round(bm.height*sc),k=w/1206;
+ const cv=document.createElement("canvas");cv.width=w;cv.height=h;const cx=cv.getContext("2d",{willReadFrequently:true});cx.drawImage(bm,0,0,w,h);
+ const d=cx.getImageData(0,0,w,h).data,n=w*h,m=new Uint8Array(n);
+ for(let i=0,p=0;i<n;i++,p+=4){const r=d[p],g=d[p+1],b=d[p+2];if(r<72&&g<112&&b<135&&b-r>=30)m[i]=1}
+ const lab=new Uint8Array(n),out=[],st=[];
+ for(let s0=0;s0<n;s0++){if(!m[s0]||lab[s0])continue;let x0=w,y0=h,x1=0,y1=0,a=0;st.push(s0);lab[s0]=1;
+  while(st.length){const i=st.pop(),x=i%w,y=(i-x)/w;a++;if(x<x0)x0=x;if(x>x1)x1=x;if(y<y0)y0=y;if(y>y1)y1=y;
+   for(let dy=-1;dy<=1;dy++)for(let dx=-1;dx<=1;dx++){const nx=x+dx,ny=y+dy;if(nx<0||ny<0||nx>=w||ny>=h)continue;const j=ny*w+nx;if(m[j]&&!lab[j]){lab[j]=1;st.push(j)}}}
+  const bw=x1-x0+1,bh=y1-y0+1,f=a/(bw*bh);
+  if(bw>=14*k&&bw<=80*k&&bh>=14*k&&bh<=80*k&&bw/bh>=.6&&bw/bh<=1.7&&f>=.18&&f<=.7)out.push([(x0+x1)/2,(y0+y1)/2])}
+ return {blobs:out,k,sc}}
+function ocrWords(data){if(data.words&&data.words.length)return data.words;const o=[];for(const b of data.blocks||[])for(const p of b.paragraphs||[])for(const l of p.lines||[])for(const w of l.words||[])o.push(w);return o}
+function shinyIdsFrom(words,sp,exact){const ids=new Set();if(!sp)return ids;const{blobs,k,sc}=sp;
+ for(const wd of words){const id=exact.get(nrm(wd.text||""));if(!id||!wd.bbox)continue;const cx=(wd.bbox.x0+wd.bbox.x1)/2*sc,cy=(wd.bbox.y0+wd.bbox.y1)/2*sc;
+  if(blobs.some(([bx,by])=>{const dx=cx-bx,dy=cy-by;return dx>=55*k&&dx<=145*k&&dy>=185*k&&dy<=265*k}))ids.add(id)}
+ return ids}
 async function pageRemote(b){
  const N=await getD("names");
  const NAMES=Object.values(N).map(p=>[nrm(p.name),+p.id]).filter(p=>p[0].length>=3);
  const exact=new Map(NAMES);
  let mode="normal",F=[];
  const L=async m=>{try{return cache[m]=cache[m]||await loadList(m)}catch(x){return null}};
- const matchText=txt=>{const found=new Map(),toks=txt.split(/[^A-Za-zÀ-ÿ'’.\-♀♂]+/).map(nrm).filter(Boolean),cands=[];
-  toks.forEach((t,i)=>{cands.push(t);if(i+1<toks.length)cands.push(t+toks[i+1])});
-  for(const c of cands){if(c.length<3)continue;if(exact.has(c)){const id=exact.get(c);if(!found.has(id)||found.get(id))found.set(id,false);continue}
-   if(c.length>=6){for(const [n,id] of NAMES){if(Math.abs(n.length-c.length)<=1&&n.length>=6&&lev(c,n)===1){if(!found.has(id))found.set(id,true);break}}}}
+ const TG={xxl:"L",xl:"L",xxs:"S",xs:"S"};
+ const matchLine=txt=>{
+  const raw=txt.split(/[^A-Za-zÀ-ÿ'’.\-♀♂]+/).map(nrm).filter(Boolean),toks=[],tags=[];
+  raw.forEach(t=>{if(TG[t]){tags.push([toks.length,TG[t],false]);return}
+   const m=t.match(/^(xxl|xxs|xl|xs)(.+)$/),m2=t.match(/^(.+?)(xxl|xxs|xl|xs)$/);
+   if(m&&m[2].length>=3){tags.push([toks.length,TG[m[1]],true]);t=m[2]}else if(m2&&m2[1].length>=3){tags.push([toks.length,TG[m2[2]],true]);t=m2[1]}
+   toks.push(t)});
+  const ms=[],tryM=(c,st,en)=>{if(c.length<3)return;if(exact.has(c)){ms.push({id:exact.get(c),fz:false,st,en});return}
+   if(c.length>=6)for(const [n,id] of NAMES){if(Math.abs(n.length-c.length)<=1&&n.length>=6&&lev(c,n)===1){ms.push({id,fz:true,st,en});break}}};
+  toks.forEach((t,i)=>{tryM(t,i,i);if(i+1<toks.length)tryM(t+toks[i+1],i,i+1)});
+  const found=new Map();
+  for(const m of ms){const f=found.get(m.id);if(!f)found.set(m.id,{fz:m.fz,sz:new Set()});else if(!m.fz)f.fz=false}
+  for(const [pos,k,att] of tags){const m=att?ms.find(x=>x.st<=pos&&pos<=x.en):(ms.find(x=>x.en===pos-1)||ms.find(x=>x.st===pos));if(m)found.get(m.id).sz.add(k)}
   return found};
- const mc=$$("div"),up=document.createElement("input"),st=$$("p","msg"),listEl=$$("div"),out=$$("div"),inp=$$("input","sel"),dlist=document.createElement("datalist"),addB=$$("button","retry","Add");
+ const matchText=txt=>{const all=new Map();for(const ln of txt.split("\n")){for(const [id,v] of matchLine(ln)){const e=all.get(id);if(!e)all.set(id,{fz:v.fz,sz:new Set(v.sz)});else{if(!v.fz)e.fz=false;v.sz.forEach(k=>e.sz.add(k))}}}return all};
+ const mc=$$("div"),up=document.createElement("input"),st=$$("p","msg"),out=$$("div");
  const mb={};[["normal","Normal trade"],["lucky","Guaranteed lucky trade"]].forEach(([k,l])=>{const x=$$("button","retry"+(k===mode?"":" off"),l);x.onclick=()=>{mode=k;for(const y in mb)mb[y].className="retry"+(y===mode?"":" off");if(F.length)run()};mb[k]=x;mc.append(x)});
- up.type="file";up.accept="image/*";up.multiple=true;up.hidden=true;const ub=$$("button","retry","Upload screenshot");ub.type="button";ub.style.margin="12px 0";ub.onclick=()=>up.click();
- inp.placeholder="Add a missed Pokémon by name or number";inp.setAttribute("list","pl2");inp.style.cssText="width:100%;box-sizing:border-box;margin-top:8px";dlist.id="pl2";Object.values(N).forEach(p=>dlist.append(new Option(p.name)));
- const draw=()=>{listEl.replaceChildren();if(!F.length)return;listEl.append($$("h2","hs2","Identified ("+F.length+")"));
-  F.forEach((f,i)=>{const r=$$("p",null,"#"+f.id+" "+N[f.id].name+" ");if(f.fuzzy){const q=$$("i","q","?");q.title="Not a perfect match, please check";r.append(q," ")}const x=$$("button","retry off","✕");x.setAttribute("aria-label","Remove");x.onclick=()=>{F.splice(i,1);draw();run()};r.append(x);listEl.append(r)})};
- const run=async()=>{draw();out.replaceChildren();if(!F.length)return;out.append($$("p","msg","Checking…"));
-  const [dx,lk]=await Promise.all([L("dex"),mode==="lucky"?L("lucky"):null]),dO=rd("pogo-dex-owned"),lO=rd("pogo-lucky-owned"),res=[];
-  for(const f of F){const slots=[],notes=[];const d=dx&&dx.find(x=>x.dex===f.id);
+ up.type="file";up.accept="image/*";up.multiple=true;up.hidden=true;const ub=$$("button","retry","Upload screenshots");ub.type="button";ub.style.margin="12px 0";ub.onclick=()=>up.click();
+ const run=async()=>{out.replaceChildren();if(!F.length)return;out.append($$("p","msg","Checking…"));
+  const [dx,lk,sh,xl,xs]=await Promise.all([L("dex"),mode==="lucky"?L("lucky"):null,L("shiny"),L("xxl"),L("xxs")]),dO=rd("pogo-dex-owned"),lO=rd("pogo-lucky-owned"),sO=rd("pogo-shiny-owned"),xlO=rd("pogo-xxl-owned"),xsO=rd("pogo-xxs-owned"),res=[];
+  for(const f of F){const slots=[],notes=[],tips=[];const d=dx&&dx.find(x=>x.dex===f.id),nm=N[f.id].name;
    if(d&&d.na)notes.push("Not yet released in Pokémon GO");
    else{if(!dO.has("dex:"+f.id))slots.push("Pokédex #"+f.id);else notes.push("Pokédex already complete for this one");
-    if(mode==="lucky"){const l=lk&&lk.find(x=>x.dex===f.id);if(l&&!lO.has(l.id))slots.push("Lucky "+N[f.id].name);else if(l)notes.push("You already have the lucky");else notes.push("No lucky version in the data")}}
-   res.push({f,slots,notes})}
+    if(mode==="lucky"){const l=lk&&lk.find(x=>x.dex===f.id);if(l&&!lO.has(l.id))slots.push("Lucky "+nm);else if(l)notes.push("You already have the lucky");else notes.push("No lucky version in the data")}
+    const si=sh&&sh.find(x=>x.dex===f.id);if(si&&!sO.has(si.id)){if(f.shiny)slots.push("Shiny "+nm);else tips.push("✨ Shiny Dex: still needed. Tap ✨ above if this one is shiny")}else if(si&&f.shiny)notes.push("You already have the shiny")}
+   const sz=(k,list,own,lab)=>{if(!f.sz.has(k))return;const it=list&&list.find(x=>x.dex===f.id);if(!it)return;tips.push(own.has(it.id)?"📏 Name suggests "+lab+": already in your "+lab+" Dex":"📏 Name suggests "+lab+": "+nm+" is not in your "+lab+" Dex yet, so it may be worth ticking")};
+   sz("L",xl,xlO,"XXL");sz("S",xs,xsO,"XXS");
+   res.push({f,slots,notes,tips})}
   res.sort((p,q)=>q.slots.length-p.slots.length||p.f.id-q.f.id);
-  const tot=res.reduce((n,r)=>n+r.slots.length,0),hit=res.filter(r=>r.slots.length);
-  const sum=$$("div","cc");sum.append($$("h3",null,hit.length?"Trade for these "+hit.length+" to fill "+tot+" slot"+(tot>1?"s":""):"Nothing here fills a gap"),$$("p",null,mode==="lucky"?"Guaranteed lucky trade: each Pokémon you receive becomes lucky, so it can fill both the Pokédex and Lucky slots.":"Normal trade: each new Pokémon fills a Pokédex slot."));
-  out.replaceChildren(sum);
-  res.forEach((r,i)=>{const c=$$("div","cc");c.append($$("h3",null,(r.slots.length?(i+1)+". ":"– ")+N[r.f.id].name+(r.f.fuzzy?" ?":"")));
-   r.slots.forEach(x=>c.append($$("p",null,"✅ Fills: "+x)));r.notes.forEach(x=>c.append($$("p",null,"⛔ "+x)));out.append(c)})};
+  out.replaceChildren();
+  res.forEach((r,i)=>{const c=$$("div","cc"),h=$$("h3",null,(r.slots.length?(i+1)+". ":"– ")+N[r.f.id].name+(r.f.fuzzy?" ?":"")+" "),x=$$("button","retry off","✕"),sb=$$("button","retry"+(r.f.shiny?"":" off"),"✨");x.setAttribute("aria-label","Remove");sb.setAttribute("aria-label","Mark as shiny");sb.setAttribute("aria-pressed",r.f.shiny?"true":"false");x.onclick=()=>{F=F.filter(y=>y!==r.f);run()};sb.onclick=()=>{r.f.shiny=!r.f.shiny;run()};h.append(sb," ",x);c.append(h);
+   r.slots.forEach(t=>c.append($$("p",null,"✅ Fills: "+t)));r.notes.forEach(t=>c.append($$("p",null,"⛔ "+t)));r.tips.forEach(t=>c.append($$("p",null,t)));out.append(c)})};
  up.onchange=async()=>{const files=[...up.files];if(!files.length)return;st.textContent="Loading the picture reader (first time needs internet)…";
   let T;try{T=await loadTess()}catch(x){st.textContent="Could not load the picture reader. Check your connection and try again.";return}
   try{const w=await T.createWorker("eng");try{await w.setParameters({tessedit_pageseg_mode:"11"})}catch(x){}
-   let n=0;for(const f of files){n++;st.textContent="Reading picture "+n+" of "+files.length+"…";const {data}=await w.recognize(f);
-    for(const [id,fz] of matchText(data.text)){const ex=F.find(y=>y.id===id);if(!ex)F.push({id,fuzzy:fz});else if(!fz)ex.fuzzy=false}}
-   await w.terminate();st.textContent=F.length?"Found "+F.length+" Pokémon. Remove any that are wrong.":"No Pokémon names found. Try a clearer screenshot."}
+   let n=0;for(const f of files){n++;st.textContent="Reading picture "+n+" of "+files.length+"…";const {data}=await w.recognize(f);let sp=null;try{sp=await sparkleBlobs(f)}catch(x){}
+    const shy=shinyIdsFrom(ocrWords(data),sp,exact);
+    for(const [id,v] of matchText(data.text)){let ex=F.find(y=>y.id===id);if(!ex){ex={id,fuzzy:v.fz,sz:new Set(v.sz)};F.push(ex)}else{if(!v.fz)ex.fuzzy=false;v.sz.forEach(k=>ex.sz.add(k))}if(shy.has(id))ex.shiny=true}}
+   await w.terminate();st.textContent=F.length?"":"No Pokémon names found. Try a clearer screenshot."}
   catch(x){st.textContent="Could not read that picture. Try another screenshot."}
   up.value="";run()};
- addB.onclick=()=>{const q=inp.value.trim().toLowerCase(),id=/^\d+$/.test(q)?+q:nm0(q);if(!id||!N[id]){st.textContent="Pokémon not found. Check the spelling or try its number.";return}if(!F.some(y=>y.id===id))F.push({id,fuzzy:false});inp.value="";st.textContent="";run()};
- const nm0=q=>{for(const k in N)if(N[k].name.toLowerCase()===q)return +N[k].id};
- inp.onkeydown=e=>{if(e.key==="Enter")addB.onclick()};
- b.append($$("p","hs","Pick the trade type, then upload screenshots of the other trainer’s Pokémon. The app reads the names and ranks them by how many gaps in your collection they would fill."),mc,$$("p","hs","Screenshots are read on your own phone and are not uploaded anywhere."),ub,up,st,listEl,out)}
+ b.append($$("p","hs","Pick the trade type, then upload one or more screenshots of the other trainer’s Pokémon. The app reads the names and ranks them by how many gaps in your collection they would fill."),mc,$$("p","hs","Screenshots are read on your own phone and are not uploaded anywhere."),ub,up,st,out)}
 const INFO={remote:{t:"Remote trade checker",f:pageRemote},whatsnew:{t:"What’s new",f:b=>{CHANGES.forEach(([v,t])=>{const c=$$("div","cc");c.append($$("h3",null,v),$$("p",null,t));b.append(c)})}},notifications:{t:"Notifications",f:pageNotifs},stats:{t:"My progress",f:pageStats},events:{t:"Events",f:pageEvents},cd:{t:"Community Days",f:pageCD},raids:{t:"Raid bosses",f:pageRaids}};
 async function showInfo(pg){const b=$("#ib");b.replaceChildren($$("p","msg","Loading…"));
  try{const x=document.createElement("div");await pg.f(x);b.replaceChildren(...x.childNodes)}
@@ -687,5 +711,5 @@ function lockMsg(){if(document.querySelector(".cm.lk"))return;const ov=$$("div",
  st.onclick=()=>{ov.remove();location.hash="settings"};cl.onclick=()=>ov.remove();ov.onclick=e=>{if(e.target===ov)ov.remove()};
  row.append(cl,st);bx.append(row);ov.append(bx);document.body.append(ov)}
 </script>
-<p id="dbg" style="text-align:center;font-size:11px;color:var(--mute);padding-bottom:24px">v26g</p></body>
+<p id="dbg" style="text-align:center;font-size:11px;color:var(--mute);padding-bottom:24px">v27</p></body>
 </html>
