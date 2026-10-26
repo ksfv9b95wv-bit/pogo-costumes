@@ -222,6 +222,13 @@ header .bar{height:6px!important;margin-bottom:0!important}
 .cmt span{position:absolute;inset:0;display:grid;place-items:center;font-weight:700;letter-spacing:.04em;padding-left:40px;pointer-events:none}
 .cmk{position:absolute;left:3px;top:3px;width:44px;height:44px;border-radius:50%;background:#7be4ff;color:#06244f;display:grid;place-items:center;font-size:22px;font-weight:800;touch-action:none;cursor:grab}
 .cmb .retry{width:100%}
+
+#regb{width:100%;margin-top:8px;padding:10px 14px;font:inherit;border:0;border-radius:999px;background:rgba(255,255,255,.7);color:#4a8fb0;text-align:left;border:2px solid rgba(255,255,255,.8)}#regb[hidden]{display:none}
+.cmr{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0 0 14px;text-align:left}
+.cmr label{display:flex;align-items:center;gap:8px;padding:10px 12px;border-radius:14px;background:rgba(255,255,255,.1);border:1px solid rgba(140,225,255,.35);font-size:15px}
+.cmr input{width:20px;height:20px;accent-color:#7be4ff}
+.cml{display:flex;justify-content:space-between;margin:-6px 0 12px}.cml button{background:none;border:0;color:#9aeaff;font:inherit;font-size:14px;padding:4px}
+.cmb .row{display:flex;gap:10px}.cmb .row .retry{flex:1}
 @keyframes wflick{0%,92%,100%{opacity:1}94%{opacity:.9}96%{opacity:1}98%{opacity:.95}}
 @media(prefers-reduced-motion:reduce){#wholo{animation:none}}
 </style>
@@ -269,6 +276,7 @@ header .bar{height:6px!important;margin-bottom:0!important}
     <button data-f="need" aria-pressed="false">Need</button>
   </div>
 <select id="sort" aria-label="Sort by"><option value="release">Sort: Oldest release first</option><option value="newest">Sort: Newest release first</option><option value="costume">Sort: Costume A–Z</option><option value="pokemon">Sort: Pokémon A–Z</option></select>
+   <button id="regb" type="button" hidden>Region: All</button>
    <div class="fbk"><button id="bka" type="button">Collect all shown</button><button id="bkr" type="button">Clear all shown</button></div>
   </div>
 </header>
@@ -316,13 +324,14 @@ async function initDb(){
 }
 const $=(s)=>document.querySelector(s);
 
-let curRows=[];
+let curRows=[];const regSel=new Set();const regOf=n=>{for(const[m,g]of GENS)if(n<=m)return g;return "Newer"};
 function render(){
   const q=query.trim().toLowerCase();
   const rows=data.filter(d=>{
     const has=owned.has(d.id);
     if(filter==="have"&&!has)return false;
     if(filter==="need"&&has)return false;
+    if(regSel.size&&KEY==="pogo-dex-owned"&&!regSel.has(regOf(d.dex)))return false;
     return !q||(d.name+" "+d.event).toLowerCase().includes(q);
   });
   curRows=rows;
@@ -413,7 +422,7 @@ async function loadList(m){
 }
 async function route(){
  BS=null;picLabel();const v=(location.hash||"").slice(1),home=!TITLES[v],cr=v==="credits",pg=INFO[v],col=v==="collections",st=v==="settings";
- document.body.dataset.theme=home?"home":v;$("#hm").hidden=!v;window.fReset&&fReset();
+ document.body.dataset.theme=home?"home":v;$("#hm").hidden=!v;regSel.clear();regLab();$("#regb").hidden=v!=="dex";window.fReset&&fReset();
  $("#home").hidden=!home||cr||!!pg||col||st;$("#settings").hidden=!st;$("#collections").hidden=!col;$("#info").hidden=!pg;$("#credits").hidden=!cr;
  for(const t of ["header","main","footer"])document.querySelector(t).hidden=home;
  if(pg){document.title=pg.t;$("#it").textContent=pg.t;showInfo(pg);window.scrollTo(0,0);return}
@@ -527,8 +536,8 @@ async function pageNotifs(b){
   out.append($$("p","hs","Swipe right to delete, left to "+(tab==="inbox"?"archive":"move back to inbox")+". Let go early to cancel."));L.forEach(n=>out.append(item(n)))};
  bi.onclick=()=>{tab="inbox";draw()};ba.onclick=()=>{tab="archived";draw()};bm.onclick=()=>{save(nget().map(x=>x.s==="unread"?{...x,s:"read"}:x));draw()};
  b.append(tabs,out);draw()}
-const VER="v25";
-const CHANGES=[["v25","Filter box has Collect all shown and Clear all shown for the current Dex. You confirm by sliding, and each Dex is changed on its own."],["v24","Tidier Dex pages: a thin title bar with your progress and % complete, a home button in the top bar, and a ▼ button that opens the filters. Pin keeps them open, ▲ Close tucks them away."],["v23","New illustrated welcome screen. The hologram still shows a random Pokémon from your collection."],["v22","New welcome screen with a Pokédex hologram showing a random Pokémon from your collection. Tap Enter Dex to start. After 10 minutes of no use the app returns to it."],["v21","Remote trade checker now has Normal or Guaranteed lucky trade, and a screenshot upload that reads the other trainer’s Pokémon names and ranks them by how many Pokédex (and Lucky) gaps they fill. A ? marks names it was not sure about."],["v20","Remote raid checker is now the Remote trade checker: add the Pokémon another trainer has for trade (typed or pasted) and see which Pokédex, Shiny, Lucky and Purified gaps it would fill."],["v19b","Pokémon that are not yet released in Pokémon GO are now greyed out, marked “Not yet in Pokémon GO”, can’t be ticked and don’t count in your totals."],["v19","Settings moved to a cog icon in the top bar, between What’s new and the bell."],["v18","A yellow ? now marks any costume picture that might not match exactly. Added real pictures for Absol and Blitzle (Fashionable), Charizard and Charmander (Friede’s Goggles), Charjabug (Winter) and Chimchar (Lucas’s and Dawn’s hats)."],["v17","New top bar with the version and What’s new, Remote raid checker, tidier My collections with Pokémon pictures, and a Dynamax list that builds up over time."],["v16","The app checks for updates every time you open it."],["v15","New home screen and a notification bell with swipe to delete or archive."],["v14","My progress, backup of all lists, CSV export and a shiny picture switch."],["v13","Pokédex, Regional forms, Mega, Gigantamax, Legendary & Mythical, Purified, 100%, XXL and XXS lists."],["v12","Events, Community Days and Raid bosses pages."],["v11","Works offline, desktop layout and text size."],["v10","Many more exact costume pictures."]];
+const VER="v25b";
+const CHANGES=[["v25b","The main Pokédex filters now include Region: choose one or more regions, then Show selected."],["v25","Filter box has Collect all shown and Clear all shown for the current Dex. You confirm by sliding, and each Dex is changed on its own."],["v24","Tidier Dex pages: a thin title bar with your progress and % complete, a home button in the top bar, and a ▼ button that opens the filters. Pin keeps them open, ▲ Close tucks them away."],["v23","New illustrated welcome screen. The hologram still shows a random Pokémon from your collection."],["v22","New welcome screen with a Pokédex hologram showing a random Pokémon from your collection. Tap Enter Dex to start. After 10 minutes of no use the app returns to it."],["v21","Remote trade checker now has Normal or Guaranteed lucky trade, and a screenshot upload that reads the other trainer’s Pokémon names and ranks them by how many Pokédex (and Lucky) gaps they fill. A ? marks names it was not sure about."],["v20","Remote raid checker is now the Remote trade checker: add the Pokémon another trainer has for trade (typed or pasted) and see which Pokédex, Shiny, Lucky and Purified gaps it would fill."],["v19b","Pokémon that are not yet released in Pokémon GO are now greyed out, marked “Not yet in Pokémon GO”, can’t be ticked and don’t count in your totals."],["v19","Settings moved to a cog icon in the top bar, between What’s new and the bell."],["v18","A yellow ? now marks any costume picture that might not match exactly. Added real pictures for Absol and Blitzle (Fashionable), Charizard and Charmander (Friede’s Goggles), Charjabug (Winter) and Chimchar (Lucas’s and Dawn’s hats)."],["v17","New top bar with the version and What’s new, Remote raid checker, tidier My collections with Pokémon pictures, and a Dynamax list that builds up over time."],["v16","The app checks for updates every time you open it."],["v15","New home screen and a notification bell with swipe to delete or archive."],["v14","My progress, backup of all lists, CSV export and a shiny picture switch."],["v13","Pokédex, Regional forms, Mega, Gigantamax, Legendary & Mythical, Purified, 100%, XXL and XXS lists."],["v12","Events, Community Days and Raid bosses pages."],["v11","Works offline, desktop layout and text size."],["v10","Many more exact costume pictures."]];
 const nrm=x=>x.toLowerCase().replace(/[^a-zà-ÿ]/g,"");
 const lev=(a,b)=>{const m=a.length,n=b.length;let p=Array.from({length:n+1},(_,j)=>j);for(let i=1;i<=m;i++){const c=[i];for(let j=1;j<=n;j++)c[j]=Math.min(p[j]+1,c[j-1]+1,p[j-1]+(a[i-1]===b[j-1]?0:1));p=c}return p[n]};
 let TESS;const loadTess=()=>TESS||(TESS=new Promise((ok,no)=>{if(window.Tesseract)return ok(window.Tesseract);const x=document.createElement("script");x.src="https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js";x.onload=()=>ok(window.Tesseract);x.onerror=()=>{TESS=null;no(new Error("load"))};document.head.append(x)}));
@@ -653,6 +662,17 @@ function bulk(on){
  if(!n){confirmSlide("Nothing to change",on?"Everything shown is already collected.":"Nothing shown is currently collected.",null);return}
  confirmSlide((on?"Collect ":"Clear ")+n+" Pokémon?","Only the "+n+" shown with your current filters in "+name+" will be marked "+(on?"collected":"not collected")+". Other Dex lists are not affected.",()=>{T.forEach(d=>on?owned.add(d.id):owned.delete(d.id));save();stats();render()})}
 $("#bka").onclick=()=>bulk(true);$("#bkr").onclick=()=>bulk(false);
+
+function regLab(){const b=$("#regb");if(!b)return;const a=[...regSel];b.textContent="Region: "+(!a.length?"All":a.length<=2?a.join(", "):a.length+" regions")}
+function regPick(){
+ const names=[...GENS.map(g=>g[1]),"Newer"],tmp=new Set(regSel),ov=$$("div","cm"),bx=$$("div","cmb"),grid=$$("div","cmr"),cb=[];
+ names.forEach(n=>{const l=document.createElement("label"),c=document.createElement("input");c.type="checkbox";c.checked=tmp.has(n);c.onchange=()=>c.checked?tmp.add(n):tmp.delete(n);cb.push([n,c]);l.append(c,document.createTextNode(n));grid.append(l)});
+ const ls=$$("div","cml"),all=$$("button",null,"Select all"),none=$$("button",null,"Clear");all.type=none.type="button";
+ all.onclick=()=>cb.forEach(([n,c])=>{c.checked=true;tmp.add(n)});none.onclick=()=>cb.forEach(([n,c])=>{c.checked=false;tmp.delete(n)});ls.append(all,none);
+ const row=$$("div","row"),cn=$$("button","retry off","Cancel"),ok=$$("button","retry","Commit");
+ cn.onclick=()=>ov.remove();ok.onclick=()=>{regSel.clear();tmp.forEach(n=>regSel.add(n));regLab();ov.remove();render();window.scrollTo(0,0)};ov.onclick=e=>{if(e.target===ov)ov.remove()};
+ row.append(cn,ok);bx.append($$("h3",null,"Choose regions"),$$("p",null,"Pick one or more. Nothing selected shows every region."),grid,ls,row);ov.append(bx);document.body.append(ov)}
+$("#regb").onclick=regPick;
 </script>
-<p id="dbg" style="text-align:center;font-size:11px;color:var(--mute);padding-bottom:24px">v25</p></body>
+<p id="dbg" style="text-align:center;font-size:11px;color:var(--mute);padding-bottom:24px">v25b</p></body>
 </html>
