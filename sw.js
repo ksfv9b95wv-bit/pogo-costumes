@@ -1,5 +1,5 @@
-const CACHE="go-v21",IMGC="go-img";
-const SHELL=["./","index.html","manifest.webmanifest","apple-touch-icon.png","icon-512.png"];
+const CACHE="go-v23",IMGC="go-img";
+const SHELL=["./","index.html","img/welcome.jpg","manifest.webmanifest","apple-touch-icon.png","icon-512.png"];
 self.addEventListener("install",e=>{
   e.waitUntil(caches.open(CACHE).then(c=>c.addAll(SHELL).catch(()=>{})).then(()=>self.skipWaiting()));
 });
