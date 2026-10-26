@@ -541,7 +541,7 @@ async function pageNotifs(b){
   out.append($$("p","hs","Swipe right to delete, left to "+(tab==="inbox"?"archive":"move back to inbox")+". Let go early to cancel."));L.forEach(n=>out.append(item(n)))};
  bi.onclick=()=>{tab="inbox";draw()};ba.onclick=()=>{tab="archived";draw()};bm.onclick=()=>{save(nget().map(x=>x.s==="unread"?{...x,s:"read"}:x));draw()};
  b.append(tabs,out);draw()}
-const VER="v26f";
+const VER="v26g";
 const CHANGES=[["v26e","Added the missing Pokémon: Basculegion, Arrokuda, Barraskewda, Flittle and Espathra. Any released Pokémon missing from the data are now filled in automatically."],["v26d","My collections tiles reordered into two columns."],["v26c","Squawkabilly, Maschiff, Mabosstiff, Bramblin, Brambleghast, Orthworm and Flamigo are now marked as available."],["v26b","Minior, Mimikyu, Zeraora, Blipbug, Dottler, Orbeetle, Silicobra, Sandaconda, Toxel, Toxtricity and Sinistea are now marked as available. Meltan and Melmetal sit under an Unknown region, and Galar and Hisui are separate regions."],["v26","Lock selections switch in Settings. Region filter on every Dex. Regional Pokémon now lists only Pokémon that are exclusive to certain regions, with where each is found."],["v25b","The main Pokédex filters now include Region: choose one or more regions, then Show selected."],["v25","Filter box has Collect all shown and Clear all shown for the current Dex. You confirm by sliding, and each Dex is changed on its own."],["v24","Tidier Dex pages: a thin title bar with your progress and % complete, a home button in the top bar, and a ▼ button that opens the filters. Pin keeps them open, ▲ Close tucks them away."],["v23","New illustrated welcome screen. The hologram still shows a random Pokémon from your collection."],["v22","New welcome screen with a Pokédex hologram showing a random Pokémon from your collection. Tap Enter Dex to start. After 10 minutes of no use the app returns to it."],["v21","Remote trade checker now has Normal or Guaranteed lucky trade, and a screenshot upload that reads the other trainer’s Pokémon names and ranks them by how many Pokédex (and Lucky) gaps they fill. A ? marks names it was not sure about."],["v20","Remote raid checker is now the Remote trade checker: add the Pokémon another trainer has for trade (typed or pasted) and see which Pokédex, Shiny, Lucky and Purified gaps it would fill."],["v19b","Pokémon that are not yet released in Pokémon GO are now greyed out, marked “Not yet in Pokémon GO”, can’t be ticked and don’t count in your totals."],["v19","Settings moved to a cog icon in the top bar, between What’s new and the bell."],["v18","A yellow ? now marks any costume picture that might not match exactly. Added real pictures for Absol and Blitzle (Fashionable), Charizard and Charmander (Friede’s Goggles), Charjabug (Winter) and Chimchar (Lucas’s and Dawn’s hats)."],["v17","New top bar with the version and What’s new, Remote raid checker, tidier My collections with Pokémon pictures, and a Dynamax list that builds up over time."],["v16","The app checks for updates every time you open it."],["v15","New home screen and a notification bell with swipe to delete or archive."],["v14","My progress, backup of all lists, CSV export and a shiny picture switch."],["v13","Pokédex, Regional Pokémon, Mega, Gigantamax, Legendary & Mythical, Purified, 100%, XXL and XXS lists."],["v12","Events, Community Days and Raid bosses pages."],["v11","Works offline, desktop layout and text size."],["v10","Many more exact costume pictures."]];
 const nrm=x=>x.toLowerCase().replace(/[^a-zà-ÿ]/g,"");
 const lev=(a,b)=>{const m=a.length,n=b.length;let p=Array.from({length:n+1},(_,j)=>j);for(let i=1;i<=m;i++){const c=[i];for(let j=1;j<=n;j++)c[j]=Math.min(p[j]+1,c[j-1]+1,p[j-1]+(a[i-1]===b[j-1]?0:1));p=c}return p[n]};
@@ -559,7 +559,7 @@ async function pageRemote(b){
   return found};
  const mc=$$("div"),up=document.createElement("input"),st=$$("p","msg"),listEl=$$("div"),out=$$("div"),inp=$$("input","sel"),dlist=document.createElement("datalist"),addB=$$("button","retry","Add");
  const mb={};[["normal","Normal trade"],["lucky","Guaranteed lucky trade"]].forEach(([k,l])=>{const x=$$("button","retry"+(k===mode?"":" off"),l);x.onclick=()=>{mode=k;for(const y in mb)mb[y].className="retry"+(y===mode?"":" off");if(F.length)run()};mb[k]=x;mc.append(x)});
- up.type="file";up.accept="image/*";up.multiple=true;up.style.cssText="display:block;margin:12px 0;max-width:100%";
+ up.type="file";up.accept="image/*";up.multiple=true;up.hidden=true;const ub=$$("button","retry","Upload screenshot");ub.type="button";ub.style.margin="12px 0";ub.onclick=()=>up.click();
  inp.placeholder="Add a missed Pokémon by name or number";inp.setAttribute("list","pl2");inp.style.cssText="width:100%;box-sizing:border-box;margin-top:8px";dlist.id="pl2";Object.values(N).forEach(p=>dlist.append(new Option(p.name)));
  const draw=()=>{listEl.replaceChildren();if(!F.length)return;listEl.append($$("h2","hs2","Identified ("+F.length+")"));
   F.forEach((f,i)=>{const r=$$("p",null,"#"+f.id+" "+N[f.id].name+" ");if(f.fuzzy){const q=$$("i","q","?");q.title="Not a perfect match, please check";r.append(q," ")}const x=$$("button","retry off","✕");x.setAttribute("aria-label","Remove");x.onclick=()=>{F.splice(i,1);draw();run()};r.append(x);listEl.append(r)})};
@@ -577,17 +577,17 @@ async function pageRemote(b){
   res.forEach((r,i)=>{const c=$$("div","cc");c.append($$("h3",null,(r.slots.length?(i+1)+". ":"– ")+N[r.f.id].name+(r.f.fuzzy?" ?":"")));
    r.slots.forEach(x=>c.append($$("p",null,"✅ Fills: "+x)));r.notes.forEach(x=>c.append($$("p",null,"⛔ "+x)));out.append(c)})};
  up.onchange=async()=>{const files=[...up.files];if(!files.length)return;st.textContent="Loading the picture reader (first time needs internet)…";
-  let T;try{T=await loadTess()}catch(x){st.textContent="Could not load the picture reader. Check your connection, or add the Pokémon by name below.";return}
+  let T;try{T=await loadTess()}catch(x){st.textContent="Could not load the picture reader. Check your connection and try again.";return}
   try{const w=await T.createWorker("eng");try{await w.setParameters({tessedit_pageseg_mode:"11"})}catch(x){}
    let n=0;for(const f of files){n++;st.textContent="Reading picture "+n+" of "+files.length+"…";const {data}=await w.recognize(f);
     for(const [id,fz] of matchText(data.text)){const ex=F.find(y=>y.id===id);if(!ex)F.push({id,fuzzy:fz});else if(!fz)ex.fuzzy=false}}
-   await w.terminate();st.textContent=F.length?"Found "+F.length+" Pokémon. Remove any that are wrong or add any that were missed.":"No Pokémon names found. Try a clearer screenshot, or add them by name below."}
-  catch(x){st.textContent="Could not read that picture. Add the Pokémon by name below."}
+   await w.terminate();st.textContent=F.length?"Found "+F.length+" Pokémon. Remove any that are wrong.":"No Pokémon names found. Try a clearer screenshot."}
+  catch(x){st.textContent="Could not read that picture. Try another screenshot."}
   up.value="";run()};
  addB.onclick=()=>{const q=inp.value.trim().toLowerCase(),id=/^\d+$/.test(q)?+q:nm0(q);if(!id||!N[id]){st.textContent="Pokémon not found. Check the spelling or try its number.";return}if(!F.some(y=>y.id===id))F.push({id,fuzzy:false});inp.value="";st.textContent="";run()};
  const nm0=q=>{for(const k in N)if(N[k].name.toLowerCase()===q)return +N[k].id};
  inp.onkeydown=e=>{if(e.key==="Enter")addB.onclick()};
- b.append($$("p","hs","Pick the trade type, then upload screenshots of the other trainer’s Pokémon. The app reads the names and ranks them by how many gaps in your collection they would fill."),mc,$$("p","hs","Screenshots are read on your own phone and are not uploaded anywhere."),up,st,inp,dlist,addB,listEl,out)}
+ b.append($$("p","hs","Pick the trade type, then upload screenshots of the other trainer’s Pokémon. The app reads the names and ranks them by how many gaps in your collection they would fill."),mc,$$("p","hs","Screenshots are read on your own phone and are not uploaded anywhere."),ub,up,st,listEl,out)}
 const INFO={remote:{t:"Remote trade checker",f:pageRemote},whatsnew:{t:"What’s new",f:b=>{CHANGES.forEach(([v,t])=>{const c=$$("div","cc");c.append($$("h3",null,v),$$("p",null,t));b.append(c)})}},notifications:{t:"Notifications",f:pageNotifs},stats:{t:"My progress",f:pageStats},events:{t:"Events",f:pageEvents},cd:{t:"Community Days",f:pageCD},raids:{t:"Raid bosses",f:pageRaids}};
 async function showInfo(pg){const b=$("#ib");b.replaceChildren($$("p","msg","Loading…"));
  try{const x=document.createElement("div");await pg.f(x);b.replaceChildren(...x.childNodes)}
@@ -687,5 +687,5 @@ function lockMsg(){if(document.querySelector(".cm.lk"))return;const ov=$$("div",
  st.onclick=()=>{ov.remove();location.hash="settings"};cl.onclick=()=>ov.remove();ov.onclick=e=>{if(e.target===ov)ov.remove()};
  row.append(cl,st);bx.append(row);ov.append(bx);document.body.append(ov)}
 </script>
-<p id="dbg" style="text-align:center;font-size:11px;color:var(--mute);padding-bottom:24px">v26f</p></body>
+<p id="dbg" style="text-align:center;font-size:11px;color:var(--mute);padding-bottom:24px">v26g</p></body>
 </html>
