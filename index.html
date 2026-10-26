@@ -207,11 +207,11 @@ header h1{font-size:17px!important;margin:0 0 6px!important}
 header .bar{height:6px!important;margin-bottom:0!important}
 .hr{display:flex;align-items:center;gap:8px}
 #count{font-size:13px!important;padding:4px 12px!important;white-space:nowrap}
-#fx,.fct button{display:grid;place-items:center;width:28px;height:28px;border:0;border-radius:50%;background:rgba(127,127,127,.2);color:inherit;padding:0;opacity:.8}
+#fx,.fct button{display:grid;place-items:center;width:30px;height:30px;border:0;border-radius:50%;background:none;color:inherit;padding:0;opacity:.7}
 #fx[aria-expanded=true]{display:none}.fct button:active{opacity:1}
 #fbox{margin-top:8px}
 .fct{display:flex;justify-content:flex-end;gap:8px;margin-bottom:8px}
-#fpin[aria-pressed=true]{background:#FFCB08;color:#07224E;opacity:1}
+#fpin[aria-pressed=true]{color:#e6a800;opacity:1}
 @keyframes wflick{0%,92%,100%{opacity:1}94%{opacity:.9}96%{opacity:1}98%{opacity:.95}}
 @media(prefers-reduced-motion:reduce){#wholo{animation:none}}
 </style>
@@ -249,10 +249,10 @@ header .bar{height:6px!important;margin-bottom:0!important}
 <div class="cc"><h3>Design</h3><p>Colours and layout are inspired by the in-game Pokédex. The app icon and menu symbols were drawn for this project. Built with help from Claude, made by Anthropic.</p></div></section>
 <section id="info" hidden><a href="#" class="cb">‹ Home</a><h1 class="hh" id="it">Info</h1><div id="ib"></div></section>
 <header>
-  <h1><span id="ttl">Costume Dex</span><span class="hr"><button id="fx" type="button" aria-label="Show filters" aria-expanded="false"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><span id="count"></span></span></h1>
+  <h1><span id="ttl">Costume Dex</span><span class="hr"><button id="fx" type="button" aria-label="Show filters" aria-expanded="false"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M5 9l7 7 7-7" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button><span id="count"></span></span></h1>
   <div class="bar"><i id="fill"></i></div>
   <div id="fbox" hidden>
-   <div class="fct"><button id="fpin" type="button" aria-pressed="false" aria-label="Pin filters open"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M9 3h6l-1 6 3 3v2h-5v7h-2v-7H5v-2l3-3z" fill="currentColor"/></svg></button><button id="fcl" type="button" aria-label="Close filters"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M6 15l6-6 6 6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+   <div class="fct"><button id="fpin" type="button" aria-pressed="false" aria-label="Pin filters open"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path d="M9 3h6l-1 6 3 3v2h-5v7h-2v-7H5v-2l3-3z" fill="currentColor"/></svg></button><button id="fcl" type="button" aria-label="Close filters"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M5 15l7-7 7 7" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
   <div class="srch"><input id="q" type="search" placeholder="Search name or event" autocomplete="off" enterkeyhint="search"><button id="go" type="button" aria-label="Show results">🔍</button></div>
   <div class="tabs" id="tabs">
     <button data-f="all" aria-pressed="true">All</button>
@@ -514,7 +514,7 @@ async function pageNotifs(b){
   out.append($$("p","hs","Swipe right to delete, left to "+(tab==="inbox"?"archive":"move back to inbox")+". Let go early to cancel."));L.forEach(n=>out.append(item(n)))};
  bi.onclick=()=>{tab="inbox";draw()};ba.onclick=()=>{tab="archived";draw()};bm.onclick=()=>{save(nget().map(x=>x.s==="unread"?{...x,s:"read"}:x));draw()};
  b.append(tabs,out);draw()}
-const VER="v24b";
+const VER="v24c";
 const CHANGES=[["v24","Tidier Dex pages: a thin title bar with your progress and % complete, a home button in the top bar, and a ▼ button that opens the filters. Pin keeps them open, ▲ Close tucks them away."],["v23","New illustrated welcome screen. The hologram still shows a random Pokémon from your collection."],["v22","New welcome screen with a Pokédex hologram showing a random Pokémon from your collection. Tap Enter Dex to start. After 10 minutes of no use the app returns to it."],["v21","Remote trade checker now has Normal or Guaranteed lucky trade, and a screenshot upload that reads the other trainer’s Pokémon names and ranks them by how many Pokédex (and Lucky) gaps they fill. A ? marks names it was not sure about."],["v20","Remote raid checker is now the Remote trade checker: add the Pokémon another trainer has for trade (typed or pasted) and see which Pokédex, Shiny, Lucky and Purified gaps it would fill."],["v19b","Pokémon that are not yet released in Pokémon GO are now greyed out, marked “Not yet in Pokémon GO”, can’t be ticked and don’t count in your totals."],["v19","Settings moved to a cog icon in the top bar, between What’s new and the bell."],["v18","A yellow ? now marks any costume picture that might not match exactly. Added real pictures for Absol and Blitzle (Fashionable), Charizard and Charmander (Friede’s Goggles), Charjabug (Winter) and Chimchar (Lucas’s and Dawn’s hats)."],["v17","New top bar with the version and What’s new, Remote raid checker, tidier My collections with Pokémon pictures, and a Dynamax list that builds up over time."],["v16","The app checks for updates every time you open it."],["v15","New home screen and a notification bell with swipe to delete or archive."],["v14","My progress, backup of all lists, CSV export and a shiny picture switch."],["v13","Pokédex, Regional forms, Mega, Gigantamax, Legendary & Mythical, Purified, 100%, XXL and XXS lists."],["v12","Events, Community Days and Raid bosses pages."],["v11","Works offline, desktop layout and text size."],["v10","Many more exact costume pictures."]];
 const nrm=x=>x.toLowerCase().replace(/[^a-zà-ÿ]/g,"");
 const lev=(a,b)=>{const m=a.length,n=b.length;let p=Array.from({length:n+1},(_,j)=>j);for(let i=1;i<=m;i++){const c=[i];for(let j=1;j<=n;j++)c[j]=Math.min(p[j]+1,c[j-1]+1,p[j-1]+(a[i-1]===b[j-1]?0:1));p=c}return p[n]};
@@ -623,5 +623,5 @@ fetch("costume-images.json").then(r=>r.ok?r.json():null).then(j=>{if(j){window.C
  pin.onclick=()=>{P=!P;lab();sv()};
  window.fReset=()=>set(P);lab();set(P)})();
 </script>
-<p id="dbg" style="text-align:center;font-size:11px;color:var(--mute);padding-bottom:24px">v24b</p></body>
+<p id="dbg" style="text-align:center;font-size:11px;color:var(--mute);padding-bottom:24px">v24c</p></body>
 </html>
