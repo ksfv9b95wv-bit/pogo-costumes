@@ -196,6 +196,8 @@ body.wel{overflow:hidden}
 #wgo{position:absolute;left:9.95%;width:80%;top:82.76%;height:6.14%;border:0;border-radius:4%/30%;background:transparent;cursor:pointer;color:transparent;font-size:0}
 #wgo:active{background:rgba(160,235,255,.18)}
 #wgo:focus-visible{outline:3px solid #fff}
+#wsc.nobg:before{content:"GO Lists";position:absolute;left:0;right:0;top:9%;text-align:center;color:#d8f6ff;font:900 150px system-ui,sans-serif;text-shadow:0 0 40px #3cc8ff;transform:scale(var(--k,1));transform-origin:50% 0}
+#wsc.nobg #wgo{color:#fff;font:800 56px system-ui,sans-serif;font-size:calc(min(100vw,100dvh*1206/2622)*.058);letter-spacing:.08em;text-transform:uppercase;background:linear-gradient(180deg,rgba(80,210,255,.55),rgba(20,100,190,.55));border:2px solid #9aeaff;box-shadow:0 0 20px rgba(70,210,255,.8)}
 @keyframes wflick{0%,92%,100%{opacity:1}94%{opacity:.9}96%{opacity:1}98%{opacity:.95}}
 @media(prefers-reduced-motion:reduce){#wholo{animation:none}}
 </style>
@@ -496,7 +498,7 @@ async function pageNotifs(b){
   out.append($$("p","hs","Swipe right to delete, left to "+(tab==="inbox"?"archive":"move back to inbox")+". Let go early to cancel."));L.forEach(n=>out.append(item(n)))};
  bi.onclick=()=>{tab="inbox";draw()};ba.onclick=()=>{tab="archived";draw()};bm.onclick=()=>{save(nget().map(x=>x.s==="unread"?{...x,s:"read"}:x));draw()};
  b.append(tabs,out);draw()}
-const VER="v23";
+const VER="v23c";
 const CHANGES=[["v23","New illustrated welcome screen. The hologram still shows a random Pokémon from your collection."],["v22","New welcome screen with a Pokédex hologram showing a random Pokémon from your collection. Tap Enter Dex to start. After 10 minutes of no use the app returns to it."],["v21","Remote trade checker now has Normal or Guaranteed lucky trade, and a screenshot upload that reads the other trainer’s Pokémon names and ranks them by how many Pokédex (and Lucky) gaps they fill. A ? marks names it was not sure about."],["v20","Remote raid checker is now the Remote trade checker: add the Pokémon another trainer has for trade (typed or pasted) and see which Pokédex, Shiny, Lucky and Purified gaps it would fill."],["v19b","Pokémon that are not yet released in Pokémon GO are now greyed out, marked “Not yet in Pokémon GO”, can’t be ticked and don’t count in your totals."],["v19","Settings moved to a cog icon in the top bar, between What’s new and the bell."],["v18","A yellow ? now marks any costume picture that might not match exactly. Added real pictures for Absol and Blitzle (Fashionable), Charizard and Charmander (Friede’s Goggles), Charjabug (Winter) and Chimchar (Lucas’s and Dawn’s hats)."],["v17","New top bar with the version and What’s new, Remote raid checker, tidier My collections with Pokémon pictures, and a Dynamax list that builds up over time."],["v16","The app checks for updates every time you open it."],["v15","New home screen and a notification bell with swipe to delete or archive."],["v14","My progress, backup of all lists, CSV export and a shiny picture switch."],["v13","Pokédex, Regional forms, Mega, Gigantamax, Legendary & Mythical, Purified, 100%, XXL and XXS lists."],["v12","Events, Community Days and Raid bosses pages."],["v11","Works offline, desktop layout and text size."],["v10","Many more exact costume pictures."]];
 const nrm=x=>x.toLowerCase().replace(/[^a-zà-ÿ]/g,"");
 const lev=(a,b)=>{const m=a.length,n=b.length;let p=Array.from({length:n+1},(_,j)=>j);for(let i=1;i<=m;i++){const c=[i];for(let j=1;j<=n;j++)c[j]=Math.min(p[j]+1,c[j-1]+1,p[j-1]+(a[i-1]===b[j-1]?0:1));p=c}return p[n]};
@@ -591,11 +593,12 @@ fetch("costume-images.json").then(r=>r.ok?r.json():null).then(j=>{if(j){window.C
   H.append(hd,r,ul)}
  function show(){last=Date.now();W.hidden=false;document.body.classList.add("wel");sc();pick()}
  function enter(){W.hidden=true;document.body.classList.remove("wel");last=Date.now();if(location.hash&&location.hash!=="#")location.hash="";else route();window.scrollTo(0,0)}
+ {const c=$("#wsc"),P=["img/welcome.jpg","img/welcome.JPG","img/welcome.jpeg","welcome.jpg","welcome.JPG"];const tr=i=>{if(i>=P.length){c.classList.add("nobg");return}const t=new Image();t.onload=()=>{c.style.backgroundImage="url("+P[i]+")"};t.onerror=()=>tr(i+1);t.src=P[i]};tr(0)}
  $("#wgo").onclick=enter;H.onclick=pick;const sc=()=>{const c=$("#wsc");if(c.clientWidth)$("#wst").style.transform="scale("+c.clientWidth/1206+")"};sc();addEventListener("resize",sc);addEventListener("orientationchange",sc);
  const act=()=>{last=Date.now()};["pointerdown","keydown","touchstart","scroll","mousemove","wheel"].forEach(t=>addEventListener(t,act,{passive:true,capture:true}));
  const chk=()=>{if(W.hidden&&Date.now()-last>10*60*1000)show()};
  setInterval(chk,20000);document.addEventListener("visibilitychange",()=>{if(!document.hidden)chk()});
  pick()})();
 </script>
-<p id="dbg" style="text-align:center;font-size:11px;color:var(--mute);padding-bottom:24px">v23</p></body>
+<p id="dbg" style="text-align:center;font-size:11px;color:var(--mute);padding-bottom:24px">v23c</p></body>
 </html>
