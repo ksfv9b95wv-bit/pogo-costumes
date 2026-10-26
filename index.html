@@ -198,6 +198,20 @@ body.wel{overflow:hidden}
 #wgo:focus-visible{outline:3px solid #fff}
 #wsc.nobg:before{content:"GO Lists";position:absolute;left:0;right:0;top:9%;text-align:center;color:#d8f6ff;font:900 150px system-ui,sans-serif;text-shadow:0 0 40px #3cc8ff;transform:scale(var(--k,1));transform-origin:50% 0}
 #wsc.nobg #wgo{color:#fff;font:800 56px system-ui,sans-serif;font-size:calc(min(100vw,100dvh*1206/2622)*.058);letter-spacing:.08em;text-transform:uppercase;background:linear-gradient(180deg,rgba(80,210,255,.55),rgba(20,100,190,.55));border:2px solid #9aeaff;box-shadow:0 0 20px rgba(70,210,255,.8)}
+
+.tl{display:flex;align-items:center;gap:10px}
+#hm{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.85);display:grid;place-items:center;flex:none}#hm[hidden]{display:none}
+@media(prefers-color-scheme:dark){#hm{background:rgba(10,50,80,.8)}#hm path{fill:#d9f2ff}}
+header{padding:8px 14px 10px!important;border-radius:22px!important}
+header h1{font-size:17px!important;margin:0 0 6px!important}
+header .bar{height:6px!important;margin-bottom:0!important}
+.hr{display:flex;align-items:center;gap:8px}
+#count{font-size:13px!important;padding:4px 12px!important;white-space:nowrap}
+#fx,.fct button{display:grid;place-items:center;width:28px;height:28px;border:0;border-radius:50%;background:rgba(127,127,127,.2);color:inherit;padding:0;opacity:.8}
+#fx[aria-expanded=true]{display:none}.fct button:active{opacity:1}
+#fbox{margin-top:8px}
+.fct{display:flex;justify-content:flex-end;gap:8px;margin-bottom:8px}
+#fpin[aria-pressed=true]{background:#FFCB08;color:#07224E;opacity:1}
 @keyframes wflick{0%,92%,100%{opacity:1}94%{opacity:.9}96%{opacity:1}98%{opacity:.95}}
 @media(prefers-reduced-motion:reduce){#wholo{animation:none}}
 </style>
@@ -205,7 +219,7 @@ body.wel{overflow:hidden}
 <body class="wel">
 <div id="welcome" role="dialog" aria-label="Welcome"><div id="wsc"><div id="wst"><div id="wholo" aria-live="polite"></div></div>
 <button id="wgo" type="button" aria-label="Enter Dex">Enter Dex</button></div></div>
-<div id="topbar"><a class="ttl" href="#">GO Lists<sub id="ver"></sub></a><div class="r"><a id="wn" href="#whatsnew">What’s new</a><a id="gear" href="#settings" aria-label="Settings"><svg viewBox="0 0 24 24" width="24" height="24"><path fill="#1578a6" d="M19.4 13a7.6 7.6 0 0 0 0-2l2.1-1.6a.5.5 0 0 0 .1-.6l-2-3.5a.5.5 0 0 0-.6-.2l-2.5 1a7.4 7.4 0 0 0-1.7-1l-.4-2.6a.5.5 0 0 0-.5-.4h-4a.5.5 0 0 0-.5.4l-.4 2.6a7.4 7.4 0 0 0-1.7 1l-2.5-1a.5.5 0 0 0-.6.2l-2 3.5a.5.5 0 0 0 .1.6L4.6 11a7.6 7.6 0 0 0 0 2l-2.1 1.6a.5.5 0 0 0-.1.6l2 3.5c.1.2.4.3.6.2l2.5-1c.5.4 1.1.7 1.7 1l.4 2.6c0 .2.3.4.5.4h4c.3 0 .5-.2.5-.4l.4-2.6c.6-.3 1.2-.6 1.7-1l2.5 1c.2.1.5 0 .6-.2l2-3.5a.5.5 0 0 0-.1-.6L19.4 13zM12 15.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7z"/></svg></a><button id="bell" aria-label="Notifications" onclick="location.hash='notifications'"><svg viewBox="0 0 24 24" width="24" height="24"><path fill="#1578a6" d="M12 22a2.5 2.5 0 0 0 2.4-2H9.6A2.5 2.5 0 0 0 12 22zm7-6v-5a7 7 0 0 0-5.5-6.8V3a1.5 1.5 0 0 0-3 0v1.2A7 7 0 0 0 5 11v5l-2 2v1h18v-1z"/></svg><span id="bc" hidden>0</span></button></div></div>
+<div id="topbar"><div class="tl"><a id="hm" href="#" aria-label="Home" hidden><svg viewBox="0 0 24 24" width="22" height="22"><path fill="#1578a6" d="M12 3 2 12h3v8h5v-5h4v5h5v-8h3z"/></svg></a><a class="ttl" href="#">GO Lists<sub id="ver"></sub></a></div><div class="r"><a id="wn" href="#whatsnew">What’s new</a><a id="gear" href="#settings" aria-label="Settings"><svg viewBox="0 0 24 24" width="24" height="24"><path fill="#1578a6" d="M19.4 13a7.6 7.6 0 0 0 0-2l2.1-1.6a.5.5 0 0 0 .1-.6l-2-3.5a.5.5 0 0 0-.6-.2l-2.5 1a7.4 7.4 0 0 0-1.7-1l-.4-2.6a.5.5 0 0 0-.5-.4h-4a.5.5 0 0 0-.5.4l-.4 2.6a7.4 7.4 0 0 0-1.7 1l-2.5-1a.5.5 0 0 0-.6.2l-2 3.5a.5.5 0 0 0 .1.6L4.6 11a7.6 7.6 0 0 0 0 2l-2.1 1.6a.5.5 0 0 0-.1.6l2 3.5c.1.2.4.3.6.2l2.5-1c.5.4 1.1.7 1.7 1l.4 2.6c0 .2.3.4.5.4h4c.3 0 .5-.2.5-.4l.4-2.6c.6-.3 1.2-.6 1.7-1l2.5 1c.2.1.5 0 .6-.2l2-3.5a.5.5 0 0 0-.1-.6L19.4 13zM12 15.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7z"/></svg></a><button id="bell" aria-label="Notifications" onclick="location.hash='notifications'"><svg viewBox="0 0 24 24" width="24" height="24"><path fill="#1578a6" d="M12 22a2.5 2.5 0 0 0 2.4-2H9.6A2.5 2.5 0 0 0 12 22zm7-6v-5a7 7 0 0 0-5.5-6.8V3a1.5 1.5 0 0 0-3 0v1.2A7 7 0 0 0 5 11v5l-2 2v1h18v-1z"/></svg><span id="bc" hidden>0</span></button></div></div>
 <svg width="0" height="0" style="position:absolute"><defs><symbol id="i-star" viewBox="0 0 24 24"><path d="M12 1l2.6 8.4L23 12l-8.4 2.6L12 23l-2.6-8.4L1 12l8.4-2.6z"/></symbol><symbol id="i-flame" viewBox="0 0 24 24"><path d="M12 1c1.2 4-3.5 6-3.5 11a5.5 5.5 0 0 0 11 0c0-2.4-1.2-4-2.4-5.6.1 2-.8 3-1.9 3.3 1-4.2-.3-6.6-3.2-8.7z"/></symbol></defs></svg>
 
 <section id="home"><h1 class="hh">GO Lists</h1>
@@ -235,15 +249,17 @@ body.wel{overflow:hidden}
 <div class="cc"><h3>Design</h3><p>Colours and layout are inspired by the in-game Pokédex. The app icon and menu symbols were drawn for this project. Built with help from Claude, made by Anthropic.</p></div></section>
 <section id="info" hidden><a href="#" class="cb">‹ Home</a><h1 class="hh" id="it">Info</h1><div id="ib"></div></section>
 <header>
-  <h1><span><a href="#" id="back" style="color:inherit;text-decoration:none;margin-right:8px">‹</a><span id="ttl">Costume Dex</span></span><span id="count"></span></h1>
+  <h1><span id="ttl">Costume Dex</span><span class="hr"><button id="fx" type="button" aria-label="Show filters" aria-expanded="false"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><span id="count"></span></span></h1>
   <div class="bar"><i id="fill"></i></div>
+  <div id="fbox" hidden>
+   <div class="fct"><button id="fpin" type="button" aria-pressed="false" aria-label="Pin filters open"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M9 3h6l-1 6 3 3v2h-5v7h-2v-7H5v-2l3-3z" fill="currentColor"/></svg></button><button id="fcl" type="button" aria-label="Close filters"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M6 15l6-6 6 6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
   <div class="srch"><input id="q" type="search" placeholder="Search name or event" autocomplete="off" enterkeyhint="search"><button id="go" type="button" aria-label="Show results">🔍</button></div>
   <div class="tabs" id="tabs">
     <button data-f="all" aria-pressed="true">All</button>
     <button data-f="need" aria-pressed="false">Need</button>
-    <button data-f="have" aria-pressed="false">Have</button>
   </div>
 <select id="sort" aria-label="Sort by"><option value="release">Sort: Oldest release first</option><option value="newest">Sort: Newest release first</option><option value="costume">Sort: Costume A–Z</option><option value="pokemon">Sort: Pokémon A–Z</option></select>
+  </div>
 </header>
 <div id="net" role="status" hidden>You are offline. Showing saved data.</div>
 <main id="list"><p class="msg">Loading…</p></main>
@@ -320,7 +336,7 @@ const yr=x=>{const m=/(\d{4})\)?\s*$/.exec(x||"");return m?+m[1]:0};
 function info(d){if(d.na)return "Not yet in Pokémon GO";if(d.kind)return "#"+String(d.dex).padStart(4,"0")+(d.src?" · "+d.src:"")+(d.kind==="dex"?bdg(d):"");if(String(d.id).startsWith("custom:"))return "Added by you";if(!d.f&&!d.l)return "Dates not listed in sources";const y=yr(d.l);const st=y>=2026?"Seen in 2026":y===2025?"Seen in 2025":"Probably trade only";return "Released: "+d.f+" \u00b7 Last seen: "+d.l+" \u00b7 "+st}
 function stats(){
   const A=data.filter(d=>!d.na),n=A.filter(d=>owned.has(d.id)).length;
-  $("#count").textContent=`${n} / ${A.length}`;
+  $("#count").textContent=`${n} / ${A.length} · ${A.length?Math.floor(100*n/A.length):0}%`;
   $("#fill").style.width=A.length?(100*n/A.length)+"%":"0";
 }
 $("#q").oninput=e=>{query=e.target.value;render()};
@@ -384,12 +400,12 @@ async function loadList(m){
 }
 async function route(){
  BS=null;picLabel();const v=(location.hash||"").slice(1),home=!TITLES[v],cr=v==="credits",pg=INFO[v],col=v==="collections",st=v==="settings";
- document.body.dataset.theme=home?"home":v;
+ document.body.dataset.theme=home?"home":v;$("#hm").hidden=!v;window.fReset&&fReset();
  $("#home").hidden=!home||cr||!!pg||col||st;$("#settings").hidden=!st;$("#collections").hidden=!col;$("#info").hidden=!pg;$("#credits").hidden=!cr;
  for(const t of ["header","main","footer"])document.querySelector(t).hidden=home;
  if(pg){document.title=pg.t;$("#it").textContent=pg.t;showInfo(pg);window.scrollTo(0,0);return}
  if(home){document.title=col?"My collections":"GO Lists";window.scrollTo(0,0);return}
- $("#back").href="#collections";
+
  document.title=TITLES[v];
  KEY=v==="costume"?"pogo-costumes-owned":"pogo-"+v+"-owned";
  owned=new Set();try{owned=new Set(JSON.parse(localStorage.getItem(KEY)||"[]"))}catch(e){}
@@ -498,8 +514,8 @@ async function pageNotifs(b){
   out.append($$("p","hs","Swipe right to delete, left to "+(tab==="inbox"?"archive":"move back to inbox")+". Let go early to cancel."));L.forEach(n=>out.append(item(n)))};
  bi.onclick=()=>{tab="inbox";draw()};ba.onclick=()=>{tab="archived";draw()};bm.onclick=()=>{save(nget().map(x=>x.s==="unread"?{...x,s:"read"}:x));draw()};
  b.append(tabs,out);draw()}
-const VER="v23c";
-const CHANGES=[["v23","New illustrated welcome screen. The hologram still shows a random Pokémon from your collection."],["v22","New welcome screen with a Pokédex hologram showing a random Pokémon from your collection. Tap Enter Dex to start. After 10 minutes of no use the app returns to it."],["v21","Remote trade checker now has Normal or Guaranteed lucky trade, and a screenshot upload that reads the other trainer’s Pokémon names and ranks them by how many Pokédex (and Lucky) gaps they fill. A ? marks names it was not sure about."],["v20","Remote raid checker is now the Remote trade checker: add the Pokémon another trainer has for trade (typed or pasted) and see which Pokédex, Shiny, Lucky and Purified gaps it would fill."],["v19b","Pokémon that are not yet released in Pokémon GO are now greyed out, marked “Not yet in Pokémon GO”, can’t be ticked and don’t count in your totals."],["v19","Settings moved to a cog icon in the top bar, between What’s new and the bell."],["v18","A yellow ? now marks any costume picture that might not match exactly. Added real pictures for Absol and Blitzle (Fashionable), Charizard and Charmander (Friede’s Goggles), Charjabug (Winter) and Chimchar (Lucas’s and Dawn’s hats)."],["v17","New top bar with the version and What’s new, Remote raid checker, tidier My collections with Pokémon pictures, and a Dynamax list that builds up over time."],["v16","The app checks for updates every time you open it."],["v15","New home screen and a notification bell with swipe to delete or archive."],["v14","My progress, backup of all lists, CSV export and a shiny picture switch."],["v13","Pokédex, Regional forms, Mega, Gigantamax, Legendary & Mythical, Purified, 100%, XXL and XXS lists."],["v12","Events, Community Days and Raid bosses pages."],["v11","Works offline, desktop layout and text size."],["v10","Many more exact costume pictures."]];
+const VER="v24b";
+const CHANGES=[["v24","Tidier Dex pages: a thin title bar with your progress and % complete, a home button in the top bar, and a ▼ button that opens the filters. Pin keeps them open, ▲ Close tucks them away."],["v23","New illustrated welcome screen. The hologram still shows a random Pokémon from your collection."],["v22","New welcome screen with a Pokédex hologram showing a random Pokémon from your collection. Tap Enter Dex to start. After 10 minutes of no use the app returns to it."],["v21","Remote trade checker now has Normal or Guaranteed lucky trade, and a screenshot upload that reads the other trainer’s Pokémon names and ranks them by how many Pokédex (and Lucky) gaps they fill. A ? marks names it was not sure about."],["v20","Remote raid checker is now the Remote trade checker: add the Pokémon another trainer has for trade (typed or pasted) and see which Pokédex, Shiny, Lucky and Purified gaps it would fill."],["v19b","Pokémon that are not yet released in Pokémon GO are now greyed out, marked “Not yet in Pokémon GO”, can’t be ticked and don’t count in your totals."],["v19","Settings moved to a cog icon in the top bar, between What’s new and the bell."],["v18","A yellow ? now marks any costume picture that might not match exactly. Added real pictures for Absol and Blitzle (Fashionable), Charizard and Charmander (Friede’s Goggles), Charjabug (Winter) and Chimchar (Lucas’s and Dawn’s hats)."],["v17","New top bar with the version and What’s new, Remote raid checker, tidier My collections with Pokémon pictures, and a Dynamax list that builds up over time."],["v16","The app checks for updates every time you open it."],["v15","New home screen and a notification bell with swipe to delete or archive."],["v14","My progress, backup of all lists, CSV export and a shiny picture switch."],["v13","Pokédex, Regional forms, Mega, Gigantamax, Legendary & Mythical, Purified, 100%, XXL and XXS lists."],["v12","Events, Community Days and Raid bosses pages."],["v11","Works offline, desktop layout and text size."],["v10","Many more exact costume pictures."]];
 const nrm=x=>x.toLowerCase().replace(/[^a-zà-ÿ]/g,"");
 const lev=(a,b)=>{const m=a.length,n=b.length;let p=Array.from({length:n+1},(_,j)=>j);for(let i=1;i<=m;i++){const c=[i];for(let j=1;j<=n;j++)c[j]=Math.min(p[j]+1,c[j-1]+1,p[j-1]+(a[i-1]===b[j-1]?0:1));p=c}return p[n]};
 let TESS;const loadTess=()=>TESS||(TESS=new Promise((ok,no)=>{if(window.Tesseract)return ok(window.Tesseract);const x=document.createElement("script");x.src="https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js";x.onload=()=>ok(window.Tesseract);x.onerror=()=>{TESS=null;no(new Error("load"))};document.head.append(x)}));
@@ -599,6 +615,13 @@ fetch("costume-images.json").then(r=>r.ok?r.json():null).then(j=>{if(j){window.C
  const chk=()=>{if(W.hidden&&Date.now()-last>10*60*1000)show()};
  setInterval(chk,20000);document.addEventListener("visibilitychange",()=>{if(!document.hidden)chk()});
  pick()})();
+
+(()=>{const fb=$("#fbox"),fx=$("#fx"),pin=$("#fpin");let P=false;try{P=localStorage.getItem("pogo-fpin")==="1"}catch(e){}
+ const set=o=>{fb.hidden=!o;fx.setAttribute("aria-expanded",o?"true":"false")},lab=()=>{pin.setAttribute("aria-pressed",P?"true":"false")},sv=()=>{try{localStorage.setItem("pogo-fpin",P?"1":"0")}catch(e){}};
+ fx.onclick=()=>set(true);
+ $("#fcl").onclick=()=>{set(false);P=false;lab();sv()};
+ pin.onclick=()=>{P=!P;lab();sv()};
+ window.fReset=()=>set(P);lab();set(P)})();
 </script>
-<p id="dbg" style="text-align:center;font-size:11px;color:var(--mute);padding-bottom:24px">v23c</p></body>
+<p id="dbg" style="text-align:center;font-size:11px;color:var(--mute);padding-bottom:24px">v24b</p></body>
 </html>
