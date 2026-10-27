@@ -499,6 +499,110 @@ async function pageStats(b){
   if(dex[0].t){b.append($$("h2",null,"Pokédex by type"));const T=grp(d=>d.t||[]);for(const k of Object.keys(T).sort())b.append(bar(k,T[k][0],T[k][1],tIcon(k,26)))}}
  if(b.children.length<2)b.append($$("p","msg","Nothing to show yet."))}
 
+const EVR=`Bisharp>Kingambit|100|Make it your buddy, then defeat 15 Dark- or Steel-type Pokémon in raids.
+Primeape>Annihilape|100|Make it your buddy, then defeat 30 Ghost- or Psychic-type Pokémon.
+Charcadet>Armarouge|50|Make it your buddy, then defeat 30 Psychic-type Pokémon.
+Charcadet>Ceruledge|50|Make it your buddy, then defeat 30 Ghost-type Pokémon.
+Pancham>Pangoro|50|Make it your buddy, then catch 32 Dark-type Pokémon.
+Slowpoke>Slowbro|50|Galarian Slowpoke: make it your buddy, then catch 30 Poison-type Pokémon.|F
+Slowpoke>Slowking|50|Galarian Slowpoke: make it your buddy, then catch 30 Psychic-type Pokémon. (Normal Slowpoke uses a King’s Rock.)|F
+Farfetch’d>Sirfetch’d|50|Galarian Farfetch’d: make it your buddy, then make 10 Excellent Throws.
+Yamask>Runerigus|50|Galarian Yamask: make it your buddy, then win 10 raids.
+Qwilfish>Overqwil|50|Hisuian Qwilfish: make it your buddy, then win 10 raids.
+Poipole>Naganadel|200|Make it your buddy, then catch 20 Dragon-type Pokémon.
+Kubfu>Urshifu|200|Make it your buddy, then defeat 30 Dark-type Pokémon in raids or Max Battles for Single Strike, or 30 Water-type Pokémon for Rapid Strike.
+Spritzee>Aromatisse|50|Use an Incense while it is your buddy.
+Swirlix>Slurpuff|50|Feed your buddy 25 treats.
+Woobat>Swoobat|50|Walk 1 km with it as your buddy.
+Sneasel>Sneasler|100|Hisuian Sneasel: walk 7 km as your buddy, then evolve during the daytime.|F
+Eevee>Espeon|25|Walk 10 km with it as your buddy and evolve it in the daytime while it is still your buddy.
+Eevee>Umbreon|25|Walk 10 km with it as your buddy and evolve it at night while it is still your buddy.
+Mime Jr.>Mr. Mime|50|Walk 15 km with it as your buddy.
+Bonsly>Sudowoodo|50|Walk 15 km with it as your buddy.
+Happiny>Chansey|25|Walk 15 km with it as your buddy.
+Feebas>Milotic|100|Walk 20 km with it as your buddy.
+Pawmo>Pawmot|100|Walk 25 km with it as your buddy.
+Eevee>Sylveon|25|Earn 70 buddy hearts with it as your buddy.
+Floette>Florges|100|Earn 20 buddy hearts with it as your buddy.
+Snom>Frosmoth|400|Earn 10 buddy hearts with it as your buddy and evolve it at night.
+Aipom>Ambipom|100|Needs a Sinnoh Stone.
+Dusclops>Dusknoir|100|Needs a Sinnoh Stone.
+Electabuzz>Electivire|100|Needs a Sinnoh Stone.
+Gligar>Gliscor|100|Needs a Sinnoh Stone.
+Kirlia>Gallade|100|Male Kirlia only. Needs a Sinnoh Stone.
+Lickitung>Lickilicky|100|Needs a Sinnoh Stone.
+Magmar>Magmortar|100|Needs a Sinnoh Stone.
+Misdreavus>Mismagius|100|Needs a Sinnoh Stone.
+Murkrow>Honchkrow|100|Needs a Sinnoh Stone.
+Porygon2>Porygon-Z|100|Needs a Sinnoh Stone.
+Rhydon>Rhyperior|100|Needs a Sinnoh Stone.
+Roselia>Roserade|100|Needs a Sinnoh Stone.
+Sneasel>Weavile|100|Needs a Sinnoh Stone.
+Snorunt>Froslass|100|Female Snorunt only. Needs a Sinnoh Stone.
+Swinub>Mamoswine|100|Needs a Sinnoh Stone.
+Tangela>Tangrowth|100|Needs a Sinnoh Stone.
+Togetic>Togekiss|100|Needs a Sinnoh Stone.
+Yanma>Yanmega|100|Needs a Sinnoh Stone.
+Pansage>Simisage|50|Needs a Unova Stone.
+Pansear>Simisear|50|Needs a Unova Stone.
+Panpour>Simipour|50|Needs a Unova Stone.
+Munna>Musharna|50|Needs a Unova Stone.
+Minccino>Cinccino|50|Needs a Unova Stone.
+Eelektrik>Eelektross|100|Needs a Unova Stone.
+Lampent>Chandelure|100|Needs a Unova Stone.
+Gloom>Bellossom|100|Needs a Sun Stone.
+Sunkern>Sunflora|50|Needs a Sun Stone.
+Cottonee>Whimsicott|50|Needs a Sun Stone.
+Petilil>Lilligant|50|Needs a Sun Stone.
+Helioptile>Heliolisk|50|Needs a Sun Stone.
+Poliwhirl>Politoed|100|Needs a King’s Rock.
+Onix>Steelix|50|Needs a Metal Coat.
+Scyther>Scizor|50|Needs a Metal Coat.
+Seadra>Kingdra|100|Needs a Dragon Scale.
+Porygon>Porygon2|25|Needs an Up-Grade.
+Gimmighoul>Gholdengo||Costs 999 Gimmighoul Coins instead of candy.
+Eevee>Leafeon|25|Evolve it while in range of a PokéStop with an active Mossy Lure Module.
+Eevee>Glaceon|25|Evolve it while in range of a PokéStop with an active Glacial Lure Module.
+Magneton>Magnezone|100|Evolve it while in range of a PokéStop with an active Magnetic Lure Module.
+Nosepass>Probopass|50|Evolve it while in range of a PokéStop with an active Magnetic Lure Module.
+Charjabug>Vikavolt|100|Evolve it while in range of a PokéStop with an active Magnetic Lure Module.
+Crabrawler>Crabominable|50|Evolve it while in range of a PokéStop with an active Glacial Lure Module.
+Sliggoo>Goodra|100|Evolve it in rainy weather, or near a PokéStop with an active Rainy Lure Module.
+Ursaring>Ursaluna||Evolve it during a full moon in Pokémon GO.
+Cosmoem>Solgaleo||Evolve it during the daytime.
+Cosmoem>Lunala||Evolve it at night.
+Rockruff>Lycanroc||Daytime gives Midday, night gives Midnight, and dusk gives Dusk (only for the eligible special Rockruff).
+Yungoos>Gumshoos||Evolve it during the daytime.
+Fomantis>Lurantis||Evolve it during the daytime.
+Amaura>Aurorus||Evolve it at night.
+Tyrunt>Tyrantrum||Evolve it during the daytime.
+Inkay>Malamar||Turn your phone upside down while evolving it.
+Burmy>Wormadam||Female Burmy only. Its cloak decides the form.
+Burmy>Mothim||Male Burmy only.
+Combee>Vespiquen||Female Combee only.
+Salandit>Salazzle||Female Salandit only.
+Applin>Flapple|200|Needs 20 Tart Apples.
+Applin>Appletun|200|Needs 20 Sweet Apples.
+Applin>Dipplin|200|Needs 20 Syrupy Apples.
+Kadabra>Alakazam|100|Trade it to a friend, or evolve one you received in a trade for free.
+Machoke>Machamp|100|Trade it to a friend, or evolve one you received in a trade for free.
+Graveler>Golem|100|Trade it to a friend, or evolve one you received in a trade for free.
+Haunter>Gengar|100|Trade it to a friend, or evolve one you received in a trade for free.
+Boldore>Gigalith|200|Trade it to a friend, or evolve one you received in a trade for free.
+Gurdurr>Conkeldurr|200|Trade it to a friend, or evolve one you received in a trade for free.
+Karrablast>Escavalier|200|Trade it to a friend, or evolve one you received in a trade for free.
+Shelmet>Accelgor|200|Trade it to a friend, or evolve one you received in a trade for free.
+Phantump>Trevenant|200|Trade it to a friend, or evolve one you received in a trade for free.
+Pumpkaboo>Gourgeist|200|Trade it to a friend, or evolve one you received in a trade for free.
+Eevee>Vaporeon||Random: you cannot choose between Vaporeon, Jolteon and Flareon.
+Eevee>Jolteon||Random: you cannot choose between Vaporeon, Jolteon and Flareon.
+Eevee>Flareon||Random: you cannot choose between Vaporeon, Jolteon and Flareon.
+Wurmple>Silcoon||Random: Silcoon or Cascoon.
+Wurmple>Cascoon||Random: Silcoon or Cascoon.
+Clamperl>Huntail||Random: Huntail or Gorebyss.
+Clamperl>Gorebyss||Random: Huntail or Gorebyss.`;
+const EVM=new Map();EVR.split("\n").forEach(l=>{const[p,c,t,f]=l.split("|"),[a,b]=p.split(">"),k=a.toLowerCase().replace(/[^a-zà-ÿ]/g,"")+">"+b.toLowerCase().replace(/[^a-zà-ÿ]/g,"");(EVM.get(k)||EVM.set(k,[]).get(k)).push({c:+c||0,t,f:!!f})});
+const EVN=[["Kingambit","2026-11-21T14:00","2026-11-21T21:00","Pawniard Community Day: Kingambit only needs 1 qualifying raid defeat instead of 15 (2pm to 9pm local time)."]];
 const EK="pogo-evo-targets";
 const eget=()=>{try{return JSON.parse(localStorage.getItem(EK)||"[]").map(Number)}catch(e){return[]}};
 const eset=a=>{try{localStorage.setItem(EK,JSON.stringify(a))}catch(e){}};
@@ -507,6 +611,9 @@ async function evoData(){
  for(const p of arr){const sid=+p.pokemon_id;for(const e of (p.evolutions||[])){const t=+e.pokemon_id;if(!t||!sid||t===sid)continue;const m=map.get(t)||{t,srcs:[]};if(!m.srcs.some(x=>x.s===sid))m.srcs.push({s:sid,req:e});map.set(t,m)}}
  return {N,map}}
 function evoAdvice(sn,tn,e){
+ const cur=EVM.get(nrm(sn)+">"+nrm(tn));
+ if(cur){const cs=[],ck=[];cur.forEach(r=>{cs.push((r.c?"Costs "+r.c+" "+sn+" Candy. ":"")+r.t);if(/lure/i.test(r.t))ck.push("lure");if(/trade/i.test(r.t))ck.push("trade");if(/buddy|walk/i.test(r.t))ck.push("buddy")});if(!cur.some(r=>r.f))return {st:cs,kw:ck}
+  var pre=cs,pk=ck}
  const st=[],kw=[],C=+e.candy_required,known=["pokemon_id","pokemon_name","form","candy_required","item_required","lure_item_required","lure_required","no_candy_cost_if_traded","must_be_buddy_walked","buddy_distance_required","gender_required","only_evolves_in_daytime","only_evolves_in_nighttime","priority"];
  st.push("Evolve your "+sn+" into "+tn+(C?" for "+C+" "+sn+" Candy.":"."));
  if(e.item_required){st.push("You also need a "+e.item_required+". Get them from PokéStops, Research, Raids, Gifts or the shop.");kw.push("item")}
@@ -518,7 +625,7 @@ function evoAdvice(sn,tn,e){
  if(e.only_evolves_in_daytime)st.push("Evolve it during the day.");
  if(e.only_evolves_in_nighttime)st.push("Evolve it at night.");
  for(const k in e){if(known.includes(k)||!e[k])continue;st.push(k.replace(/_/g," ").replace(/^./,c=>c.toUpperCase())+(e[k]===true?"":": "+e[k])+".")}
- return {st,kw}}
+ return {st:(typeof pre!=="undefined"?[...pre,"Standard form:"]:[]).concat(st),kw:kw.concat(typeof pk!=="undefined"?pk:[])}}
 function evoEvents(ev,names,kw){const now=Date.now(),out=[];
  for(const e of ev){const s=+new Date(e.start),en=+new Date(e.end||e.start);if(!(en>=now&&s-now<864e5))continue;const n=(e.name||"")+" "+(e.heading||"");let why=null;
   for(const x of names){if(x&&x.length>2&&new RegExp("\\b"+x.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+"\\b","i").test(n)){why="features "+x;break}}
@@ -542,7 +649,7 @@ async function pageEvo(b){
    const on=lk.has(t),bt=$$("button","retry"+(on?"":" off"),on?"Locked in ✓":"Lock in");bt.type="button";bt.onclick=()=>{const a=new Set(eget());on?a.delete(t):a.add(t);eset([...a]);draw();genNotifs()};
    r.append(im,tx,bt);k.append(r);
    if(on){const bx=$$("div","ev"),kws=[];bx.append($$("p",null,"How to get "+tn));own.forEach(x=>{const a=evoAdvice(N[x.s].name,tn,x.req);kws.push(...a.kw);a.st.forEach(l=>bx.append($$("p",null,"• "+l)))});
-    bx.append($$("p",null,"• Tip: a Lucky Egg doubles the XP, so evolve several at once."));
+    EVN.forEach(([nn,a,z,tx])=>{if(nrm(nn)===nrm(tn)&&+new Date(z)>Date.now())bx.append($$("p",null,"📅 "+tx))});bx.append($$("p",null,"• Tip: a Lucky Egg doubles the XP, so evolve several at once."));
     const hits=evoEvents(ev,[tn,...own.map(x=>N[x.s].name)],kws);bx.append($$("p",null,hits.length?"Active or starting soon: "+hits.map(h=>h.e.name+" ("+h.why+")").join("; "):"No event is boosting this evolution right now. You will get a notification when one starts."));k.append(bx)}
    return k};
   const L=c.filter(x=>lk.has(x.m.t)),R=c.filter(x=>!lk.has(x.m.t));
@@ -560,7 +667,7 @@ async function genNotifs(){
  const L=[{id:"ver-"+VER,title:"Updated to "+VER,body:"See What’s new at the top of the screen.",d:Date.now()}];
  try{const cd=await getD("community_days"),now=new Date();for(const c of cd){const st=new Date(c.start_date+"T12:00:00"),days=(st-now)/864e5;if(days>-0.5&&days<=7)L.push({id:"cd-"+c.community_day_number,title:"Community Day: "+(c.boosted_pokemon||[]).join(", "),body:fd(c.start_date)+(c.event_moves&&c.event_moves[0]?" · Special move: "+c.event_moves[0].move:""),d:st.getTime()})}}catch(e){}
  try{const ev=(await getJ("data/events.json")).slice().sort((a,c)=>new Date(a.start)-new Date(c.start)),now=Date.now();let k=0;for(const e of ev){const t=+new Date(e.start);if(t>now&&t-now<864e5&&k<5){k++;L.push({id:"ev-"+e.eventID,title:"Starting soon: "+e.name,body:fmt(new Date(e.start))+" · "+e.heading,d:t})}}}catch(e){}
- try{const tg=eget();if(tg.length){const [{N,map},ev]=await Promise.all([evoData(),getJ("data/events.json")]);for(const id of tg){const m=map.get(id);if(!m||!N[id])continue;const tn=N[id].name,sn=m.srcs.map(x=>N[x.s]&&N[x.s].name).filter(Boolean),kw=[];m.srcs.forEach(x=>kw.push(...evoAdvice("","",x.req).kw));for(const {e,why} of evoEvents(ev,[tn,...sn],kw))L.push({id:"evo-"+id+"-"+e.eventID,title:"Evolution boost for "+tn,body:e.name+" ("+why+") · "+fmt(new Date(e.start)),d:+new Date(e.start)})}}}catch(e){}
+ try{const tg=eget();if(tg.length){const [{N,map},ev]=await Promise.all([evoData(),getJ("data/events.json")]);for(const id of tg){const m=map.get(id);if(!m||!N[id])continue;const tn=N[id].name,sn=m.srcs.map(x=>N[x.s]&&N[x.s].name).filter(Boolean),kw=[];m.srcs.forEach(x=>kw.push(...evoAdvice((N[x.s]||{}).name||"",tn,x.req).kw));for(const [nn,a,z,tx] of EVN){if(nrm(nn)===nrm(tn)){const t0=+new Date(a),t1=+new Date(z),now=Date.now();if(t1>now&&t0-now<7*864e5)L.push({id:"evn-"+id+"-"+a,title:"Evolution boost for "+tn,body:tx,d:t0})}}for(const {e,why} of evoEvents(ev,[tn,...sn],kw))L.push({id:"evo-"+id+"-"+e.eventID,title:"Evolution boost for "+tn,body:e.name+" ("+why+") · "+fmt(new Date(e.start)),d:+new Date(e.start)})}}}catch(e){}
  nadd(L)}
 const ICO={del:'<svg viewBox="0 0 24 24"><path d="M9 3h6l1 2h4v2H4V5h4zM6 9h12l-1 12H7z"/></svg>',arc:'<svg viewBox="0 0 24 24"><path d="M3 4h18v4H3zM5 9h14v11H5zm4 3v2h6v-2z"/></svg>',un:'<svg viewBox="0 0 24 24"><path d="M12 3l6 7h-4v6h-4v-6H6zM5 19h14v2H5z"/></svg>'};
 function swipe(w,fg,onDel,onArc,onTap){let x0=0,y0=0,dx=0,on=false,lock=null,W=1;
@@ -593,8 +700,8 @@ async function pageNotifs(b){
   out.append($$("p","hs","Swipe right to delete, left to "+(tab==="inbox"?"archive":"move back to inbox")+". Let go early to cancel."));L.forEach(n=>out.append(item(n)))};
  bi.onclick=()=>{tab="inbox";draw()};ba.onclick=()=>{tab="archived";draw()};bm.onclick=()=>{save(nget().map(x=>x.s==="unread"?{...x,s:"read"}:x));draw()};
  b.append(tabs,out);draw()}
-const VER="v28";
-const CHANGES=[["v28","New My evolutions page: see Pokémon you can evolve into, lock one in for advice on how to get it, and get a notification when an event supports it. My progress has symbols and a smaller button. A share button next to Credits sends the web address via WhatsApp or any other app."],["v27j","Mega, Dynamax and Gigantamax symbols now use your own screenshots exactly."],["v27i","New Mega, Dynamax and Gigantamax symbols in My collections."],["v27h","Round type symbols on every Pokémon that has types, region symbols in the region picker, and a new 100% symbol in My collections."],["v27g","My collections: new round Pokémon GO style symbols for Pokédex, Shiny, Lucky, Shadow, Purified, Costume (event), Dynamax and Gigantamax."],["v27f","Remote trade checker: the Event flag now checks your Costume list and shows how many costumes of that Pokémon you are still missing."],["v27e","Remote trade checker: removed the ✨ and ✕ buttons. Under each Pokémon, tap Shiny, Purified, Dynamax or Event to flag it; flagged Purified and Dynamax count towards your lists when you still need them."],["v27d","Remote trade checker badges now use round Pokémon GO style icons for Dex, Lucky, Shiny, XXL and XXS."],["v27c","Remote trade checker: tighter layout, a picture cut from your screenshot for each Pokémon, and one badge per gap it fills (📖 Dex, 🍀 Lucky, ✨ Shiny, 📏 XXL / XXS) or “Not required”."],["v27","Remote trade checker now spots the three-star shiny marker in screenshots and counts those Pokémon towards your Shiny Dex. Tap ✨ on a result to correct it."],["v26i","Remote trade checker: tap ✨ on a result to mark it as shiny, so it counts towards your Shiny Dex."],["v26h","Remote trade checker: cleaner results, Shiny Dex hints, and XXL / XXS suggestions when a nickname contains XL, XXL, XS or XXS."],["v26e","Added the missing Pokémon: Basculegion, Arrokuda, Barraskewda, Flittle and Espathra. Any released Pokémon missing from the data are now filled in automatically."],["v26d","My collections tiles reordered into two columns."],["v26c","Squawkabilly, Maschiff, Mabosstiff, Bramblin, Brambleghast, Orthworm and Flamigo are now marked as available."],["v26b","Minior, Mimikyu, Zeraora, Blipbug, Dottler, Orbeetle, Silicobra, Sandaconda, Toxel, Toxtricity and Sinistea are now marked as available. Meltan and Melmetal sit under an Unknown region, and Galar and Hisui are separate regions."],["v26","Lock selections switch in Settings. Region filter on every Dex. Regional Pokémon now lists only Pokémon that are exclusive to certain regions, with where each is found."],["v25b","The main Pokédex filters now include Region: choose one or more regions, then Show selected."],["v25","Filter box has Collect all shown and Clear all shown for the current Dex. You confirm by sliding, and each Dex is changed on its own."],["v24","Tidier Dex pages: a thin title bar with your progress and % complete, a home button in the top bar, and a ▼ button that opens the filters. Pin keeps them open, ▲ Close tucks them away."],["v23","New illustrated welcome screen. The hologram still shows a random Pokémon from your collection."],["v22","New welcome screen with a Pokédex hologram showing a random Pokémon from your collection. Tap Enter Dex to start. After 10 minutes of no use the app returns to it."],["v21","Remote trade checker now has Normal or Guaranteed lucky trade, and a screenshot upload that reads the other trainer’s Pokémon names and ranks them by how many Pokédex (and Lucky) gaps they fill. A ? marks names it was not sure about."],["v20","Remote raid checker is now the Remote trade checker: add the Pokémon another trainer has for trade (typed or pasted) and see which Pokédex, Shiny, Lucky and Purified gaps it would fill."],["v19b","Pokémon that are not yet released in Pokémon GO are now greyed out, marked “Not yet in Pokémon GO”, can’t be ticked and don’t count in your totals."],["v19","Settings moved to a cog icon in the top bar, between What’s new and the bell."],["v18","A yellow ? now marks any costume picture that might not match exactly. Added real pictures for Absol and Blitzle (Fashionable), Charizard and Charmander (Friede’s Goggles), Charjabug (Winter) and Chimchar (Lucas’s and Dawn’s hats)."],["v17","New top bar with the version and What’s new, Remote raid checker, tidier My collections with Pokémon pictures, and a Dynamax list that builds up over time."],["v16","The app checks for updates every time you open it."],["v15","New home screen and a notification bell with swipe to delete or archive."],["v14","My progress, backup of all lists, CSV export and a shiny picture switch."],["v13","Pokédex, Regional Pokémon, Mega, Gigantamax, Legendary & Mythical, Purified, 100%, XXL and XXS lists."],["v12","Events, Community Days and Raid bosses pages."],["v11","Works offline, desktop layout and text size."],["v10","Many more exact costume pictures."]];
+const VER="v28b";
+const CHANGES=[["v28b","My evolutions advice now uses a built-in guide to special evolution requirements: buddy tasks, walking, hearts, evolution items, Lure Modules, time of day, gender, apples and trades. It also knows about the Kingambit Community Day shortcut on 21 November 2026."],["v28","New My evolutions page: see Pokémon you can evolve into, lock one in for advice on how to get it, and get a notification when an event supports it. My progress has symbols and a smaller button. A share button next to Credits sends the web address via WhatsApp or any other app."],["v27j","Mega, Dynamax and Gigantamax symbols now use your own screenshots exactly."],["v27i","New Mega, Dynamax and Gigantamax symbols in My collections."],["v27h","Round type symbols on every Pokémon that has types, region symbols in the region picker, and a new 100% symbol in My collections."],["v27g","My collections: new round Pokémon GO style symbols for Pokédex, Shiny, Lucky, Shadow, Purified, Costume (event), Dynamax and Gigantamax."],["v27f","Remote trade checker: the Event flag now checks your Costume list and shows how many costumes of that Pokémon you are still missing."],["v27e","Remote trade checker: removed the ✨ and ✕ buttons. Under each Pokémon, tap Shiny, Purified, Dynamax or Event to flag it; flagged Purified and Dynamax count towards your lists when you still need them."],["v27d","Remote trade checker badges now use round Pokémon GO style icons for Dex, Lucky, Shiny, XXL and XXS."],["v27c","Remote trade checker: tighter layout, a picture cut from your screenshot for each Pokémon, and one badge per gap it fills (📖 Dex, 🍀 Lucky, ✨ Shiny, 📏 XXL / XXS) or “Not required”."],["v27","Remote trade checker now spots the three-star shiny marker in screenshots and counts those Pokémon towards your Shiny Dex. Tap ✨ on a result to correct it."],["v26i","Remote trade checker: tap ✨ on a result to mark it as shiny, so it counts towards your Shiny Dex."],["v26h","Remote trade checker: cleaner results, Shiny Dex hints, and XXL / XXS suggestions when a nickname contains XL, XXL, XS or XXS."],["v26e","Added the missing Pokémon: Basculegion, Arrokuda, Barraskewda, Flittle and Espathra. Any released Pokémon missing from the data are now filled in automatically."],["v26d","My collections tiles reordered into two columns."],["v26c","Squawkabilly, Maschiff, Mabosstiff, Bramblin, Brambleghast, Orthworm and Flamigo are now marked as available."],["v26b","Minior, Mimikyu, Zeraora, Blipbug, Dottler, Orbeetle, Silicobra, Sandaconda, Toxel, Toxtricity and Sinistea are now marked as available. Meltan and Melmetal sit under an Unknown region, and Galar and Hisui are separate regions."],["v26","Lock selections switch in Settings. Region filter on every Dex. Regional Pokémon now lists only Pokémon that are exclusive to certain regions, with where each is found."],["v25b","The main Pokédex filters now include Region: choose one or more regions, then Show selected."],["v25","Filter box has Collect all shown and Clear all shown for the current Dex. You confirm by sliding, and each Dex is changed on its own."],["v24","Tidier Dex pages: a thin title bar with your progress and % complete, a home button in the top bar, and a ▼ button that opens the filters. Pin keeps them open, ▲ Close tucks them away."],["v23","New illustrated welcome screen. The hologram still shows a random Pokémon from your collection."],["v22","New welcome screen with a Pokédex hologram showing a random Pokémon from your collection. Tap Enter Dex to start. After 10 minutes of no use the app returns to it."],["v21","Remote trade checker now has Normal or Guaranteed lucky trade, and a screenshot upload that reads the other trainer’s Pokémon names and ranks them by how many Pokédex (and Lucky) gaps they fill. A ? marks names it was not sure about."],["v20","Remote raid checker is now the Remote trade checker: add the Pokémon another trainer has for trade (typed or pasted) and see which Pokédex, Shiny, Lucky and Purified gaps it would fill."],["v19b","Pokémon that are not yet released in Pokémon GO are now greyed out, marked “Not yet in Pokémon GO”, can’t be ticked and don’t count in your totals."],["v19","Settings moved to a cog icon in the top bar, between What’s new and the bell."],["v18","A yellow ? now marks any costume picture that might not match exactly. Added real pictures for Absol and Blitzle (Fashionable), Charizard and Charmander (Friede’s Goggles), Charjabug (Winter) and Chimchar (Lucas’s and Dawn’s hats)."],["v17","New top bar with the version and What’s new, Remote raid checker, tidier My collections with Pokémon pictures, and a Dynamax list that builds up over time."],["v16","The app checks for updates every time you open it."],["v15","New home screen and a notification bell with swipe to delete or archive."],["v14","My progress, backup of all lists, CSV export and a shiny picture switch."],["v13","Pokédex, Regional Pokémon, Mega, Gigantamax, Legendary & Mythical, Purified, 100%, XXL and XXS lists."],["v12","Events, Community Days and Raid bosses pages."],["v11","Works offline, desktop layout and text size."],["v10","Many more exact costume pictures."]];
 const nrm=x=>x.toLowerCase().replace(/[^a-zà-ÿ]/g,"");
 const lev=(a,b)=>{const m=a.length,n=b.length;let p=Array.from({length:n+1},(_,j)=>j);for(let i=1;i<=m;i++){const c=[i];for(let j=1;j<=n;j++)c[j]=Math.min(p[j]+1,c[j-1]+1,p[j-1]+(a[i-1]===b[j-1]?0:1));p=c}return p[n]};
 let TESS;const loadTess=()=>TESS||(TESS=new Promise((ok,no)=>{if(window.Tesseract)return ok(window.Tesseract);const x=document.createElement("script");x.src="https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js";x.onload=()=>ok(window.Tesseract);x.onerror=()=>{TESS=null;no(new Error("load"))};document.head.append(x)}));
