@@ -16,7 +16,7 @@
 <title>GO Costume Checklist</title>
 <style>
 :root{--bg:#eaf0f9;--card:#fff;--ink:#07224E;--mute:#4f6487;--line:#cdd8ea;--have:#FFCB08;--havebg:#FFF6CC;--focus:#FFCB08;--sky1:#0B4DA2;--sky2:#07224E;--red:#E21C25}
-@media(prefers-color-scheme:dark){:root{--bg:#061633;--card:#0d2a57;--ink:#eef3fb;--mute:#9db1d2;--line:#22427a;--have:#FFCB08;--havebg:#3a3410;--sky1:#0B4DA2;--sky2:#07224E}}
+@media(prefers-color-scheme:dark){:root:where(html:not([data-mode=light])){--bg:#061633;--card:#0d2a57;--ink:#eef3fb;--mute:#9db1d2;--line:#22427a;--have:#FFCB08;--havebg:#3a3410;--sky1:#0B4DA2;--sky2:#07224E}}:root:where(html[data-mode=dark]){--bg:#061633;--card:#0d2a57;--ink:#eef3fb;--mute:#9db1d2;--line:#22427a;--have:#FFCB08;--havebg:#3a3410;--sky1:#0B4DA2;--sky2:#07224E}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.4 -apple-system,system-ui,"Avenir Next",sans-serif}
@@ -57,7 +57,7 @@ footer button{flex:1;padding:10px 12px;border:0;border-radius:999px;background:v
 
 /* GO theme v4 */
 :root{--bg:#e6f6f2;--card:#fff;--ink:#16343a;--mute:#5d7a80;--line:#cfeae3;--have:#1fb89a;--havebg:#e9faf5;--sky1:#4fe0c0;--sky2:#14948f}
-@media(prefers-color-scheme:dark){:root{--bg:#08201f;--card:#0f3535;--ink:#e8fbf7;--mute:#97c2bd;--line:#1c5559;--havebg:#124340;--sky1:#14948f;--sky2:#0b5f5f}}
+@media(prefers-color-scheme:dark){:root:where(html:not([data-mode=light])){--bg:#08201f;--card:#0f3535;--ink:#e8fbf7;--mute:#97c2bd;--line:#1c5559;--havebg:#124340;--sky1:#14948f;--sky2:#0b5f5f}}:root:where(html[data-mode=dark]){--bg:#08201f;--card:#0f3535;--ink:#e8fbf7;--mute:#97c2bd;--line:#1c5559;--havebg:#124340;--sky1:#14948f;--sky2:#0b5f5f}
 body{font-family:ui-rounded,"SF Pro Rounded",-apple-system,system-ui,sans-serif}
 header{background:radial-gradient(circle at 94% -6%,rgba(255,255,255,.3) 0 46px,rgba(255,255,255,.12) 47px 52px,transparent 53px),linear-gradient(165deg,#4fe0c0,#14948f)}
 #count{background:#fff;color:#14948f}
@@ -75,12 +75,12 @@ footer button{background:#14948f}
 
 /* v5 GO Pokedex theme */
 :root{--bg:#8fd8ef;--card:rgba(255,255,255,.4);--ink:#1578a6;--mute:#4f8fb0;--line:rgba(255,255,255,.6);--havebg:rgba(255,255,255,.78);--have:#ffc928}
-@media(prefers-color-scheme:dark){:root{--bg:#0a4668;--card:rgba(255,255,255,.1);--ink:#d9f2ff;--mute:#8fc0dc;--line:rgba(255,255,255,.2);--havebg:rgba(255,255,255,.22)}}
+@media(prefers-color-scheme:dark){:root:where(html:not([data-mode=light])){--bg:#0a4668;--card:rgba(255,255,255,.1);--ink:#d9f2ff;--mute:#8fc0dc;--line:rgba(255,255,255,.2);--havebg:rgba(255,255,255,.22)}}:root:where(html[data-mode=dark]){--bg:#0a4668;--card:rgba(255,255,255,.1);--ink:#d9f2ff;--mute:#8fc0dc;--line:rgba(255,255,255,.2);--havebg:rgba(255,255,255,.22)}
 html{background:var(--bg)}
 body{background:linear-gradient(180deg,#bdf0f1 0,#8fd8ef 45%,#5fc4ec 100%) fixed;color:var(--ink)}
-@media(prefers-color-scheme:dark){body{background:linear-gradient(180deg,#0d6b86 0,#0a4668 50%,#072f4c 100%) fixed}}
+@media(prefers-color-scheme:dark){:where(html:not([data-mode=light])) body{background:linear-gradient(180deg,#0d6b86 0,#0a4668 50%,#072f4c 100%) fixed}}:where(html[data-mode=dark]) body{background:linear-gradient(180deg,#0d6b86 0,#0a4668 50%,#072f4c 100%) fixed}
 header{position:sticky;top:calc(env(safe-area-inset-top) + 6px);margin:calc(env(safe-area-inset-top) + 6px) 10px 0;padding:12px 14px;border-radius:26px;background:rgba(255,255,255,.62);color:var(--ink);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:2px solid rgba(255,255,255,.7);box-shadow:0 6px 18px rgba(21,120,166,.18)}
-@media(prefers-color-scheme:dark){header{background:rgba(10,50,80,.7)}}
+@media(prefers-color-scheme:dark){:where(html:not([data-mode=light])) header{background:rgba(10,50,80,.7)}}:where(html[data-mode=dark]) header{background:rgba(10,50,80,.7)}
 h1{color:var(--ink);letter-spacing:.5px}
 #count{background:#1380b5;color:#fff;font-size:16px;padding:5px 16px}
 .bar{background:rgba(19,128,181,.2)}.bar i{background:#1380b5}
@@ -105,7 +105,7 @@ footer button{background:#1380b5}
 .tile{display:flex;align-items:center;gap:16px;padding:18px;margin-bottom:14px;border-radius:28px;background:rgba(255,255,255,.62);border:2px solid rgba(255,255,255,.8);box-shadow:0 6px 18px rgba(21,120,166,.18);text-decoration:none;color:var(--ink);font-size:22px;font-weight:800}
 .tile b{width:64px;height:64px;border-radius:50%;display:grid;place-items:center;font-size:32px;background:radial-gradient(circle at 50% 30%,#fff,#bdeee3)}
 .tile small{display:block;font-size:13px;font-weight:600;color:var(--mute);margin-top:2px}
-@media(prefers-color-scheme:dark){.tile{background:rgba(10,50,80,.7)}}
+@media(prefers-color-scheme:dark){:where(html:not([data-mode=light])) .tile{background:rgba(10,50,80,.7)}}:where(html[data-mode=dark]) .tile{background:rgba(10,50,80,.7)}
 /* v7 per-list themes */
 [data-theme=shiny]{--acc:#E8A820;--ink:#C98712;--mute:#B58B3C;--have:#E8A820;--hdr:rgba(255,249,229,.88);--card:rgba(255,255,255,.45);--havebg:rgba(255,255,255,.85);--line:rgba(255,255,255,.7)}
 [data-theme=lucky]{--acc:#F5922B;--ink:#E0791B;--mute:#C48A55;--have:#F5922B;--hdr:rgba(255,243,228,.88);--card:rgba(255,255,255,.45);--havebg:rgba(255,255,255,.85);--line:rgba(255,255,255,.7)}
@@ -128,7 +128,7 @@ footer button{background:#1380b5}
 .cb,.cl{color:#1380b5;font-weight:700;text-decoration:none}.cl{font-size:15px;text-decoration:underline}
 .cc{background:rgba(255,255,255,.62);border:2px solid rgba(255,255,255,.8);border-radius:20px;padding:12px 16px;margin:12px 0}
 .cc h3{margin:0 0 4px;font-size:16px;color:var(--ink)}.cc p{margin:0;font-size:14px;line-height:1.5;color:var(--ink)}.cc a{color:#1380b5;font-weight:700}
-@media(prefers-color-scheme:dark){.cc{background:rgba(10,50,80,.7)}}
+@media(prefers-color-scheme:dark){:where(html:not([data-mode=light])) .cc{background:rgba(10,50,80,.7)}}:where(html[data-mode=dark]) .cc{background:rgba(10,50,80,.7)}
 .retry{font:inherit;font-weight:700;background:#1380b5;color:#fff;border:0;border-radius:14px;padding:8px 14px;margin:6px 4px 0 0;min-height:44px}
 #net{position:sticky;top:0;z-index:50;background:#222;color:#fff;text-align:center;padding:6px;font-size:13px}
 :focus-visible{outline:3px solid #ffc928;outline-offset:2px}
@@ -141,13 +141,13 @@ body{zoom:var(--z,1)}
 .sp{width:48px;height:48px;object-fit:contain;flex:none}.row{display:flex;align-items:center;gap:10px}.row h3{margin:0}
 .sel{font:inherit;padding:10px 12px;border-radius:14px;border:2px solid rgba(255,255,255,.8);background:rgba(255,255,255,.85);color:#1578a6;margin:6px 0;max-width:100%}
 .cc p+p{margin-top:4px}.msg:empty{display:none}.rc{display:flex;gap:12px;align-items:center}.rp{width:68px;height:68px;border-radius:14px;background:rgba(255,255,255,.7);object-fit:cover;flex:none}.rm{flex:1;min-width:0}.rx{display:flex;gap:6px;flex:none}.rb{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px;align-items:flex-start}.bi{display:flex;flex-direction:column;align-items:center;gap:2px}.tg{background:none;border:0;padding:0;font:inherit;cursor:pointer;min-width:44px}.tg.dim svg{opacity:.35;filter:grayscale(.6)}.tg.dim em{color:var(--mute)}.rf{margin-top:8px}.tr2{display:flex;gap:10px;margin-bottom:14px}.tile.sm{flex:1;margin:0;padding:12px;gap:10px;font-size:16px;border-radius:22px;min-width:0}.tile.sm b.e{width:38px;height:38px;font-size:22px}.shr{background:none;border:0;color:#1380b5;vertical-align:middle;padding:6px 8px;margin-left:6px;cursor:pointer}.pi{display:inline-flex;vertical-align:middle;margin-right:8px}.pi svg,.pi img{width:26px;height:26px;border-radius:50%;object-fit:contain}.ev{margin:8px 0 0;padding:10px 12px;border-radius:14px;background:rgba(19,128,181,.12)}.ev p{margin:0 0 4px!important}.ev b{color:#1380b5}.evr{display:flex;gap:10px;align-items:center}.evr img{width:56px;height:56px;border-radius:14px;background:rgba(255,255,255,.7);flex:none}.evr div{flex:1;min-width:0}.cdr{flex-wrap:wrap;align-items:flex-start}.cdr h3{flex:1 1 150px;min-width:0;overflow-wrap:anywhere}.cdp{display:flex;flex-wrap:wrap;gap:4px;max-width:100%}.cdp .sp{width:44px;height:44px}#evi{background:none!important}.mdg{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:8px 0}.md{position:relative;font:inherit;color:var(--ink);background:rgba(255,255,255,.55);border:2px solid rgba(255,255,255,.8);border-radius:18px;padding:10px 4px 8px;display:flex;flex-direction:column;align-items:center;gap:2px;text-align:center;cursor:pointer;min-width:0}.md .mw{display:grid;place-items:center;width:62px;height:62px;border-radius:50%;box-sizing:border-box;border:5px solid var(--tc,#D3DCE4);background:#fff;box-shadow:inset 0 0 0 2px rgba(255,255,255,.8),0 0 0 1px rgba(0,0,0,.08);margin-bottom:6px;overflow:hidden}.md.t0 .mw .mimg,.md.t0 .mw .mi,.md.t0 .mw svg{opacity:.45;filter:grayscale(.85)}.md.t3 .mw,.md.t4 .mw{box-shadow:inset 0 0 0 2px rgba(255,255,255,.8),0 0 12px var(--tc)}.mimg{width:100%;height:100%;object-fit:cover;border-radius:50%;display:block}.md .mw .mi{width:100%!important;height:100%!important}.md b{font-size:12px;line-height:1.15;max-width:100%}.md small{font-size:11px;color:var(--mute)}.md small.n{opacity:.75}.mi{display:grid;place-items:center;border-radius:50%}.mx{position:absolute;top:4px;right:8px;font-size:12px;color:var(--mute)}.minp{font:inherit;width:100%;box-sizing:border-box;padding:10px 12px;border-radius:12px;border:2px solid rgba(255,255,255,.8);background:rgba(255,255,255,.8);margin-bottom:6px;color:#12445f}#info{position:relative;z-index:1}
-.hp{position:fixed;inset:0;z-index:9999;background:rgba(0,25,45,.55);display:flex;align-items:flex-end;justify-content:center;padding:16px;box-sizing:border-box}.hpc{width:100%;max-width:420px;background:#fff;color:#12445f;border-radius:24px;padding:18px 18px 14px;box-shadow:0 10px 40px rgba(0,0,0,.35);margin-bottom:max(12px,env(safe-area-inset-bottom))}.hpc h3{margin:0 0 6px;font-size:19px}.hpc p{margin:0 0 12px;font-size:15px;line-height:1.45}.hpc .hpd{font-size:12px;color:#4f8fb0;margin-bottom:6px}.hpc .row{justify-content:flex-end;gap:8px}.hpc .retry{margin:0}@media(prefers-color-scheme:dark){.hpc{background:#0d3552;color:#e6f6ff}.hpc .hpd{color:#8fc0dc}}.htp{display:flex;flex-wrap:wrap;gap:6px}.htp .retry{margin:0}
-body{min-height:100vh}html:has(body[data-theme=remote-lucky]){background:#e3d29c}.rsum{padding:10px 14px;margin:6px 0}.rsum .pb{margin-top:6px}.rtabs{gap:6px;margin:4px 0 10px}.rtabs .retry{margin:0;min-height:36px;padding:6px 14px}.rgg{display:grid;grid-template-columns:repeat(var(--c,4),1fr);gap:12px 4px}.rg{display:flex;flex-direction:column;align-items:center;text-align:center;min-width:0;gap:1px}.rgw{position:relative}.rgw>svg{width:100%;height:100%;fill:none;stroke-width:4.2}.rb0{stroke:rgba(19,128,181,.18)}.rb1{stroke:#1380b5;stroke-linecap:round}.rb1.done{stroke:#2bb673}.rgi{position:absolute;inset:17%;display:grid;place-items:center}.rgi svg,.rgi img{width:100%;height:100%;border-radius:50%;object-fit:contain}.rg b{font-size:14px;margin-top:2px}.rg small{font-size:11px;line-height:1.2;color:var(--mute);max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.rg small.n{opacity:.8}.ph{display:grid;place-items:center;border-radius:50%;background:rgba(19,128,181,.2);font-weight:800;font-size:13px;color:var(--ink)}.tile b.ib{background:none!important;border-radius:0;overflow:visible}.tile b.ib img{max-width:64px;max-height:64px;object-fit:contain;border-radius:8px}[data-theme=remote-lucky]{--ink:#fff8e6;--mute:#f6e8c4;--line:rgba(255,255,255,.4);background:linear-gradient(180deg,#9c7d58 0,#b99763 28%,#cdae72 58%,#dcc07f 100%) fixed!important}[data-theme=remote-lucky] .cc{background:rgba(80,45,10,.32);border-color:rgba(255,255,255,.4)}[data-theme=remote-lucky] .retry{background:#b8741f;color:#fff}[data-theme=remote-lucky] .retry.off{background:rgba(255,255,255,.3);color:#fff}[data-theme=remote-lucky] .bd.off{background:rgba(255,255,255,.25);color:#fff}[data-theme=remote-lucky] .cb{color:#fff}.tyi{display:block;margin-top:3px}.tyi svg{margin-right:4px;vertical-align:middle}.bi em{font-style:normal;font-size:11px;font-weight:700;color:var(--ink)}.bd{display:inline-flex;align-items:center;background:#1380b5;color:#fff;border-radius:999px;padding:3px 10px;font-size:13px;font-weight:700}.bd.off{background:rgba(19,128,181,.15);color:var(--mute)}.rx .retry{padding:6px 10px;margin:0}.cc>a{display:inline-block;margin-top:6px}
+.hp{position:fixed;inset:0;z-index:9999;background:rgba(0,25,45,.55);display:flex;align-items:flex-end;justify-content:center;padding:16px;box-sizing:border-box}.hpc{width:100%;max-width:420px;background:#fff;color:#12445f;border-radius:24px;padding:18px 18px 14px;box-shadow:0 10px 40px rgba(0,0,0,.35);margin-bottom:max(12px,env(safe-area-inset-bottom))}.hpc h3{margin:0 0 6px;font-size:19px}.hpc p{margin:0 0 12px;font-size:15px;line-height:1.45}.hpc .hpd{font-size:12px;color:#4f8fb0;margin-bottom:6px}.hpc .row{justify-content:flex-end;gap:8px}.hpc .retry{margin:0}@media(prefers-color-scheme:dark){:where(html:not([data-mode=light])) .hpc{background:#0d3552;color:#e6f6ff}:where(html:not([data-mode=light])) .hpc .hpd{color:#8fc0dc}}:where(html[data-mode=dark]) .hpc{background:#0d3552;color:#e6f6ff}:where(html[data-mode=dark]) .hpc .hpd{color:#8fc0dc}.htp{display:flex;flex-wrap:wrap;gap:6px}.htp .retry{margin:0}
+body{min-height:100vh}html:has(body[data-theme=remote-lucky]){background:#e3d29c}.rsum{padding:10px 14px;margin:6px 0}.rsum .pb{margin-top:6px}.rtabs{gap:6px;margin:4px 0 10px;flex-wrap:wrap}.rtabs .retry{margin:0;min-height:36px;padding:6px 11px}.rgg{display:grid;grid-template-columns:repeat(var(--c,4),1fr);gap:12px 4px}.rg{display:flex;flex-direction:column;align-items:center;text-align:center;min-width:0;gap:1px}.rgw{position:relative}.rgw>svg{width:100%;height:100%;fill:none;stroke-width:4.2}.rb0{stroke:rgba(19,128,181,.18)}.rb1{stroke:#1380b5;stroke-linecap:round}.rb1.done{stroke:#2bb673}.rgi{position:absolute;inset:17%;display:grid;place-items:center}.rgi svg,.rgi img{width:100%;height:100%;border-radius:50%;object-fit:contain}.rg b{font-size:14px;margin-top:2px}.rg small{font-size:11px;line-height:1.2;color:var(--mute);max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.rg small.n{opacity:.8}.ph{display:grid;place-items:center;border-radius:50%;background:rgba(19,128,181,.2);font-weight:800;font-size:13px;color:var(--ink)}.tile b.ib{background:none!important;border-radius:0;overflow:visible}.tile b.ib img{max-width:64px;max-height:64px;object-fit:contain;border-radius:8px}[data-theme=remote-lucky]{--ink:#fff8e6;--mute:#f6e8c4;--line:rgba(255,255,255,.4);background:linear-gradient(180deg,#9c7d58 0,#b99763 28%,#cdae72 58%,#dcc07f 100%) fixed!important}[data-theme=remote-lucky] .cc{background:rgba(80,45,10,.32);border-color:rgba(255,255,255,.4)}[data-theme=remote-lucky] .retry{background:#b8741f;color:#fff}[data-theme=remote-lucky] .retry.off{background:rgba(255,255,255,.3);color:#fff}[data-theme=remote-lucky] .bd.off{background:rgba(255,255,255,.25);color:#fff}[data-theme=remote-lucky] .cb{color:#fff}.tyi{display:block;margin-top:3px}.tyi svg{margin-right:4px;vertical-align:middle}.bi em{font-style:normal;font-size:11px;font-weight:700;color:var(--ink)}.bd{display:inline-flex;align-items:center;background:#1380b5;color:#fff;border-radius:999px;padding:3px 10px;font-size:13px;font-weight:700}.bd.off{background:rgba(19,128,181,.15);color:var(--mute)}.rx .retry{padding:6px 10px;margin:0}.cc>a{display:inline-block;margin-top:6px}
 .pb{height:10px;border-radius:6px;background:rgba(19,128,181,.2);margin-top:8px;overflow:hidden}.pb i{display:block;height:100%;background:#1380b5;border-radius:6px}
 .hs2{font-size:15px;margin:22px 0 8px;color:var(--ink);background:none;border:0;box-shadow:none;padding:0}
 .mg{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .mt{display:flex;align-items:center;gap:10px;padding:12px;border-radius:20px;background:rgba(255,255,255,.62);border:2px solid rgba(255,255,255,.8);text-decoration:none;color:var(--ink);font-weight:800;font-size:15px;line-height:1.2}.mt b{font-size:24px;width:34px;text-align:center}
-@media(prefers-color-scheme:dark){.mt{background:rgba(10,50,80,.7)}}
+@media(prefers-color-scheme:dark){:where(html:not([data-mode=light])) .mt{background:rgba(10,50,80,.7)}}:where(html[data-mode=dark]) .mt{background:rgba(10,50,80,.7)}
 [data-theme=purified]{--acc:#D45C96;--ink:#C0467F;--mute:#B3779A;--have:#D45C96;--hdr:rgba(255,240,247,.9);--card:rgba(255,255,255,.45);--havebg:rgba(255,255,255,.85);--line:rgba(255,255,255,.7);background:linear-gradient(180deg,#fdeaf3 0,#f8cfe2 55%,#efb0cf 100%) fixed}
 [data-theme=purified] .av{background:none!important}
 #topbar{position:fixed;top:0;left:0;right:0;z-index:70;display:flex;align-items:center;justify-content:space-between;padding:calc(env(safe-area-inset-top) + 4px) 14px 4px;background:rgba(255,255,255,.66);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.7)}
@@ -169,13 +169,13 @@ header{margin-top:6px!important;top:calc(env(safe-area-inset-top) + 62px)!import
 .ni.un h3::before{content:"";display:inline-block;width:9px;height:9px;border-radius:50%;background:#e21c25;margin-right:7px}
 .ni .nbody{margin:4px 0 0;font-size:14px;color:var(--ink);display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}.ni.open .nbody{display:block}
 .retry.off{background:rgba(255,255,255,.7);color:#4a8fb0}
-@media(prefers-color-scheme:dark){#topbar{background:rgba(10,50,80,.75)}#topbar .ttl{color:#d9f2ff}.ni{background:#10364f}}
+@media(prefers-color-scheme:dark){:where(html:not([data-mode=light])) #topbar{background:rgba(10,50,80,.75)}:where(html:not([data-mode=light])) #topbar .ttl{color:#d9f2ff}:where(html:not([data-mode=light])) .ni{background:#10364f}}:where(html[data-mode=dark]) #topbar{background:rgba(10,50,80,.75)}:where(html[data-mode=dark]) #topbar .ttl{color:#d9f2ff}:where(html[data-mode=dark]) .ni{background:#10364f}
 #topbar .r{display:flex;align-items:center;gap:8px}
 #ver{font-size:10px;font-weight:700;color:#4f8fb0;margin-left:3px}
-#gear{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.8);display:grid;place-items:center}@media(prefers-color-scheme:dark){#gear{background:rgba(10,50,80,.8)}#gear path{fill:#d9f2ff}}
+#gear{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.8);display:grid;place-items:center}@media(prefers-color-scheme:dark){:where(html:not([data-mode=light])) #gear{background:rgba(10,50,80,.8)}:where(html:not([data-mode=light])) #gear path{fill:#d9f2ff}}:where(html[data-mode=dark]) #gear{background:rgba(10,50,80,.8)}:where(html[data-mode=dark]) #gear path{fill:#d9f2ff}
 #wn{font-weight:800;font-size:13px;color:#1578a6;background:rgba(255,255,255,.85);border-radius:18px;padding:11px 12px;text-decoration:none;line-height:1}
 .mt{min-height:64px}.mt b{width:46px;height:46px;border-radius:50%;overflow:hidden;display:grid;place-items:center;flex:none;font-size:0}.mt b img{width:100%;height:100%;object-fit:contain}
-@media(prefers-color-scheme:dark){#wn{background:rgba(10,50,80,.8);color:#d9f2ff}#ver{color:#8fc0dc}}
+@media(prefers-color-scheme:dark){:where(html:not([data-mode=light])) #wn{background:rgba(10,50,80,.8);color:#d9f2ff}:where(html:not([data-mode=light])) #ver{color:#8fc0dc}}:where(html[data-mode=dark]) #wn{background:rgba(10,50,80,.8);color:#d9f2ff}:where(html[data-mode=dark]) #ver{color:#8fc0dc}
 
 /* ---- welcome screen ---- */
 #welcome{position:fixed;inset:0;z-index:9999;background:#050b20;display:flex;justify-content:center;overflow:hidden;-webkit-tap-highlight-color:transparent}
@@ -203,7 +203,7 @@ body.wel{overflow:hidden}
 
 .tl{display:flex;align-items:center;gap:10px}
 #hm{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.85);display:grid;place-items:center;flex:none}#hm[hidden]{display:none}
-@media(prefers-color-scheme:dark){#hm{background:rgba(10,50,80,.8)}#hm path{fill:#d9f2ff}}
+@media(prefers-color-scheme:dark){:where(html:not([data-mode=light])) #hm{background:rgba(10,50,80,.8)}:where(html:not([data-mode=light])) #hm path{fill:#d9f2ff}}:where(html[data-mode=dark]) #hm{background:rgba(10,50,80,.8)}:where(html[data-mode=dark]) #hm path{fill:#d9f2ff}
 header{padding:8px 14px 10px!important;border-radius:22px!important}
 header h1{font-size:17px!important;margin:0 0 6px!important}
 header .bar{height:6px!important;margin-bottom:0!important}
@@ -233,11 +233,18 @@ header .bar{height:6px!important;margin-bottom:0!important}
 .cmb .row{display:flex;gap:10px}.cmb .row .retry{flex:1}
 @keyframes wflick{0%,92%,100%{opacity:1}94%{opacity:.9}96%{opacity:1}98%{opacity:.95}}
 @media(prefers-reduced-motion:reduce){#wholo{animation:none}}
+.lgb{margin:6px 4px 0 0}.mdb{margin:6px 4px 0 0}
+#wlang{position:absolute;left:3.2%;bottom:1.8%;z-index:5;width:calc(min(100vw,100dvh*1206/2622)*.095);height:calc(min(100vw,100dvh*1206/2622)*.095);min-width:34px;min-height:34px;border-radius:50%;border:1px solid rgba(255,255,255,.35);background:rgba(5,11,32,.55);color:#fff;font-size:calc(min(100vw,100dvh*1206/2622)*.055);line-height:1;padding:0;cursor:pointer;opacity:.8}
+#wlang:hover,#wlang:focus-visible{opacity:1;outline:2px solid #fff}
+#lmenu{position:absolute;left:3.2%;bottom:11%;z-index:6;background:rgba(5,11,32,.94);border:1px solid rgba(255,255,255,.3);border-radius:14px;padding:6px;display:flex;flex-direction:column;gap:2px}
+#lmenu[hidden]{display:none}
+#lmenu button{background:transparent;color:#fff;border:0;text-align:left;font:600 15px system-ui,sans-serif;padding:9px 12px;border-radius:10px;cursor:pointer;min-height:40px}
+#lmenu button:hover,#lmenu button:focus-visible{background:rgba(255,255,255,.18)}
 </style>
 </head>
 <body class="wel">
 <div id="welcome" role="dialog" aria-label="Welcome"><div id="wsc"><div id="wst"><div id="wholo" aria-live="polite"></div></div>
-<button id="wgo" type="button" aria-label="Enter Dex">Enter Dex</button></div></div>
+<button id="wgo" type="button" aria-label="Enter Dex">Enter Dex</button><button id="wlang" type="button" aria-label="Language">🇬🇧</button><div id="lmenu" hidden></div></div></div>
 <div id="topbar"><div class="tl"><a id="hm" href="#" aria-label="Home" hidden><svg viewBox="0 0 24 24" width="22" height="22"><path fill="#1578a6" d="M12 3 2 12h3v8h5v-5h4v5h5v-8h3z"/></svg></a><a class="ttl" href="#">GO Lists<sub id="ver"></sub></a></div><div class="r"><a id="wn" href="#whatsnew">What’s new</a><a id="gear" href="#settings" aria-label="Settings"><svg viewBox="0 0 24 24" width="24" height="24"><path fill="#1578a6" d="M19.4 13a7.6 7.6 0 0 0 0-2l2.1-1.6a.5.5 0 0 0 .1-.6l-2-3.5a.5.5 0 0 0-.6-.2l-2.5 1a7.4 7.4 0 0 0-1.7-1l-.4-2.6a.5.5 0 0 0-.5-.4h-4a.5.5 0 0 0-.5.4l-.4 2.6a7.4 7.4 0 0 0-1.7 1l-2.5-1a.5.5 0 0 0-.6.2l-2 3.5a.5.5 0 0 0 .1.6L4.6 11a7.6 7.6 0 0 0 0 2l-2.1 1.6a.5.5 0 0 0-.1.6l2 3.5c.1.2.4.3.6.2l2.5-1c.5.4 1.1.7 1.7 1l.4 2.6c0 .2.3.4.5.4h4c.3 0 .5-.2.5-.4l.4-2.6c.6-.3 1.2-.6 1.7-1l2.5 1c.2.1.5 0 .6-.2l2-3.5a.5.5 0 0 0-.1-.6L19.4 13zM12 15.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7z"/></svg></a><button id="bell" aria-label="Notifications" onclick="location.hash='notifications'"><svg viewBox="0 0 24 24" width="24" height="24"><path fill="#1578a6" d="M12 22a2.5 2.5 0 0 0 2.4-2H9.6A2.5 2.5 0 0 0 12 22zm7-6v-5a7 7 0 0 0-5.5-6.8V3a1.5 1.5 0 0 0-3 0v1.2A7 7 0 0 0 5 11v5l-2 2v1h18v-1z"/></svg><span id="bc" hidden>0</span></button></div></div>
 <svg width="0" height="0" style="position:absolute"><defs><symbol id="i-star" viewBox="0 0 24 24"><path d="M12 1l2.6 8.4L23 12l-8.4 2.6L12 23l-2.6-8.4L1 12l8.4-2.6z"/></symbol><symbol id="i-flame" viewBox="0 0 24 24"><path d="M12 1c1.2 4-3.5 6-3.5 11a5.5 5.5 0 0 0 11 0c0-2.4-1.2-4-2.4-5.6.1 2-.8 3-1.9 3.3 1-4.2-.3-6.6-3.2-8.7z"/></symbol></defs></svg>
 
@@ -250,6 +257,7 @@ header .bar{height:6px!important;margin-bottom:0!important}
 <p style="text-align:center;margin:18px 0 0"><a class="cl" href="#credits">Credits and sources</a> <button id="shr" class="shr" type="button" aria-label="Share GO Lists"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3M8 7l4-4 4 4M5 11v9h14v-9"/></svg></button></p></section>
 <section id="collections" hidden><a href="#" class="cb">‹ Home</a><h1 class="hh">My collections</h1>
 <div class="tr2"><a class="tile sm" href="#stats"><b class="e">📊</b><span>My progress</span></a><a class="tile sm" href="#evolutions"><b class="e" id="evi"></b><span>My evolutions</span></a></div>
+<div class="tr2"><a class="tile sm" href="#scan"><b class="e">📷</b><span>Scan my Pokémon</span></a></div>
 <h2 class="hs2">Collections</h2>
 <div class="mg"><a class="mt" href="#dex"><b style="background:#BDE3F5"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png" alt="" loading="lazy" onerror="this.remove()"></b>Pokédex</a><a class="mt" href="#shadow"><b style="background:#BDA0E3"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/94.png" alt="" loading="lazy" onerror="this.remove()"></b>Shadow</a><a class="mt" href="#shiny"><b style="background:#EBD07F"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/6.png" alt="" loading="lazy" onerror="this.remove()"></b>Shiny</a><a class="mt" href="#purified"><b style="background:#F4B6D2"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/468.png" alt="" loading="lazy" onerror="this.remove()"></b>Purified</a><a class="mt" href="#lucky"><b style="background:#E8C9A0"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/113.png" alt="" loading="lazy" onerror="this.remove()"></b>Lucky</a><a class="mt" href="#perfect"><b style="background:#BDE3F5"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/151.png" alt="" loading="lazy" onerror="this.remove()"></b>100% IV</a><a class="mt" href="#xxl"><b style="background:#BDE3F5"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/143.png" alt="" loading="lazy" onerror="this.remove()"></b>XXL</a><a class="mt" href="#costume"><b style="background:#8CC9EE"><img src="https://raw.githubusercontent.com/PokeMiners/pogo_assets/master/Images/Pokemon/Addressable%20Assets/pm25.cHALLOWEEN_2017.icon.png" alt="" loading="lazy" onerror="this.remove()"></b>Costume</a><a class="mt" href="#xxs"><b style="background:#BDE3F5"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/19.png" alt="" loading="lazy" onerror="this.remove()"></b>XXS</a><a class="mt" href="#forms"><b style="background:#BDE3F5"><img src="https://raw.githubusercontent.com/PokeMiners/pogo_assets/master/Images/Pokemon/Addressable%20Assets/pm37.fALOLA.icon.png" alt="" loading="lazy" onerror="this.remove()"></b>Regional Pokémon</a><a class="mt" href="#gmax"><b style="background:#BDE3F5"><img src="https://raw.githubusercontent.com/PokeMiners/pogo_assets/master/Images/Pokemon/Addressable%20Assets/pm6.fGIGANTAMAX.icon.png" alt="" loading="lazy" onerror="this.remove()"></b>Gigantamax</a><a class="mt" href="#legendary"><b style="background:#BDE3F5"></b>Legendary</a><a class="mt" href="#mega"><b style="background:#BDE3F5"><img src="https://raw.githubusercontent.com/PokeMiners/pogo_assets/master/Images/Pokemon/Addressable%20Assets/pm6.fMEGA_X.icon.png" alt="" loading="lazy" onerror="this.remove()"></b>Mega</a><a class="mt" href="#dynamax"><b style="background:#BDE3F5"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/68.png" alt="" loading="lazy" onerror="this.remove()"></b>Dynamax</a><a class="mt" href="#medals"><b style="background:#F3E3B0"></b>Medals</a><a class="mt" href="#mythical"><b style="background:#BDE3F5"></b>Mythical</a></div></section>
 <section id="settings" hidden><a href="#" class="cb">‹ Home</a><h1 class="hh">Settings</h1>
@@ -258,6 +266,9 @@ header .bar{height:6px!important;margin-bottom:0!important}
 <div class="cc"><h3>Help</h3><p>Short tips for new users. With help on, the quick tour shows the first time the app opens. You can open any topic below whenever you like.</p><p><button class="retry" id="helpb" type="button"></button></p><div class="htp" id="helpt"></div></div>
 <div class="cc"><h3>Picture style</h3><p>Show the shiny version of each Pokémon where one exists.</p><p><button class="retry picb"></button></p></div>
 <div class="cc"><h3>Text size</h3><p><button class="retry" onclick="setZ(.9)">Smaller</button> <button class="retry" onclick="setZ(1)">Normal</button> <button class="retry" onclick="setZ(1.15)">Larger</button></p></div>
+<div class="cc"><h3>Appearance</h3><p><button class="retry mdb" data-m="auto" type="button">Auto</button><button class="retry mdb" data-m="light" type="button">Light</button><button class="retry mdb" data-m="dark" type="button">Dark</button></p></div>
+<div class="cc"><h3>Language</h3><p id="langs"></p></div>
+<div class="cc"><h3>Data check</h3><p>See how fresh and complete the data is.</p><p><a class="retry" href="#data" style="display:inline-block;text-decoration:none;color:#fff">Open Data check</a></p></div>
 <div class="cc"><h3>Report a problem</h3><p>Wrong costume, missing Pokémon or a bug? <a href="https://github.com/ksfv9b95wv-bit/pogo-costumes/issues/new?title=Problem%20report&body=What%20is%20wrong%3F%0A%0AList%3A%0AItem%3A" target="_blank" rel="noopener">Tell us on GitHub</a> (free GitHub account needed).</p></div></section>
 <section id="credits" hidden><a href="#" class="cb">‹ Home</a><h1 class="hh">Credits and sources</h1>
 <p class="hs">An unofficial fan project for personal use. It is not made, endorsed or sponsored by Nintendo, Game Freak, Creatures, The Pokémon Company or Scopely.</p>
@@ -279,7 +290,7 @@ header .bar{height:6px!important;margin-bottom:0!important}
     <button data-f="all" aria-pressed="true">All</button>
     <button data-f="need" aria-pressed="false">Need</button>
   </div>
-<select id="sort" aria-label="Sort by"><option value="release">Sort: Oldest release first</option><option value="newest">Sort: Newest release first</option><option value="costume">Sort: Costume A–Z</option><option value="pokemon">Sort: Pokémon A–Z</option></select>
+<select id="sort" aria-label="Sort by"><option value="release">Sort: Oldest release first</option><option value="newest">Sort: Newest release first</option><option value="costume">Sort: Costume A–Z</option><option value="pokemon">Sort: Pokémon A–Z</option><option value="number">Sort: Pokédex number</option><option value="az">Sort: A–Z</option><option value="type">Group: Type</option><option value="status">Group: Collected / Needed</option></select>
    <button id="regb" type="button" hidden>Region: All</button>
    <div class="fbk"><button id="bka" type="button">Collect all shown</button><button id="bkr" type="button">Clear all shown</button></div>
   </div>
@@ -341,7 +352,10 @@ function render(){
   });
   curRows=rows;
   const groups=new Map();
-  const by=sortMode==="pokemon";if(sortMode==="newest")rows.reverse();else if(sortMode==="costume")rows.sort((a,b)=>a.event.localeCompare(b.event)||a.name.localeCompare(b.name));else if(by)rows.sort((a,b)=>a.name.localeCompare(b.name)||a.event.localeCompare(b.event));for(const d of rows){const k=by?d.name:d.event;if(!groups.has(k))groups.set(k,[]);groups.get(k).push(d)}
+  const by=sortMode==="pokemon",dn=d=>d.dex||DEX[d.name.replace(/\s*\(.*\)/,"").trim()]||0,tk=d=>(d.t&&d.t[0])||"Other";
+  if(sortMode==="newest")rows.reverse();else if(sortMode==="costume")rows.sort((a,b)=>a.event.localeCompare(b.event)||a.name.localeCompare(b.name));else if(by)rows.sort((a,b)=>a.name.localeCompare(b.name)||a.event.localeCompare(b.event));else if(sortMode==="number")rows.sort((a,b)=>dn(a)-dn(b)||a.name.localeCompare(b.name));else if(sortMode==="az")rows.sort((a,b)=>a.name.localeCompare(b.name));else if(sortMode==="type")rows.sort((a,b)=>tk(a).localeCompare(tk(b))||dn(a)-dn(b));else if(sortMode==="status")rows.sort((a,b)=>(owned.has(a.id)?1:0)-(owned.has(b.id)?1:0)||dn(a)-dn(b));
+  const gk=d=>by?d.name:sortMode==="number"||sortMode==="az"?"All":sortMode==="type"?tk(d):sortMode==="status"?(owned.has(d.id)?"Collected":"Needed"):d.event;
+  for(const d of rows){const k=gk(d);if(!groups.has(k))groups.set(k,[]);groups.get(k).push(d)}
   const list=$("#list");list.textContent="";
   if(!rows.length){list.innerHTML='<p class="msg">Nothing matches.</p>'}
   for(const [event,items] of groups){
@@ -351,8 +365,8 @@ function render(){
     for(const d of items){
       const l=document.createElement("label");l.className="c"+(d.na?" na":"");
       const cb=document.createElement("input");cb.type="checkbox";cb.checked=!d.na&&owned.has(d.id);cb.disabled=!!d.na;
-      cb.onchange=()=>{if(isLocked()){cb.checked=!cb.checked;lockMsg();return}cb.checked?owned.add(d.id):owned.delete(d.id);save();stats();if(filter!=="all")render();else h.textContent=`${event} (${items.filter(i=>owned.has(i.id)&&!i.na).length}/${items.filter(i=>!i.na).length})`};
-      const s=document.createElement("span");s.textContent=by?d.event:d.name;{const sm=document.createElement("small");sm.textContent=info(d);if(sm.textContent)s.append(sm)}if(d.t&&d.t.length){const w=document.createElement("span");w.className="tyi";w.innerHTML=d.t.map(t=>tIcon(t,20)).join("");s.append(w)}const av=document.createElement("b");av.className="av";av.textContent=d.name.replace(/[^A-Za-zÀ-ÿ]/g,"").slice(0,2);av.style.background="hsl("+([...d.name].reduce((a,c)=>a*31+c.charCodeAt(0),7)%360)+" 45% 40%)";{const n=d.dex||DEX[d.name.replace(/\s*\(.*\)/,"").trim()];if(n){av.textContent="";av.style.background="rgba(128,150,190,.18)";const im=document.createElement("img");im.loading="lazy";im.alt="";let t=0;im.src=spic(d.img||(window.CIMG&&CIMG[d.id]))||IMG+(d.shiny||SP?"shiny/":"")+n+".png";im.onload=()=>{window.__o=(window.__o||0)+1;dbg()};im.onerror=()=>{if(!t++&&!(d.img&&d.kind&&d.kind!=="dex")){if(!d.kind&&!s.querySelector(".q"))s.append(MQ());im.src=ALT+(d.shiny||SP?"shiny/":"")+n+".png";return}window.__b=(window.__b||0)+1;dbg();im.remove();av.textContent=d.name.replace(/[^A-Za-zÀ-ÿ]/g,"").slice(0,2);av.style.background="hsl("+([...d.name].reduce((a,c)=>a*31+c.charCodeAt(0),7)%360)+" 45% 40%)"};av.append(im);if(!d.kind&&!d.img&&!(window.CIMG&&CIMG[d.id]))s.append(MQ())}}
+      cb.onchange=()=>{if(isLocked()){cb.checked=!cb.checked;lockMsg();return}cb.checked?owned.add(d.id):owned.delete(d.id);save();stats();if(filter!=="all"||sortMode==="status")render();else h.textContent=`${event} (${items.filter(i=>owned.has(i.id)&&!i.na).length}/${items.filter(i=>!i.na).length})`};
+      const s=document.createElement("span");s.textContent=by?d.event:pn(d);{const sm=document.createElement("small");sm.textContent=info(d);if(sm.textContent)s.append(sm)}if(d.t&&d.t.length){const w=document.createElement("span");w.className="tyi";w.innerHTML=d.t.map(t=>tIcon(t,20)).join("");s.append(w)}const av=document.createElement("b");av.className="av";av.textContent=d.name.replace(/[^A-Za-zÀ-ÿ]/g,"").slice(0,2);av.style.background="hsl("+([...d.name].reduce((a,c)=>a*31+c.charCodeAt(0),7)%360)+" 45% 40%)";{const n=d.dex||DEX[d.name.replace(/\s*\(.*\)/,"").trim()];if(n){av.textContent="";av.style.background="rgba(128,150,190,.18)";const im=document.createElement("img");im.loading="lazy";im.alt="";let t=0;im.src=spic(d.img||(window.CIMG&&CIMG[d.id]))||IMG+(d.shiny||SP?"shiny/":"")+n+".png";im.onload=()=>{window.__o=(window.__o||0)+1;dbg()};im.onerror=()=>{if(!t++&&!(d.img&&d.kind&&d.kind!=="dex")){if(!d.kind&&!s.querySelector(".q"))s.append(MQ());im.src=ALT+(d.shiny||SP?"shiny/":"")+n+".png";return}window.__b=(window.__b||0)+1;dbg();im.remove();av.textContent=d.name.replace(/[^A-Za-zÀ-ÿ]/g,"").slice(0,2);av.style.background="hsl("+([...d.name].reduce((a,c)=>a*31+c.charCodeAt(0),7)%360)+" 45% 40%)"};av.append(im);if(!d.kind&&!d.img&&!(window.CIMG&&CIMG[d.id]))s.append(MQ())}}
       const a=document.createElement("a");a.textContent="🔍";a.title="See what it looks like";a.setAttribute("aria-label","See what "+d.name+" looks like");a.target="_blank";a.rel="noopener";a.className="look";a.href="https://www.google.com/search?tbm=isch&q="+encodeURIComponent("Pokémon GO "+d.event+" "+d.name);l.append(cb,av,s,a);g.append(l);
     }
     list.append(h,g);
@@ -385,7 +399,7 @@ $("#imp").onclick=()=>{
 };
 $("#go").onclick=()=>{$("#q").blur();window.scrollTo({top:0,behavior:"smooth"})};
 $("#q").onkeydown=e=>{if(e.key==="Enter")$("#q").blur()};
-$("#sort").onchange=e=>{sortMode=e.target.value;render()};
+$("#sort").onchange=e=>{sortMode=e.target.value;LSset("pogo-sort-"+KEY,sortMode);render()};
 initDb();
 $("#add").onclick=()=>{
   const name=prompt("Pokémon name (e.g. Eevee)");if(!name)return;
@@ -414,9 +428,9 @@ const DEXM={
  gmax:D=>D.filter(e=>e.gm).map(e=>mk(e,{id:"gmax:"+e.i,name:"Gigantamax "+e.n,kind:"gmax",img:e.gi||e.im})),
  legendary:D=>D.filter(e=>e.c==="L"||e.c==="U").map(e=>({id:"legendary:"+e.i,name:e.n,event:CL[e.c],dex:e.i,kind:"legendary",img:e.im})),
  mythical:D=>D.filter(e=>e.c==="M").map(e=>({id:"mythical:"+e.i,name:e.n,event:CL[e.c],dex:e.i,kind:"mythical",img:e.im}))};
-const XN={774:"Minior",778:"Mimikyu",807:"Zeraora",824:"Blipbug",825:"Dottler",826:"Orbeetle",843:"Silicobra",844:"Sandaconda",848:"Toxel",849:"Toxtricity",854:"Sinistea",931:"Squawkabilly",942:"Maschiff",943:"Mabosstiff",946:"Bramblin",947:"Brambleghast",968:"Orthworm",973:"Flamigo",902:"Basculegion",846:"Arrokuda",847:"Barraskewda",955:"Flittle",956:"Espathra"};const XALL=Object.keys(XN).map(Number),XREL=XALL.filter(i=>i!==902);
-async function relObj(){const r=await getD("released"),o={...r};let N={};try{N=await getD("names")}catch(e){}for(const i of XREL)if(!o[i])o[i]={name:(N[i]&&N[i].name)||XN[i],id:i};return o}
-async function dexData(){const D=await getJ("data/dex.json"),have=new Set(D.map(e=>e.i)),add=XALL.filter(i=>!have.has(i)).map(i=>({i,f:"NORMAL",n:XN[i],c:"",t:[],im:IMG+i+".png"}));return add.length?[...D,...add].sort((a,b)=>a.i-b.i):D}
+let XN={774:"Minior",778:"Mimikyu",807:"Zeraora",824:"Blipbug",825:"Dottler",826:"Orbeetle",843:"Silicobra",844:"Sandaconda",848:"Toxel",849:"Toxtricity",854:"Sinistea",931:"Squawkabilly",942:"Maschiff",943:"Mabosstiff",946:"Bramblin",947:"Brambleghast",968:"Orthworm",973:"Flamigo",902:"Basculegion",846:"Arrokuda",847:"Barraskewda",955:"Flittle",956:"Espathra"};let XALL=Object.keys(XN).map(Number),XREL=XALL.filter(i=>i!==902);
+async function relObj(){await xnReady();const r=await getD("released"),o={...r};let N={};try{N=await getD("names")}catch(e){}for(const i of XREL)if(!o[i])o[i]={name:(N[i]&&N[i].name)||XN[i],id:i};return o}
+async function dexData(){await xnReady();const D=await getJ("data/dex.json"),have=new Set(D.map(e=>e.i)),add=XALL.filter(i=>!have.has(i)).map(i=>({i,f:"NORMAL",n:XN[i],c:"",t:[],im:IMG+i+".png"}));return add.length?[...D,...add].sort((a,b)=>a.i-b.i):D}
 let RS;const relSet=async()=>{if(RS!==undefined)return RS;try{RS=new Set(Object.keys(await relObj()).map(Number))}catch(e){RS=null}return RS};
 let BS=null;
 const rd=k=>{try{return new Set(JSON.parse(localStorage.getItem(k)||"[]"))}catch(e){return new Set()}};
@@ -442,6 +456,7 @@ async function route(){
  KEY=v==="costume"?"pogo-costumes-owned":"pogo-"+v+"-owned";
  owned=new Set();try{owned=new Set(JSON.parse(localStorage.getItem(KEY)||"[]"))}catch(e){}
  $("#ttl").textContent=TITLES[v];$("#add").hidden=v!=="costume";
+ sortMode=LS("pogo-sort-"+KEY,"release");if(![...$("#sort").options].some(o=>o.value===sortMode))sortMode="release";$("#sort").value=sortMode;
  filter="all";query="";$("#q").value="";
  document.querySelectorAll("#tabs button").forEach(x=>x.setAttribute("aria-pressed",x.dataset.f==="all"));
  if(v==="costume"){data=[...SEED,...custom];render()}
@@ -533,7 +548,7 @@ async function pageMedals(b){
  add.append($$("h3",null,"Add your own"),$$("p",null,"Event medals vary, so add any you have earned."),inp,ab);
  b.append(sm,tabs,grid,add);draw()}
 async function syncLM(){try{const D=await dexData(),dO=rd("pogo-dex-owned");for(const [m,cl] of [["legendary","LU"],["mythical","M"]]){const o=rd("pogo-"+m+"-owned"),old=rd("pogo-legendary-owned");let ch=false;for(const e of D){if(!e.c||!cl.includes(e.c))continue;const id=m+":"+e.i;if(!o.has(id)&&(dO.has("dex:"+e.i)||(m==="mythical"&&old.has("legendary:"+e.i)))){o.add(id);ch=true}}if(ch)localStorage.setItem("pogo-"+m+"-owned",JSON.stringify([...o]))}}catch(e){}}
-async function pageStats(b){await syncLM();
+async function pageStats(b){await syncLM();histSnap();
  const modes=["dex","shiny","lucky","xxl","xxs","gmax","mega","shadow","purified","perfect","costume","forms","legendary","mythical","dynamax"];
  const ring=(label,h,t,ic,sz)=>{const p=t?h/t:0,C=2*Math.PI*18,d=$$("div","rg");
   d.innerHTML='<div class="rgw" style="width:'+sz+'px;height:'+sz+'px"><svg viewBox="0 0 44 44"><circle cx="22" cy="22" r="18" class="rb0"/>'+(p>0?'<circle cx="22" cy="22" r="18" class="rb1'+(p>=1?" done":"")+'" stroke-dasharray="'+(C*p).toFixed(1)+" "+C.toFixed(1)+'" transform="rotate(-90 22 22)"/>':"")+'</svg><span class="rgi">'+ic+'</span></div>';
@@ -541,7 +556,7 @@ async function pageStats(b){await syncLM();
  const L=[];let dex=[],O=null,H=0,TT=0;
  for(const m of modes){let X;try{X=m==="costume"?[...SEED,...custom]:(cache[m]=cache[m]||await loadList(m))}catch(x){continue}
   const own=rd(m==="costume"?"pogo-costumes-owned":"pogo-"+m+"-owned"),A=X.filter(d=>!d.na),h=A.filter(d=>own.has(d.id)).length,tb=document.querySelector('.mg a[href="#'+m+'"] b');
-  L.push([TITLES[m].replace(/ Dex$/,"").replace("Regional Pokémon","Regional"),h,A.length,tb?tb.innerHTML:""]);if(m!=="forms"){H+=h;TT+=A.length}if(m==="dex"){dex=X;O=own}}
+  L.push([TITLES[m].replace(/ Dex$/,"").replace("Regional Pokémon","Regional"),h,A.length,tb?tb.innerHTML:"",A.filter(d=>!own.has(d.id)).slice(0,3).map(d=>d.name)]);if(m!=="forms"){H+=h;TT+=A.length}if(m==="dex"){dex=X;O=own}}
  if(!L.length){b.append($$("p","msg","Nothing to show yet."));return}
  const sum=$$("div","cc rsum"),pc=TT?Math.round(H*100/TT):0;sum.innerHTML='<div class="row" style="justify-content:space-between"><b>Overall</b><span>'+H+" of "+TT+" · "+pc+'%</span></div><div class="pb"><i style="width:'+pc+'%"></i></div>';
  const tabs=$$("div","row rtabs"),box=$$("div","rgg"),G={Lists:()=>[L,4,64]};
@@ -551,7 +566,8 @@ async function pageStats(b){await syncLM();
   if(dex[0].t)tabsDef.push(["Types",()=>{const T=grp(d=>d.t||[]);return{it:Object.keys(T).sort().map(k=>[k,T[k][0],T[k][1],tIcon(k,64)]),c:6,sz:46}}])}
  tabsDef.push(["Medals",()=>{const M=medalList(),st=mget(),f=(g)=>{const l=M.filter(m=>m.grp===g||g==="All");let h=0,t=0;l.forEach(m=>{h+=Math.min(st[m.id]||0,m.th.length||1);t+=m.th.length||1});return[h,t]},I=e=>'<span class="mi" style="width:100%;height:100%;font-size:24px;background:#f3e3b0">'+e+'</span>',it=[["All"," 🏅"],["General","🎖️"],["Regions","🌍"],["Types","🔥"],["Events","🎪"]].map(([g,e])=>{const[h,t]=f(g);return[g,h,t,I(e.trim())]});
   [["Bronze+","🥉",1],["Silver+","🥈",2],["Gold+","🥇",3],["Platinum","💎",4]].forEach(([l,e,n])=>{const q=M.filter(m=>m.th.length===4);it.push([l,q.filter(m=>(st[m.id]||0)>=n).length,q.length,I(e)])});return{it,c:3,sz:60}}]);
- let cur=0;const draw=()=>{box.replaceChildren();const {it,c,sz}=tabsDef[cur][1]();box.style.setProperty("--c",c);it.forEach(([l,h,t,ic])=>box.append(ring(l,h,t,ic,sz)));[...tabs.children].forEach((x,i)=>x.className="retry"+(i===cur?"":" off"))};
+ tabsDef.push(["Closest",()=>({node:closestNode(L)})],["Trends",()=>({node:trendNode()})]);
+ let cur=0;const draw=()=>{box.replaceChildren();const r=tabsDef[cur][1]();if(r.node){box.style.setProperty("--c",1);box.append(r.node);[...tabs.children].forEach((x,i)=>x.className="retry"+(i===cur?"":" off"));return}const {it,c,sz}=r;box.style.setProperty("--c",c);it.forEach(([l,h,t,ic])=>box.append(ring(l,h,t,ic,sz)));[...tabs.children].forEach((x,i)=>x.className="retry"+(i===cur?"":" off"))};
  tabsDef.forEach(([n],i)=>{const x=$$("button","retry",n);x.type="button";x.onclick=()=>{cur=i;draw()};tabs.append(x)});
  b.append(sum,tabs,box);draw()}
 
@@ -724,6 +740,11 @@ async function genNotifs(){
  try{const cd=await getD("community_days"),now=new Date();for(const c of cd){const st=new Date(c.start_date+"T12:00:00"),days=(st-now)/864e5;if(days>-0.5&&days<=7)L.push({id:"cd-"+c.community_day_number,title:"Community Day: "+(c.boosted_pokemon||[]).join(", "),body:fd(c.start_date)+(c.event_moves&&c.event_moves[0]?" · Special move: "+c.event_moves[0].move:""),d:st.getTime()})}}catch(e){}
  try{const ev=(await getJ("data/events.json")).slice().sort((a,c)=>new Date(a.start)-new Date(c.start)),now=Date.now();let k=0;for(const e of ev){const t=+new Date(e.start);if(t>now&&t-now<864e5&&k<5){k++;L.push({id:"ev-"+e.eventID,title:"Starting soon: "+e.name,body:fmt(new Date(e.start))+" · "+e.heading,d:t})}}}catch(e){}
  try{const tg=eget();if(tg.length){const [{N,map},ev]=await Promise.all([evoData(),getJ("data/events.json")]);for(const id of tg){const m=map.get(id);if(!m||!N[id])continue;const tn=N[id].name,sn=m.srcs.map(x=>N[x.s]&&N[x.s].name).filter(Boolean),kw=[];m.srcs.forEach(x=>kw.push(...evoAdvice((N[x.s]||{}).name||"",tn,x.req).kw));for(const [nn,a,z,tx] of EVN){if(nrm(nn)===nrm(tn)){const t0=+new Date(a),t1=+new Date(z),now=Date.now();if(t1>now&&t0-now<7*864e5)L.push({id:"evn-"+id+"-"+a,title:"Evolution boost for "+tn,body:tx,d:t0})}}for(const {e,why} of evoEvents(ev,[tn,...sn],kw))L.push({id:"evo-"+id+"-"+e.eventID,title:"Evolution boost for "+tn,body:e.name+" ("+why+") · "+fmt(new Date(e.start)),d:+new Date(e.start)})}}}catch(e){}
+ try{const [rb,ev,nmm,dx,shl]=await Promise.all([getJ("data/raidboss.json"),getJ("data/events.json"),nameMap(),(async()=>cache.dex=cache.dex||await loadList("dex"))(),(async()=>cache.shiny=cache.shiny||await loadList("shiny"))()]),dO=rd("pogo-dex-owned"),sO=rd("pogo-shiny-owned"),gid=n=>{n=String(n||"").toLowerCase().replace(/^(mega|primal|shadow|alolan|galarian|hisuian|paldean|gigantamax|dynamax)\s+/,"").replace(/\s+[xy]$/,"").trim();return nmm[n]||0},shAv=new Set(shl.map(x=>x.dex));let k=0;
+  const gapOf=(id,wantShiny)=>{if(!id)return null;if(!dO.has("dex:"+id))return"dex";if(wantShiny&&shAv.has(id)&&!sO.has("shiny:"+id))return"shiny";return null};
+  for(const key of ["currentList"]){const g=rb[key]||{};for(const lvl of Object.keys(g)){for(const e of(Array.isArray(g[lvl])?g[lvl]:[])){if(k>=5)break;const nm=(e.names&&e.names.English)||"",id=gid(nm),w=gapOf(id,e.shiny);if(w){k++;L.push({id:"gap-rb-"+lvl+"-"+id+"-"+w,title:(w==="dex"?"New for your Pokédex: ":"Shiny you still need: ")+nm,body:"In "+(isNaN(lvl)?lvl:lvl+"-star")+" raids right now.",d:Date.now()})}}}}
+  const now=Date.now();let j=0;for(const e of ev){const t0=+new Date(e.start),t1=+new Date(e.end);if(!(t1>now&&t0-now<864e5)||j>=3)continue;const seen=new Set();for(const wd of String(e.name).split(/[^A-Za-zÀ-ÿ'’.\-♀♂]+/)){if(wd.length<4)continue;const id=gid(wd);if(!id||seen.has(id))continue;seen.add(id);const w=gapOf(id,true);if(w&&j<3){j++;L.push({id:"gap-ev-"+e.eventID+"-"+id,title:(w==="dex"?"Dex gap in event: ":"Shiny gap in event: ")+wd,body:e.name+" · "+fmt(new Date(e.start)),d:t0})}}}
+ }catch(e){}
  nadd(L)}
 const ICO={del:'<svg viewBox="0 0 24 24"><path d="M9 3h6l1 2h4v2H4V5h4zM6 9h12l-1 12H7z"/></svg>',arc:'<svg viewBox="0 0 24 24"><path d="M3 4h18v4H3zM5 9h14v11H5zm4 3v2h6v-2z"/></svg>',un:'<svg viewBox="0 0 24 24"><path d="M12 3l6 7h-4v6h-4v-6H6zM5 19h14v2H5z"/></svg>'};
 function swipe(w,fg,onDel,onArc,onTap){let x0=0,y0=0,dx=0,on=false,lock=null,W=1;
@@ -756,8 +777,8 @@ async function pageNotifs(b){
   out.append($$("p","hs","Swipe right to delete, left to "+(tab==="inbox"?"archive":"move back to inbox")+". Let go early to cancel."));L.forEach(n=>out.append(item(n)))};
  bi.onclick=()=>{tab="inbox";draw()};ba.onclick=()=>{tab="archived";draw()};bm.onclick=()=>{save(nget().map(x=>x.s==="unread"?{...x,s:"read"}:x));draw()};
  b.append(tabs,out);draw()}
-const VER="v30b";
-const CHANGES=[["v30b","Medals now use pictures from your own medal collection where I could match them, and the ring colour shows your level: grey for not yet, bronze, silver, gold and pale blue for platinum."],["v30","Medals: every medal with its tiers, in My collections and as a Medals tab in My progress. Lucky trade background now sparkles with falling stars, sparks and cubes. New help tour for first-time users, with topics and an on/off switch in Settings."],["v29","New symbols for Community Days, Raid bosses and My collections on the GO Lists page. My progress is now a compact ring view with Lists, Regions and Types tabs that fits on one screen. Community Day pictures have better matching and a fallback, and Guaranteed lucky trade now has a golden background."],["v28e","The version number at the bottom of the page was stuck on v27b. It now always matches the current version."],["v28d","New globe symbol for Regional Pokémon in My collections."],["v28c","Legendary and Mythical are now separate lists. Anything ticked in the main Pokédex is ticked in them automatically. New Legendary, Mythical and evolution symbols. Community Day pictures now stay inside their box."],["v28b","My evolutions advice now uses a built-in guide to special evolution requirements: buddy tasks, walking, hearts, evolution items, Lure Modules, time of day, gender, apples and trades. It also knows about the Kingambit Community Day shortcut on 21 November 2026."],["v28","New My evolutions page: see Pokémon you can evolve into, lock one in for advice on how to get it, and get a notification when an event supports it. My progress has symbols and a smaller button. A share button next to Credits sends the web address via WhatsApp or any other app."],["v27j","Mega, Dynamax and Gigantamax symbols now use your own screenshots exactly."],["v27i","New Mega, Dynamax and Gigantamax symbols in My collections."],["v27h","Round type symbols on every Pokémon that has types, region symbols in the region picker, and a new 100% symbol in My collections."],["v27g","My collections: new round Pokémon GO style symbols for Pokédex, Shiny, Lucky, Shadow, Purified, Costume (event), Dynamax and Gigantamax."],["v27f","Remote trade checker: the Event flag now checks your Costume list and shows how many costumes of that Pokémon you are still missing."],["v27e","Remote trade checker: removed the ✨ and ✕ buttons. Under each Pokémon, tap Shiny, Purified, Dynamax or Event to flag it; flagged Purified and Dynamax count towards your lists when you still need them."],["v27d","Remote trade checker badges now use round Pokémon GO style icons for Dex, Lucky, Shiny, XXL and XXS."],["v27c","Remote trade checker: tighter layout, a picture cut from your screenshot for each Pokémon, and one badge per gap it fills (📖 Dex, 🍀 Lucky, ✨ Shiny, 📏 XXL / XXS) or “Not required”."],["v27","Remote trade checker now spots the three-star shiny marker in screenshots and counts those Pokémon towards your Shiny Dex. Tap ✨ on a result to correct it."],["v26i","Remote trade checker: tap ✨ on a result to mark it as shiny, so it counts towards your Shiny Dex."],["v26h","Remote trade checker: cleaner results, Shiny Dex hints, and XXL / XXS suggestions when a nickname contains XL, XXL, XS or XXS."],["v26e","Added the missing Pokémon: Basculegion, Arrokuda, Barraskewda, Flittle and Espathra. Any released Pokémon missing from the data are now filled in automatically."],["v26d","My collections tiles reordered into two columns."],["v26c","Squawkabilly, Maschiff, Mabosstiff, Bramblin, Brambleghast, Orthworm and Flamigo are now marked as available."],["v26b","Minior, Mimikyu, Zeraora, Blipbug, Dottler, Orbeetle, Silicobra, Sandaconda, Toxel, Toxtricity and Sinistea are now marked as available. Meltan and Melmetal sit under an Unknown region, and Galar and Hisui are separate regions."],["v26","Lock selections switch in Settings. Region filter on every Dex. Regional Pokémon now lists only Pokémon that are exclusive to certain regions, with where each is found."],["v25b","The main Pokédex filters now include Region: choose one or more regions, then Show selected."],["v25","Filter box has Collect all shown and Clear all shown for the current Dex. You confirm by sliding, and each Dex is changed on its own."],["v24","Tidier Dex pages: a thin title bar with your progress and % complete, a home button in the top bar, and a ▼ button that opens the filters. Pin keeps them open, ▲ Close tucks them away."],["v23","New illustrated welcome screen. The hologram still shows a random Pokémon from your collection."],["v22","New welcome screen with a Pokédex hologram showing a random Pokémon from your collection. Tap Enter Dex to start. After 10 minutes of no use the app returns to it."],["v21","Remote trade checker now has Normal or Guaranteed lucky trade, and a screenshot upload that reads the other trainer’s Pokémon names and ranks them by how many Pokédex (and Lucky) gaps they fill. A ? marks names it was not sure about."],["v20","Remote raid checker is now the Remote trade checker: add the Pokémon another trainer has for trade (typed or pasted) and see which Pokédex, Shiny, Lucky and Purified gaps it would fill."],["v19b","Pokémon that are not yet released in Pokémon GO are now greyed out, marked “Not yet in Pokémon GO”, can’t be ticked and don’t count in your totals."],["v19","Settings moved to a cog icon in the top bar, between What’s new and the bell."],["v18","A yellow ? now marks any costume picture that might not match exactly. Added real pictures for Absol and Blitzle (Fashionable), Charizard and Charmander (Friede’s Goggles), Charjabug (Winter) and Chimchar (Lucas’s and Dawn’s hats)."],["v17","New top bar with the version and What’s new, Remote raid checker, tidier My collections with Pokémon pictures, and a Dynamax list that builds up over time."],["v16","The app checks for updates every time you open it."],["v15","New home screen and a notification bell with swipe to delete or archive."],["v14","My progress, backup of all lists, CSV export and a shiny picture switch."],["v13","Pokédex, Regional Pokémon, Mega, Gigantamax, Legendary & Mythical, Purified, 100%, XXL and XXS lists."],["v12","Events, Community Days and Raid bosses pages."],["v11","Works offline, desktop layout and text size."],["v10","Many more exact costume pictures."]];
+const VER="v31";
+const CHANGES=[["v31","Light, dark or automatic appearance in Settings. Six languages (English, French, German, Spanish, Italian, Portuguese) with a flag button at the bottom left of the title screen and in Settings. New sort and group choices (Pokédex number, A–Z, by type, collected or needed) that remember each list. Scan my Pokémon in My collections ticks Pokémon from screenshots of your storage. New Data check page in Settings. My progress has Closest and Trends tabs. Notifications now warn you when a raid boss or event Pokémon fills a Pokédex or shiny gap."],["v30b","Medals now use pictures from your own medal collection where I could match them, and the ring colour shows your level: grey for not yet, bronze, silver, gold and pale blue for platinum."],["v30","Medals: every medal with its tiers, in My collections and as a Medals tab in My progress. Lucky trade background now sparkles with falling stars, sparks and cubes. New help tour for first-time users, with topics and an on/off switch in Settings."],["v29","New symbols for Community Days, Raid bosses and My collections on the GO Lists page. My progress is now a compact ring view with Lists, Regions and Types tabs that fits on one screen. Community Day pictures have better matching and a fallback, and Guaranteed lucky trade now has a golden background."],["v28e","The version number at the bottom of the page was stuck on v27b. It now always matches the current version."],["v28d","New globe symbol for Regional Pokémon in My collections."],["v28c","Legendary and Mythical are now separate lists. Anything ticked in the main Pokédex is ticked in them automatically. New Legendary, Mythical and evolution symbols. Community Day pictures now stay inside their box."],["v28b","My evolutions advice now uses a built-in guide to special evolution requirements: buddy tasks, walking, hearts, evolution items, Lure Modules, time of day, gender, apples and trades. It also knows about the Kingambit Community Day shortcut on 21 November 2026."],["v28","New My evolutions page: see Pokémon you can evolve into, lock one in for advice on how to get it, and get a notification when an event supports it. My progress has symbols and a smaller button. A share button next to Credits sends the web address via WhatsApp or any other app."],["v27j","Mega, Dynamax and Gigantamax symbols now use your own screenshots exactly."],["v27i","New Mega, Dynamax and Gigantamax symbols in My collections."],["v27h","Round type symbols on every Pokémon that has types, region symbols in the region picker, and a new 100% symbol in My collections."],["v27g","My collections: new round Pokémon GO style symbols for Pokédex, Shiny, Lucky, Shadow, Purified, Costume (event), Dynamax and Gigantamax."],["v27f","Remote trade checker: the Event flag now checks your Costume list and shows how many costumes of that Pokémon you are still missing."],["v27e","Remote trade checker: removed the ✨ and ✕ buttons. Under each Pokémon, tap Shiny, Purified, Dynamax or Event to flag it; flagged Purified and Dynamax count towards your lists when you still need them."],["v27d","Remote trade checker badges now use round Pokémon GO style icons for Dex, Lucky, Shiny, XXL and XXS."],["v27c","Remote trade checker: tighter layout, a picture cut from your screenshot for each Pokémon, and one badge per gap it fills (📖 Dex, 🍀 Lucky, ✨ Shiny, 📏 XXL / XXS) or “Not required”."],["v27","Remote trade checker now spots the three-star shiny marker in screenshots and counts those Pokémon towards your Shiny Dex. Tap ✨ on a result to correct it."],["v26i","Remote trade checker: tap ✨ on a result to mark it as shiny, so it counts towards your Shiny Dex."],["v26h","Remote trade checker: cleaner results, Shiny Dex hints, and XXL / XXS suggestions when a nickname contains XL, XXL, XS or XXS."],["v26e","Added the missing Pokémon: Basculegion, Arrokuda, Barraskewda, Flittle and Espathra. Any released Pokémon missing from the data are now filled in automatically."],["v26d","My collections tiles reordered into two columns."],["v26c","Squawkabilly, Maschiff, Mabosstiff, Bramblin, Brambleghast, Orthworm and Flamigo are now marked as available."],["v26b","Minior, Mimikyu, Zeraora, Blipbug, Dottler, Orbeetle, Silicobra, Sandaconda, Toxel, Toxtricity and Sinistea are now marked as available. Meltan and Melmetal sit under an Unknown region, and Galar and Hisui are separate regions."],["v26","Lock selections switch in Settings. Region filter on every Dex. Regional Pokémon now lists only Pokémon that are exclusive to certain regions, with where each is found."],["v25b","The main Pokédex filters now include Region: choose one or more regions, then Show selected."],["v25","Filter box has Collect all shown and Clear all shown for the current Dex. You confirm by sliding, and each Dex is changed on its own."],["v24","Tidier Dex pages: a thin title bar with your progress and % complete, a home button in the top bar, and a ▼ button that opens the filters. Pin keeps them open, ▲ Close tucks them away."],["v23","New illustrated welcome screen. The hologram still shows a random Pokémon from your collection."],["v22","New welcome screen with a Pokédex hologram showing a random Pokémon from your collection. Tap Enter Dex to start. After 10 minutes of no use the app returns to it."],["v21","Remote trade checker now has Normal or Guaranteed lucky trade, and a screenshot upload that reads the other trainer’s Pokémon names and ranks them by how many Pokédex (and Lucky) gaps they fill. A ? marks names it was not sure about."],["v20","Remote raid checker is now the Remote trade checker: add the Pokémon another trainer has for trade (typed or pasted) and see which Pokédex, Shiny, Lucky and Purified gaps it would fill."],["v19b","Pokémon that are not yet released in Pokémon GO are now greyed out, marked “Not yet in Pokémon GO”, can’t be ticked and don’t count in your totals."],["v19","Settings moved to a cog icon in the top bar, between What’s new and the bell."],["v18","A yellow ? now marks any costume picture that might not match exactly. Added real pictures for Absol and Blitzle (Fashionable), Charizard and Charmander (Friede’s Goggles), Charjabug (Winter) and Chimchar (Lucas’s and Dawn’s hats)."],["v17","New top bar with the version and What’s new, Remote raid checker, tidier My collections with Pokémon pictures, and a Dynamax list that builds up over time."],["v16","The app checks for updates every time you open it."],["v15","New home screen and a notification bell with swipe to delete or archive."],["v14","My progress, backup of all lists, CSV export and a shiny picture switch."],["v13","Pokédex, Regional Pokémon, Mega, Gigantamax, Legendary & Mythical, Purified, 100%, XXL and XXS lists."],["v12","Events, Community Days and Raid bosses pages."],["v11","Works offline, desktop layout and text size."],["v10","Many more exact costume pictures."]];
 const nrm=x=>x.toLowerCase().replace(/[^a-zà-ÿ]/g,"");
 const lev=(a,b)=>{const m=a.length,n=b.length;let p=Array.from({length:n+1},(_,j)=>j);for(let i=1;i<=m;i++){const c=[i];for(let j=1;j<=n;j++)c[j]=Math.min(p[j]+1,c[j-1]+1,p[j-1]+(a[i-1]===b[j-1]?0:1));p=c}return p[n]};
 let TESS;const loadTess=()=>TESS||(TESS=new Promise((ok,no)=>{if(window.Tesseract)return ok(window.Tesseract);const x=document.createElement("script");x.src="https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js";x.onload=()=>ok(window.Tesseract);x.onerror=()=>{TESS=null;no(new Error("load"))};document.head.append(x)}));
@@ -927,6 +948,205 @@ addEventListener("online",net);addEventListener("offline",net);net();
 if("serviceWorker"in navigator){const had=!!navigator.serviceWorker.controller;let rl=false;
  navigator.serviceWorker.addEventListener("controllerchange",()=>{if(had&&!rl){rl=true;location.reload()}});
  addEventListener("load",()=>navigator.serviceWorker.register("sw.js",{updateViaCache:"none"}).then(r=>{document.addEventListener("visibilitychange",()=>{if(!document.hidden)r.update().catch(()=>{})});r.update().catch(()=>{})}).catch(()=>{}))}
+/* v31: theme, languages, data check, scan, history */
+const LS=(k,d)=>{try{const v=localStorage.getItem(k);return v==null?d:v}catch(e){return d}};
+const LSset=(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}};
+function setMode(m){LSset("pogo-mode",m);if(m==="light"||m==="dark")document.documentElement.dataset.mode=m;else delete document.documentElement.dataset.mode;document.querySelectorAll(".mdb").forEach(x=>x.className="retry mdb"+(x.dataset.m===m?"":" off"))}
+setMode(LS("pogo-mode","auto"));
+document.querySelectorAll(".mdb").forEach(x=>x.onclick=()=>setMode(x.dataset.m));
+const I18N=`Enter Dex|Entrer dans le Pokédex|Pokédex öffnen|Entrar al Pokédex|Entra nel Pokédex|Entrar na Pokédex
+What’s new|Nouveautés|Neuigkeiten|Novedades|Novità|Novidades
+My collections|Mes collections|Meine Sammlungen|Mis colecciones|Le mie collezioni|Minhas coleções
+Costume, shiny, lucky, Pokédex and more|Costumes, chromatiques, chanceux, Pokédex et plus|Kostüme, Schillernde, Glücks-Pokémon, Pokédex und mehr|Disfraces, variocolor, suerte, Pokédex y más|Costumi, cromatici, fortunati, Pokédex e altro|Fantasias, brilhantes, sortudos, Pokédex e mais
+Events|Événements|Events|Eventos|Eventi|Eventos
+What is on now and coming up|En cours et à venir|Aktuell und demnächst|Ahora y próximamente|In corso e in arrivo|Agora e em breve
+Community Days|Journées Communauté|Community Days|Días de la Comunidad|Community Day|Dias da Comunidade
+Past and upcoming|Passées et à venir|Vergangene und kommende|Pasados y próximos|Passati e futuri|Passados e futuros
+Raid bosses|Boss de raid|Raid-Bosse|Jefes de incursión|Boss raid|Chefes de reide
+Current bosses and counters|Boss actuels et contres|Aktuelle Bosse und Konter|Jefes actuales y counters|Boss attuali e counter|Chefes atuais e counters
+Remote trade checker|Vérificateur d’échange à distance|Fernhandel-Prüfer|Comprobador de intercambio remoto|Verifica scambio a distanza|Verificador de troca remota
+Will their Pokémon fill your gaps?|Leurs Pokémon combleront-ils vos manques ?|Füllen deren Pokémon deine Lücken?|¿Sus Pokémon llenarán tus huecos?|I loro Pokémon colmeranno le tue lacune?|Os Pokémon deles preencherão suas lacunas?
+Credits and sources|Crédits et sources|Credits und Quellen|Créditos y fuentes|Crediti e fonti|Créditos e fontes
+‹ Home|‹ Accueil|‹ Start|‹ Inicio|‹ Home|‹ Início
+My progress|Ma progression|Mein Fortschritt|Mi progreso|I miei progressi|Meu progresso
+My evolutions|Mes évolutions|Meine Entwicklungen|Mis evoluciones|Le mie evoluzioni|Minhas evoluções
+Collections|Collections|Sammlungen|Colecciones|Collezioni|Coleções
+Pokédex|Pokédex|Pokédex|Pokédex|Pokédex|Pokédex
+Shadow|Obscur|Crypto|Oscuro|Ombra|Sombrio
+Shiny|Chromatique|Schillernd|Variocolor|Cromatico|Brilhante
+Purified|Purifié|Gereinigt|Purificado|Purificato|Purificado
+Lucky|Chanceux|Glücks|De la suerte|Fortunato|Sortudo
+100% IV|100 % IV|100 % IV|100 % IV|100% IV|100% IV
+Costume|Costume|Kostüm|Disfraz|Costume|Fantasia
+Regional Pokémon|Pokémon régionaux|Regionale Pokémon|Pokémon regionales|Pokémon regionali|Pokémon regionais
+Gigantamax|Gigamax|Gigadynamax|Gigamax|Gigamax|Gigamax
+Legendary|Légendaire|Legendär|Legendario|Leggendario|Lendário
+Mythical|Fabuleux|Mysteriös|Singular|Misterioso|Místico
+Mega|Méga|Mega|Mega|Mega|Mega
+Dynamax|Dynamax|Dynamax|Dinamax|Dynamax|Dinamax
+Medals|Médailles|Medaillen|Medallas|Medaglie|Medalhas
+Settings|Réglages|Einstellungen|Ajustes|Impostazioni|Configurações
+Lock selections|Verrouiller les sélections|Auswahl sperren|Bloquear selecciones|Blocca le selezioni|Bloquear seleções
+Back up everything|Tout sauvegarder|Alles sichern|Copia de seguridad|Salva tutto|Fazer backup de tudo
+Download backup file|Télécharger la sauvegarde|Sicherungsdatei laden|Descargar copia|Scarica il backup|Baixar arquivo de backup
+Copy backup|Copier la sauvegarde|Sicherung kopieren|Copiar copia|Copia il backup|Copiar backup
+Restore from file|Restaurer depuis un fichier|Aus Datei wiederherstellen|Restaurar desde archivo|Ripristina da file|Restaurar de arquivo
+Restore from pasted text|Restaurer depuis le texte collé|Aus eingefügtem Text wiederherstellen|Restaurar desde texto pegado|Ripristina dal testo incollato|Restaurar do texto colado
+Help|Aide|Hilfe|Ayuda|Aiuto|Ajuda
+Quick tour|Visite rapide|Kurze Tour|Tour rápido|Tour veloce|Tour rápido
+Picture style|Style des images|Bildstil|Estilo de imágenes|Stile immagini|Estilo das imagens
+Text size|Taille du texte|Textgröße|Tamaño del texto|Dimensione del testo|Tamanho do texto
+Smaller|Plus petit|Kleiner|Más pequeño|Più piccolo|Menor
+Normal|Normal|Normal|Normal|Normale|Normal
+Larger|Plus grand|Größer|Más grande|Più grande|Maior
+Report a problem|Signaler un problème|Problem melden|Informar de un problema|Segnala un problema|Relatar um problema
+All|Tous|Alle|Todos|Tutti|Todos
+Need|Manquants|Fehlend|Faltan|Mancanti|Faltando
+Collect all shown|Tout cocher|Alle angezeigten markieren|Marcar todos|Seleziona tutti|Marcar todos
+Clear all shown|Tout décocher|Alle angezeigten löschen|Desmarcar todos|Deseleziona tutti|Desmarcar todos
+Loading…|Chargement…|Wird geladen…|Cargando…|Caricamento…|Carregando…
+Overall|Total|Gesamt|General|Totale|Geral
+Lists|Listes|Listen|Listas|Liste|Listas
+Regions|Régions|Regionen|Regiones|Regioni|Regiões
+Types|Types|Typen|Tipos|Tipi|Tipos
+General|Général|Allgemein|General|Generale|Geral
+Not yet|Pas encore|Noch nicht|Aún no|Non ancora|Ainda não
+Add your own|Ajouter la vôtre|Eigene hinzufügen|Añade la tuya|Aggiungi la tua|Adicione a sua
+Add|Ajouter|Hinzufügen|Añadir|Aggiungi|Adicionar
+Notifications|Notifications|Mitteilungen|Notificaciones|Notifiche|Notificações
+Inbox|Réception|Posteingang|Bandeja|Posta in arrivo|Caixa de entrada
+Archived|Archivées|Archiviert|Archivadas|Archiviate|Arquivadas
+Mark all read|Tout marquer comme lu|Alle als gelesen markieren|Marcar todo como leído|Segna tutto come letto|Marcar tudo como lido
+Normal trade|Échange normal|Normaler Tausch|Intercambio normal|Scambio normale|Troca normal
+Guaranteed lucky trade|Échange chanceux garanti|Garantierter Glückstausch|Intercambio de suerte garantizado|Scambio fortunato garantito|Troca sortuda garantida
+Upload screenshots|Envoyer des captures|Screenshots hochladen|Subir capturas|Carica screenshot|Enviar capturas
+Language|Langue|Sprache|Idioma|Lingua|Idioma
+Appearance|Apparence|Darstellung|Apariencia|Aspetto|Aparência
+Auto|Auto|Automatisch|Automático|Automatico|Automático
+Light|Clair|Hell|Claro|Chiaro|Claro
+Dark|Sombre|Dunkel|Oscuro|Scuro|Escuro
+Costume Dex|Dex Costumes|Kostüm-Dex|Dex de disfraces|Dex Costumi|Dex de fantasias
+Shiny Dex|Dex Chromatiques|Schillernd-Dex|Dex Variocolor|Dex Cromatici|Dex Brilhantes
+Lucky Dex|Dex Chanceux|Glücks-Dex|Dex de suerte|Dex Fortunati|Dex Sortudos
+Shadow Dex|Dex Obscurs|Crypto-Dex|Dex Oscuros|Dex Ombra|Dex Sombrios
+Purified Dex|Dex Purifiés|Gereinigt-Dex|Dex Purificados|Dex Purificati|Dex Purificados
+Sort: Oldest release first|Tri : plus anciens d’abord|Sortierung: Älteste zuerst|Orden: más antiguos primero|Ordine: più vecchi prima|Ordem: mais antigos primeiro
+Sort: Newest release first|Tri : plus récents d’abord|Sortierung: Neueste zuerst|Orden: más nuevos primero|Ordine: più recenti prima|Ordem: mais novos primeiro
+Sort: Costume A–Z|Tri : costume A–Z|Sortierung: Kostüm A–Z|Orden: disfraz A–Z|Ordine: costume A–Z|Ordem: fantasia A–Z
+Sort: Pokémon A–Z|Tri : Pokémon A–Z|Sortierung: Pokémon A–Z|Orden: Pokémon A–Z|Ordine: Pokémon A–Z|Ordem: Pokémon A–Z
+Lock in|Verrouiller|Festlegen|Fijar|Blocca|Fixar
+Locked in|Verrouillées|Festgelegt|Fijadas|Bloccate|Fixadas
+Next|Suivant|Weiter|Siguiente|Avanti|Próximo
+Back|Retour|Zurück|Atrás|Indietro|Voltar
+Skip|Passer|Überspringen|Omitir|Salta|Pular
+Done|Terminé|Fertig|Hecho|Fatto|Concluído
+Close|Fermer|Schließen|Cerrar|Chiudi|Fechar
+Scan my Pokémon|Scanner mes Pokémon|Meine Pokémon scannen|Escanear mis Pokémon|Scansiona i miei Pokémon|Escanear meus Pokémon
+Data check|Contrôle des données|Datenprüfung|Revisión de datos|Controllo dati|Verificação de dados
+Trends|Tendances|Verlauf|Tendencias|Andamento|Tendências
+Closest|Plus proches|Am nächsten|Más cerca|Più vicini|Mais perto
+Sort: Pokédex number|Tri : numéro Pokédex|Sortierung: Pokédex-Nr.|Orden: nº Pokédex|Ordine: numero Pokédex|Ordem: nº Pokédex
+Sort: A–Z|Tri : A–Z|Sortierung: A–Z|Orden: A–Z|Ordine: A–Z|Ordem: A–Z
+Group: Type|Groupe : type|Gruppe: Typ|Grupo: tipo|Gruppo: tipo|Grupo: tipo
+Group: Collected / Needed|Groupe : obtenus / manquants|Gruppe: Gesammelt / Fehlend|Grupo: obtenidos / faltan|Gruppo: raccolti / mancanti|Grupo: obtidos / faltando
+Collected|Obtenus|Gesammelt|Obtenidos|Raccolti|Obtidos
+Needed|Manquants|Fehlend|Faltan|Mancanti|Faltando
+Other|Autre|Andere|Otros|Altro|Outros
+Nothing matches.|Aucun résultat.|Keine Treffer.|Sin resultados.|Nessun risultato.|Nada encontrado.
+No notifications.|Aucune notification.|Keine Mitteilungen.|Sin notificaciones.|Nessuna notifica.|Sem notificações.
+Not required|Pas nécessaire|Nicht erforderlich|No necesario|Non necessario|Não necessário
+Try again|Réessayer|Erneut versuchen|Reintentar|Riprova|Tentar novamente
+Happening now|En cours|Läuft gerade|En curso|In corso|Acontecendo agora
+Coming up|À venir|Demnächst|Próximamente|In arrivo|Em breve
+Now|Maintenant|Jetzt|Ahora|Ora|Agora
+Coming next|Prochainement|Als Nächstes|A continuación|Prossimamente|A seguir
+Search|Rechercher|Suchen|Buscar|Cerca|Buscar`;
+const LANGS=[["en","English","🇬🇧"],["fr","Français","🇫🇷"],["de","Deutsch","🇩🇪"],["es","Español","🇪🇸"],["it","Italiano","🇮🇹"],["pt","Português","🇵🇹"]];
+const LX={};for(const ln of I18N.split("\n")){const p=ln.split("|");if(p.length===6)LX[p[0]]=p.slice(1)}
+let LANG=LS("pogo-lang","en");if(!LANGS.some(x=>x[0]===LANG))LANG="en";
+let NI=null;
+const trS=s=>{if(LANG==="en")return s;const v=LX[s];return v?v[LANGS.findIndex(x=>x[0]===LANG)-1]:s};
+const pn=d=>{if(LANG==="en"||!NI||!d.dex||!d.kind||/^(mega|gmax|reg)$/.test(d.kind))return d.name;const n=NI[d.dex];return(n&&n[LANG])||d.name};
+const TORIG=new WeakMap(),TLAST=new WeakMap();let tbusy=false,tq=0;
+function translateAll(){tbusy=true;try{const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while(n=w.nextNode()){const p=n.parentNode;if(p&&/^(SCRIPT|STYLE|TEXTAREA)$/.test(p.nodeName))continue;let o=TORIG.get(n);const cur=n.nodeValue;if(o===undefined||TLAST.get(n)!==cur){o=cur;TORIG.set(n,o)}
+ const core=o.trim();if(!core){continue}const t=trS(core),nv=t===core?o:o.replace(core,t);if(nv!==cur){n.nodeValue=nv}TLAST.set(n,nv)}}finally{setTimeout(()=>{tbusy=false},0)}}
+const tOn=()=>{if(tq)return;tq=requestAnimationFrame(()=>{tq=0;translateAll()})};
+new MutationObserver(()=>{if(tbusy||LANG==="en"&&!window.__tr)return;tOn()}).observe(document.body,{childList:true,subtree:true,characterData:true});
+async function loadNI(){if(NI||LANG==="en")return;try{NI=await getJ("data/names_i18n.json")}catch(e){NI={}}}
+async function setLang(l){LANG=l;LSset("pogo-lang",l);document.documentElement.lang=l;window.__tr=1;langUI();await loadNI();translateAll();if(!$("#welcome").hidden){}else route()}
+function langUI(){const c=LANGS.find(x=>x[0]===LANG);const b=$("#wlang");if(b){b.textContent=c[2];b.setAttribute("aria-label","Language: "+c[1])}
+ document.querySelectorAll(".lgb").forEach(x=>x.className="retry lgb"+(x.dataset.l===LANG?"":" off"));}
+{const m=$("#lmenu"),b=$("#wlang");
+ if(m)LANGS.forEach(([k,n,f])=>{const x=document.createElement("button");x.type="button";x.textContent=f+" "+n;x.dataset.l=k;x.onclick=e=>{e.stopPropagation();m.hidden=true;setLang(k)};m.append(x)});
+ if(b)b.onclick=e=>{e.stopPropagation();m.hidden=!m.hidden};
+ document.addEventListener("click",e=>{if(m&&!m.hidden&&!m.contains(e.target))m.hidden=true});
+ const sl=$("#langs");if(sl)LANGS.forEach(([k,n,f])=>{const x=document.createElement("button");x.type="button";x.className="retry lgb";x.dataset.l=k;x.textContent=f+" "+n;x.onclick=()=>setLang(k);sl.append(x)});
+ document.documentElement.lang=LANG;langUI();if(LANG!=="en"){window.__tr=1;loadNI().then(()=>{translateAll();if(NI&&TITLES[location.hash.slice(1)])render()});translateAll()}}
+/* newly released list */
+let XLOADED=null;
+function xnReady(){return XLOADED||(XLOADED=(async()=>{try{const j=await getJ("data/newly_released.json"),n={};for(const k in j)if(k[0]!=="_"&&+k)n[+k]=j[k];if(Object.keys(n).length){const un=new Set((j._unreleased||[]).map(Number));XN=n;XALL=Object.keys(XN).map(Number);XREL=XALL.filter(i=>!un.has(i))}}catch(e){}})())}
+/* history */
+function histSnap(){try{const d=new Date().toISOString().slice(0,10),c={};let t=0;for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(/^pogo-.+-owned$/.test(k)){try{const n=JSON.parse(localStorage.getItem(k)).length;c[k]=n;t+=n}catch(e){}}}
+ let h=JSON.parse(localStorage.getItem("pogo-hist")||"[]");if(h.length&&h[h.length-1][0]===d)h[h.length-1]=[d,t,c];else h.push([d,t,c]);localStorage.setItem("pogo-hist",JSON.stringify(h.slice(-400)))}catch(e){}}
+histSnap();
+function trendNode(){const w=$$("div","cc"),h=(()=>{try{return JSON.parse(localStorage.getItem("pogo-hist")||"[]")}catch(e){return[]}})();
+ if(h.length<2){w.append($$("h3",null,"Not enough history yet"),$$("p",null,"Open the app on different days and a line will appear here showing how your total ticks grow. Today’s total: "+(h.length?h[0][1]:0)+"."));return w}
+ const W=320,H=140,P=24,xs=h.map(r=>+new Date(r[0])),x0=xs[0],x1=xs[xs.length-1]||x0+1,ys=h.map(r=>r[1]),y0=Math.min(...ys),y1=Math.max(...ys,y0+1),X=t=>P+(W-2*P)*(t-x0)/Math.max(1,x1-x0),Y=v=>H-P-(H-2*P)*(v-y0)/Math.max(1,y1-y0),pts=h.map((r,i)=>X(xs[i]).toFixed(1)+","+Y(r[1]).toFixed(1)).join(" ");
+ const last=h[h.length-1],wk=h.filter(r=>+new Date(last[0])-+new Date(r[0])<=7*864e5)[0],gain=last[1]-wk[1];
+ w.innerHTML='<h3>Ticks over time</h3><svg viewBox="0 0 '+W+" "+H+'" width="100%" role="img" aria-label="Line chart of total ticks over time"><polyline fill="none" stroke="#1380b5" stroke-width="3" stroke-linejoin="round" points="'+pts+'"/>'+h.map((r,i)=>'<circle cx="'+X(xs[i]).toFixed(1)+'" cy="'+Y(r[1]).toFixed(1)+'" r="3" fill="#FFCB08" stroke="#1380b5"/>').join("")+'<text x="'+P+'" y="'+(H-6)+'" font-size="10" fill="currentColor">'+h[0][0]+'</text><text x="'+(W-P)+'" y="'+(H-6)+'" font-size="10" text-anchor="end" fill="currentColor">'+last[0]+'</text><text x="2" y="'+(Y(y1)+4)+'" font-size="10" fill="currentColor">'+y1+'</text><text x="2" y="'+(Y(y0)+4)+'" font-size="10" fill="currentColor">'+y0+'</text></svg>';
+ w.append($$("p",null,"Total ticked now: "+last[1]+". Gained in the last 7 days: "+(gain>=0?"+":"")+gain+"."));return w}
+function closestNode(L){const w=$$("div"),Z=L.filter(r=>r[2]-r[1]>0).sort((a,b)=>(a[2]-a[1])-(b[2]-b[1])||b[1]/b[2]-a[1]/a[2]).slice(0,6);
+ if(!Z.length){w.append($$("p","msg","Everything is complete!"));return w}
+ for(const [l,h,t,ic,nm] of Z){const c=$$("div","cc"),r=$$("div","row");const i=$$("span");i.style.cssText="width:40px;height:40px;display:inline-block";i.innerHTML=ic||"";r.append(i,$$("h3",null,l+" · "+(t-h)+" to go"));c.append(r);const pb=$$("div","pb");pb.innerHTML='<i style="width:'+Math.round(100*h/t)+'%"></i>';c.append(pb);if(nm&&nm.length)c.append($$("p","hs","Still needed: "+nm.join(", ")+((t-h)>nm.length?" …":"")));w.append(c)}return w}
+/* data check */
+async function pageData(b){
+ await xnReady();
+ b.append($$("p","hs","A quick look at where the data comes from and how complete it is. Files are refreshed by the update-data workflow on GitHub (Actions tab, Run workflow)."));
+ const f=["dex","events","raidboss","community_days","dynamax","released","shiny","shadow","names","evolutions","newly_released","names_i18n"],card=$$("div","cc");card.append($$("h3",null,"Data files"));
+ for(const n of f){const p=$$("p",null,n+".json: checking…");card.append(p);fetch("data/"+n+".json",{method:"HEAD",cache:"no-store"}).then(r=>{const m=r.headers.get("last-modified");p.textContent=n+".json: "+(r.ok?(m?"updated "+new Date(m).toLocaleDateString([],{day:"numeric",month:"short",year:"numeric"}):"present"):"not found"+(n==="newly_released"||n==="names_i18n"?" (optional)":" (using live fallback)"))}).catch(()=>{p.textContent=n+".json: could not check"})}
+ b.append(card);
+ const c2=$$("div","cc");c2.append($$("h3",null,"Counts"));b.append(c2);
+ try{const D=await dexData(),R=await relSet(),S=await getD("shiny"),noPic=D.filter(e=>!e.im),noType=D.filter(e=>!e.t||!e.t.length),nodate=SEED.filter(x=>!x.f&&!x.l);
+  const add=(t)=>c2.append($$("p",null,t));
+  add("Pokédex entries: "+new Set(D.map(e=>e.i)).size+" species ("+D.length+" forms)");add("Released in Pokémon GO: "+(R?R.size:"unknown"));add("Shiny available: "+Object.keys(S).length);
+  add("Entries missing a picture: "+noPic.length+(noPic.length?" ("+noPic.slice(0,8).map(e=>e.n).join(", ")+(noPic.length>8?" …":"")+")":""));
+  add("Entries missing types: "+noType.length);add("Costume entries with no release dates: "+nodate.length);
+  const x=$$("div","cc");x.append($$("h3",null,"Newly released list"),$$("p",null,"These Pokémon are added by hand until the data source catches up: "+XREL.map(i=>XN[i]).join(", ")+"."),$$("p","hs","To change it, edit data/newly_released.json on GitHub. Each line is a Pokédex number and a name. Add a line when a new Pokémon arrives and delete lines once they appear in the main data."));b.append(x)
+ }catch(e){c2.append($$("p","msg","Could not load the counts. Check your connection."))}}
+INFO.data={t:"Data check",f:pageData};
+/* scan my Pokemon */
+async function pageScan(b){
+ const N=await getD("names"),NAMES=Object.values(N).map(p=>[nrm(p.name),+p.id]).filter(p=>p[0].length>=3),exact=new Map(NAMES);
+ const TG=[["dex","Pokédex"],["shiny","Shiny"],["lucky","Lucky"],["shadow","Shadow"],["purified","Purified"],["perfect","100% IV"],["xxl","XXL"],["xxs","XXS"],["dynamax","Dynamax"]];
+ let tg="dex",also=true;const F=new Map();
+ const match=txt=>{const o=new Set();for(const ln of txt.split("\n")){const tk=ln.split(/[^A-Za-zÀ-ÿ'’.\-♀♂]+/).map(nrm).filter(t=>t.length>=3);tk.forEach((t,i)=>{for(const c of [t,i+1<tk.length?t+tk[i+1]:null]){if(!c)continue;if(exact.has(c)){o.add(exact.get(c));continue}if(c.length>=6)for(const [n,id] of NAMES){if(Math.abs(n.length-c.length)<=1&&n.length>=6&&lev(c,n)===1){o.add(id);break}}}})}return o};
+ const sel=$$("select","sel");sel.setAttribute("aria-label","List to tick");TG.forEach(([k,l])=>sel.append(new Option(l,k)));
+ const alsoL=$$("label","hs"),alsoC=document.createElement("input");alsoC.type="checkbox";alsoC.checked=true;alsoL.append(alsoC," Also tick them in the Pokédex");
+ const up=document.createElement("input");up.type="file";up.accept="image/*";up.multiple=true;up.hidden=true;const ub=$$("button","retry","Upload screenshots");ub.type="button";ub.onclick=()=>up.click();
+ const st=$$("p","msg"),out=$$("div"),ap=$$("button","retry","Tick selected");ap.type="button";ap.hidden=true;
+ const reset=()=>F.forEach(e=>e.on=tg==="shiny"?!!e.shy:true);
+ const draw=async()=>{out.replaceChildren();ap.hidden=!F.size;alsoL.hidden=tg==="dex";if(!F.size)return;let own=new Set,L=[];try{L=cache[tg]=cache[tg]||await loadList(tg)}catch(e){}own=rd(tg==="costume"?"pogo-costumes-owned":"pogo-"+tg+"-owned");
+  const rows=[...F.values()].sort((a,c)=>a.id-c.id);let n=0;
+  for(const e of rows){const it=L.find(x=>x.dex===e.id),c=$$("label","cc rc"),cb=document.createElement("input");cb.type="checkbox";const have=it&&own.has(it.id);cb.checked=!!e.on&&!!it&&!have;cb.disabled=!it||have;cb.onchange=()=>{e.on=cb.checked;cnt()};
+   const im=document.createElement("img");im.className="rp";im.alt="";im.src=IMG+e.id+".png";im.onerror=()=>{im.onerror=null;im.src=ALT+e.id+".png"};
+   const m=$$("div","rm"),h=$$("h3",null,N[e.id].name+" #"+e.id),rb=$$("div","rb");
+   if(!it)rb.append($$("span","bd off","Not in this list"));else if(have)rb.append($$("span","bd off","Already ticked"));else if(tg==="shiny"&&!e.shy)rb.append($$("span","bd off","No shiny sparkle seen"));if(e.shy){const s=$$("span","bi");s.innerHTML=bIcon("shiny");s.append($$("em",null,"Shiny seen"));rb.append(s)}
+   m.append(h,rb);c.append(cb,im,m);out.append(c);e.it=it;e.cb=cb;if(cb.checked)n++}
+  cnt()};
+ const cnt=()=>{const n=[...F.values()].filter(e=>e.cb&&e.cb.checked).length;ap.textContent="Tick "+n+" selected";ap.disabled=!n};
+ ap.onclick=()=>{if(isLocked()){lockMsg();return}const k=tg==="costume"?"pogo-costumes-owned":"pogo-"+tg+"-owned",o=rd(k),d=rd("pogo-dex-owned");let n=0;for(const e of F.values())if(e.cb&&e.cb.checked&&e.it){o.add(e.it.id);n++;if(also&&tg!=="dex")d.add("dex:"+e.id)}
+  LSset(k,JSON.stringify([...o]));if(also&&tg!=="dex")LSset("pogo-dex-owned",JSON.stringify([...d]));BS=null;st.textContent="Ticked "+n+" in "+(TG.find(x=>x[0]===tg)||[0,tg])[1]+".";F.clear();draw()};
+ sel.onchange=()=>{tg=sel.value;reset();draw()};alsoC.onchange=()=>{also=alsoC.checked};
+ up.onchange=async()=>{const files=[...up.files];if(!files.length)return;st.textContent="Loading the picture reader (first time needs internet)…";let T;try{T=await loadTess()}catch(x){st.textContent="Could not load the picture reader. Check your connection and try again.";return}
+  try{const w=await T.createWorker("eng");try{await w.setParameters({tessedit_pageseg_mode:"11"})}catch(x){}let n=0;
+   for(const f of files){n++;st.textContent="Reading picture "+n+" of "+files.length+"…";const {data}=await w.recognize(f);let sp=null;try{sp=await sparkleBlobs(f)}catch(x){}let shy=new Set;try{shy=shinyIdsFrom(ocrWords(data),sp,exact)}catch(x){}
+    for(const id of match(data.text)){const e=F.get(id)||{id,shy:false};if(shy.has(id))e.shy=true;F.set(id,e)}}
+   await w.terminate();st.textContent=F.size?"Found "+F.size+" Pokémon. Untick any that are wrong.":"No Pokémon names found. Try a clearer screenshot."}
+  catch(x){st.textContent="Could not read that picture. Try another screenshot."}
+  up.value="";reset();draw()};
+ b.append($$("p","hs","Pick the list you want to fill, then upload screenshots of your own Pokémon storage (names showing). The app reads the names and ticks them for you after you check the list."),sel,alsoL,$$("br"),ub,up,st,ap,out)}
+INFO.scan={t:"Scan my Pokémon",f:pageScan};
+
 $("#ver").textContent=VER;
 {const sb=$("#shr");if(sb)sb.onclick=async()=>{const u=location.origin+location.pathname,d={title:"GO Lists",text:"GO Lists: Pokémon GO collection checklists",url:u};try{if(navigator.share){await navigator.share(d);return}}catch(e){if(e&&e.name==="AbortError")return}try{await navigator.clipboard.writeText(u)}catch(e){}window.open("https://wa.me/?text="+encodeURIComponent(d.text+" "+u),"_blank","noopener")}}
 {const d=document.getElementById("dbg");if(d)d.textContent=VER}
