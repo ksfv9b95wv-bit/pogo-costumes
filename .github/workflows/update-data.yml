@@ -54,6 +54,18 @@ jobs:
               out.append(r)
           json.dump(out,open('data/dex.json','w'),separators=(',',':'),ensure_ascii=False)
           print(len(out),'entries')
+          lg={'german':'de','french':'fr','spanish':'es','italian':'it','portug':'pt'}
+          ni={}
+          for e in d:
+              i=e.get('dexNr')
+              if not i or str(i) in ni: continue
+              r={}
+              for k,v in (e.get('names') or {}).items():
+                  for a,b in lg.items():
+                      if a in k.lower() and v: r[b]=v
+              if r: ni[str(i)]=r
+          json.dump(ni,open('data/names_i18n.json','w'),separators=(',',':'),ensure_ascii=False)
+          print(len(ni),'translated names')
           PY
       - name: Build Dynamax list and data report
         run: |
