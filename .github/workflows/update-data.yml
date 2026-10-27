@@ -22,6 +22,7 @@ jobs:
           get community_days.json $B/community_days.json
           get raid_exclusive.json $B/raid_exclusive_pokemon.json
           get types.json $B/pokemon_types.json
+          get evolutions.json $B/pokemon_evolutions.json
           get events.json https://raw.githubusercontent.com/bigfoott/ScrapedDuck/data/events.min.json
           get maxbattles.json https://pokemon-go-api.github.io/pokemon-go-api/api/maxbattles.json
           get raidboss.json https://pokemon-go-api.github.io/pokemon-go-api/api/raidboss.json
