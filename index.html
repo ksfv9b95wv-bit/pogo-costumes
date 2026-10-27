@@ -497,11 +497,13 @@ async function pageCD(b){
    top.append(pw,$$("h3",null,"#"+c.community_day_number+" "+(c.boosted_pokemon||[]).join(", ")));d.append(top,$$("p",null,fd(c.start_date)+(c.end_date!==c.start_date?" to "+fd(c.end_date):"")));
    const mv=(c.event_moves||[]).map(m=>m.move+" ("+m.pokemon+")").join(", ");if(mv)d.append($$("p",null,"Moves: "+mv));
    if((c.bonuses||[]).length)d.append($$("p",null,"Bonuses: "+c.bonuses.join(", ")));b.append(d)}}}
+const lvlN=l=>{const m=/^(?:lvl|level|tier)?\s*(\d+)$/i.exec(String(l));return m?+m[1]:0};
+const lvlStars=l=>{const n=lvlN(l);return n?"★".repeat(n):String(l).replace(/^./,c=>c.toUpperCase())};
 async function pageRaids(b){
  const r=await getJ("data/raidboss.json");
  for(const [key,title] of [["currentList","Now"],["comingNextList","Coming next"]]){const g=r[key];if(!g)continue;
   for(const lvl of Object.keys(g)){const L=g[lvl];if(!Array.isArray(L)||!L.length)continue;
-   b.append($$("h2",null,title+" · "+(isNaN(lvl)?lvl[0].toUpperCase()+lvl.slice(1):lvl+"-star")));
+   b.append($$("h2",null,title+" · "+lvlStars(lvl)));
    for(const e of L){const c=$$("div","cc"),top=$$("div","row");
     if(e.assets&&e.assets.image)top.append(pic(e.assets.image));
     top.append($$("h3",null,((e.names&&e.names.English)||e.id)+(e.shiny?" ✨":"")));c.append(top);
@@ -754,7 +756,7 @@ async function genNotifs(){
  try{const tg=eget();if(tg.length){const [{N,map},ev]=await Promise.all([evoData(),getJ("data/events.json")]);for(const id of tg){const m=map.get(id);if(!m||!N[id])continue;const tn=N[id].name,sn=m.srcs.map(x=>N[x.s]&&N[x.s].name).filter(Boolean),kw=[];m.srcs.forEach(x=>kw.push(...evoAdvice((N[x.s]||{}).name||"",tn,x.req).kw));for(const [nn,a,z,tx] of EVN){if(nrm(nn)===nrm(tn)){const t0=+new Date(a),t1=+new Date(z),now=Date.now();if(t1>now&&t0-now<7*864e5)L.push({id:"evn-"+id+"-"+a,title:"Evolution boost for "+tn,body:tx,d:t0})}}for(const {e,why} of evoEvents(ev,[tn,...sn],kw))L.push({id:"evo-"+id+"-"+e.eventID,title:"Evolution boost for "+tn,body:e.name+" ("+why+") · "+fmt(new Date(e.start)),d:+new Date(e.start)})}}}catch(e){}
  try{const [rb,ev,nmm,dx,shl]=await Promise.all([getJ("data/raidboss.json"),getJ("data/events.json"),nameMap(),(async()=>cache.dex=cache.dex||await loadList("dex"))(),(async()=>cache.shiny=cache.shiny||await loadList("shiny"))()]),dO=rd("pogo-dex-owned"),sO=rd("pogo-shiny-owned"),gid=n=>{n=String(n||"").toLowerCase().replace(/^(mega|primal|shadow|alolan|galarian|hisuian|paldean|gigantamax|dynamax)\s+/,"").replace(/\s+[xy]$/,"").trim();return nmm[n]||0},shAv=new Set(shl.map(x=>x.dex));let k=0;
   const gapOf=(id,wantShiny)=>{if(!id)return null;if(!dO.has("dex:"+id))return"dex";if(wantShiny&&shAv.has(id)&&!sO.has("shiny:"+id))return"shiny";return null};
-  for(const key of ["currentList"]){const g=rb[key]||{};for(const lvl of Object.keys(g)){for(const e of(Array.isArray(g[lvl])?g[lvl]:[])){if(k>=5)break;const nm=(e.names&&e.names.English)||"",id=gid(nm),w=gapOf(id,e.shiny);if(w){k++;L.push({id:"gap-rb-"+lvl+"-"+id+"-"+w,title:(w==="dex"?"New for your Pokédex: ":"Shiny you still need: ")+nm,body:"In "+(isNaN(lvl)?lvl:lvl+"-star")+" raids right now.",d:Date.now()})}}}}
+  for(const key of ["currentList"]){const g=rb[key]||{};for(const lvl of Object.keys(g)){for(const e of(Array.isArray(g[lvl])?g[lvl]:[])){if(k>=5)break;const nm=(e.names&&e.names.English)||"",id=gid(nm),w=gapOf(id,e.shiny);if(w){k++;L.push({id:"gap-rb-"+lvl+"-"+id+"-"+w,title:(w==="dex"?"New for your Pokédex: ":"Shiny you still need: ")+nm,body:"In "+(lvlN(lvl)?lvlN(lvl)+"-star":lvl)+" raids right now.",d:Date.now()})}}}}
   const now=Date.now();let j=0;for(const e of ev){const t0=+new Date(e.start),t1=+new Date(e.end);if(!(t1>now&&t0-now<864e5)||j>=3)continue;const seen=new Set();for(const wd of String(e.name).split(/[^A-Za-zÀ-ÿ'’.\-♀♂]+/)){if(wd.length<4)continue;const id=gid(wd);if(!id||seen.has(id))continue;seen.add(id);const w=gapOf(id,true);if(w&&j<3){j++;L.push({id:"gap-ev-"+e.eventID+"-"+id,title:(w==="dex"?"Dex gap in event: ":"Shiny gap in event: ")+wd,body:e.name+" · "+fmt(new Date(e.start)),d:t0})}}}
  }catch(e){}
  nadd(L)}
