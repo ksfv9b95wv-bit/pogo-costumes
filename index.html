@@ -241,6 +241,7 @@ header .bar{height:6px!important;margin-bottom:0!important}
 #lmenu button{background:transparent;color:#fff;border:0;text-align:left;font:600 15px system-ui,sans-serif;padding:9px 12px;border-radius:10px;cursor:pointer;min-height:40px}
 #lmenu button:hover,#lmenu button:focus-visible{background:rgba(255,255,255,.18)}
 .ii{width:1.5em;height:1.5em;vertical-align:-.4em;object-fit:contain;margin:0 .1em}
+.rst{color:#f5a800;font-size:1.15em;letter-spacing:.06em;text-shadow:0 0 1px #b87400,0 1px 2px rgba(120,70,0,.45);-webkit-text-stroke:.6px #c98200}.rst.sh{color:#9b5cf0;text-shadow:0 0 1px #5a2bb0,0 1px 2px rgba(60,20,120,.5);-webkit-text-stroke:.6px #6a35c4}
 </style>
 </head>
 <body class="wel">
@@ -497,13 +498,13 @@ async function pageCD(b){
    top.append(pw,$$("h3",null,"#"+c.community_day_number+" "+(c.boosted_pokemon||[]).join(", ")));d.append(top,$$("p",null,fd(c.start_date)+(c.end_date!==c.start_date?" to "+fd(c.end_date):"")));
    const mv=(c.event_moves||[]).map(m=>m.move+" ("+m.pokemon+")").join(", ");if(mv)d.append($$("p",null,"Moves: "+mv));
    if((c.bonuses||[]).length)d.append($$("p",null,"Bonuses: "+c.bonuses.join(", ")));b.append(d)}}}
-const lvlN=l=>{const m=/^(?:lvl|level|tier)?\s*(\d+)$/i.exec(String(l));return m?+m[1]:0};
-const lvlStars=l=>{const n=lvlN(l);return n?"★".repeat(n):String(l).replace(/^./,c=>c.toUpperCase())};
+const lvlN=l=>{const m=/(\d+)\s*$/.exec(String(l));return m?+m[1]:0};
+const lvlStars=l=>{const t=String(l).replace(/[_-]+/g," ").trim(),n=lvlN(t),pre=t.replace(/\s*(?:lvl|level|tier)?\s*\d+\s*$/i,"").trim(),cap=x=>x.replace(/\b./g,c=>c.toUpperCase());return n?(pre?cap(pre)+" ":"")+"★".repeat(n):cap(t)};
 async function pageRaids(b){
  const r=await getJ("data/raidboss.json");
  for(const [key,title] of [["currentList","Now"],["comingNextList","Coming next"]]){const g=r[key];if(!g)continue;
   for(const lvl of Object.keys(g)){const L=g[lvl];if(!Array.isArray(L)||!L.length)continue;
-   b.append($$("h2",null,title+" · "+lvlStars(lvl)));
+   {const h=$$("h2",null,title+" · "),t=lvlStars(lvl),i=t.indexOf("★");if(i<0)h.append(t);else{h.append(t.slice(0,i));const sp=$$("span","rst",t.slice(i));if(/shadow/i.test(t))sp.classList.add("sh");h.append(sp)}b.append(h)}
    for(const e of L){const c=$$("div","cc"),top=$$("div","row");
     if(e.assets&&e.assets.image)top.append(pic(e.assets.image));
     top.append($$("h3",null,((e.names&&e.names.English)||e.id)+(e.shiny?" ✨":"")));c.append(top);
@@ -756,7 +757,7 @@ async function genNotifs(){
  try{const tg=eget();if(tg.length){const [{N,map},ev]=await Promise.all([evoData(),getJ("data/events.json")]);for(const id of tg){const m=map.get(id);if(!m||!N[id])continue;const tn=N[id].name,sn=m.srcs.map(x=>N[x.s]&&N[x.s].name).filter(Boolean),kw=[];m.srcs.forEach(x=>kw.push(...evoAdvice((N[x.s]||{}).name||"",tn,x.req).kw));for(const [nn,a,z,tx] of EVN){if(nrm(nn)===nrm(tn)){const t0=+new Date(a),t1=+new Date(z),now=Date.now();if(t1>now&&t0-now<7*864e5)L.push({id:"evn-"+id+"-"+a,title:"Evolution boost for "+tn,body:tx,d:t0})}}for(const {e,why} of evoEvents(ev,[tn,...sn],kw))L.push({id:"evo-"+id+"-"+e.eventID,title:"Evolution boost for "+tn,body:e.name+" ("+why+") · "+fmt(new Date(e.start)),d:+new Date(e.start)})}}}catch(e){}
  try{const [rb,ev,nmm,dx,shl]=await Promise.all([getJ("data/raidboss.json"),getJ("data/events.json"),nameMap(),(async()=>cache.dex=cache.dex||await loadList("dex"))(),(async()=>cache.shiny=cache.shiny||await loadList("shiny"))()]),dO=rd("pogo-dex-owned"),sO=rd("pogo-shiny-owned"),gid=n=>{n=String(n||"").toLowerCase().replace(/^(mega|primal|shadow|alolan|galarian|hisuian|paldean|gigantamax|dynamax)\s+/,"").replace(/\s+[xy]$/,"").trim();return nmm[n]||0},shAv=new Set(shl.map(x=>x.dex));let k=0;
   const gapOf=(id,wantShiny)=>{if(!id)return null;if(!dO.has("dex:"+id))return"dex";if(wantShiny&&shAv.has(id)&&!sO.has("shiny:"+id))return"shiny";return null};
-  for(const key of ["currentList"]){const g=rb[key]||{};for(const lvl of Object.keys(g)){for(const e of(Array.isArray(g[lvl])?g[lvl]:[])){if(k>=5)break;const nm=(e.names&&e.names.English)||"",id=gid(nm),w=gapOf(id,e.shiny);if(w){k++;L.push({id:"gap-rb-"+lvl+"-"+id+"-"+w,title:(w==="dex"?"New for your Pokédex: ":"Shiny you still need: ")+nm,body:"In "+(lvlN(lvl)?lvlN(lvl)+"-star":lvl)+" raids right now.",d:Date.now()})}}}}
+  for(const key of ["currentList"]){const g=rb[key]||{};for(const lvl of Object.keys(g)){for(const e of(Array.isArray(g[lvl])?g[lvl]:[])){if(k>=5)break;const nm=(e.names&&e.names.English)||"",id=gid(nm),w=gapOf(id,e.shiny);if(w){k++;L.push({id:"gap-rb-"+lvl+"-"+id+"-"+w,title:(w==="dex"?"New for your Pokédex: ":"Shiny you still need: ")+nm,body:"In "+(/shadow/i.test(lvl)?"Shadow ":"")+(lvlN(lvl)?lvlN(lvl)+"-star":lvl)+" raids right now.",d:Date.now()})}}}}
   const now=Date.now();let j=0;for(const e of ev){const t0=+new Date(e.start),t1=+new Date(e.end);if(!(t1>now&&t0-now<864e5)||j>=3)continue;const seen=new Set();for(const wd of String(e.name).split(/[^A-Za-zÀ-ÿ'’.\-♀♂]+/)){if(wd.length<4)continue;const id=gid(wd);if(!id||seen.has(id))continue;seen.add(id);const w=gapOf(id,true);if(w&&j<3){j++;L.push({id:"gap-ev-"+e.eventID+"-"+id,title:(w==="dex"?"Dex gap in event: ":"Shiny gap in event: ")+wd,body:e.name+" · "+fmt(new Date(e.start)),d:t0})}}}
  }catch(e){}
  nadd(L)}
