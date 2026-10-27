@@ -68,8 +68,73 @@
 [{"t":["Grass","Poison"],"i":1,"f":"BULBASAUR","n":"Bulbasaur","c":"","im":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm1.icon.png"},{"t":["Grass","Poison"],"i":2,"f":"IVYSAUR","n":"Ivysaur","c":"","im":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm2.icon.png"},{"t":["Grass","Poison"],"i":3,"f":"VENUSAUR","n":"Venusaur","c":"","im":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm3.icon.png","me":[{"f":"VENUSAUR_MEGA","n":"Mega Venusaur","im":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm3.fMEGA.icon.png"}],"gm":1,"gi":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm3.fGIGANTAMAX.icon.png"},{"t":["Fire"],"i":4,"f":"CHARMANDER","n":"Charmander","c":"","im":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm4.icon.png"},{"t":["Fire"],"i":5,"f":"CHARMELEON","n":"Charmeleon","c":"","im":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm5.icon.png"},{"t":["Fire","Flying"],"i":6,"f":"CHARIZARD","n":"Charizard","c":"","im":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm6.icon.png","me":[{"f":"CHARIZARD_MEGA_X","n":"Mega Charizard X","im":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm6.fMEGA_X.icon.png"},{"f":"CHARIZARD_MEGA_Y","n":"Mega Charizard Y","im":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm6.fMEGA_Y.icon.png"}],"gm":1,"gi":"https:/
 === data/dynamax.json (2 bytes)
 []
-=== data/events.json (36837 bytes)
-[{"eventID":"minior-showers-orionids-2026","name":"Minior Showers: Orionids 2026","eventType":"event","heading":"Event","link":"https://leekduck.com/events/minior-showers-orionids-2026/","image":"https://cdn.leekduck.com/assets/img/events/minior-showers-2026.jpg","start":null,"end":null,"extraData":{"generic":{"hasSpawns":true,"hasFieldResearchTasks":false}}},{"eventID":"pokemon-go-city-safari-boston-2026-rescheduled","name":"Pokémon GO City Safari: Boston (Rescheduled)","eventType":"city-safari","heading":"City Safari","link":"https://leekduck.com/events/pokemon-go-city-safari-boston-2026-rescheduled/","image":"https://cdn.leekduck.com/assets/img/events/city-safari-boston-2026.jpg","start":"2026-10-24T10:00:00.000","end":"2026-10-25T18:00:00.000","extraData":{"generic":{"hasSpawns":true,"hasFieldResearchTasks":true}}},{"eventID":"max-mondays-2026-10-26","name":"Dynamax Sableye during Max Monday","eventType":"max-mondays","heading":"Max Mondays","link":"https://leekduck.com/events/max-mondays-2026-10-26/","image":"https://cdn.leekduck.com/assets/img/events/max-battles-kanto.jpg","start":"2026-10-26T06:00:00.000","end":"2026-10-26T21:00:00.000","extraData":{"generic":{"hasSpawns":false,"hasFieldResearchTasks":false}}},{"eventID":"gbl-twilight-trails_ultra-league_master-league-mega-edition_fantasy-cup-great-league-edition","name":"Ultra League, Master League: Mega Edition, and Fantasy Cup: Great League Edition | Twilight Trails","eventType":"go-battle-league","heading":"GO Bat
+=== data/events.json (36434 bytes)
+[{"eventID":"pokemon-go-city-safari-boston-2026-rescheduled","name":"Pokémon GO City Safari: Boston (Rescheduled)","eventType":"city-safari","heading":"City Safari","link":"https://leekduck.com/events/pokemon-go-city-safari-boston-2026-rescheduled/","image":"https://cdn.leekduck.com/assets/img/events/city-safari-boston-2026.jpg","start":null,"end":null,"extraData":{"generic":{"hasSpawns":true,"hasFieldResearchTasks":true}}},{"eventID":"max-mondays-2026-10-26","name":"Dynamax Sableye during Max Monday","eventType":"max-mondays","heading":"Max Mondays","link":"https://leekduck.com/events/max-mondays-2026-10-26/","image":"https://cdn.leekduck.com/assets/img/events/max-battles-kanto.jpg","start":"2026-10-26T06:00:00.000","end":"2026-10-26T21:00:00.000","extraData":{"generic":{"hasSpawns":false,"hasFieldResearchTasks":false}}},{"eventID":"gbl-twilight-trails_ultra-league_master-league-mega-edition_fantasy-cup-great-league-edition","name":"Ultra League, Master League: Mega Edition, and Fantasy Cup: Great League Edition | Twilight Trails","eventType":"go-battle-league","heading":"GO Battle League","link":"https://leekduck.com/events/gbl-twilight-trails_ultra-league_master-league-mega-edition_fantasy-cup-great-league-edition/","image":"https://cdn.leekduck.com/assets/img/events/go-battle-league-ultra-league-machamp-swampert.jpg","start":"2026-10-20T20:00:00.000Z","end":"2026-10-27T20:00:00.000Z","extraData":{"generic":{"hasSpawns":false,"hasFieldResearchTasks":false}}},{"eventID":"m
+=== data/evolutions.json (178237 bytes)
+[
+    {
+        "evolutions": [
+            {
+                "candy_required": 25,
+                "form": "Normal",
+                "pokemon_id": 2,
+                "pokemon_name": "Ivysaur"
+            }
+        ],
+        "form": "Normal",
+        "pokemon_id": 1,
+        "pokemon_name": "Bulbasaur"
+    },
+    {
+        "evolutions": [
+            {
+                "candy_required": 100,
+                "form": "Normal",
+                "pokemon_id": 3,
+                "pokemon_name": "Venusaur"
+            }
+        ],
+        "form": "Normal",
+        "pokemon_id": 2,
+        "pokemon_name": "Ivysaur"
+    },
+    {
+        "evolutions": [
+            {
+                "candy_required": 25,
+                "form": "Normal",
+                "pokemon_id": 5,
+                "pokemon_name": "Charmeleon"
+            }
+        ],
+        "form": "Normal",
+        "pokemon_id": 4,
+        "pokemon_name": "Charmander"
+    },
+    {
+        "evolutions": [
+            {
+                "candy_required": 100,
+                "form": "Normal",
+                "pokemon_id": 6,
+                "pokemon_name": "Charizard"
+            }
+        ],
+        "form": "Normal",
+        "pokemon_id": 5,
+        "pokemon_name": "Charmeleon"
+    },
+    {
+        "evolutions": [
+            {
+                "candy_required": 25,
+                "form": "Normal",
+                "pokemon_id": 8,
+                "pokemon_name": "Wartortle"
+            }
+        ],
+        "form": "Normal",
+      
 === data/maxbattles.json (25 bytes)
 {
     "currentList": []
