@@ -1145,17 +1145,28 @@ async function pageData(b){
  }catch(e){c2.append($$("p","msg","Could not load the counts. Check your connection."))}}
 INFO.data={t:"Data check",f:pageData};
 /* scan my Pokemon */
+async function videoFrames(file,step,cb){
+ const url=URL.createObjectURL(file),v=document.createElement("video");v.muted=true;v.playsInline=true;v.preload="auto";v.src=url;
+ try{await new Promise((ok,no)=>{v.onloadedmetadata=ok;v.onerror=()=>no(new Error("video"))});
+  const dur=v.duration,W=Math.min(v.videoWidth||900,900),H=Math.round((v.videoHeight||1600)*W/(v.videoWidth||900)),cv=document.createElement("canvas");cv.width=W;cv.height=H;const cx=cv.getContext("2d",{willReadFrequently:true}),sm=document.createElement("canvas");sm.width=24;sm.height=42;const sx=sm.getContext("2d",{willReadFrequently:true}),tot=Math.max(1,Math.floor(dur/step)+1);
+  let prev=null,i=0;
+  for(let t=0;t<dur;t+=step){i++;await new Promise(r=>{let d=false;const f=()=>{if(!d){d=true;r()}};v.onseeked=f;setTimeout(f,2500);v.currentTime=Math.min(t,dur-.05)});
+   cx.drawImage(v,0,0,W,H);sx.drawImage(cv,0,0,24,42);const px=sx.getImageData(0,0,24,42).data;
+   if(prev){let df=0;for(let k=0;k<px.length;k+=4)df+=Math.abs(px[k]-prev[k])+Math.abs(px[k+1]-prev[k+1])+Math.abs(px[k+2]-prev[k+2]);if(df/(px.length/4)<4){prev=px;continue}}
+   prev=px;const blob=await new Promise(r=>cv.toBlob(r,"image/jpeg",.85));if(blob)await cb(blob,i,tot)}
+ }finally{URL.revokeObjectURL(url)}}
 async function pageScan(b){
  const N=await getD("names"),NAMES=Object.values(N).map(p=>[nrm(p.name),+p.id]).filter(p=>p[0].length>=3),exact=new Map(NAMES);
  const TG=[["dex","Pokédex"],["shiny","Shiny"],["lucky","Lucky"],["shadow","Shadow"],["purified","Purified"],["perfect","100% IV"],["xxl","XXL"],["xxs","XXS"],["dynamax","Dynamax"]];
- let tg="dex",also=true;const F=new Map();
+ let tg="dex",also=true,allM=true;const F=new Map();
  const match=txt=>{const o=new Set();for(const ln of txt.split("\n")){const tk=ln.split(/[^A-Za-zÀ-ÿ'’.\-♀♂]+/).map(nrm).filter(t=>t.length>=3);tk.forEach((t,i)=>{for(const c of [t,i+1<tk.length?t+tk[i+1]:null]){if(!c)continue;if(exact.has(c)){o.add(exact.get(c));continue}if(c.length>=6)for(const [n,id] of NAMES){if(Math.abs(n.length-c.length)<=1&&n.length>=6&&lev(c,n)===1){o.add(id);break}}}})}return o};
  const sel=$$("select","sel");sel.setAttribute("aria-label","List to tick");TG.forEach(([k,l])=>sel.append(new Option(l,k)));
  const alsoL=$$("label","hs"),alsoC=document.createElement("input");alsoC.type="checkbox";alsoC.checked=true;alsoL.append(alsoC," Also tick them in the Pokédex");
- const up=document.createElement("input");up.type="file";up.accept="image/*";up.multiple=true;up.hidden=true;const ub=$$("button","retry","Upload screenshots");ub.type="button";ub.onclick=()=>up.click();
+ const allL=$$("label","hs"),allC=document.createElement("input");allC.type="checkbox";allC.checked=true;allL.append(allC," I used the game’s filter, so everything shown belongs in this list");allL.hidden=true;allC.onchange=()=>{allM=allC.checked;reset();draw()};
+ const up=document.createElement("input");up.type="file";up.accept="image/*,video/*";up.multiple=true;up.hidden=true;const ub=$$("button","retry","Upload screenshots or video");ub.type="button";ub.onclick=()=>up.click();
  const st=$$("p","msg"),out=$$("div"),ap=$$("button","retry","Tick selected");ap.type="button";ap.hidden=true;
- const reset=()=>F.forEach(e=>e.on=tg==="shiny"?!!e.shy:true);
- const draw=async()=>{out.replaceChildren();ap.hidden=!F.size;alsoL.hidden=tg==="dex";if(!F.size)return;let own=new Set,L=[];try{L=cache[tg]=cache[tg]||await loadList(tg)}catch(e){}own=rd(tg==="costume"?"pogo-costumes-owned":"pogo-"+tg+"-owned");
+ const reset=()=>F.forEach(e=>e.on=tg==="shiny"&&!allM?!!e.shy:true);
+ const draw=async()=>{out.replaceChildren();ap.hidden=!F.size;alsoL.hidden=allL.hidden=tg==="dex";if(!F.size)return;let own=new Set,L=[];try{L=cache[tg]=cache[tg]||await loadList(tg)}catch(e){}own=rd(tg==="costume"?"pogo-costumes-owned":"pogo-"+tg+"-owned");
   const rows=[...F.values()].sort((a,c)=>a.id-c.id);let n=0;
   for(const e of rows){const it=L.find(x=>x.dex===e.id),c=$$("label","cc rc"),cb=document.createElement("input");cb.type="checkbox";const have=it&&own.has(it.id);cb.checked=!!e.on&&!!it&&!have;cb.disabled=!it||have;cb.onchange=()=>{e.on=cb.checked;cnt()};
    const im=document.createElement("img");im.className="rp";im.alt="";im.src=IMG+e.id+".png";im.onerror=()=>{im.onerror=null;im.src=ALT+e.id+".png"};
@@ -1168,13 +1179,16 @@ async function pageScan(b){
   LSset(k,JSON.stringify([...o]));if(also&&tg!=="dex")LSset("pogo-dex-owned",JSON.stringify([...d]));BS=null;st.textContent="Ticked "+n+" in "+(TG.find(x=>x[0]===tg)||[0,tg])[1]+".";F.clear();draw()};
  sel.onchange=()=>{tg=sel.value;reset();draw()};alsoC.onchange=()=>{also=alsoC.checked};
  up.onchange=async()=>{const files=[...up.files];if(!files.length)return;st.textContent="Loading the picture reader (first time needs internet)…";let T;try{T=await loadTess()}catch(x){st.textContent="Could not load the picture reader. Check your connection and try again.";return}
-  try{const w=await T.createWorker("eng");try{await w.setParameters({tessedit_pageseg_mode:"11"})}catch(x){}let n=0;
-   for(const f of files){n++;st.textContent="Reading picture "+n+" of "+files.length+"…";const {data}=await w.recognize(f);let sp=null;try{sp=await sparkleBlobs(f)}catch(x){}let shy=new Set;try{shy=shinyIdsFrom(ocrWords(data),sp,exact)}catch(x){}
-    for(const id of match(data.text)){const e=F.get(id)||{id,shy:false};if(shy.has(id))e.shy=true;F.set(id,e)}}
+  try{const w=await T.createWorker("eng");try{await w.setParameters({tessedit_pageseg_mode:"11"})}catch(x){}
+   const proc=async src=>{const {data}=await w.recognize(src);let sp=null;try{sp=await sparkleBlobs(src)}catch(x){}let shy=new Set;try{shy=shinyIdsFrom(ocrWords(data),sp,exact)}catch(x){}
+    for(const id of match(data.text)){const e=F.get(id)||{id,shy:false};if(shy.has(id))e.shy=true;F.set(id,e)}};
+   let n=0;for(const f of files){n++;const lab="file "+n+" of "+files.length;
+    if(/^video/.test(f.type)){await videoFrames(f,0.6,async(blob,i,tot)=>{st.textContent="Reading video frame "+i+" of "+tot+" ("+lab+"). Found "+F.size+" Pokémon so far…";await proc(blob)})}
+    else{st.textContent="Reading picture "+lab+"…";await proc(f)}}
    await w.terminate();st.textContent=F.size?"Found "+F.size+" Pokémon. Untick any that are wrong.":"No Pokémon names found. Try a clearer screenshot."}
   catch(x){st.textContent="Could not read that picture. Try another screenshot."}
   up.value="";reset();draw()};
- b.append($$("p","hs","Pick the list you want to fill, then upload screenshots of your own Pokémon storage (names showing). The app reads the names and ticks them for you after you check the list."),sel,alsoL,$$("br"),ub,up,st,ap,out)}
+ b.append($$("p","hs","Pick the list you want to fill, then upload screenshots, or a screen recording scrolling slowly through your Pokémon storage, with names showing. For best results use the game’s own filter first (for example Shiny, Lucky or Shadow). The app reads the names and ticks them for you after you check the list. Nicknamed Pokémon can’t be recognised, and a video can take a few minutes to read."),sel,allL,alsoL,$$("br"),ub,up,st,ap,out)}
 INFO.scan={t:"Scan my Pokémon",f:pageScan};
 
 $("#ver").textContent=VER;
