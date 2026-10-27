@@ -491,8 +491,17 @@ async function pageCD(b){
  const nmN={},exi={};for(const k in nm)nmN[nrm(k)]=nm[k];try{(await dexData()).forEach(e=>{if(e.im)exi[e.i]=e.im})}catch(e){}
  const okd=x=>/^\d{4}-\d{2}-\d{2}$/.test(x||"");cd=cd.filter(c=>okd(c.start_date));cd.forEach(c=>{if(!okd(c.end_date)||c.end_date<c.start_date)c.end_date=c.start_date});
  const today=new Date().toISOString().slice(0,10),L=cd.slice().sort((a,c)=>c.start_date.localeCompare(a.start_date));
+ let XE=[];try{const ev=await getJ("data/events.json"),now=Date.now();XE=ev.filter(e=>(e.eventType==="community-day"||/community day/i.test(e.heading||""))&&!/classic/i.test(e.name||"")&&+new Date(e.end)>=now&&!cd.some(c=>c.start_date===String(e.start).slice(0,10))).sort((a,c)=>new Date(a.start)-new Date(c.start))}catch(e){}
+ const xcard=e=>{const d=$$("div","cc"),top=$$("div","row cdr"),pw=$$("div","cdp"),x=(e.extraData&&e.extraData.communityday)||{},sp=x.spawns||[];
+  sp.forEach(q=>{if(q&&q.image)pw.append(pic(q.image))});if(!pw.children.length&&e.image)pw.append(pic(e.image));
+  top.append(pw,$$("h3",null,e.name));d.append(top,$$("p",null,fmt(new Date(e.start))+" to "+fmt(new Date(e.end))));
+  if(sp.length)d.append($$("p",null,"Featured: "+sp.map(q=>q.text||q.name).filter(Boolean).join(", ")));
+  const bn=(x.bonuses||[]).map(q=>q.text||q).filter(t=>typeof t==="string"&&t);if(bn.length)d.append($$("p",null,"Bonuses: "+bn.join(", ")));
+  const sh=(x.shinies||[]).map(q=>q.text||q.name).filter(Boolean);if(sh.length)d.append($$("p",null,"Shiny: "+sh.join(", ")));
+  if(!sp.length&&!bn.length)d.append($$("p","hs","Full details have not been published in the data feed yet."));
+  if(e.link){const a=$$("a",null,"Details");a.href=e.link;a.target="_blank";a.rel="noopener";d.append(a)}return d};
  for(const [h,list] of [["Upcoming",L.filter(c=>c.end_date>=today).reverse()],["Past",L.filter(c=>c.end_date<today)]]){
-  if(!list.length)continue;b.append($$("h2",null,h));
+  if(!list.length&&!(h==="Upcoming"&&XE.length))continue;b.append($$("h2",null,h));if(h==="Upcoming")XE.forEach(e=>b.append(xcard(e)));
   for(const c of list){const d=$$("div","cc"),top=$$("div","row cdr"),pw=$$("div","cdp");
    for(const n of c.boosted_pokemon||[]){const id=nm[n.toLowerCase()]||nmN[nrm(n.replace(/^(alolan|galarian|hisuian|paldean|mega|shadow|gigantamax|dynamax)\s+/i,"").replace(/\s*\(.*\)/,""))];pw.append(picFB(id?[exi[id],IMG+id+".png",ALT+id+".png"].filter(Boolean):[],n))}
    top.append(pw,$$("h3",null,"#"+c.community_day_number+" "+(c.boosted_pokemon||[]).join(", ")));d.append(top,$$("p",null,fd(c.start_date)+(c.end_date!==c.start_date?" to "+fd(c.end_date):"")));
