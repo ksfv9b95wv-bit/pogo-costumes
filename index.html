@@ -452,7 +452,7 @@ async function loadList(m){
  if(m==="dynamax"){const R=await relSet();return(await getJ("data/dynamax.json")).map(e=>({id:"dynamax:"+e.i,name:e.n,event:gen(e.i),dex:e.i,kind:"dynamax",img:e.im,na:R&&!R.has(+e.i)?1:0}))}
  if(DEXM[m]){const L=DEXM[m](await dexData()),R=await relSet();return R?L.map(d=>R.has(+d.dex)?d:{...d,na:1}):L}
  const B="https://pogoapi.net/api/v1/";
- if(m==="shadow"||m==="purified"){const sh=await getD("shadow"),seen={};return(Array.isArray(sh)?sh:Object.values(sh)).filter(p=>p&&p.id&&p.name&&!seen[p.id]&&(seen[p.id]=1)).sort((a,b)=>a.id-b.id).map(p=>({id:m+":"+p.id,name:p.name,event:gen(+p.id),dex:+p.id,kind:m}))}
+ if(m==="shadow"||m==="purified"){const sh=await getD("shadow"),sx=await getJ("data/shadow_extra.json").catch(()=>[]),seen={};return((Array.isArray(sh)?sh:Object.values(sh)).concat(Array.isArray(sx)?sx:[])).filter(p=>p&&p.id&&p.name&&!seen[p.id]&&(seen[p.id]=1)).sort((a,b)=>a.id-b.id).map(p=>({id:m+":"+p.id,name:p.name,event:gen(+p.id),dex:+p.id,kind:m}))}
  const [rel,sh]=await Promise.all([relObj(),m==="shiny"?getD("shiny"):null]);
  return Object.entries(rel).map(([k,p])=>({k:+k,name:p.name,f:m==="shiny"?sh[k]:null})).filter(p=>m!=="shiny"||sh[p.k]).sort((a,b)=>a.k-b.k).map(p=>({id:m+":"+p.k,name:p.name,event:gen(p.k),dex:p.k,kind:m,shiny:m==="shiny",src:src(p.f)}));
 }
