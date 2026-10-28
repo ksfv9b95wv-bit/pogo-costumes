@@ -245,6 +245,8 @@ header .bar{height:6px!important;margin-bottom:0!important}
 .rtabs{display:grid!important;grid-template-columns:repeat(3,1fr);gap:6px}.rtabs .retry{width:100%;padding:6px 4px;min-height:40px}.rgg{align-items:stretch}.rg{justify-content:flex-start;min-height:120px;padding:4px 2px;border-radius:14px}.rg small,.rg b{max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .sw{display:flex;align-items:center;gap:10px;margin:14px 0 6px;font-weight:700;cursor:pointer}.sw input{position:absolute;opacity:0;width:1px;height:1px}.sw .kb{width:46px;height:26px;border-radius:13px;background:rgba(19,128,181,.3);position:relative;flex:none;transition:background .2s}.sw .kb:after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.3);transition:transform .2s}.sw input:checked+.kb{background:#1380b5}.sw input:checked+.kb:after{transform:translateX(20px)}.sw input:focus-visible+.kb{outline:3px solid #FFCB08}
 .bi.tg.dim img{opacity:.35;filter:grayscale(.6)}
+.lkb{border-radius:16px;padding:12px 14px;margin:8px 0;display:flex;flex-direction:column;gap:6px;font-size:14px}.lkb.on{background:#fde8e6;color:#7a1d16;border:1px solid #f0aaa3}.lkb.off{background:#e3f6ea;color:#1c5a35;border:1px solid #a8dcbc}.lkb button{align-self:flex-start;margin:0}
+.lks{position:relative;height:48px;border-radius:24px;background:rgba(122,29,22,.15);display:flex;align-items:center;justify-content:center;overflow:hidden;margin-top:4px;user-select:none;-webkit-user-select:none}.lks span{font-weight:700;pointer-events:none}.lkk{position:absolute;left:3px;top:3px;width:42px;height:42px;border-radius:50%;background:#c93a2f;color:#fff;font-size:26px;line-height:40px;text-align:center;box-shadow:0 2px 6px rgba(0,0,0,.3);touch-action:none;cursor:grab}
 </style>
 </head>
 <body class="wel">
@@ -1146,6 +1148,17 @@ async function pageData(b){
  }catch(e){c2.append($$("p","msg","Could not load the counts. Check your connection."))}}
 INFO.data={t:"Data check",f:pageData};
 /* scan my Pokemon */
+const BARS=[];
+function lockBar(){const w=$$("div","lkb"),render=()=>{w.replaceChildren();w.className="lkb "+(isLocked()?"on":"off");
+  if(isLocked()){w.append($$("b",null,"🔒 Adding is locked"),$$("span",null,"Lock selections is on, so Pokémon can’t be added from here. Swipe the red button across to unlock."));
+   const tr=$$("div","lks"),kn=$$("div","lkk","›"),tx=$$("span",null,"Swipe to unlock");kn.tabIndex=0;kn.setAttribute("role","button");kn.setAttribute("aria-label","Unlock selections");tr.append(tx,kn);let x0=0,dx=0,on=false;
+   const unlock=()=>{LSset("pogo-lock","0");lockLab();BARS.forEach(f=>f())},max=()=>Math.max(1,tr.clientWidth-kn.offsetWidth-6);
+   kn.onpointerdown=e=>{on=true;x0=e.clientX;try{kn.setPointerCapture(e.pointerId)}catch(x){}kn.style.transition="none"};
+   kn.onpointermove=e=>{if(!on)return;dx=Math.max(0,Math.min(max(),e.clientX-x0));kn.style.transform="translateX("+dx+"px)";tx.style.opacity=1-dx/max()};
+   const end=()=>{if(!on)return;on=false;if(dx>=max()*.85)unlock();else{kn.style.transition="transform .2s";kn.style.transform="";tx.style.opacity=1}dx=0};
+   kn.onpointerup=end;kn.onpointercancel=end;kn.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();unlock()}};w.append(tr)}
+  else{w.append($$("b",null,"🔓 Unlocked"),$$("span",null,"Pokémon can be added from here."));const lk=$$("button","retry off","Lock again");lk.type="button";lk.onclick=()=>{LSset("pogo-lock","1");lockLab();BARS.forEach(f=>f())};w.append(lk)}};
+ BARS.push(render);render();return w}
 async function captureFrames(file,step,onP,stopf){
  const url=URL.createObjectURL(file),v=document.createElement("video");
  v.muted=true;v.defaultMuted=true;v.playsInline=true;v.setAttribute("playsinline","");v.setAttribute("muted","");v.preload="auto";v.style.cssText="position:fixed;right:0;bottom:0;width:2px;height:2px;opacity:.02;pointer-events:none";document.body.append(v);v.src=url;
@@ -1194,7 +1207,7 @@ async function pageScan(b){
   chip("all","All ("+all.length+")");CATS.forEach(([c,l])=>{if(c!=="dex"&&cnt[c])chip(c,l+" ("+cnt[c]+")")});
   const shown=all.filter(e=>flt==="all"||eff(e).has(flt));
   const bulk=$$("div"),bs=$$("button","retry off","Select all shown"),bu=$$("button","retry off","Unselect all shown");bs.type=bu.type="button";bs.onclick=()=>{shown.forEach(e=>e.on=true);draw()};bu.onclick=()=>{shown.forEach(e=>e.on=false);draw()};bulk.append(bs,bu);
-  res.append($$("p","hs","Filter the found Pokémon by category, tick or untick any, then use the button at the bottom. Tap a category badge on a Pokémon to add or remove it for that Pokémon."),fr,bulk);
+  res.append(lockBar(),$$("p","hs","What do these Pokémon count as? Tap to switch categories on for every Pokémon found. Detected categories are already on."),exRow,$$("p","hs","Filter the found Pokémon by category, tick or untick any, then use the button at the bottom. Tap a category badge on a Pokémon to add or remove it for that Pokémon."),fr,bulk);
   for(const e of shown){const c=$$("label","cc rc"),cb=document.createElement("input");cb.type="checkbox";cb.checked=e.on;cb.onchange=()=>{e.on=cb.checked;const n=all.filter(x=>x.on).length;ap.textContent="Add "+n+" selected to my dexes";ap.disabled=!n};
    const im=document.createElement("img");im.className="rp";im.alt="";im.src=IMG+e.id+".png";im.onerror=()=>{im.onerror=null;im.src=ALT+e.id+".png"};
    const m=$$("div","rm"),h=$$("h3",null,N[e.id].name+" #"+e.id),rb=$$("div","rb");
@@ -1231,8 +1244,8 @@ async function pageScan(b){
   catch(x){try{if(w)await w.terminate()}catch(e){}st.textContent=stop?"Stopped.":(x&&x.message&&x!=="stop"?"Could not read that file: "+x.message+". Try screenshots instead, or a different recording.":"Could not read that file. Try another screenshot or recording.")}
   pbw.hidden=cbtn.hidden=true;pst.textContent="";ub.disabled=false;pi.style.width="0";st.append(" ");await loadAll();draw()};
  drawEx();
- b.append($$("p","hs","Upload screenshots, or a screen recording scrolling slowly through your Pokémon storage with names showing. Using the game’s own filter first (for example Shiny, Lucky or Purified) lets the app work out the categories itself, because it reads the filter name at the top of the screen."),
-  $$("p","hs","What do these Pokémon count as? Tap to switch categories on for every Pokémon found. The ones it detects are added automatically."),exRow,$$("br"),ub," ",cbtn,up,est,stB,pbw,pst,st,res,ap)}
+ b.append(lockBar(),$$("p","hs","Upload screenshots, or a screen recording scrolling slowly through your Pokémon storage with names showing. Using the game’s own filter first (for example Shiny, Lucky or Purified) lets the app work out the categories itself, because it reads the filter name at the top of the screen."),
+  ub," ",cbtn,up,est,stB,pbw,pst,st,res,ap)}
 INFO.scan={t:"Scan my Pokémon",f:pageScan};
 
 $("#ver").textContent=VER;
