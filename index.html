@@ -244,6 +244,7 @@ header .bar{height:6px!important;margin-bottom:0!important}
 .rst{color:#f5a800;font-size:1.15em;letter-spacing:.06em;text-shadow:0 0 1px #b87400,0 1px 2px rgba(120,70,0,.45);-webkit-text-stroke:.6px #c98200}.rst.sh{color:#9b5cf0;text-shadow:0 0 1px #5a2bb0,0 1px 2px rgba(60,20,120,.5);-webkit-text-stroke:.6px #6a35c4}
 .rtabs{display:grid!important;grid-template-columns:repeat(3,1fr);gap:6px}.rtabs .retry{width:100%;padding:6px 4px;min-height:40px}.rgg{align-items:stretch}.rg{justify-content:flex-start;min-height:120px;padding:4px 2px;border-radius:14px}.rg small,.rg b{max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .sw{display:flex;align-items:center;gap:10px;margin:14px 0 6px;font-weight:700;cursor:pointer}.sw input{position:absolute;opacity:0;width:1px;height:1px}.sw .kb{width:46px;height:26px;border-radius:13px;background:rgba(19,128,181,.3);position:relative;flex:none;transition:background .2s}.sw .kb:after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.3);transition:transform .2s}.sw input:checked+.kb{background:#1380b5}.sw input:checked+.kb:after{transform:translateX(20px)}.sw input:focus-visible+.kb{outline:3px solid #FFCB08}
+.bi.tg.dim img{opacity:.35;filter:grayscale(.6)}
 </style>
 </head>
 <body class="wel">
@@ -1151,7 +1152,7 @@ async function captureFrames(file,step,onP,stopf){
  const pend=[];
  try{await new Promise((ok,no)=>{const to=setTimeout(()=>no(new Error("The video did not load")),15000);v.onloadedmetadata=()=>{clearTimeout(to);ok()};v.onerror=()=>{clearTimeout(to);no(new Error("This video format can’t be opened here"))}});
   const dur=v.duration;if(!isFinite(dur)||dur<=0)throw new Error("The video length could not be read");
-  const vw=v.videoWidth||900,vh=v.videoHeight||1600,W=Math.min(vw,1200),H=Math.round(vh*W/vw),cv=document.createElement("canvas");cv.width=W;cv.height=H;const cx=cv.getContext("2d",{willReadFrequently:true}),sm=document.createElement("canvas");sm.width=24;sm.height=42;const sx=sm.getContext("2d",{willReadFrequently:true});
+  const vw=v.videoWidth||900,vh=v.videoHeight||1600,W=Math.min(vw,1000),H=Math.round(vh*W/vw),cv=document.createElement("canvas");cv.width=W;cv.height=H;const cx=cv.getContext("2d",{willReadFrequently:true}),sm=document.createElement("canvas");sm.width=24;sm.height=42;const sx=sm.getContext("2d",{willReadFrequently:true});
   v.playbackRate=2;try{await v.play()}catch(e){throw new Error("The browser would not play the video")}
   await new Promise((done,fail)=>{let next=0,prev=null,last=-1,lm=Date.now(),seen=0,dark=0;
    const loop=()=>{if(stopf&&stopf()){done();return}
@@ -1168,46 +1169,70 @@ async function captureFrames(file,step,onP,stopf){
  }finally{try{v.pause()}catch(e){}v.remove();URL.revokeObjectURL(url)}}
 async function pageScan(b){
  const N=await getD("names"),NAMES=Object.values(N).map(p=>[nrm(p.name),+p.id]).filter(p=>p[0].length>=3),exact=new Map(NAMES);
- const TG=[["dex","Pokédex"],["shiny","Shiny"],["lucky","Lucky"],["shadow","Shadow"],["purified","Purified"],["perfect","100% IV"],["xxl","XXL"],["xxs","XXS"],["dynamax","Dynamax"]];
- let tg="dex",also=true,allM=true;const F=new Map();
+ const CATS=[["dex","Pokédex"],["shiny","Shiny"],["lucky","Lucky"],["shadow","Shadow"],["purified","Purified"],["xxl","XXL"],["xxs","XXS"],["perfect","100% IV"],["dynamax","Dynamax"]],CL=Object.fromEntries(CATS),key=c=>"pogo-"+c+"-owned";
+ const FW={shiny:"shiny",lucky:"lucky",shadow:"shadow",purified:"purified",xxl:"xxl",xxs:"xxs",dynamax:"dynamax",hundo:"perfect",perfect:"perfect"};
+ const F=new Map(),ex=new Set(["dex"]),det=new Set(),catN={};let framesN=0,flt="all",stop=false,pending=[],LST={},OWN={};
+ const eff=e=>{const s=new Set(["dex"].filter(c=>ex.has(c)));ex.forEach(c=>s.add(c));det.forEach(c=>s.add(c));if(e.shy)s.add("shiny");e.add.forEach(c=>s.add(c));e.rem.forEach(c=>s.delete(c));return s};
+ const icon=c=>{try{return bIcon(c)||""}catch(x){return ""}};
+ const fmtT=x=>{x=Math.max(0,Math.round(x));return x>=60?Math.floor(x/60)+" min "+(x%60)+" s":x+" s"};
  const match=txt=>{const o=new Set();for(const ln of txt.split("\n")){const tk=ln.split(/[^A-Za-zÀ-ÿ'’.\-♀♂]+/).map(nrm).filter(t=>t.length>=3);tk.forEach((t,i)=>{for(const c of [t,i+1<tk.length?t+tk[i+1]:null]){if(!c)continue;if(exact.has(c)){o.add(exact.get(c));continue}if(c.length>=6)for(const [n,id] of NAMES){if(Math.abs(n.length-c.length)<=1&&n.length>=6&&lev(c,n)===1){o.add(id);break}}}})}return o};
- const sel=$$("select","sel");sel.setAttribute("aria-label","List to tick");TG.forEach(([k,l])=>sel.append(new Option(l,k)));
- const alsoL=$$("label","hs"),alsoC=document.createElement("input");alsoC.type="checkbox";alsoC.checked=true;alsoL.append(alsoC," Also tick them in the Pokédex");
- const allL=$$("label","hs"),allC=document.createElement("input");allC.type="checkbox";allC.checked=true;allL.append(allC," I used the game’s filter, so everything shown belongs in this list");allL.hidden=true;allC.onchange=()=>{allM=allC.checked;reset();draw()};
- const up=document.createElement("input");up.type="file";up.accept="image/*,video/*";up.multiple=true;up.hidden=true;const ub=$$("button","retry","Upload screenshots or video");ub.type="button";ub.onclick=()=>up.click();
- const st=$$("p","msg"),out=$$("div"),ap=$$("button","retry","Tick selected");ap.type="button";ap.hidden=true;ap.style.cssText="position:sticky;bottom:14px;z-index:5;width:100%;min-height:52px;font-size:17px;box-shadow:0 4px 16px rgba(0,40,80,.35)";
- const reset=()=>F.forEach(e=>e.on=tg==="shiny"&&!allM?!!e.shy:true);
- const draw=async()=>{out.replaceChildren();ap.hidden=!F.size;alsoL.hidden=allL.hidden=tg==="dex";if(!F.size)return;let own=new Set,L=[];try{L=cache[tg]=cache[tg]||await loadList(tg)}catch(e){}own=rd(tg==="costume"?"pogo-costumes-owned":"pogo-"+tg+"-owned");
-  const rows=[...F.values()].sort((a,c)=>a.id-c.id);let n=0;
-  for(const e of rows){const it=L.find(x=>x.dex===e.id),c=$$("label","cc rc"),cb=document.createElement("input");cb.type="checkbox";const have=it&&own.has(it.id);cb.checked=!!e.on&&!!it&&!have;cb.disabled=!it||have;cb.onchange=()=>{e.on=cb.checked;cnt()};
+ const up=document.createElement("input");up.type="file";up.accept="image/*,video/*";up.multiple=true;up.hidden=true;
+ const ub=$$("button","retry","Choose screenshots or video");ub.type="button";ub.onclick=()=>up.click();
+ const cbtn=$$("button","retry off","Cancel");cbtn.type="button";cbtn.hidden=true;
+ const stB=$$("button","retry","Start reading");stB.type="button";stB.hidden=true;
+ const est=$$("div","cc");est.hidden=true;
+ const pbw=$$("div","pb"),pi=document.createElement("i"),pst=$$("p","hs"),st=$$("p","msg");pbw.append(pi);pbw.hidden=true;
+ const exRow=$$("div","rb");
+ const res=$$("div"),ap=$$("button","retry","Add selected to my dexes");ap.type="button";ap.hidden=true;ap.style.cssText="position:sticky;bottom:14px;z-index:5;width:100%;min-height:52px;font-size:17px;box-shadow:0 4px 16px rgba(0,40,80,.35)";
+ const drawEx=()=>{exRow.replaceChildren();CATS.forEach(([c,l])=>{const x=$$("button","bi tg"+(ex.has(c)?"":" dim"));x.type="button";x.innerHTML=icon(c);x.append($$("em",null,l));x.setAttribute("aria-pressed",ex.has(c));x.onclick=()=>{ex.has(c)?ex.delete(c):ex.add(c);drawEx();if(F.size)draw()};exRow.append(x)})};
+ const loadAll=async()=>{for(const [c] of CATS){try{LST[c]=cache[c]=cache[c]||await loadList(c)}catch(x){LST[c]=LST[c]||[]}OWN[c]=rd(key(c))}};
+ const itemOf=(c,id)=>(LST[c]||[]).find(x=>x.dex===id);
+ const draw=()=>{res.replaceChildren();const all=[...F.values()].sort((a,c)=>a.id-c.id);ap.hidden=!all.length;if(!all.length)return;
+  const cnt={};all.forEach(e=>eff(e).forEach(c=>cnt[c]=(cnt[c]||0)+1));
+  const nSel=all.filter(e=>e.on).length;ap.textContent="Add "+nSel+" selected to my dexes";ap.disabled=!nSel;
+  const fr=$$("div","rb");const chip=(k,l)=>{const x=$$("button","retry"+(flt===k?"":" off"),l);x.type="button";x.style.margin="2px 4px 2px 0";x.onclick=()=>{flt=k;draw()};fr.append(x)};
+  chip("all","All ("+all.length+")");CATS.forEach(([c,l])=>{if(c!=="dex"&&cnt[c])chip(c,l+" ("+cnt[c]+")")});
+  const shown=all.filter(e=>flt==="all"||eff(e).has(flt));
+  const bulk=$$("div"),bs=$$("button","retry off","Select all shown"),bu=$$("button","retry off","Unselect all shown");bs.type=bu.type="button";bs.onclick=()=>{shown.forEach(e=>e.on=true);draw()};bu.onclick=()=>{shown.forEach(e=>e.on=false);draw()};bulk.append(bs,bu);
+  res.append($$("p","hs","Filter the found Pokémon by category, tick or untick any, then use the button at the bottom. Tap a category badge on a Pokémon to add or remove it for that Pokémon."),fr,bulk);
+  for(const e of shown){const c=$$("label","cc rc"),cb=document.createElement("input");cb.type="checkbox";cb.checked=e.on;cb.onchange=()=>{e.on=cb.checked;const n=all.filter(x=>x.on).length;ap.textContent="Add "+n+" selected to my dexes";ap.disabled=!n};
    const im=document.createElement("img");im.className="rp";im.alt="";im.src=IMG+e.id+".png";im.onerror=()=>{im.onerror=null;im.src=ALT+e.id+".png"};
    const m=$$("div","rm"),h=$$("h3",null,N[e.id].name+" #"+e.id),rb=$$("div","rb");
-   if(!it)rb.append($$("span","bd off","Not in this list"));else if(have)rb.append($$("span","bd off","Already ticked"));else if(tg==="shiny"&&!e.shy)rb.append($$("span","bd off","No shiny sparkle seen"));if(e.shy){const s=$$("span","bi");s.innerHTML=bIcon("shiny");s.append($$("em",null,"Shiny seen"));rb.append(s)}
-   m.append(h,rb);c.append(cb,im,m);out.append(c);e.it=it;e.cb=cb;if(cb.checked)n++}
-  cnt()};
- const cnt=()=>{const n=[...F.values()].filter(e=>e.cb&&e.cb.checked).length;ap.textContent="Tick "+n+" selected";ap.disabled=!n};
- ap.onclick=()=>{if(isLocked()){lockMsg();return}const k=tg==="costume"?"pogo-costumes-owned":"pogo-"+tg+"-owned",o=rd(k),d=rd("pogo-dex-owned");let n=0;for(const e of F.values())if(e.cb&&e.cb.checked&&e.it){o.add(e.it.id);n++;if(also&&tg!=="dex")d.add("dex:"+e.id)}
-  LSset(k,JSON.stringify([...o]));if(also&&tg!=="dex")LSset("pogo-dex-owned",JSON.stringify([...d]));BS=null;st.textContent="Ticked "+n+" in "+(TG.find(x=>x[0]===tg)||[0,tg])[1]+".";F.clear();draw()};
- sel.onchange=()=>{tg=sel.value;reset();draw()};alsoC.onchange=()=>{also=alsoC.checked};
- let stop=false;const pbw=$$("div","pb"),pi=document.createElement("i"),cbtn=$$("button","retry off","Cancel"),pst=$$("p","hs");pbw.append(pi);pbw.hidden=cbtn.hidden=true;cbtn.type="button";cbtn.onclick=()=>{stop=true;cbtn.disabled=true;st.textContent="Stopping… keeping what has been found so far."};
- const fmtT=x=>{x=Math.max(0,Math.round(x));return x>=60?Math.floor(x/60)+" min "+(x%60)+" s":x+" s"};
- up.onchange=async()=>{const files=[...up.files];if(!files.length)return;stop=false;cbtn.disabled=false;cbtn.hidden=false;pbw.hidden=false;pi.style.width="3%";pst.textContent="";ub.disabled=true;const t0=Date.now();
+   const E=eff(e);CATS.forEach(([k,l])=>{const it=itemOf(k,e.id),has=it&&OWN[k]&&OWN[k].has(it.id),on=E.has(k);if(!on&&!(e.add.has(k)||e.rem.has(k)||k==="dex"))return;
+    const x=$$("button","bi tg"+(on?"":" dim"));x.type="button";x.innerHTML=icon(k);x.append($$("em",null,l+(on&&has?" ✓":on&&!it?" (n/a)":"")));x.title=on?(has?"Already ticked":!it?"Not available in this list":"Will be added"):"Tap to add";x.onclick=ev=>{ev.preventDefault();if(on){e.rem.add(k);e.add.delete(k)}else{e.add.add(k);e.rem.delete(k)}draw()};rb.append(x)});
+   const more=$$("button","bi tg dim","＋");more.type="button";more.title="Add another category";more.onclick=ev=>{ev.preventDefault();const nx=CATS.find(([k])=>!E.has(k));if(nx){e.add.add(nx[0]);e.rem.delete(nx[0]);draw()}};
+   if(CATS.some(([k])=>!E.has(k)&&!(e.add.has(k)||e.rem.has(k)))){const sel=$$("select","sel");sel.style.cssText="min-height:34px;font-size:13px;padding:2px 6px;width:auto";sel.append(new Option("＋ category",""));CATS.forEach(([k,l])=>{if(!E.has(k))sel.append(new Option(l,k))});sel.onchange=()=>{if(sel.value){e.add.add(sel.value);e.rem.delete(sel.value);draw()}};rb.append(sel)}
+   m.append(h,rb);c.append(cb,im,m);res.append(c)}};
+ ap.onclick=()=>{if(isLocked()){lockMsg();return}const sel=[...F.values()].filter(e=>e.on),tot=[];let n=0;
+  for(const [c,l] of CATS){const o=rd(key(c));let add=0;for(const e of sel){if(!eff(e).has(c))continue;const it=itemOf(c,e.id);if(it&&!o.has(it.id)){o.add(it.id);add++}}if(add){LSset(key(c),JSON.stringify([...o]));tot.push(l+" +"+add);n+=add}OWN[c]=o}
+  BS=null;sel.forEach(e=>e.on=false);st.textContent=n?"Added: "+tot.join(", ")+". Anything already ticked was left alone.":"Nothing new to add. Those Pokémon were already ticked in the dexes chosen.";draw();window.scrollTo({top:0,behavior:"smooth"})};
+ const videoDur=f=>new Promise(r=>{const v=document.createElement("video"),u=URL.createObjectURL(f);v.preload="metadata";v.muted=true;v.onloadedmetadata=()=>{const d=v.duration;URL.revokeObjectURL(u);r(isFinite(d)?d:0)};v.onerror=()=>{URL.revokeObjectURL(u);r(0)};v.src=u});
+ up.onchange=async()=>{pending=[...up.files];up.value="";if(!pending.length)return;est.replaceChildren();est.hidden=false;stB.hidden=true;let tot=0;est.append($$("h3",null,"Time estimate"));
+  for(const f of pending){if(/^video/.test(f.type)){const d=await videoDur(f),fr=Math.ceil(d/0.6*0.7),t=d/2+3+fr*3.5;tot+=t;est.append($$("p",null,f.name+": video"+(d?" of "+fmtT(d):"")+" → about "+fmtT(t*.7)+" to "+fmtT(t*1.5)+" to read."))}else{tot+=4;est.append($$("p",null,f.name+": picture → about 4 s."))}}
+  est.append($$("p","hs","Total: about "+fmtT(tot*.7)+" to "+fmtT(tot*1.5)+". The first run also needs time to load the reader. Keep the screen on and this page open while it works. You can cancel at any time and keep what was found."));stB.hidden=false;stB.disabled=false};
+ cbtn.onclick=()=>{stop=true;cbtn.disabled=true;st.textContent="Stopping… keeping what has been found so far."};
+ stB.onclick=async()=>{const files=pending;pending=[];if(!files.length)return;stop=false;cbtn.disabled=false;cbtn.hidden=false;stB.hidden=true;est.hidden=true;pbw.hidden=false;pi.style.width="3%";pst.textContent="";ub.disabled=true;const t0=Date.now();
   st.textContent="Loading the picture reader (first time needs internet)…";const slow=setTimeout(()=>{if(!stop)pst.textContent="Still loading the reader. This can take a while on a slow connection. Press Cancel to stop."},12000);
   let T;try{T=await loadTess()}catch(x){clearTimeout(slow);st.textContent="Could not load the picture reader. Check your connection and try again.";pbw.hidden=cbtn.hidden=true;ub.disabled=false;return}
   clearTimeout(slow);pst.textContent="";let w=null;
   try{if(stop)throw "stop";w=await T.createWorker("eng");try{await w.setParameters({tessedit_pageseg_mode:"11"})}catch(x){}
    const proc=async src=>{const {data}=await w.recognize(src);let sp=null;try{sp=await sparkleBlobs(src)}catch(x){}let shy=new Set;try{shy=shinyIdsFrom(ocrWords(data),sp,exact)}catch(x){}
-    for(const id of match(data.text)){const e=F.get(id)||{id,shy:false};if(shy.has(id))e.shy=true;F.set(id,e)}};
-   const prog=(fr,label)=>{const pc=Math.min(1,Math.max(.03,fr)),el=(Date.now()-t0)/1000;pi.style.width=Math.round(pc*100)+"%";pst.textContent=Math.round(pc*100)+"% · "+fmtT(el)+" elapsed"+(pc>.08?" · about "+fmtT(el/pc-el)+" left":"")+" · found "+F.size;st.textContent=label};
+    let H=0;try{const bm=await createImageBitmap(src);H=bm.height;if(bm.close)bm.close()}catch(x){}
+    framesN++;const seen=new Set();for(const wd of ocrWords(data)){const t=nrm(wd.text||"");if(FW[t]&&wd.bbox&&(!H||wd.bbox.y1<H*.24))seen.add(FW[t])}seen.forEach(c=>catN[c]=(catN[c]||0)+1);
+    for(const id of match(data.text)){const e=F.get(id)||{id,shy:false,on:true,add:new Set(),rem:new Set()};if(shy.has(id))e.shy=true;F.set(id,e)}};
+   let done=0,total=0;const prog=(fr,label)=>{const pc=Math.min(1,Math.max(.03,fr)),el=(Date.now()-t0)/1000;pi.style.width=Math.round(pc*100)+"%";pst.textContent=Math.round(pc*100)+"% · "+fmtT(el)+" elapsed"+(pc>.1?" · about "+fmtT(el/pc-el)+" left":"")+" · found "+F.size;st.textContent=label};
    let n=0;for(const f of files){if(stop)break;n++;const lab="file "+n+" of "+files.length;
-    if(/^video/.test(f.type)){const fr=await captureFrames(f,0.6,(pc,k)=>prog((n-1+pc*.25)/files.length,"Step 1 of 2: capturing frames from the video ("+Math.round(pc*100)+"%, "+k+" kept)"),()=>stop);
-     for(let i=0;i<fr.length&&!stop;i++){prog((n-1+.25+.75*(i+1)/fr.length)/files.length,"Step 2 of 2: reading frame "+(i+1)+" of "+fr.length+" ("+lab+")");await proc(fr[i])}}
+    if(/^video/.test(f.type)){const fr=await captureFrames(f,0.6,(pc,k)=>prog((n-1+pc*.2)/files.length,"Step 1 of 2: capturing frames from the video ("+Math.round(pc*100)+"%, "+k+" kept)"),()=>stop);
+     for(let i=0;i<fr.length&&!stop;i++){prog((n-1+.2+.8*(i+1)/fr.length)/files.length,"Step 2 of 2: reading frame "+(i+1)+" of "+fr.length+" ("+lab+")");await proc(fr[i])}}
     else{prog((n-1)/files.length,"Reading picture "+lab);await proc(f)}}
    await w.terminate();w=null;pi.style.width="100%";
-   st.textContent=(stop?"Stopped. ":"")+(F.size?"Found "+F.size+" Pokémon. Untick any that are wrong.":"No Pokémon names found. Try a clearer screenshot or recording.")}
+   for(const c in catN)if(catN[c]>=Math.max(1,Math.round(framesN*.25)))det.add(c);
+   st.textContent=(stop?"Stopped. ":"")+(F.size?"Found "+F.size+" Pokémon"+(det.size?" and the categories "+[...det].map(c=>CL[c]).join(", "):"")+". All are ticked ready to add. Untick any that are wrong.":"No Pokémon names found. Try a clearer screenshot or recording.")}
   catch(x){try{if(w)await w.terminate()}catch(e){}st.textContent=stop?"Stopped.":(x&&x.message&&x!=="stop"?"Could not read that file: "+x.message+". Try screenshots instead, or a different recording.":"Could not read that file. Try another screenshot or recording.")}
-  pbw.hidden=cbtn.hidden=true;pst.textContent="";ub.disabled=false;up.value="";reset();draw()};
- b.append($$("p","hs","Pick the list you want to fill, then upload screenshots, or a screen recording scrolling slowly through your Pokémon storage, with names showing. For best results use the game’s own filter first (for example Shiny, Lucky or Shadow). The app reads the names and ticks them for you after you check the list. Nicknamed Pokémon can’t be recognised, and a video can take a few minutes to read."),sel,allL,alsoL,$$("br"),ub," ",cbtn,up,pbw,pst,st,out,ap)}
+  pbw.hidden=cbtn.hidden=true;pst.textContent="";ub.disabled=false;pi.style.width="0";st.append(" ");await loadAll();draw()};
+ drawEx();
+ b.append($$("p","hs","Upload screenshots, or a screen recording scrolling slowly through your Pokémon storage with names showing. Using the game’s own filter first (for example Shiny, Lucky or Purified) lets the app work out the categories itself, because it reads the filter name at the top of the screen."),
+  $$("p","hs","What do these Pokémon count as? Tap to switch categories on for every Pokémon found. The ones it detects are added automatically."),exRow,$$("br"),ub," ",cbtn,up,est,stB,pbw,pst,st,res,ap)}
 INFO.scan={t:"Scan my Pokémon",f:pageScan};
 
 $("#ver").textContent=VER;
