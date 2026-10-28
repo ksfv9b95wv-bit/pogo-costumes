@@ -1157,7 +1157,7 @@ function lockBar(){const w=$$("div","lkb"),render=()=>{w.replaceChildren();w.cla
    kn.onpointermove=e=>{if(!on)return;dx=Math.max(0,Math.min(max(),e.clientX-x0));kn.style.transform="translateX("+dx+"px)";tx.style.opacity=1-dx/max()};
    const end=()=>{if(!on)return;on=false;if(dx>=max()*.85)unlock();else{kn.style.transition="transform .2s";kn.style.transform="";tx.style.opacity=1}dx=0};
    kn.onpointerup=end;kn.onpointercancel=end;kn.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();unlock()}};w.append(tr)}
-  else{w.append($$("b",null,"🔓 Unlocked"),$$("span",null,"Pokémon can be added from here."));const lk=$$("button","retry off","Lock again");lk.type="button";lk.onclick=()=>{LSset("pogo-lock","1");lockLab();BARS.forEach(f=>f())};w.append(lk)}};
+  else{w.append($$("b",null,"🔓 Unlocked"),$$("span",null,"Pokémon available for upload whilst unlocked. Press to lock."));const lk=$$("button","retry off","Lock");lk.type="button";lk.onclick=()=>{LSset("pogo-lock","1");lockLab();BARS.forEach(f=>f())};w.append(lk)}};
  BARS.push(render);render();return w}
 async function captureFrames(file,step,onP,stopf){
  const url=URL.createObjectURL(file),v=document.createElement("video");
@@ -1180,23 +1180,29 @@ async function captureFrames(file,step,onP,stopf){
     setTimeout(loop,40)};loop()});
   const out=(await Promise.all(pend)).filter(Boolean);return out
  }finally{try{v.pause()}catch(e){}v.remove();URL.revokeObjectURL(url)}}
+function detectSym(ctx,W,H,cx,cy,k){const rx0=Math.max(0,Math.round(cx-145*k)),rx1=Math.min(W,Math.round(cx+145*k)),ry0=Math.max(0,Math.round(cy-290*k)),ry1=Math.min(H,Math.round(cy-15*k));
+ if(rx1-rx0<20||ry1-ry0<20)return{};const w=rx1-rx0,h=ry1-ry0,d=ctx.getImageData(rx0,ry0,w,h).data,sl=Math.round(cx-140*k)-rx0,sr=Math.round(cx-45*k)-rx0;let p=0,sh=0,l=0,ns=0;
+ for(let y=0;y<h;y++)for(let x=0;x<w;x++){const i=(y*w+x)*4,r=d[i]/255,g=d[i+1]/255,b=d[i+2]/255,mx=Math.max(r,g,b),mn=Math.min(r,g,b),dl=mx-mn,v=mx,sa=mx?dl/mx:0;if(!dl)continue;let hu=mx===r?((g-b)/dl)%6:mx===g?(b-r)/dl+2:(r-g)/dl+4;hu*=60;if(hu<0)hu+=360;
+  if(x>=sl&&x<sr){if(hu>=172&&hu<=200&&sa>=.2&&sa<=.5&&v>=.8)p++;if(hu>=250&&hu<=295&&sa>=.22&&sa<=.65&&v>=.7)sh++}
+  if(hu>=38&&hu<=56&&sa>=.15&&sa<=.42&&v>=.93)l++}
+ ns=Math.max(1,(sr-sl)*h);return{pur:p/ns>=.025,shd:sh/ns>=.015,lky:l/(w*h)>=.02,v:[p/ns,sh/ns,l/(w*h)]}}
 async function pageScan(b){
  const N=await getD("names"),NAMES=Object.values(N).map(p=>[nrm(p.name),+p.id]).filter(p=>p[0].length>=3),exact=new Map(NAMES);
  const CATS=[["dex","Pokédex"],["shiny","Shiny"],["lucky","Lucky"],["shadow","Shadow"],["purified","Purified"],["xxl","XXL"],["xxs","XXS"],["perfect","100% IV"],["dynamax","Dynamax"]],CL=Object.fromEntries(CATS),key=c=>"pogo-"+c+"-owned";
  const FW={shiny:"shiny",lucky:"lucky",shadow:"shadow",purified:"purified",xxl:"xxl",xxs:"xxs",dynamax:"dynamax",hundo:"perfect",perfect:"perfect"};
  const F=new Map(),ex=new Set(["dex"]),det=new Set(),catN={};let framesN=0,flt="all",stop=false,pending=[],LST={},OWN={};
- const eff=e=>{const s=new Set(["dex"].filter(c=>ex.has(c)));ex.forEach(c=>s.add(c));det.forEach(c=>s.add(c));if(e.shy)s.add("shiny");e.add.forEach(c=>s.add(c));e.rem.forEach(c=>s.delete(c));return s};
+ const eff=e=>{const s=new Set(["dex"].filter(c=>ex.has(c)));ex.forEach(c=>s.add(c));det.forEach(c=>s.add(c));if(e.sym)e.sym.forEach(c=>s.add(c));if(e.shy)s.add("shiny");e.add.forEach(c=>s.add(c));e.rem.forEach(c=>s.delete(c));return s};
  const icon=c=>{try{return bIcon(c)||""}catch(x){return ""}};
  const fmtT=x=>{x=Math.max(0,Math.round(x));return x>=60?Math.floor(x/60)+" min "+(x%60)+" s":x+" s"};
- const match=txt=>{const o=new Set();for(const ln of txt.split("\n")){const tk=ln.split(/[^A-Za-zÀ-ÿ'’.\-♀♂]+/).map(nrm).filter(t=>t.length>=3);tk.forEach((t,i)=>{for(const c of [t,i+1<tk.length?t+tk[i+1]:null]){if(!c)continue;if(exact.has(c)){o.add(exact.get(c));continue}if(c.length>=6)for(const [n,id] of NAMES){if(Math.abs(n.length-c.length)<=1&&n.length>=6&&lev(c,n)===1){o.add(id);break}}}})}return o};
+ const match=txt=>{const o=new Set();for(const ln of txt.split("\n")){for(const m of ln.matchAll(/(?:#|\bno\.?|\bnº)\s*0*(\d{1,4})\b/gi)){const id=+m[1];if(N[id])o.add(id)}const tk=ln.split(/[^A-Za-zÀ-ÿ'’.\-♀♂]+/).map(nrm).filter(t=>t.length>=3);tk.forEach((t,i)=>{for(const c of [t,i+1<tk.length?t+tk[i+1]:null]){if(!c)continue;if(exact.has(c)){o.add(exact.get(c));continue}if(c.length>=6)for(const [n,id] of NAMES){if(Math.abs(n.length-c.length)<=1&&n.length>=6&&lev(c,n)===1){o.add(id);break}}}})}return o};
  const up=document.createElement("input");up.type="file";up.accept="image/*,video/*";up.multiple=true;up.hidden=true;
- const ub=$$("button","retry","Choose screenshots or video");ub.type="button";ub.onclick=()=>up.click();
+ const ub=$$("button","retry","Upload picture or video");ub.type="button";ub.onclick=()=>up.click();
  const cbtn=$$("button","retry off","Cancel");cbtn.type="button";cbtn.hidden=true;
  const stB=$$("button","retry","Start reading");stB.type="button";stB.hidden=true;
  const est=$$("div","cc");est.hidden=true;
  const pbw=$$("div","pb"),pi=document.createElement("i"),pst=$$("p","hs"),st=$$("p","msg");pbw.append(pi);pbw.hidden=true;
  const exRow=$$("div","rb");
- const res=$$("div"),ap=$$("button","retry","Add selected to my dexes");ap.type="button";ap.hidden=true;ap.style.cssText="position:sticky;bottom:14px;z-index:5;width:100%;min-height:52px;font-size:17px;box-shadow:0 4px 16px rgba(0,40,80,.35)";
+ const res=$$("div"),ap=$$("button","retry","Add selected to my dexes"),actRow=$$("div","row");actRow.style.cssText="gap:8px;flex-wrap:wrap";ap.type="button";ap.hidden=true;ap.style.cssText="position:sticky;top:60px;z-index:5;width:100%;min-height:52px;font-size:17px;box-shadow:0 4px 16px rgba(0,40,80,.35);margin:8px 0";
  const drawEx=()=>{exRow.replaceChildren();CATS.forEach(([c,l])=>{const x=$$("button","bi tg"+(ex.has(c)?"":" dim"));x.type="button";x.innerHTML=icon(c);x.append($$("em",null,l));x.setAttribute("aria-pressed",ex.has(c));x.onclick=()=>{ex.has(c)?ex.delete(c):ex.add(c);drawEx();if(F.size)draw()};exRow.append(x)})};
  const loadAll=async()=>{for(const [c] of CATS){try{LST[c]=cache[c]=cache[c]||await loadList(c)}catch(x){LST[c]=LST[c]||[]}OWN[c]=rd(key(c))}};
  const itemOf=(c,id)=>(LST[c]||[]).find(x=>x.dex===id);
@@ -1207,7 +1213,7 @@ async function pageScan(b){
   chip("all","All ("+all.length+")");CATS.forEach(([c,l])=>{if(c!=="dex"&&cnt[c])chip(c,l+" ("+cnt[c]+")")});
   const shown=all.filter(e=>flt==="all"||eff(e).has(flt));
   const bulk=$$("div"),bs=$$("button","retry off","Select all shown"),bu=$$("button","retry off","Unselect all shown");bs.type=bu.type="button";bs.onclick=()=>{shown.forEach(e=>e.on=true);draw()};bu.onclick=()=>{shown.forEach(e=>e.on=false);draw()};bulk.append(bs,bu);
-  res.append(lockBar(),$$("p","hs","What do these Pokémon count as? Tap to switch categories on for every Pokémon found. Detected categories are already on."),exRow,$$("p","hs","Filter the found Pokémon by category, tick or untick any, then use the button at the bottom. Tap a category badge on a Pokémon to add or remove it for that Pokémon."),fr,bulk);
+  res.append($$("p","hs","What do these Pokémon count as? Tap to switch categories on for every Pokémon found. Detected categories are already on."),exRow,$$("p","hs","Filter the found Pokémon by category, tick or untick any, then use the button at the bottom. Tap a category badge on a Pokémon to add or remove it for that Pokémon."),fr,bulk);
   for(const e of shown){const c=$$("label","cc rc"),cb=document.createElement("input");cb.type="checkbox";cb.checked=e.on;cb.onchange=()=>{e.on=cb.checked;const n=all.filter(x=>x.on).length;ap.textContent="Add "+n+" selected to my dexes";ap.disabled=!n};
    const im=document.createElement("img");im.className="rp";im.alt="";im.src=IMG+e.id+".png";im.onerror=()=>{im.onerror=null;im.src=ALT+e.id+".png"};
    const m=$$("div","rm"),h=$$("h3",null,N[e.id].name+" #"+e.id),rb=$$("div","rb");
@@ -1224,15 +1230,16 @@ async function pageScan(b){
   for(const f of pending){if(/^video/.test(f.type)){const d=await videoDur(f),fr=Math.ceil(d/0.6*0.7),t=d/2+3+fr*3.5;tot+=t;est.append($$("p",null,f.name+": video"+(d?" of "+fmtT(d):"")+" → about "+fmtT(t*.7)+" to "+fmtT(t*1.5)+" to read."))}else{tot+=4;est.append($$("p",null,f.name+": picture → about 4 s."))}}
   est.append($$("p","hs","Total: about "+fmtT(tot*.7)+" to "+fmtT(tot*1.5)+". The first run also needs time to load the reader. Keep the screen on and this page open while it works. You can cancel at any time and keep what was found."));stB.hidden=false;stB.disabled=false};
  cbtn.onclick=()=>{stop=true;cbtn.disabled=true;st.textContent="Stopping… keeping what has been found so far."};
- stB.onclick=async()=>{const files=pending;pending=[];if(!files.length)return;stop=false;cbtn.disabled=false;cbtn.hidden=false;stB.hidden=true;est.hidden=true;pbw.hidden=false;pi.style.width="3%";pst.textContent="";ub.disabled=true;const t0=Date.now();
+ stB.onclick=async()=>{const files=pending;pending=[];if(!files.length)return;stop=false;cbtn.disabled=false;cbtn.hidden=false;stB.hidden=true;ub.hidden=true;est.hidden=true;pbw.hidden=false;pi.style.width="3%";pst.textContent="";const t0=Date.now();
   st.textContent="Loading the picture reader (first time needs internet)…";const slow=setTimeout(()=>{if(!stop)pst.textContent="Still loading the reader. This can take a while on a slow connection. Press Cancel to stop."},12000);
-  let T;try{T=await loadTess()}catch(x){clearTimeout(slow);st.textContent="Could not load the picture reader. Check your connection and try again.";pbw.hidden=cbtn.hidden=true;ub.disabled=false;return}
+  let T;try{T=await loadTess()}catch(x){clearTimeout(slow);st.textContent="Could not load the picture reader. Check your connection and try again.";pbw.hidden=cbtn.hidden=true;ub.hidden=false;return}
   clearTimeout(slow);pst.textContent="";let w=null;
   try{if(stop)throw "stop";w=await T.createWorker("eng");try{await w.setParameters({tessedit_pageseg_mode:"11"})}catch(x){}
    const proc=async src=>{const {data}=await w.recognize(src);let sp=null;try{sp=await sparkleBlobs(src)}catch(x){}let shy=new Set;try{shy=shinyIdsFrom(ocrWords(data),sp,exact)}catch(x){}
-    let H=0;try{const bm=await createImageBitmap(src);H=bm.height;if(bm.close)bm.close()}catch(x){}
+    let H=0,W=0,cx2=null;try{const bm=await createImageBitmap(src);H=bm.height;W=bm.width;const cv=document.createElement("canvas");cv.width=W;cv.height=H;cx2=cv.getContext("2d",{willReadFrequently:true});cx2.drawImage(bm,0,0);if(bm.close)bm.close()}catch(x){}
     framesN++;const seen=new Set();for(const wd of ocrWords(data)){const t=nrm(wd.text||"");if(FW[t]&&wd.bbox&&(!H||wd.bbox.y1<H*.24))seen.add(FW[t])}seen.forEach(c=>catN[c]=(catN[c]||0)+1);
-    for(const id of match(data.text)){const e=F.get(id)||{id,shy:false,on:true,add:new Set(),rem:new Set()};if(shy.has(id))e.shy=true;F.set(id,e)}};
+    for(const id of match(data.text)){const e=F.get(id)||{id,shy:false,on:true,add:new Set(),rem:new Set(),sym:new Set()};if(shy.has(id))e.shy=true;F.set(id,e)}
+    if(cx2){const k=W/920;for(const wd of ocrWords(data)){const id=exact.get(nrm(wd.text||""));const e=id&&F.get(id);if(!e||!wd.bbox)continue;const r=detectSym(cx2,W,H,(wd.bbox.x0+wd.bbox.x1)/2,(wd.bbox.y0+wd.bbox.y1)/2,k);if(r.pur)e.sym.add("purified");if(r.shd)e.sym.add("shadow");if(r.lky)e.sym.add("lucky")}}};
    let done=0,total=0;const prog=(fr,label)=>{const pc=Math.min(1,Math.max(.03,fr)),el=(Date.now()-t0)/1000;pi.style.width=Math.round(pc*100)+"%";pst.textContent=Math.round(pc*100)+"% · "+fmtT(el)+" elapsed"+(pc>.1?" · about "+fmtT(el/pc-el)+" left":"")+" · found "+F.size;st.textContent=label};
    let n=0;for(const f of files){if(stop)break;n++;const lab="file "+n+" of "+files.length;
     if(/^video/.test(f.type)){const fr=await captureFrames(f,0.6,(pc,k)=>prog((n-1+pc*.2)/files.length,"Step 1 of 2: capturing frames from the video ("+Math.round(pc*100)+"%, "+k+" kept)"),()=>stop);
@@ -1242,10 +1249,10 @@ async function pageScan(b){
    for(const c in catN)if(catN[c]>=Math.max(1,Math.round(framesN*.25)))det.add(c);
    st.textContent=(stop?"Stopped. ":"")+(F.size?"Found "+F.size+" Pokémon"+(det.size?" and the categories "+[...det].map(c=>CL[c]).join(", "):"")+". All are ticked ready to add. Untick any that are wrong.":"No Pokémon names found. Try a clearer screenshot or recording.")}
   catch(x){try{if(w)await w.terminate()}catch(e){}st.textContent=stop?"Stopped.":(x&&x.message&&x!=="stop"?"Could not read that file: "+x.message+". Try screenshots instead, or a different recording.":"Could not read that file. Try another screenshot or recording.")}
-  pbw.hidden=cbtn.hidden=true;pst.textContent="";ub.disabled=false;pi.style.width="0";st.append(" ");await loadAll();draw()};
- drawEx();
+  pbw.hidden=cbtn.hidden=true;ub.hidden=false;pst.textContent="";pi.style.width="0";st.append(" ");await loadAll();draw()};
+ drawEx();actRow.append(ub,stB,cbtn);
  b.append(lockBar(),$$("p","hs","Upload screenshots, or a screen recording scrolling slowly through your Pokémon storage with names showing. Using the game’s own filter first (for example Shiny, Lucky or Purified) lets the app work out the categories itself, because it reads the filter name at the top of the screen."),
-  ub," ",cbtn,up,est,stB,pbw,pst,st,res,ap)}
+  actRow,ap,up,est,pbw,pst,st,res)}
 INFO.scan={t:"Scan my Pokémon",f:pageScan};
 
 $("#ver").textContent=VER;
