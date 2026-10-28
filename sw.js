@@ -1,4 +1,4 @@
-const CACHE="go-v33",IMGC="go-img";
+const CACHE="go-v34",IMGC="go-img";
 const SHELL=["./","index.html","manifest.webmanifest","apple-touch-icon.png","icon-512.png"];
 self.addEventListener("install",e=>{self.skipWaiting();e.waitUntil(caches.open(CACHE).then(c=>c.addAll(SHELL)).catch(()=>{}))});
 self.addEventListener("activate",e=>{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k!==CACHE&&k!==IMGC).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});
