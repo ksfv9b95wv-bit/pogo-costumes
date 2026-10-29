@@ -135,6 +135,8 @@
         ],
         "form": "Normal",
       
+=== data/grunts.json (37956 bytes)
+[{"name":"Giovanni","title":"Team GO Rocket Boss","type":"","firstPokemon":[{"name":"Persian","image":"https://cdn.leekduck.com/assets/img/pokemon_icons_crop/pm53.icon.png","types":["normal"],"isEncounter":false,"canBeShiny":false}],"secondPokemon":[{"name":"Kangaskhan","image":"https://cdn.leekduck.com/assets/img/pokemon_icons_crop/pm115.icon.png","types":["normal"],"isEncounter":false,"canBeShiny":false},{"name":"Rhyperior","image":"https://cdn.leekduck.com/assets/img/pokemon_icons_crop/pm464.icon.png","types":["ground","rock"],"isEncounter":false,"canBeShiny":false},{"name":"Machamp","image":"https://cdn.leekduck.com/assets/img/pokemon_icons_crop/pm68.icon.png","types":["fighting"],"isEncounter":false,"canBeShiny":false}],"thirdPokemon":[{"name":"Zekrom","image":"https://cdn.leekduck.com/assets/img/pokemon_icons_crop/pm644.icon.png","types":["dragon","electric"],"isEncounter":true,"canBeShiny":true}]},{"name":"Cliff","title":"Team GO Rocket Leader","type":"","firstPokemon":[{"name":"Cubone","image":"https://cdn.leekduck.com/assets/img/pokemon_icons_crop/pm104.icon.png","types":["ground"],"isEncounter":true,"canBeShiny":true}],"secondPokemon":[{"name":"Snorlax","image":"https://cdn.leekduck.com/assets/img/pokemon_icons_crop/pm143.icon.png","types":["normal"],"isEncounter":false,"canBeShiny":false},{"name":"Golurk","image":"https://cdn.leekduck.com/assets/img/pokemon_icons_crop/pm623.icon.png","types":["ground","ghost"],"isEncounter":false,"canBeShiny":false},{"name":"Galari
 === data/maxbattles.json (25 bytes)
 {
     "currentList": []
