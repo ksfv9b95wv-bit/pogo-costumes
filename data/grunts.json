@@ -1,0 +1,78 @@
+[
+ {
+  "name": "Normal-type Male Grunt",
+  "type": "normal",
+  "quote": "Normal does not mean weak.",
+  "firstPokemon": [
+   {
+    "name": "Teddiursa"
+   },
+   {
+    "name": "Hoothoot"
+   },
+   {
+    "name": "Porygon"
+   }
+  ],
+  "secondPokemon": [
+   {
+    "name": "Loudred"
+   },
+   {
+    "name": "Stufful"
+   },
+   {
+    "name": "Starly"
+   }
+  ],
+  "thirdPokemon": [
+   {
+    "name": "Ursaring"
+   },
+   {
+    "name": "Swellow"
+   },
+   {
+    "name": "Kangaskhan"
+   }
+  ]
+ },
+ {
+  "name": "Fire-type Female Grunt",
+  "type": "fire",
+  "quote": "Do you know how hot Pokémon fire breath can get?",
+  "firstPokemon": [
+   {
+    "name": "Litwick"
+   },
+   {
+    "name": "Ponyta"
+   },
+   {
+    "name": "Torchic"
+   }
+  ],
+  "secondPokemon": [
+   {
+    "name": "Magmar"
+   },
+   {
+    "name": "Blaziken"
+   },
+   {
+    "name": "Camerupt"
+   }
+  ],
+  "thirdPokemon": [
+   {
+    "name": "Darmanitan"
+   },
+   {
+    "name": "Delphox"
+   },
+   {
+    "name": "Magmortar"
+   }
+  ]
+ }
+]
