@@ -1,0 +1,13 @@
+{
+ "updated": "2026-10-29",
+ "items": [
+  {"id":"h1-pikachu","name":"Costumed Pikachu","dex":25,"kind":"Debut","event":"Halloween 2026 Part I","start":"2026-10-27","end":"2026-11-01","how":"Wild spawns and 1-star raids. Hat and capelet costume, with Shiny.","also":"Shiny available"},
+  {"id":"h1-zubat","name":"Zubat (top hat)","dex":41,"kind":"Debut","event":"Halloween 2026 Part I","start":"2026-10-27","end":"2026-11-01","how":"Wild spawns. Top hat costume, with Shiny.","also":"Shiny available"},
+  {"id":"h1-sinistea","name":"Sinistea (bow)","dex":854,"kind":"Debut","event":"Halloween 2026 Part I","start":"2026-10-27","end":"2026-11-01","how":"Wild spawns and 1-star raids. Bow costume, with Shiny.","also":"Shiny available"},
+  {"id":"mega-chandelure","name":"Mega Chandelure","dex":609,"kind":"Mega debut","event":"Chandelure Super Mega Raid Day","start":"2026-10-31","end":"2026-10-31","how":"Super Mega Raids. Chandelure caught in these raids has Mega Level 1 unlocked. Shiny Chandelure chances are increased.","also":"Shiny available"},
+  {"id":"h2-greavard","name":"Shiny Greavard","dex":971,"kind":"Shiny debut","event":"Halloween 2026 Part II","start":"2026-11-01","end":"2026-11-05","how":"Wild spawns, GO Pass rewards and Field Research."},
+  {"id":"itw-regidrago","name":"Dynamax Regidrago","dex":895,"kind":"Dynamax debut","event":"Into the Wild","start":"2026-11-09T10:00","end":"2026-11-13T20:00","how":"5-star Max Battles. The featured Max Battle Hour is Thursday 12 November, 6 to 7 pm.","also":"Shiny available"},
+  {"id":"itw-meltan","name":"Dynamax Meltan","dex":808,"kind":"Dynamax debut","event":"Into the Wild","start":"2026-11-09T10:00","end":"2026-11-15T18:00","how":"The Dynamax Meltan encounter in the GO Pass: Into the Wild (free or Deluxe), and the Mystery Box.","also":"Shiny available"},
+  {"id":"cd-pawniard","name":"Shiny Pawniard","dex":624,"kind":"Shiny debut","event":"Pawniard Community Day","start":"2026-11-21","end":"2026-11-21","how":"Wild spawns, with Shiny and Special Background versions. During the event, defeat one Dark or Steel-type raid boss to evolve Bisharp into Kingambit, which learns Kowtow Cleave."}
+ ]
+}
