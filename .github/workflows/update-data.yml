@@ -24,6 +24,7 @@ jobs:
           get types.json $B/pokemon_types.json
           get evolutions.json $B/pokemon_evolutions.json
           get events.json https://raw.githubusercontent.com/bigfoott/ScrapedDuck/data/events.min.json
+          get grunts.json https://raw.githubusercontent.com/bigfoott/ScrapedDuck/data/rocketLineups.min.json
           get maxbattles.json https://pokemon-go-api.github.io/pokemon-go-api/api/maxbattles.json
           get raidboss.json https://pokemon-go-api.github.io/pokemon-go-api/api/raidboss.json
           get pokedex.json https://pokemon-go-api.github.io/pokemon-go-api/api/pokedex.json
