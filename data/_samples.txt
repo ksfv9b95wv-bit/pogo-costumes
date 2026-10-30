@@ -233,6 +233,16 @@
   
 === data/names_i18n.json (73079 bytes)
 {"1":{"de":"Bisasam","fr":"Bulbizarre","it":"Bulbasaur","es":"Bulbasaur"},"2":{"de":"Bisaknosp","fr":"Herbizarre","it":"Ivysaur","es":"Ivysaur"},"3":{"de":"Bisaflor","fr":"Florizarre","it":"Venusaur","es":"Venusaur"},"4":{"de":"Glumanda","fr":"Salamèche","it":"Charmander","es":"Charmander"},"5":{"de":"Glutexo","fr":"Reptincel","it":"Charmeleon","es":"Charmeleon"},"6":{"de":"Glurak","fr":"Dracaufeu","it":"Charizard","es":"Charizard"},"7":{"de":"Schiggy","fr":"Carapuce","it":"Squirtle","es":"Squirtle"},"8":{"de":"Schillok","fr":"Carabaffe","it":"Wartortle","es":"Wartortle"},"9":{"de":"Turtok","fr":"Tortank","it":"Blastoise","es":"Blastoise"},"10":{"de":"Raupy","fr":"Chenipan","it":"Caterpie","es":"Caterpie"},"11":{"de":"Safcon","fr":"Chrysacier","it":"Metapod","es":"Metapod"},"12":{"de":"Smettbo","fr":"Papilusion","it":"Butterfree","es":"Butterfree"},"13":{"de":"Hornliu","fr":"Aspicot","it":"Weedle","es":"Weedle"},"14":{"de":"Kokuna","fr":"Coconfort","it":"Kakuna","es":"Kakuna"},"15":{"de":"Bibor","fr":"Dardargnan","it":"Beedrill","es":"Beedrill"},"16":{"de":"Taubsi","fr":"Roucool","it":"Pidgey","es":"Pidgey"},"17":{"de":"Tauboga","fr":"Roucoups","it":"Pidgeotto","es":"Pidgeotto"},"18":{"de":"Tauboss","fr":"Roucarnage","it":"Pidgeot","es":"Pidgeot"},"19":{"de":"Rattfratz","fr":"Rattata","it":"Rattata","es":"Rattata"},"20":{"de":"Rattikarl","fr":"Rattatac","it":"Raticate","es":"Raticate"},"21":{"de":"Habitak","fr":"Piafabec","it":"Spearow","es":"Spearow"},"22":{"de":"Ibitak","f
+=== data/new_encounters.json (2167 bytes)
+{
+ "updated": "2026-10-29",
+ "items": [
+  {"id":"h1-pikachu","name":"Costumed Pikachu","dex":25,"kind":"Debut","event":"Halloween 2026 Part I","start":"2026-10-27","end":"2026-11-01","how":"Wild spawns and 1-star raids. Hat and capelet costume, with Shiny.","also":"Shiny available"},
+  {"id":"h1-zubat","name":"Zubat (top hat)","dex":41,"kind":"Debut","event":"Halloween 2026 Part I","start":"2026-10-27","end":"2026-11-01","how":"Wild spawns. Top hat costume, with Shiny.","also":"Shiny available"},
+  {"id":"h1-sinistea","name":"Sinistea (bow)","dex":854,"kind":"Debut","event":"Halloween 2026 Part I","start":"2026-10-27","end":"2026-11-01","how":"Wild spawns and 1-star raids. Bow costume, with Shiny.","also":"Shiny available"},
+  {"id":"mega-chandelure","name":"Mega Chandelure","dex":609,"kind":"Mega debut","event":"Chandelure Super Mega Raid Day","start":"2026-10-31","end":"2026-10-31","how":"Super Mega Raids. Chandelure caught in these raids has Mega Level 1 unlocked. Shiny Chandelure chances are increased.","also":"Shiny available"},
+  {"id":"h2-greavard","name":"Shiny Greavard","dex":971,"kind":"Shiny debut","event":"Halloween 2026 Part II","start":"2026-11-01","end":"2026-11-05","how":"Wild spawns, GO Pass rewards and Field Research."},
+  {"id":"itw-regidrago","name":"Dynamax Regidrago","dex":895,"kind":"Dynamax debut","event":"Into the Wild","start":"2026-11-09T10:00","end":"2026-11-13T20:00","how":"5-star Max Battles. The featured Max Battle Hour is Thursday 12 November, 
 === data/newly_released.json (473 bytes)
 {
 "774": "Minior",
@@ -262,7 +272,7 @@
 902
 ]
 }
-=== data/pokedex.json (14941729 bytes)
+=== data/pokedex.json (14943212 bytes)
 [
     {
         "id": "BULBASAUR",

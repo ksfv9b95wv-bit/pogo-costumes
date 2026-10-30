@@ -66924,6 +66924,39 @@
                             "turns": 1,
                             "buffs": null
                         }
+                    },
+                    "GUST_FAST": {
+                        "id": "GUST_FAST",
+                        "power": 25,
+                        "energy": 20,
+                        "durationMs": 2000,
+                        "type": {
+                            "type": "POKEMON_TYPE_FLYING",
+                            "names": {
+                                "English": "Flying",
+                                "German": "Flug",
+                                "French": "Vol",
+                                "Italian": "Volante",
+                                "Japanese": "\u3072\u3053\u3046",
+                                "Korean": "\ube44\ud589",
+                                "Spanish": "Volador"
+                            }
+                        },
+                        "names": {
+                            "English": "Gust",
+                            "German": "Windsto\u00df",
+                            "French": "Tornade",
+                            "Italian": "Raffica",
+                            "Japanese": "\u304b\u305c\u304a\u3053\u3057",
+                            "Korean": "\ubc14\ub78c\uc77c\uc73c\ud0a4\uae30",
+                            "Spanish": "Tornado"
+                        },
+                        "combat": {
+                            "energy": 14,
+                            "power": 16,
+                            "turns": 4,
+                            "buffs": null
+                        }
                     }
                 },
                 "cinematicMoves": {
