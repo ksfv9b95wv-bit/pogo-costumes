@@ -228,9 +228,6 @@
 "T-Shirt|Pikachu": "https://raw.githubusercontent.com/PokeMiners/pogo_assets/master/Images/Pokemon/Addressable%20Assets/pm25.fTSHIRT_01.icon.png",
 "World Championships|Pikachu": "https://raw.githubusercontent.com/PokeMiners/pogo_assets/master/Images/Pokemon/Addressable%20Assets/pm25.fWCS_2022.icon.png",
 "Varsity Jacket|Pikachu": "https://raw.githubusercontent.com/PokeMiners/pogo_assets/master/Images/Pokemon/Addressable%20Assets/pm25.fWCS_2025.icon.png",
-"Gem Crown|Pikachu": "https://raw.githubusercontent.com/PokeMiners/pogo_assets/master/Images/Pokemon/Addressable%20Assets/pm25.fSUMMER_2023_A.icon.png",
-"Sun/Moon Crown|Pikachu": "https://raw.githubusercontent.com/PokeMiners/pogo_assets/master/Images/Pokemon/Addressable%20Assets/pm25.fGOFEST_2024_STIARA.icon.png",
-"Sun/Moon Crown|Eevee": "https://raw.githubusercontent.com/PokeMiners/pogo_assets/master/Images/Pokemon/Addressable%20Assets/pm133.fGOFEST_2024_STIARA.icon.png",
 "Rei's Cap|Pikachu": "https://raw.githubusercontent.com/PokeMiners/pogo_assets/master/Images/Pokemon/Addressable%20Assets/pm25.fGOTOUR_2024_A.icon.png",
 "Akari's Kerchief|Pikachu": "https://raw.githubusercontent.com/PokeMiners/pogo_assets/master/Images/Pokemon/Addressable%20Assets/pm25.fGOTOUR_2024_A_02.icon.png",
 "Lucas's Hat|Pikachu": "https://raw.githubusercontent.com/PokeMiners/pogo_assets/master/Images/Pokemon/Addressable%20Assets/pm25.fGOTOUR_2024_B.icon.png",
@@ -259,5 +256,16 @@
 "Dapper (Blue Accents)|Pikachu": "https://raw.githubusercontent.com/PokeMiners/pogo_assets/master/Images/Pokemon/Addressable%20Assets/pm25.fGOFEST_2025_GOGGLES_BLUE.icon.png",
 "Formal (Yellow Accents)|Pikachu": "https://raw.githubusercontent.com/PokeMiners/pogo_assets/master/Images/Pokemon/Addressable%20Assets/pm25.fGOFEST_2025_MONOCLE_YELLOW.icon.png",
 "Dapper (Yellow Accents)|Pikachu": "https://raw.githubusercontent.com/PokeMiners/pogo_assets/master/Images/Pokemon/Addressable%20Assets/pm25.fGOFEST_2025_GOGGLES_YELLOW.icon.png",
-"Fashionable Costume|Corsola": "img/fashion-corsola.png"
+"Fashionable Costume|Corsola": "img/fashion-corsola.png",
+"Sun Crown|Pikachu": "https://raw.githubusercontent.com/PokeMiners/pogo_assets/master/Images/Pokemon/Addressable%20Assets/pm25.fGOFEST_2024_STIARA.icon.png",
+"Moon Crown|Pikachu": "https://raw.githubusercontent.com/PokeMiners/pogo_assets/master/Images/Pokemon/Addressable%20Assets/pm25.fGOFEST_2024_MTIARA.icon.png",
+"Sun Crown|Eevee": "https://raw.githubusercontent.com/PokeMiners/pogo_assets/master/Images/Pokemon/Addressable%20Assets/pm133.fGOFEST_2024_STIARA.icon.png",
+"Moon Crown|Eevee": "https://raw.githubusercontent.com/PokeMiners/pogo_assets/master/Images/Pokemon/Addressable%20Assets/pm133.fGOFEST_2024_MTIARA.icon.png",
+"Malachite Crown|Pikachu": "https://raw.githubusercontent.com/PokeMiners/pogo_assets/master/Images/Pokemon/Addressable%20Assets/pm25.fSUMMER_2023_A.icon.png",
+"Aquamarine Crown|Pikachu": "https://raw.githubusercontent.com/PokeMiners/pogo_assets/master/Images/Pokemon/Addressable%20Assets/pm25.fSUMMER_2023_B.icon.png",
+"Quartz Crown|Pikachu": "https://raw.githubusercontent.com/PokeMiners/pogo_assets/master/Images/Pokemon/Addressable%20Assets/pm25.fSUMMER_2023_C.icon.png",
+"Pyrite Crown|Pikachu": "https://raw.githubusercontent.com/PokeMiners/pogo_assets/master/Images/Pokemon/Addressable%20Assets/pm25.fSUMMER_2023_D.icon.png",
+"Amethyst Crown|Pikachu": "https://raw.githubusercontent.com/PokeMiners/pogo_assets/master/Images/Pokemon/Addressable%20Assets/pm25.fSUMMER_2023_E.icon.png",
+"World Championships 2023|Pikachu": "https://raw.githubusercontent.com/PokeMiners/pogo_assets/master/Images/Pokemon/Addressable%20Assets/pm25.fWCS_2023.icon.png",
+"World Championships 2024|Pikachu": "https://raw.githubusercontent.com/PokeMiners/pogo_assets/master/Images/Pokemon/Addressable%20Assets/pm25.fWCS_2024.icon.png"
 }
