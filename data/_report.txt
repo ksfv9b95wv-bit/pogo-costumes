@@ -6,4 +6,4 @@ HAS shiny image but NOT in shiny.json (82): Phione, Manaphy, Arceus, Victini, Ho
 
 IN shiny.json but no shiny image: Unown, Burmy, Wormadam
 
-COSTUME CODES not yet used (6): COSTUME_1: 25,26; FEB_2019: 25,26; GOTOUR_2023_BANDANA_NOEVOLVE: 25; GOTOUR_2023_HAT_NOEVOLVE: 25; HALLOWEEN_2025: 216,217,714,715,901; May_2023: 133
+COSTUME CODES not yet used (5): COSTUME_1: 25,26; FEB_2019: 25,26; GOTOUR_2023_BANDANA_NOEVOLVE: 25; GOTOUR_2023_HAT_NOEVOLVE: 25; May_2023: 133
