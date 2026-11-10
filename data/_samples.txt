@@ -68,8 +68,8 @@
 [{"t":["Grass","Poison"],"i":1,"f":"BULBASAUR","n":"Bulbasaur","c":"","im":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm1.icon.png"},{"t":["Grass","Poison"],"i":2,"f":"IVYSAUR","n":"Ivysaur","c":"","im":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm2.icon.png"},{"t":["Grass","Poison"],"i":3,"f":"VENUSAUR","n":"Venusaur","c":"","im":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm3.icon.png","me":[{"f":"VENUSAUR_MEGA","n":"Mega Venusaur","im":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm3.fMEGA.icon.png"}],"gm":1,"gi":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm3.fGIGANTAMAX.icon.png"},{"t":["Fire"],"i":4,"f":"CHARMANDER","n":"Charmander","c":"","im":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm4.icon.png"},{"t":["Fire"],"i":5,"f":"CHARMELEON","n":"Charmeleon","c":"","im":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm5.icon.png"},{"t":["Fire","Flying"],"i":6,"f":"CHARIZARD","n":"Charizard","c":"","im":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm6.icon.png","me":[{"f":"CHARIZARD_MEGA_X","n":"Mega Charizard X","im":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm6.fMEGA_X.icon.png"},{"f":"CHARIZARD_MEGA_Y","n":"Mega Charizard Y","im":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm6.fMEGA_Y.icon.png"}],"gm":1,"gi":"https:/
 === data/dynamax.json (2 bytes)
 []
-=== data/events.json (28483 bytes)
-[{"eventID":"pokemon-go-wild-area-2026-sendai-japan","name":"Pokémon GO Wild Area 2026: Sendai • Tohoku","eventType":"wild-area","heading":"Wild Area","link":"https://leekduck.com/events/pokemon-go-wild-area-2026-sendai-japan/","image":"https://cdn.leekduck.com/assets/img/events/article-images/2026/2026-11-06-pokemon-go-wild-area-2026-sendai-japan/key-art.jpg","start":null,"end":null,"extraData":{"generic":{"hasSpawns":true,"hasFieldResearchTasks":false}}},{"eventID":"pokemon-go-wild-area-2026-mexico-city","name":"Pokémon GO Wild Area 2026: Mexico City","eventType":"wild-area","heading":"Wild Area","link":"https://leekduck.com/events/pokemon-go-wild-area-2026-mexico-city/","image":"https://cdn.leekduck.com/assets/img/events/article-images/2026/2026-11-06-pokemon-go-wild-area-2026-mexico-city/key-art.jpg","start":null,"end":null,"extraData":{"generic":{"hasSpawns":true,"hasFieldResearchTasks":false}}},{"eventID":"mega-sableye-in-mega-raids-october-2026","name":"Mega Sableye in Mega Raids","eventType":"raid-battles","heading":"Raid Battles","link":"https://leekduck.com/events/mega-sableye-in-mega-raids-october-2026/","image":"https://cdn.leekduck.com/assets/img/events/mega-default.jpg","start":"2026-10-28T06:00:00.000","end":"2026-11-08T22:00:00.000","extraData":{"raidbattles":{"bosses":[{"name":"Mega Sableye","image":"https://cdn.leekduck.com/assets/img/pokemon_icons/pokemon_icon_302_51.png","canBeShiny":true}],"shinies":[{"name":"Sableye","image":"https://cdn.leekduck.com
+=== data/events.json (33869 bytes)
+[{"eventID":"pokemon-go-wild-area-2026-sendai-japan","name":"Pokémon GO Wild Area 2026: Sendai • Tohoku","eventType":"wild-area","heading":"Wild Area","link":"https://leekduck.com/events/pokemon-go-wild-area-2026-sendai-japan/","image":"https://cdn.leekduck.com/assets/img/events/article-images/2026/2026-11-06-pokemon-go-wild-area-2026-sendai-japan/key-art.jpg","start":null,"end":null,"extraData":{"generic":{"hasSpawns":true,"hasFieldResearchTasks":false}}},{"eventID":"pokemon-go-wild-area-2026-mexico-city","name":"Pokémon GO Wild Area 2026: Mexico City","eventType":"wild-area","heading":"Wild Area","link":"https://leekduck.com/events/pokemon-go-wild-area-2026-mexico-city/","image":"https://cdn.leekduck.com/assets/img/events/article-images/2026/2026-11-06-pokemon-go-wild-area-2026-mexico-city/key-art.jpg","start":null,"end":null,"extraData":{"generic":{"hasSpawns":true,"hasFieldResearchTasks":false}}},{"eventID":"mega-sableye-in-mega-raids-october-2026","name":"Mega Sableye in Mega Raids","eventType":"raid-battles","heading":"Raid Battles","link":"https://leekduck.com/events/mega-sableye-in-mega-raids-october-2026/","image":"https://cdn.leekduck.com/assets/img/events/mega-default.jpg","start":null,"end":null,"extraData":{"raidbattles":{"bosses":[{"name":"Mega Sableye","image":"https://cdn.leekduck.com/assets/img/pokemon_icons/pokemon_icon_302_51.png","canBeShiny":true}],"shinies":[{"name":"Sableye","image":"https://cdn.leekduck.com/assets/img/pokemon_icons/pokemon_icon_302
 === data/evolutions.json (178237 bytes)
 [
     {
@@ -272,7 +272,7 @@
 902
 ]
 }
-=== data/pokedex.json (14943212 bytes)
+=== data/pokedex.json (14905055 bytes)
 [
     {
         "id": "BULBASAUR",
@@ -410,50 +410,46 @@
         "id": 384,
         "name": "Rayquaza",
        
-=== data/raidboss.json (38212 bytes)
+=== data/raidboss.json (26895 bytes)
 {
     "currentList": {
-        "mega": [
+        "lvl5": [
             {
-                "id": "SABLEYE",
-                "form": "SABLEYE_MEGA",
+                "id": "ZACIAN",
+                "form": "ZACIAN_CROWNED_SWORD",
                 "costume": null,
                 "assets": {
-                    "image": "https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm302.fMEGA.icon.png",
-                    "shinyImage": "https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm302.fMEGA.s.icon.png"
+                    "image": "https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm888.fCROWNED_SWORD.icon.png",
+                    "shinyImage": "https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm888.fCROWNED_SWORD.s.icon.png"
                 },
-                "level": "mega",
+                "level": "lvl5",
                 "names": {
-                    "English": "Mega Sableye",
-                    "German": "Mega-Zobiris",
-                    "French": "M\u00e9ga-T\u00e9n\u00e9fix",
-                    "Italian": "MegaSableye",
-                    "Japanese": "\u30e1\u30ac\u30e4\u30df\u30e9\u30df",
-                    "Korean": "\uba54\uac00\uae5c\uae4c\ubbf8",
-                    "Spanish": "Mega-Sableye"
+                    "English": "Zacian (Crowned Sword)",
+                    "German": "Zacian (K\u00f6nig des Schwertes)",
+                    "French": "Zacian (\u00c9p\u00e9e Supr\u00eame)",
+                    "Italian": "Zacian (Re delle Spade)",
+                    "Japanese": "\u30b6\u30b7\u30a2\u30f3 (\u3051\u3093\u306e\u304a\u3046)",
+                    "Korean": "\uc790\uc2dc\uc548 (\uac80\uc655)",
+                    "Spanish": "Zacian (Espada Suprema)"
                 },
                 "shiny": true,
                 "types": [
-                    "Dark",
-                    "Ghost"
+                    "Fairy",
+                    "Steel"
                 ],
                 "counter": {
-                    "Fairy": 1.6
+                    "Fire": 1.6,
+                    "Ground": 1.6
                 },
                 "weather": [
-                    "fog"
+                    "cloudy",
+                    "snow"
                 ],
                 "cpRange": [
-                    789,
-                    843
+                    2742,
+                    2845
                 ],
-                "cpRangeBoost": [
-                    986,
-                    1054
-                ],
-                "battleResult": {
-                    "easy": {
-                        "name
+                
 === data/released.json (61247 bytes)
 {
     "1": {
