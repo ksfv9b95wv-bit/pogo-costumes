@@ -272,7 +272,7 @@
 902
 ]
 }
-=== data/pokedex.json (14905055 bytes)
+=== data/pokedex.json (14907021 bytes)
 [
     {
         "id": "BULBASAUR",
