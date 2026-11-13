@@ -64,7 +64,7 @@
         "community_day_number": 4,
         "end_date": "2018-04-15",
         "event_move
-=== data/dex.json (212776 bytes)
+=== data/dex.json (212915 bytes)
 [{"t":["Grass","Poison"],"i":1,"f":"BULBASAUR","n":"Bulbasaur","c":"","im":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm1.icon.png"},{"t":["Grass","Poison"],"i":2,"f":"IVYSAUR","n":"Ivysaur","c":"","im":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm2.icon.png"},{"t":["Grass","Poison"],"i":3,"f":"VENUSAUR","n":"Venusaur","c":"","im":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm3.icon.png","me":[{"f":"VENUSAUR_MEGA","n":"Mega Venusaur","im":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm3.fMEGA.icon.png"}],"gm":1,"gi":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm3.fGIGANTAMAX.icon.png"},{"t":["Fire"],"i":4,"f":"CHARMANDER","n":"Charmander","c":"","im":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm4.icon.png"},{"t":["Fire"],"i":5,"f":"CHARMELEON","n":"Charmeleon","c":"","im":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm5.icon.png"},{"t":["Fire","Flying"],"i":6,"f":"CHARIZARD","n":"Charizard","c":"","im":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm6.icon.png","me":[{"f":"CHARIZARD_MEGA_X","n":"Mega Charizard X","im":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm6.fMEGA_X.icon.png"},{"f":"CHARIZARD_MEGA_Y","n":"Mega Charizard Y","im":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm6.fMEGA_Y.icon.png"}],"gm":1,"gi":"https:/
 === data/dynamax.json (2 bytes)
 []
