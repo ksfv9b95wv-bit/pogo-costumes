@@ -2,240 +2,312 @@
     "currentList": {
         "lvl5": [
             {
-                "id": "ZACIAN",
-                "form": "ZACIAN_CROWNED_SWORD",
+                "id": "RESHIRAM",
+                "form": "RESHIRAM",
                 "costume": null,
                 "assets": {
-                    "image": "https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm888.fCROWNED_SWORD.icon.png",
-                    "shinyImage": "https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm888.fCROWNED_SWORD.s.icon.png"
+                    "image": "https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm643.icon.png",
+                    "shinyImage": "https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm643.s.icon.png"
                 },
                 "level": "lvl5",
                 "names": {
-                    "English": "Zacian (Crowned Sword)",
-                    "German": "Zacian (K\u00f6nig des Schwertes)",
-                    "French": "Zacian (\u00c9p\u00e9e Supr\u00eame)",
-                    "Italian": "Zacian (Re delle Spade)",
-                    "Japanese": "\u30b6\u30b7\u30a2\u30f3 (\u3051\u3093\u306e\u304a\u3046)",
-                    "Korean": "\uc790\uc2dc\uc548 (\uac80\uc655)",
-                    "Spanish": "Zacian (Espada Suprema)"
+                    "English": "Reshiram",
+                    "German": "Reshiram",
+                    "French": "Reshiram",
+                    "Italian": "Reshiram",
+                    "Japanese": "\u30ec\u30b7\u30e9\u30e0",
+                    "Korean": "\ub808\uc2dc\ub77c\ubb34",
+                    "Spanish": "Reshiram"
                 },
                 "shiny": true,
                 "types": [
-                    "Fairy",
-                    "Steel"
+                    "Dragon",
+                    "Fire"
                 ],
                 "counter": {
-                    "Fire": 1.6,
-                    "Ground": 1.6
+                    "Dragon": 1.6,
+                    "Ground": 1.6,
+                    "Rock": 1.6
                 },
                 "weather": [
-                    "cloudy",
-                    "snow"
+                    "sunny",
+                    "windy"
                 ],
                 "cpRange": [
-                    2742,
-                    2845
+                    2217,
+                    2307
                 ],
                 "cpRangeBoost": [
-                    3428,
-                    3556
+                    2771,
+                    2884
                 ],
                 "battleResult": {
                     "easy": {
                         "name": "easy",
                         "friendshipLevel": 0,
                         "pokemonLevel": 20,
-                        "totalEstimator": 4.806
+                        "totalEstimator": 3.499
                     },
                     "normal": {
                         "name": "normal",
                         "friendshipLevel": 3,
                         "pokemonLevel": 30,
-                        "totalEstimator": 3.091
+                        "totalEstimator": 2.368
                     },
                     "hard": {
                         "name": "hard",
                         "friendshipLevel": 4,
                         "pokemonLevel": 40,
-                        "totalEstimator": 2.59
+                        "totalEstimator": 2.096
                     }
                 }
             },
             {
-                "id": "ZAMAZENTA",
-                "form": "ZAMAZENTA_CROWNED_SHIELD",
+                "id": "ZEKROM",
+                "form": "ZEKROM",
                 "costume": null,
                 "assets": {
-                    "image": "https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm889.fCROWNED_SHIELD.icon.png",
-                    "shinyImage": "https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm889.fCROWNED_SHIELD.s.icon.png"
+                    "image": "https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm644.icon.png",
+                    "shinyImage": "https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm644.s.icon.png"
                 },
                 "level": "lvl5",
                 "names": {
-                    "English": "Zamazenta (Crowned Shield)",
-                    "German": "Zamazenta (K\u00f6nig des Schildes)",
-                    "French": "Zamazenta (Bouclier Supr\u00eame)",
-                    "Italian": "Zamazenta (Re degli Scudi)",
-                    "Japanese": "\u30b6\u30de\u30bc\u30f3\u30bf (\u305f\u3066\u306e\u304a\u3046)",
-                    "Korean": "\uc790\ub9c8\uc820\ud0c0 (\ubc29\ud328\uc655)",
-                    "Spanish": "Zamazenta (Escudo Supremo)"
+                    "English": "Zekrom",
+                    "German": "Zekrom",
+                    "French": "Zekrom",
+                    "Italian": "Zekrom",
+                    "Japanese": "\u30bc\u30af\u30ed\u30e0",
+                    "Korean": "\uc81c\ud06c\ub85c\ubb34",
+                    "Spanish": "Zekrom"
                 },
                 "shiny": true,
                 "types": [
-                    "Fighting",
-                    "Steel"
+                    "Dragon",
+                    "Electric"
                 ],
                 "counter": {
-                    "Fighting": 1.6,
-                    "Fire": 1.6,
-                    "Ground": 1.6
+                    "Dragon": 1.6,
+                    "Fairy": 1.6,
+                    "Ground": 1.6,
+                    "Ice": 1.6
                 },
                 "weather": [
-                    "cloudy",
-                    "snow"
+                    "rain",
+                    "windy"
                 ],
                 "cpRange": [
-                    2291,
-                    2384
+                    2217,
+                    2307
                 ],
                 "cpRangeBoost": [
-                    2864,
-                    2980
+                    2771,
+                    2884
                 ],
                 "battleResult": {
                     "easy": {
                         "name": "easy",
                         "friendshipLevel": 0,
                         "pokemonLevel": 20,
-                        "totalEstimator": 5.056
+                        "totalEstimator": 3.247
                     },
                     "normal": {
                         "name": "normal",
                         "friendshipLevel": 3,
                         "pokemonLevel": 30,
-                        "totalEstimator": 3.155
+                        "totalEstimator": 2.007
                     },
                     "hard": {
                         "name": "hard",
                         "friendshipLevel": 4,
                         "pokemonLevel": 40,
-                        "totalEstimator": 2.715
+                        "totalEstimator": 1.759
+                    }
+                }
+            },
+            {
+                "id": "KYUREM",
+                "form": "KYUREM_BLACK",
+                "costume": null,
+                "assets": {
+                    "image": "https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm646.fBLACK.icon.png",
+                    "shinyImage": "https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm646.fBLACK.s.icon.png"
+                },
+                "level": "lvl5",
+                "names": {
+                    "English": "Kyurem (Black Kyurem)",
+                    "German": "Kyurem (Schwarzes Kyurem)",
+                    "French": "Kyurem (Kyurem Noir)",
+                    "Italian": "Kyurem (Kyurem Nero)",
+                    "Japanese": "\u30ad\u30e5\u30ec\u30e0 (\u30d6\u30e9\u30c3\u30af\u30ad\u30e5\u30ec\u30e0)",
+                    "Korean": "\ud050\ub808\ubb34 (\ube14\ub799\ud050\ub808\ubb34)",
+                    "Spanish": "Kyurem (Kyurem Negro)"
+                },
+                "shiny": true,
+                "types": [
+                    "Dragon",
+                    "Ice"
+                ],
+                "counter": {
+                    "Dragon": 1.6,
+                    "Fairy": 1.6,
+                    "Fighting": 1.6,
+                    "Rock": 1.6,
+                    "Steel": 1.6
+                },
+                "weather": [
+                    "windy",
+                    "snow"
+                ],
+                "cpRange": [
+                    2533,
+                    2631
+                ],
+                "cpRangeBoost": [
+                    3167,
+                    3289
+                ],
+                "battleResult": {
+                    "easy": {
+                        "name": "easy",
+                        "friendshipLevel": 0,
+                        "pokemonLevel": 20,
+                        "totalEstimator": 2.623
+                    },
+                    "normal": {
+                        "name": "normal",
+                        "friendshipLevel": 3,
+                        "pokemonLevel": 30,
+                        "totalEstimator": 1.652
+                    },
+                    "hard": {
+                        "name": "hard",
+                        "friendshipLevel": 4,
+                        "pokemonLevel": 40,
+                        "totalEstimator": 1.419
+                    }
+                }
+            },
+            {
+                "id": "KYUREM",
+                "form": "KYUREM_WHITE",
+                "costume": null,
+                "assets": {
+                    "image": "https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm646.fWHITE.icon.png",
+                    "shinyImage": "https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm646.fWHITE.s.icon.png"
+                },
+                "level": "lvl5",
+                "names": {
+                    "English": "Kyurem (White Kyurem)",
+                    "German": "Kyurem (Wei\u00dfes Kyurem)",
+                    "French": "Kyurem (Kyurem Blanc)",
+                    "Italian": "Kyurem (Kyurem Bianco)",
+                    "Japanese": "\u30ad\u30e5\u30ec\u30e0 (\u30db\u30ef\u30a4\u30c8\u30ad\u30e5\u30ec\u30e0)",
+                    "Korean": "\ud050\ub808\ubb34 (\ud654\uc774\ud2b8\ud050\ub808\ubb34)",
+                    "Spanish": "Kyurem (Kyurem Blanco)"
+                },
+                "shiny": true,
+                "types": [
+                    "Dragon",
+                    "Ice"
+                ],
+                "counter": {
+                    "Dragon": 1.6,
+                    "Fairy": 1.6,
+                    "Fighting": 1.6,
+                    "Rock": 1.6,
+                    "Steel": 1.6
+                },
+                "weather": [
+                    "windy",
+                    "snow"
+                ],
+                "cpRange": [
+                    2533,
+                    2631
+                ],
+                "cpRangeBoost": [
+                    3167,
+                    3289
+                ],
+                "battleResult": {
+                    "easy": {
+                        "name": "easy",
+                        "friendshipLevel": 0,
+                        "pokemonLevel": 20,
+                        "totalEstimator": 2.65
+                    },
+                    "normal": {
+                        "name": "normal",
+                        "friendshipLevel": 3,
+                        "pokemonLevel": 30,
+                        "totalEstimator": 1.681
+                    },
+                    "hard": {
+                        "name": "hard",
+                        "friendshipLevel": 4,
+                        "pokemonLevel": 40,
+                        "totalEstimator": 1.44
                     }
                 }
             }
         ],
         "lvl3": [
             {
-                "id": "DRUDDIGON",
-                "form": "DRUDDIGON",
+                "id": "MACHAMP",
+                "form": "MACHAMP_WILDAREA_2026_01",
                 "costume": null,
                 "assets": {
-                    "image": "https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm621.icon.png",
-                    "shinyImage": "https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm621.s.icon.png"
+                    "image": "https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm68.icon.png",
+                    "shinyImage": "https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm68.s.icon.png"
                 },
                 "level": "lvl3",
                 "names": {
-                    "English": "Druddigon",
-                    "German": "Shardrago",
-                    "French": "Drakkarmin",
-                    "Italian": "Druddigon",
-                    "Japanese": "\u30af\u30ea\u30e0\u30ac\u30f3",
-                    "Korean": "\ud06c\ub9ac\ub9cc",
-                    "Spanish": "Druddigon"
+                    "English": "Machamp",
+                    "German": "Machomei",
+                    "French": "Mackogneur",
+                    "Italian": "Machamp",
+                    "Japanese": "\u30ab\u30a4\u30ea\u30ad\u30fc",
+                    "Korean": "\uad34\ub825\ubaac",
+                    "Spanish": "Machamp"
                 },
                 "shiny": true,
                 "types": [
-                    "Dragon"
+                    "Fighting"
                 ],
                 "counter": {
-                    "Dragon": 1.6,
                     "Fairy": 1.6,
-                    "Ice": 1.6
+                    "Flying": 1.6,
+                    "Psychic": 1.6
                 },
                 "weather": [
-                    "windy"
+                    "cloudy"
                 ],
                 "cpRange": [
-                    1487,
-                    1561
+                    1667,
+                    1746
                 ],
                 "cpRangeBoost": [
-                    1859,
-                    1951
+                    2084,
+                    2183
                 ],
                 "battleResult": {
                     "easy": {
                         "name": "easy",
                         "friendshipLevel": 0,
                         "pokemonLevel": 20,
-                        "totalEstimator": 0.7938
+                        "totalEstimator": 0.8269
                     },
                     "normal": {
                         "name": "normal",
                         "friendshipLevel": 3,
                         "pokemonLevel": 30,
-                        "totalEstimator": 0.5489
+                        "totalEstimator": 0.5604
                     },
                     "hard": {
                         "name": "hard",
                         "friendshipLevel": 4,
                         "pokemonLevel": 40,
-                        "totalEstimator": 0.4803
-                    }
-                }
-            },
-            {
-                "id": "ORTHWORM",
-                "form": "ORTHWORM",
-                "costume": null,
-                "assets": null,
-                "level": "lvl3",
-                "names": {
-                    "English": "Orthworm",
-                    "German": "Schlurm",
-                    "French": "Ferdeter",
-                    "Italian": "Orthworm",
-                    "Japanese": "\u30df\u30df\u30ba\u30ba",
-                    "Korean": "\uafc8\ud2b8\ub801",
-                    "Spanish": "Orthworm"
-                },
-                "shiny": false,
-                "types": [
-                    "Steel"
-                ],
-                "counter": {
-                    "Fighting": 1.6,
-                    "Fire": 1.6,
-                    "Ground": 1.6
-                },
-                "weather": [
-                    "snow"
-                ],
-                "cpRange": [
-                    1245,
-                    1313
-                ],
-                "cpRangeBoost": [
-                    1557,
-                    1642
-                ],
-                "battleResult": {
-                    "easy": {
-                        "name": "easy",
-                        "friendshipLevel": 0,
-                        "pokemonLevel": 20,
-                        "totalEstimator": 1.102
-                    },
-                    "normal": {
-                        "name": "normal",
-                        "friendshipLevel": 3,
-                        "pokemonLevel": 30,
-                        "totalEstimator": 0.7609
-                    },
-                    "hard": {
-                        "name": "hard",
-                        "friendshipLevel": 4,
-                        "pokemonLevel": 40,
-                        "totalEstimator": 0.6799
+                        "totalEstimator": 0.4844
                     }
                 }
             }
@@ -731,12 +803,12 @@
         "German": {
             "svg": "/api/graphics/German/default.svg",
             "png": "/api/graphics/German/default.png",
-            "sha512": "724508b8fdf00798e21b714ad7edd4ac54f777442cd674ec8b426eaf6a8ca889850b0bae119dfb5a635efa652c2cf9c7320b0af1b92f7ac3283bd076223ad78e"
+            "sha512": "a7c1d5fb63ce1cb4d1977d0f68c8ff20434e1486d623ad4aeec96896e2afd0c6f900937e62aab8237ace9a540d6396df6751f37b560e2867e3e44d4fdb42bef7"
         },
         "English": {
             "svg": "/api/graphics/English/default.svg",
             "png": "/api/graphics/English/default.png",
-            "sha512": "f3b53f4c016782170d0e1046b1426e947c65cbf27ad0a2b8cbc864d24097fdf94242f4a4d505b64d1a4f12014af26296560d97f2d0e7fe8dbfaf3a81d152d613"
+            "sha512": "50d434f671517b2acf3128d4f1f467ef7ff77c0a255a9967a752d059d67ce29d772d70a0e786fb763dee80f0932c80e58df926cecd81a66a2dc3390d2ac0359e"
         }
     }
 }

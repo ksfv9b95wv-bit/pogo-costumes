@@ -68,8 +68,8 @@
 [{"t":["Grass","Poison"],"i":1,"f":"BULBASAUR","n":"Bulbasaur","c":"","im":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm1.icon.png"},{"t":["Grass","Poison"],"i":2,"f":"IVYSAUR","n":"Ivysaur","c":"","im":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm2.icon.png"},{"t":["Grass","Poison"],"i":3,"f":"VENUSAUR","n":"Venusaur","c":"","im":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm3.icon.png","me":[{"f":"VENUSAUR_MEGA","n":"Mega Venusaur","im":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm3.fMEGA.icon.png"}],"gm":1,"gi":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm3.fGIGANTAMAX.icon.png"},{"t":["Fire"],"i":4,"f":"CHARMANDER","n":"Charmander","c":"","im":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm4.icon.png"},{"t":["Fire"],"i":5,"f":"CHARMELEON","n":"Charmeleon","c":"","im":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm5.icon.png"},{"t":["Fire","Flying"],"i":6,"f":"CHARIZARD","n":"Charizard","c":"","im":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm6.icon.png","me":[{"f":"CHARIZARD_MEGA_X","n":"Mega Charizard X","im":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm6.fMEGA_X.icon.png"},{"f":"CHARIZARD_MEGA_Y","n":"Mega Charizard Y","im":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm6.fMEGA_Y.icon.png"}],"gm":1,"gi":"https:/
 === data/dynamax.json (2 bytes)
 []
-=== data/events.json (29707 bytes)
-[{"eventID":"into-the-wild-2026","name":"Into the Wild 2026","eventType":"event","heading":"Event","link":"https://leekduck.com/events/into-the-wild-2026/","image":"https://cdn.leekduck.com/assets/img/events/article-images/2026/2026-11-09-into-the-wild-2026/into-the-wild-2026.jpg","start":"2026-11-09T10:00:00.000","end":"2026-11-13T20:00:00.000","extraData":{"generic":{"hasSpawns":true,"hasFieldResearchTasks":true}}},{"eventID":"zacian-crowned-sword-zamazenta-crowned-shield-in-5-star-raid-battles-november-2026","name":"Zacian (Crowned Sword) and Zamazenta (Crowned Shield) in 5-star Raid Battles","eventType":"raid-battles","heading":"Raid Battles","link":"https://leekduck.com/events/zacian-crowned-sword-zamazenta-crowned-shield-in-5-star-raid-battles-november-2026/","image":"https://cdn.leekduck.com/assets/img/events/zacian-and-zamazenta-2.jpg","start":"2026-11-09T10:00:00.000","end":"2026-11-13T20:00:00.000","extraData":{"raidbattles":{"bosses":[{"name":"Zacian (Crowned Sword)","image":"https://cdn.leekduck.com/assets/img/pokemon_icons/pm888.fCROWNED_SWORD.icon.png","canBeShiny":true},{"name":"Zamazenta (Crowned Shield)","image":"https://cdn.leekduck.com/assets/img/pokemon_icons/pm889.fCROWNED_SHIELD.icon.png","canBeShiny":true}],"shinies":[{"name":"Zacian (Crowned Sword)","image":"https://cdn.leekduck.com/assets/img/pokemon_icons/pm888.fCROWNED_SWORD.s.icon.png"},{"name":"Zamazenta (Crowned Shield)","image":"https://cdn.leekduck.com/assets/img/pokemon_icons/pm889.fCROWNED_SH
+=== data/events.json (29623 bytes)
+[{"eventID":"into-the-wild-2026","name":"Into the Wild 2026","eventType":"event","heading":"Event","link":"https://leekduck.com/events/into-the-wild-2026/","image":"https://cdn.leekduck.com/assets/img/events/article-images/2026/2026-11-09-into-the-wild-2026/into-the-wild-2026.jpg","start":null,"end":null,"extraData":{"generic":{"hasSpawns":true,"hasFieldResearchTasks":true}}},{"eventID":"zacian-crowned-sword-zamazenta-crowned-shield-in-5-star-raid-battles-november-2026","name":"Zacian (Crowned Sword) and Zamazenta (Crowned Shield) in 5-star Raid Battles","eventType":"raid-battles","heading":"Raid Battles","link":"https://leekduck.com/events/zacian-crowned-sword-zamazenta-crowned-shield-in-5-star-raid-battles-november-2026/","image":"https://cdn.leekduck.com/assets/img/events/zacian-and-zamazenta-2.jpg","start":null,"end":null,"extraData":{"raidbattles":{"bosses":[{"name":"Zacian (Crowned Sword)","image":"https://cdn.leekduck.com/assets/img/pokemon_icons/pm888.fCROWNED_SWORD.icon.png","canBeShiny":true},{"name":"Zamazenta (Crowned Shield)","image":"https://cdn.leekduck.com/assets/img/pokemon_icons/pm889.fCROWNED_SHIELD.icon.png","canBeShiny":true}],"shinies":[{"name":"Zacian (Crowned Sword)","image":"https://cdn.leekduck.com/assets/img/pokemon_icons/pm888.fCROWNED_SWORD.s.icon.png"},{"name":"Zamazenta (Crowned Shield)","image":"https://cdn.leekduck.com/assets/img/pokemon_icons/pm889.fCROWNED_SHIELD.s.icon.png"}]},"generic":{"hasSpawns":false,"hasFieldResearchTasks":false}}},{"
 === data/evolutions.json (178237 bytes)
 [
     {
@@ -410,46 +410,52 @@
         "id": 384,
         "name": "Rayquaza",
        
-=== data/raidboss.json (26895 bytes)
+=== data/raidboss.json (29513 bytes)
 {
     "currentList": {
         "lvl5": [
             {
-                "id": "ZACIAN",
-                "form": "ZACIAN_CROWNED_SWORD",
+                "id": "RESHIRAM",
+                "form": "RESHIRAM",
                 "costume": null,
                 "assets": {
-                    "image": "https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm888.fCROWNED_SWORD.icon.png",
-                    "shinyImage": "https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm888.fCROWNED_SWORD.s.icon.png"
+                    "image": "https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm643.icon.png",
+                    "shinyImage": "https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm643.s.icon.png"
                 },
                 "level": "lvl5",
                 "names": {
-                    "English": "Zacian (Crowned Sword)",
-                    "German": "Zacian (K\u00f6nig des Schwertes)",
-                    "French": "Zacian (\u00c9p\u00e9e Supr\u00eame)",
-                    "Italian": "Zacian (Re delle Spade)",
-                    "Japanese": "\u30b6\u30b7\u30a2\u30f3 (\u3051\u3093\u306e\u304a\u3046)",
-                    "Korean": "\uc790\uc2dc\uc548 (\uac80\uc655)",
-                    "Spanish": "Zacian (Espada Suprema)"
+                    "English": "Reshiram",
+                    "German": "Reshiram",
+                    "French": "Reshiram",
+                    "Italian": "Reshiram",
+                    "Japanese": "\u30ec\u30b7\u30e9\u30e0",
+                    "Korean": "\ub808\uc2dc\ub77c\ubb34",
+                    "Spanish": "Reshiram"
                 },
                 "shiny": true,
                 "types": [
-                    "Fairy",
-                    "Steel"
+                    "Dragon",
+                    "Fire"
                 ],
                 "counter": {
-                    "Fire": 1.6,
-                    "Ground": 1.6
+                    "Dragon": 1.6,
+                    "Ground": 1.6,
+                    "Rock": 1.6
                 },
                 "weather": [
-                    "cloudy",
-                    "snow"
+                    "sunny",
+                    "windy"
                 ],
                 "cpRange": [
-                    2742,
-                    2845
+                    2217,
+                    2307
                 ],
-                
+                "cpRangeBoost": [
+                    2771,
+                    2884
+                ],
+                "battleResult": {
+                    "e
 === data/released.json (61247 bytes)
 {
     "1": {
