@@ -68,8 +68,8 @@
 [{"t":["Grass","Poison"],"i":1,"f":"BULBASAUR","n":"Bulbasaur","c":"","im":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm1.icon.png"},{"t":["Grass","Poison"],"i":2,"f":"IVYSAUR","n":"Ivysaur","c":"","im":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm2.icon.png"},{"t":["Grass","Poison"],"i":3,"f":"VENUSAUR","n":"Venusaur","c":"","im":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm3.icon.png","me":[{"f":"VENUSAUR_MEGA","n":"Mega Venusaur","im":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm3.fMEGA.icon.png"}],"gm":1,"gi":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm3.fGIGANTAMAX.icon.png"},{"t":["Fire"],"i":4,"f":"CHARMANDER","n":"Charmander","c":"","im":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm4.icon.png"},{"t":["Fire"],"i":5,"f":"CHARMELEON","n":"Charmeleon","c":"","im":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm5.icon.png"},{"t":["Fire","Flying"],"i":6,"f":"CHARIZARD","n":"Charizard","c":"","im":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm6.icon.png","me":[{"f":"CHARIZARD_MEGA_X","n":"Mega Charizard X","im":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm6.fMEGA_X.icon.png"},{"f":"CHARIZARD_MEGA_Y","n":"Mega Charizard Y","im":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm6.fMEGA_Y.icon.png"}],"gm":1,"gi":"https:/
 === data/dynamax.json (2 bytes)
 []
-=== data/events.json (28069 bytes)
-[{"eventID":"pokemon-go-wild-area-2026-global","name":"Pokémon GO Wild Area 2026: Global","eventType":"wild-area","heading":"Wild Area","link":"https://leekduck.com/events/pokemon-go-wild-area-2026-global/","image":"https://cdn.leekduck.com/assets/img/events/article-images/2026/2026-11-14-pokemon-go-wild-area-2026-global/key-art.jpg","start":null,"end":null,"extraData":{"generic":{"hasSpawns":true,"hasFieldResearchTasks":false}}},{"eventID":"go-wild-area-gigantamax-machamp-power-up-timed-research","name":"GO Wild Area: Gigantamax Machamp Power Up! Timed Research","eventType":"timed-research","heading":"Timed Research","link":"https://leekduck.com/events/go-wild-area-gigantamax-machamp-power-up-timed-research/","image":"https://cdn.leekduck.com/assets/img/events/article-images/2025/2025-05-25-gigantamax-machamp-max-battle-day-may-2025/gigantamax-machamp-max-battles.jpg","start":"2026-11-06T10:00:00.000","end":"2026-11-15T23:59:00.000","extraData":{"generic":{"hasSpawns":false,"hasFieldResearchTasks":false}}},{"eventID":"max-mondays-2026-11-16","name":"[Canceled] Max Monday","eventType":"max-mondays","heading":"Max Mondays","link":"https://leekduck.com/events/max-mondays-2026-11-16/","image":"https://cdn.leekduck.com/assets/img/events/max-battles-kanto.jpg","start":"2026-11-16T06:00:00.000","end":"2026-11-16T21:00:00.000","extraData":{"generic":{"hasSpawns":false,"hasFieldResearchTasks":false}}},{"eventID":"gbl-twilight-trails_great-league_ultra-league-mega-edition_2026-go-lai
+=== data/events.json (27809 bytes)
+[{"eventID":"go-wild-area-gigantamax-machamp-power-up-timed-research","name":"GO Wild Area: Gigantamax Machamp Power Up! Timed Research","eventType":"timed-research","heading":"Timed Research","link":"https://leekduck.com/events/go-wild-area-gigantamax-machamp-power-up-timed-research/","image":"https://cdn.leekduck.com/assets/img/events/article-images/2025/2025-05-25-gigantamax-machamp-max-battle-day-may-2025/gigantamax-machamp-max-battles.jpg","start":null,"end":null,"extraData":{"generic":{"hasSpawns":false,"hasFieldResearchTasks":false}}},{"eventID":"max-mondays-2026-11-16","name":"[Canceled] Max Monday","eventType":"max-mondays","heading":"Max Mondays","link":"https://leekduck.com/events/max-mondays-2026-11-16/","image":"https://cdn.leekduck.com/assets/img/events/max-battles-kanto.jpg","start":null,"end":null,"extraData":{"generic":{"hasSpawns":false,"hasFieldResearchTasks":false}}},{"eventID":"gbl-twilight-trails_great-league_ultra-league-mega-edition_2026-go-laic-cup","name":"Great League, Ultra League: Mega Edition, and 2026 GO LAIC Cup | Twilight Trails","eventType":"go-battle-league","heading":"GO Battle League","link":"https://leekduck.com/events/gbl-twilight-trails_great-league_ultra-league-mega-edition_2026-go-laic-cup/","image":"https://cdn.leekduck.com/assets/img/events/gobattle-greatleague-key.jpg","start":"2026-11-10T21:00:00.000Z","end":"2026-11-17T21:00:00.000Z","extraData":{"generic":{"hasSpawns":false,"hasFieldResearchTasks":false}}},{"eventID":"raidhour20
 === data/evolutions.json (178237 bytes)
 [
     {
@@ -272,7 +272,7 @@
 902
 ]
 }
-=== data/pokedex.json (14907021 bytes)
+=== data/pokedex.json (14908274 bytes)
 [
     {
         "id": "BULBASAUR",
@@ -410,52 +410,50 @@
         "id": 384,
         "name": "Rayquaza",
        
-=== data/raidboss.json (29513 bytes)
+=== data/raidboss.json (40133 bytes)
 {
     "currentList": {
-        "lvl5": [
+        "mega": [
             {
-                "id": "RESHIRAM",
-                "form": "RESHIRAM",
+                "id": "BANETTE",
+                "form": "BANETTE_MEGA",
                 "costume": null,
                 "assets": {
-                    "image": "https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm643.icon.png",
-                    "shinyImage": "https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm643.s.icon.png"
+                    "image": "https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm354.fMEGA.icon.png",
+                    "shinyImage": "https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm354.fMEGA.s.icon.png"
                 },
-                "level": "lvl5",
+                "level": "mega",
                 "names": {
-                    "English": "Reshiram",
-                    "German": "Reshiram",
-                    "French": "Reshiram",
-                    "Italian": "Reshiram",
-                    "Japanese": "\u30ec\u30b7\u30e9\u30e0",
-                    "Korean": "\ub808\uc2dc\ub77c\ubb34",
-                    "Spanish": "Reshiram"
+                    "English": "Mega Banette",
+                    "German": "Mega-Banette",
+                    "French": "M\u00e9ga-Branette",
+                    "Italian": "MegaBanette",
+                    "Japanese": "\u30e1\u30ac\u30b8\u30e5\u30da\u30c3\u30bf",
+                    "Korean": "\uba54\uac00\ub2e4\ud06c\ud3ab",
+                    "Spanish": "Mega-Banette"
                 },
                 "shiny": true,
                 "types": [
-                    "Dragon",
-                    "Fire"
+                    "Ghost"
                 ],
                 "counter": {
-                    "Dragon": 1.6,
-                    "Ground": 1.6,
-                    "Rock": 1.6
+                    "Dark": 1.6,
+                    "Ghost": 1.6
                 },
                 "weather": [
-                    "sunny",
-                    "windy"
+                    "fog"
                 ],
                 "cpRange": [
-                    2217,
-                    2307
+                    1244,
+                    1313
                 ],
                 "cpRangeBoost": [
-                    2771,
-                    2884
+                    1555,
+                    1642
                 ],
                 "battleResult": {
-                    "e
+                    "easy": {
+                        
 === data/released.json (61247 bytes)
 {
     "1": {
