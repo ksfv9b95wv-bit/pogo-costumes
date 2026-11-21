@@ -1,4 +1,4 @@
-dex 1024, released 937, shiny 863, dynamax list 0 (bulbapedia rows 0)
+dex 1024, released 937, shiny 863, dynamax list 155 (bulbapedia rows 155)
 
 RELEASED but not in pokedex.json: 
 
