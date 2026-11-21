@@ -28,6 +28,7 @@ jobs:
           get maxbattles.json https://pokemon-go-api.github.io/pokemon-go-api/api/maxbattles.json
           get raidboss.json https://pokemon-go-api.github.io/pokemon-go-api/api/raidboss.json
           get pokedex.json https://pokemon-go-api.github.io/pokemon-go-api/api/pokedex.json
+          if curl -fsSL --retry 3 -A "GO-Lists-data-updater/1.0 (github.com/ksfv9b95wv-bit/pogo-costumes)" "https://bulbapedia.bulbagarden.net/w/api.php?action=parse&page=Dynamax_(GO)&prop=text&format=json&formatversion=2" -o data/dynamax_bp.tmp; then mv data/dynamax_bp.tmp data/dynamax_bp.json; else echo "failed dynamax_bp"; rm -f data/dynamax_bp.tmp; fi
           for f in data/*.json; do echo "=== $f ($(wc -c < "$f") bytes)"; head -c 1500 "$f"; echo; done > data/_samples.txt
       - name: Build slim Pokedex
         run: |
@@ -89,12 +90,48 @@ jobs:
           for x in acc:
               e=byf.get(x['id'])
               if e and e['i'] not in old: old[e['i']]={'i':e['i'],'n':e['n'],'im':e['im']}
+          # Bulbapedia "Dynamax (GO)" release table: every species that can be caught as Dynamax, with its date
+          import html as H
+          from datetime import datetime
+          byn={}
+          for e in dex: byn.setdefault(e['n'].lower(),e)
+          try:
+              for v in json.load(open('data/names.json')).values():
+                  byn.setdefault(v['name'].lower(),{'i':int(v['id']),'n':v['name'],'im':''})
+          except Exception: pass
+          bp=0
+          try:
+              t=json.load(open('data/dynamax_bp.json'))['parse']['text']
+              if isinstance(t,dict): t=t.get('*','')
+              k=t.lower().find('capable of dynamaxing')
+              if k>=0:
+                  t=t[k:]
+                  e2=t.find('<h2',10)
+                  if e2>0: t=t[:e2]
+              for row in t.split('<tr')[1:]:
+                  txt=H.unescape(re.sub(r'<[^>]+>',' ',row))
+                  m=re.search(r'([A-Z][a-z]{2,8})\.? (\d{1,2}), (\d{4})',txt)
+                  if not m: continue
+                  dt=None
+                  for f in ('%B %d %Y','%b %d %Y'):
+                      try: dt=int(datetime.strptime(m.group(1)+' '+m.group(2)+' '+m.group(3),f).strftime('%y%m%d')); break
+                      except Exception: pass
+                  if dt is None: continue
+                  for nmx in re.findall(r'title="([^"]+?) \(Pok(?:é|&#233;|e)mon\)"',row):
+                      e=byn.get(H.unescape(nmx).lower())
+                      if not e: continue
+                      bp+=1
+                      o=old.get(e['i'])
+                      if o is None: old[e['i']]={'i':e['i'],'n':e['n'],'im':e.get('im',''),'d':dt}
+                      elif 'd' not in o or o['d']>dt: o['d']=dt
+          except Exception as x: print('bulbapedia parse failed',x)
+          print('dynamax from bulbapedia',bp)
           json.dump(sorted(old.values(),key=lambda e:e['i']),open('data/dynamax.json','w'),separators=(',',':'),ensure_ascii=False)
           d=json.load(open('data/pokedex.json')); rel=json.load(open('data/released.json')); sh=json.load(open('data/shiny.json'))
           ids={e['dexNr'] for e in d}
           hs={e['dexNr'] for e in d if (e.get('assets') or {}).get('shinyImage')}
           nm=lambda i:(next((e['names']['English'] for e in d if e['dexNr']==i),str(i)))
-          o=['dex %d, released %d, shiny %d, dynamax list %d'%(len(ids),len(rel),len(sh),len(old))]
+          o=['dex %d, released %d, shiny %d, dynamax list %d (bulbapedia rows %d)'%(len(ids),len(rel),len(sh),len(old),bp)]
           o.append('RELEASED but not in pokedex.json: '+', '.join(rel[k]['name'] for k in rel if int(k) not in ids))
           o.append('HAS shiny image but NOT in shiny.json ('+str(len([i for i in hs if str(i) not in sh]))+'): '+', '.join(nm(i) for i in sorted(hs) if str(i) not in sh))
           o.append('IN shiny.json but no shiny image: '+', '.join(sh[k]['name'] for k in sh if int(k) not in hs))
