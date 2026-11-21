@@ -94,19 +94,21 @@ jobs:
           import html as H
           from datetime import datetime
           byn={}
+          byi={}
+          for e in dex: byi.setdefault(e['i'],e)
           for e in dex: byn.setdefault(e['n'].lower(),e)
           try:
               for v in json.load(open('data/names.json')).values():
-                  byn.setdefault(v['name'].lower(),{'i':int(v['id']),'n':v['name'],'im':''})
+                  x={'i':int(v['id']),'n':v['name'],'im':''};byn.setdefault(v['name'].lower(),x);byi.setdefault(x['i'],x)
           except Exception: pass
           bp=0
           try:
               t=json.load(open('data/dynamax_bp.json'))['parse']['text']
               if isinstance(t,dict): t=t.get('*','')
-              k=t.lower().find('capable of dynamaxing')
-              if k>=0:
-                  t=t[k:]
-                  e2=t.find('<h2',10)
+              mk=re.search(r'<h2[^>]*>(?:(?!</h2>).)*capable of Dynamaxing',t,re.S|re.I)
+              if mk:
+                  t=t[mk.start()+3:]
+                  e2=t.find('<h2')
                   if e2>0: t=t[:e2]
               for row in t.split('<tr')[1:]:
                   txt=H.unescape(re.sub(r'<[^>]+>',' ',row))
@@ -117,8 +119,12 @@ jobs:
                       try: dt=int(datetime.strptime(m.group(1)+' '+m.group(2)+' '+m.group(3),f).strftime('%y%m%d')); break
                       except Exception: pass
                   if dt is None: continue
-                  for nmx in re.findall(r'title="([^"]+?) \(Pok(?:é|&#233;|e)mon\)"',row):
-                      e=byn.get(H.unescape(nmx).lower())
+                  cells=row.split('<td')
+                  pk=cells[2] if len(cells)>2 else row
+                  hits=[int(n) for n in re.findall(r'/GO0*(\d{1,4})[A-Za-z_-]*\.png',pk)]
+                  if not hits: hits=[byn[H.unescape(n).lower()]['i'] for n in re.findall(r'(?:alt|title)="([^"(]+?)(?: \((?:GO|Pok[^)]*)\))?"',pk) if H.unescape(n).lower() in byn]
+                  for ix in dict.fromkeys(hits):
+                      e=byi.get(ix)
                       if not e: continue
                       bp+=1
                       o=old.get(e['i'])
@@ -145,6 +151,54 @@ jobs:
           o.append('COSTUME CODES not yet used ('+str(len(codes))+'): '+'; '.join(c+': '+','.join(v[:12]) for c,v in sorted(codes.items())))
           open('data/_report.txt','w').write('\n\n'.join(o))
           PY
+      - name: Build PvP rankings (PvPoke)
+        run: |
+          set +e
+          cat > /tmp/pvpbuild.py <<'PY'
+          import json,re,math,sys,os
+          root=sys.argv[1]; out=sys.argv[2]
+          src=open(os.path.join(root,'src/js/pokemon/Pokemon.js')).read() if os.path.exists(os.path.join(root,'src/js/pokemon/Pokemon.js')) else None
+          gm=json.load(open(os.path.join(root,'src/data/gamemaster.json')))
+          cpms=json.loads(re.search(r'var cpms = (\[[^\]]+\])',src).group(1))
+          def cpm(l): return cpms[int(round((l-1)*2))]
+          def cp(b,l,a,d,s): return max(10,math.floor((b['atk']+a)*math.sqrt(b['def']+d)*math.sqrt(b['hp']+s)*cpm(l)**2/10))
+          mv={m['moveId']:m['name'] for m in gm['moves']}
+          M=[];Mi={}
+          def mi(x):
+            n=mv.get(x,str(x).title())
+            if n not in Mi: Mi[n]=len(M);M.append(n)
+            return Mi[n]
+          R={}
+          for lg,c in (('g',1500),('u',2500),('m',10000)):
+            r=json.load(open(os.path.join(root,f'src/data/rankings/all/overall/rankings-{c}.json')))
+            L=[e for e in r if not e['speciesId'].endswith('_shadow')]
+            R[lg]={e['speciesId']:(i+1,e) for i,e in enumerate(L)}
+          D={}
+          for q in gm['pokemon']:
+            sid=q['speciesId']
+            if sid.endswith('_shadow') or '_mega' in sid: continue
+            b=q['baseStats'];o={}
+            for lg,key in (('g','cp1500'),('u','cp2500'),('m',None)):
+              if sid not in R[lg]:continue
+              rk,e=R[lg][sid];iv=(q.get('defaultIVs') or {}).get(key) if key else None
+              iv=iv or [50,15,15,15]
+              ms=list(e['moveset'])+[None]*3
+              o[lg]=[rk,e['score'],mi(ms[0]),mi(ms[1]) if ms[1] else -1,mi(ms[2]) if ms[2] else -1,iv[0],iv[1],iv[2],iv[3],cp(b,iv[0],iv[1],iv[2],iv[3])]
+            D.setdefault(str(q['dex']),[]).append([q['speciesName'],(q['types']+['none'])[:2],[b['atk'],b['def'],b['hp']],o,cp(b,50,15,15,15)])
+          json.dump({'t':gm.get('timestamp',''),'m':M,'d':D},open(out,'w'),separators=(',',':'),ensure_ascii=False)
+          print('pvp species',len(D),'entries',sum(len(v) for v in D.values()))
+          PY
+          P=https://raw.githubusercontent.com/pvpoke/pvpoke/master/src
+          mkdir -p /tmp/pv/src/data/rankings/all/overall /tmp/pv/src/js/pokemon
+          ok=1
+          for f in data/gamemaster.json js/pokemon/Pokemon.js data/rankings/all/overall/rankings-1500.json data/rankings/all/overall/rankings-2500.json data/rankings/all/overall/rankings-10000.json; do
+            curl -fsSL --retry 3 "$P/$f" -o "/tmp/pv/src/$f" || { echo "failed $f"; ok=0; }
+          done
+          if [ $ok = 1 ] && python3 /tmp/pvpbuild.py /tmp/pv data/pvp.tmp; then
+            n=$(python3 -c "import json;print(sum(len(v) for v in json.load(open('data/pvp.tmp'))['d'].values()))")
+            if [ "$n" -gt 900 ]; then mv data/pvp.tmp data/pvp.json; echo "pvp.json updated ($n entries)"; else echo "pvp too small ($n), kept old"; rm -f data/pvp.tmp; fi
+          else echo "pvp build failed, kept old"; rm -f data/pvp.tmp; fi
+          exit 0
       - name: Save data to repo
         run: |
           git config user.name "github-actions"
