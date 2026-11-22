@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en-GB"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#1b3a5c"><meta name="robots" content="noindex">
+<link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="manifest" href="manifest.webmanifest">
+<title>GO Lists – Log in</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;min-height:100%}
+body{font:16px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif;color:#eaf4fb;background:linear-gradient(180deg,#1b3a5c,#2d6a8c 60%,#1b3a5c);padding:max(24px,env(safe-area-inset-top)) 16px 40px;display:flex;justify-content:center}
+main{width:100%;max-width:420px}
+h1{font:800 30px/1.1 system-ui,sans-serif;margin:8px 0 4px;text-align:center}
+.sub{text-align:center;color:#bcd9ea;margin:0 0 18px}
+.logo{display:block;width:84px;height:84px;margin:0 auto 6px;border-radius:20px}
+.tabs{display:flex;gap:8px;margin-bottom:12px}
+.tabs button{flex:1;padding:11px;border-radius:999px;border:2px solid #9cc7e0;background:transparent;color:#eaf4fb;font:700 15px system-ui,sans-serif}
+.tabs button[aria-selected=true]{background:#eaf4fb;color:#1b3a5c;border-color:#eaf4fb}
+.card{background:#f4fbff;color:#0A3350;border-radius:22px;padding:18px;box-shadow:0 12px 36px rgba(0,0,0,.3)}
+label{display:block;font-weight:700;margin:10px 0 4px}
+input,textarea{width:100%;padding:12px;border-radius:12px;border:2px solid #b9d5e6;font:16px system-ui,sans-serif;color:#0A3350;background:#fff}
+input:focus,textarea:focus{outline:none;border-color:#2d8ac2}
+textarea{min-height:70px;resize:vertical}
+.go{width:100%;margin-top:16px;padding:14px;border:0;border-radius:999px;background:#F0C230;color:#0A3350;font:800 17px system-ui,sans-serif}
+.go:disabled{opacity:.6}
+.msg{margin:12px 0 0;padding:10px 12px;border-radius:12px;font-weight:600}
+.msg.err{background:#ffe3e3;color:#8a1c1c}.msg.ok{background:#e1f5e6;color:#145c2b}
+.hint{font-size:14px;color:#3d6580;margin:6px 0 0}
+[hidden]{display:none!important}
+.disc{font-size:12px;color:#bcd9ea;text-align:center;margin-top:22px}
+</style></head>
+<body><main>
+<img class="logo" src="icon-192.png" alt="">
+<h1>GO Lists</h1>
+<p class="sub">Your Pokémon GO collection tracker</p>
+<div class="tabs" role="tablist"><button id="t1" role="tab" aria-selected="true">Log in</button><button id="t2" role="tab" aria-selected="false">Request access</button></div>
+
+<form class="card" id="fLogin" autocomplete="on">
+ <label for="lc">Trainer code</label><input id="lc" name="username" inputmode="numeric" autocomplete="username" placeholder="1234 5678 9012" required>
+ <div id="lpw"><label for="lp">Password</label><input id="lp" name="password" type="password" autocomplete="current-password"></div>
+ <button class="go" id="lb">Log in</button>
+ <p class="msg" id="lm" hidden></p>
+</form>
+
+<form class="card" id="fSet" hidden autocomplete="on">
+ <p style="margin:0">You've been approved. Choose a password for trainer code <b id="sc0"></b>.</p>
+ <input type="text" id="su" name="username" autocomplete="username" hidden>
+ <label for="sp">New password</label><input id="sp" type="password" autocomplete="new-password" minlength="8" required>
+ <label for="sp2">Type it again</label><input id="sp2" type="password" autocomplete="new-password" minlength="8" required>
+ <div id="scw" hidden><label for="scd">6-digit setup code</label><input id="scd" inputmode="numeric" maxlength="6"><p class="hint">You're on a different phone from the one you asked on, so ask the app owner for your setup code.</p></div>
+ <div id="skw" hidden><label for="skk">Admin setup key</label><input id="skk" type="password" autocomplete="off"><p class="hint">The SETUP_KEY you saved in Cloudflare.</p></div>
+ <button class="go" id="sb">Save password and enter</button>
+ <p class="msg" id="sm" hidden></p>
+</form>
+
+<form class="card" id="fReq" hidden>
+ <label for="rn">Trainer name</label><input id="rn" maxlength="30" autocomplete="nickname" required>
+ <label for="rc">Trainer code</label><input id="rc" inputmode="numeric" placeholder="1234 5678 9012" required>
+ <p class="hint">Find it in Pokémon GO: tap your profile, then Friends, then Add friend.</p>
+ <label for="rm">Message (optional)</label><textarea id="rm" maxlength="300" placeholder="How do you know the app owner?"></textarea>
+ <button class="go" id="rb">Send request</button>
+ <p class="msg" id="rmsg" hidden></p>
+</form>
+<p class="disc">Pokémon and All Respective Names are Trademark &amp; © of Nintendo 1996-2026. GO Lists is a fan-made app.</p>
+</main>
+<script>
+// Fill in to get an email each time someone requests access (same key as in index.html).
+const W3KEY="";
+const $=id=>document.getElementById(id);
+const clean=v=>String(v||"").replace(/\D/g,"");
+const fmt=v=>clean(v).slice(0,12).replace(/(\d{4})(?=\d)/g,"$1 ");
+const LS={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
+const show=(el,t,ok)=>{el.textContent=t;el.className="msg "+(ok?"ok":"err");el.hidden=!t};
+async function post(p,b){const r=await fetch(p,{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(b),credentials:"same-origin"});let j={};try{j=await r.json()}catch(e){}return{ok:r.ok,st:r.status,j}}
+let setCode="",setAdmin=false;
+function tab(n){$("t1").setAttribute("aria-selected",n===1);$("t2").setAttribute("aria-selected",n===2);$("fLogin").hidden=n!==1;$("fReq").hidden=n!==2;$("fSet").hidden=true}
+$("t1").onclick=()=>tab(1);$("t2").onclick=()=>tab(2);
+["lc","rc"].forEach(id=>$(id).addEventListener("input",e=>{const p=e.target.selectionStart===e.target.value.length;e.target.value=fmt(e.target.value);if(p)e.target.selectionStart=e.target.selectionEnd=e.target.value.length}));
+const last=LS.get("gol-code");if(last)$("lc").value=fmt(last);
+function toSet(code,admin){setCode=code;setAdmin=admin;$("fLogin").hidden=$("fReq").hidden=true;$("fSet").hidden=false;$("sc0").textContent=fmt(code);$("su").value=code;$("skw").hidden=!admin;$("scw").hidden=!!LS.get("gol-claim:"+code);$("sp").focus()}
+$("fLogin").onsubmit=async e=>{e.preventDefault();const code=clean($("lc").value);if(code.length!==12)return show($("lm"),"Trainer codes are 12 digits.");
+ $("lb").disabled=true;const r=await post("/api/login",{code,pw:$("lp").value}).catch(()=>({j:{error:"No connection. Try again."}}));$("lb").disabled=false;
+ if(r.j.setup){LS.set("gol-code",code);return toSet(code,!!r.j.admin)}
+ if(r.ok){LS.set("gol-code",code);location.replace("/")}else show($("lm"),r.j.error||"Couldn't log in.")};
+$("fSet").onsubmit=async e=>{e.preventDefault();const pw=$("sp").value;if(pw.length<8)return show($("sm"),"Use at least 8 characters.");if(pw!==$("sp2").value)return show($("sm"),"The two passwords don't match.");
+ $("sb").disabled=true;const r=await post("/api/setpw",{code:setCode,pw,token:LS.get("gol-claim:"+setCode),sc:$("scd").value,key:$("skk").value}).catch(()=>({j:{error:"No connection. Try again."}}));$("sb").disabled=false;
+ if(r.ok)return location.replace("/");if(r.j.needSc)$("scw").hidden=false;if(r.j.needKey)$("skw").hidden=false;show($("sm"),r.j.error||"Couldn't save.")};
+$("fReq").onsubmit=async e=>{e.preventDefault();const code=clean($("rc").value),name=$("rn").value.trim(),msg=$("rm").value.trim();
+ if(code.length!==12)return show($("rmsg"),"Trainer codes are 12 digits.");
+ $("rb").disabled=true;const r=await post("/api/request",{code,name,msg}).catch(()=>({j:{error:"No connection. Try again."}}));$("rb").disabled=false;
+ if(!r.ok)return show($("rmsg"),r.j.error||"Couldn't send.");
+ if(r.j.token)LS.set("gol-claim:"+code,r.j.token);LS.set("gol-code",code);
+ if(r.j.admin){$("lc").value=fmt(code);return toSet(code,true)}
+ if(r.j.approved){show($("rmsg"),r.j.note||"You're approved. Use Log in.",true);return}
+ if(W3KEY)fetch("https://api.web3forms.com/submit",{method:"POST",headers:{"content-type":"application/json",accept:"application/json"},body:JSON.stringify({access_key:W3KEY,subject:"GO Lists: access request from "+name,from_name:"GO Lists",message:"Trainer name: "+name+"\nTrainer code: "+fmt(code)+"\nMessage: "+(msg||"(none)")+"\n\nApprove or decline in GO Lists > Settings > Admin."})}).catch(()=>{});
+ $("fReq").reset();show($("rmsg"),"Request sent. Once it's approved, come back here, tap Log in and enter your trainer code to choose a password. Use this same phone, or you'll need a setup code from the app owner.",true)};
+</script>
+</body></html>
