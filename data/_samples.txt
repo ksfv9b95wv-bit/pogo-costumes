@@ -68,10 +68,10 @@
 [{"t":["Grass","Poison"],"i":1,"f":"BULBASAUR","n":"Bulbasaur","c":"","im":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm1.icon.png"},{"t":["Grass","Poison"],"i":2,"f":"IVYSAUR","n":"Ivysaur","c":"","im":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm2.icon.png"},{"t":["Grass","Poison"],"i":3,"f":"VENUSAUR","n":"Venusaur","c":"","im":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm3.icon.png","me":[{"f":"VENUSAUR_MEGA","n":"Mega Venusaur","im":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm3.fMEGA.icon.png"}],"gm":1,"gi":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm3.fGIGANTAMAX.icon.png"},{"t":["Fire"],"i":4,"f":"CHARMANDER","n":"Charmander","c":"","im":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm4.icon.png"},{"t":["Fire"],"i":5,"f":"CHARMELEON","n":"Charmeleon","c":"","im":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm5.icon.png"},{"t":["Fire","Flying"],"i":6,"f":"CHARIZARD","n":"Charizard","c":"","im":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm6.icon.png","me":[{"f":"CHARIZARD_MEGA_X","n":"Mega Charizard X","im":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm6.fMEGA_X.icon.png"},{"f":"CHARIZARD_MEGA_Y","n":"Mega Charizard Y","im":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm6.fMEGA_Y.icon.png"}],"gm":1,"gi":"https:/
 === data/dynamax.json (19560 bytes)
 [{"i":1,"n":"Bulbasaur","im":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm1.icon.png","d":240910},{"i":2,"n":"Ivysaur","im":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm2.icon.png","d":240910},{"i":3,"n":"Venusaur","im":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm3.icon.png","d":240910},{"i":4,"n":"Charmander","im":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm4.icon.png","d":240910},{"i":5,"n":"Charmeleon","im":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm5.icon.png","d":240910},{"i":6,"n":"Charizard","im":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm6.icon.png","d":240910},{"i":7,"n":"Squirtle","im":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm7.icon.png","d":240910},{"i":8,"n":"Wartortle","im":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm8.icon.png","d":240910},{"i":9,"n":"Blastoise","im":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm9.icon.png","d":240910},{"i":10,"n":"Caterpie","im":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm10.icon.png","d":250324},{"i":11,"n":"Metapod","im":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm11.icon.png","d":250324},{"i":12,"n":"Butterfree","im":"https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm12.icon.png","d":250324},{"i":25,"
-=== data/dynamax_bp.json (201075 bytes)
+=== data/dynamax_bp.json (208434 bytes)
 {"parse":{"title":"Dynamax (GO)","pageid":319324,"text":"<div class=\"mw-content-ltr mw-parser-output\" lang=\"en\" dir=\"ltr\"><figure class=\"mw-halign-right\" typeof=\"mw:File/Thumb\"><a href=\"/wiki/File:GO_Dynamax_Kanto_Starters.jpg\" class=\"mw-file-description\"><img src=\"https://archives.bulbagarden.net/media/upload/thumb/3/38/GO_Dynamax_Kanto_Starters.jpg/300px-GO_Dynamax_Kanto_Starters.jpg\" decoding=\"async\" loading=\"lazy\" width=\"300\" height=\"169\" class=\"mw-file-element\" srcset=\"https://archives.bulbagarden.net/media/upload/thumb/3/38/GO_Dynamax_Kanto_Starters.jpg/450px-GO_Dynamax_Kanto_Starters.jpg 1.5x, https://archives.bulbagarden.net/media/upload/thumb/3/38/GO_Dynamax_Kanto_Starters.jpg/600px-GO_Dynamax_Kanto_Starters.jpg 2x\" data-file-width=\"1920\" data-file-height=\"1080\" /></a><figcaption>Promotional artwork of Dynamax from <a href=\"/wiki/Pok%C3%A9mon_GO\" title=\"Pokémon GO\">Pokémon GO</a></figcaption></figure>\n<p><b><a href=\"/wiki/Dynamax\" title=\"Dynamax\">Dynamax</a></b> is a temporary transformation that Pokémon can undergo. Dynamax was introduced to <a href=\"/wiki/Pok%C3%A9mon_GO\" title=\"Pokémon GO\">Pokémon GO</a> on September 4, 2024. Like in the <a href=\"/wiki/Core_series\" title=\"Core series\">core series</a>, Dynamax grants Pokémon tremendous strength and size and allows them to use powerful moves called <a href=\"/wiki/Max_Move_(GO)\" title=\"Max Move (GO)\">Max Moves</a>. Unlike the core series, only Pokémon caught
-=== data/events.json (25109 bytes)
-[{"eventID":"dynamax-trails-2026","name":"Dynamax Trails","eventType":"event","heading":"Event","link":"https://leekduck.com/events/dynamax-trails-2026/","image":"https://cdn.leekduck.com/assets/img/events/article-images/2026/2026-11-16-dynamax-trails-2026/dynamax-trails-2026.jpg","start":"2026-11-16T10:00:00.000","end":"2026-11-23T20:00:00.000","extraData":{"generic":{"hasSpawns":true,"hasFieldResearchTasks":false}}},{"eventID":"max-mondays-2026-11-23","name":"Dynamax Espurr during Max Monday","eventType":"max-mondays","heading":"Max Mondays","link":"https://leekduck.com/events/max-mondays-2026-11-23/","image":"https://cdn.leekduck.com/assets/img/events/max-battles-kanto.jpg","start":"2026-11-23T06:00:00.000","end":"2026-11-23T21:00:00.000","extraData":{"generic":{"hasSpawns":false,"hasFieldResearchTasks":false}}},{"eventID":"cresselia-darkrai-in-5-star-raid-battles-november-2026","name":"Cresselia and Darkrai in 5-star Raid Battles","eventType":"raid-battles","heading":"Raid Battles","link":"https://leekduck.com/events/cresselia-darkrai-in-5-star-raid-battles-november-2026/","image":"https://cdn.leekduck.com/assets/img/events/legendary-cresselia.jpg","start":"2026-11-16T06:00:00.000","end":"2026-11-24T22:00:00.000","extraData":{"raidbattles":{"bosses":[],"shinies":[{"name":"Cresselia","image":"https://cdn.leekduck.com/assets/img/pokemon_icons/pokemon_icon_488_00_shiny.png"},{"name":"Darkrai","image":"https://cdn.leekduck.com/assets/img/pokemon_icons/pokemon_icon_491_00_shin
+=== data/events.json (51897 bytes)
+[{"eventID":"cresselia-darkrai-in-5-star-raid-battles-november-2026","name":"Cresselia and Darkrai in 5-star Raid Battles","eventType":"raid-battles","heading":"Raid Battles","link":"https://leekduck.com/events/cresselia-darkrai-in-5-star-raid-battles-november-2026/","image":"https://cdn.leekduck.com/assets/img/events/legendary-cresselia.jpg","start":null,"end":null,"extraData":{"raidbattles":{"bosses":[],"shinies":[{"name":"Cresselia","image":"https://cdn.leekduck.com/assets/img/pokemon_icons/pokemon_icon_488_00_shiny.png"},{"name":"Darkrai","image":"https://cdn.leekduck.com/assets/img/pokemon_icons/pokemon_icon_491_00_shiny.png"}]},"generic":{"hasSpawns":false,"hasFieldResearchTasks":false}}},{"eventID":"mega-banette-in-mega-raids-november-2026","name":"Mega Banette in Mega Raids","eventType":"raid-battles","heading":"Raid Battles","link":"https://leekduck.com/events/mega-banette-in-mega-raids-november-2026/","image":"https://cdn.leekduck.com/assets/img/events/mega-default.jpg","start":null,"end":null,"extraData":{"raidbattles":{"bosses":[{"name":"Mega Banette","image":"https://cdn.leekduck.com/assets/img/pokemon_icons/pm354.fMEGA.icon.png","canBeShiny":true}],"shinies":[{"name":"Banette","image":"https://cdn.leekduck.com/assets/img/pokemon_icons/pokemon_icon_354_00_shiny.png"},{"name":"Mega Banette","image":"https://cdn.leekduck.com/assets/img/pokemon_icons/pm354.fMEGA.s.icon.png"}]},"generic":{"hasSpawns":false,"hasFieldResearchTasks":false}}},{"eventID":"raidhour20261125
 === data/evolutions.json (178237 bytes)
 [
     {
@@ -327,7 +327,7 @@
                 "energy": 5,
                 "durationMs
 === data/pvp.json (146192 bytes)
-{"t":"2026-11-20 17:36:49","m":["Vine Whip","Power Whip","Seed Bomb","Sludge Bomb","Frenzy Plant","Sludge","Ember","Fire Punch","Return","Blast Burn","Air Cutter","Dragon Breath","Bite","Aqua Jet","Ice Beam","Hydro Cannon","Skull Bash","Rollout","Confusion","Bug Buzz","Signal Beam","Infestation","X-Scissor","Drill Run","Wing Attack","Twister","Gust","Brave Bird","Quick Attack","Hyper Fang","Dig","Crunch","Peck","Drill Peck","Acid","Brutal Swing","Wrap","Volt Switch","Volt Tackle","Trailblaze","Psyshock","Scratch","Sand Tomb","Rock Tomb","Powder Snow","Night Slash","Gyro Ball","Sand Attack","Bulldoze","Ice Punch","Poison Sting","Poison Fang","Thunderbolt","Mud Slap","Earth Power","Avalanche","Zen Headbutt","Moonblast","Disarming Voice","Fairy Wind","Meteor Mash","Draining Kiss","Weather Ball (Fire)","Energy Ball","Weather Ball (Ice)","Chilling Water","Charm","Icy Wind","Swift","Shadow Ball","Petal Blizzard","Fury Cutter","Cross Poison","Silver Wind","Sucker Punch","Mud Bomb","Stone Edge","Iron Head","Power Gem","Foul Play","Play Rough","Cross Chop","Liquidation","Karate Chop","Brick Break","Rage Fist","Close Combat","Flame Wheel","Body Slam","Rock Slide","Flamethrower","Wild Charge","Psychic Fangs","Snarl","Bubble","Scald","Mud Shot","Dynamic Punch","Counter","Dazzling Gleam","Psycho Cut","Leaf Blade","Water Pulse","Payback","Rock Throw","Rock Blast","Earthquake","Stomp","Incinerate","Surf","Drain Punch","Magnet Bomb","Discharge","Aerial Ace","Water Gun","Aqua Tail","Ice Shard
+{"t":"2026-11-23 20:46:52","m":["Vine Whip","Power Whip","Seed Bomb","Sludge Bomb","Frenzy Plant","Sludge","Ember","Fire Punch","Return","Blast Burn","Air Cutter","Dragon Breath","Bite","Aqua Jet","Ice Beam","Hydro Cannon","Skull Bash","Rollout","Confusion","Bug Buzz","Signal Beam","Infestation","X-Scissor","Drill Run","Wing Attack","Twister","Gust","Brave Bird","Quick Attack","Hyper Fang","Dig","Crunch","Peck","Drill Peck","Acid","Brutal Swing","Wrap","Volt Switch","Volt Tackle","Trailblaze","Psyshock","Scratch","Sand Tomb","Rock Tomb","Powder Snow","Night Slash","Gyro Ball","Sand Attack","Bulldoze","Ice Punch","Poison Sting","Poison Fang","Thunderbolt","Mud Slap","Earth Power","Avalanche","Zen Headbutt","Moonblast","Disarming Voice","Fairy Wind","Meteor Mash","Draining Kiss","Weather Ball (Fire)","Energy Ball","Weather Ball (Ice)","Chilling Water","Charm","Icy Wind","Swift","Shadow Ball","Petal Blizzard","Fury Cutter","Cross Poison","Silver Wind","Sucker Punch","Mud Bomb","Stone Edge","Iron Head","Power Gem","Foul Play","Play Rough","Cross Chop","Liquidation","Karate Chop","Brick Break","Rage Fist","Close Combat","Flame Wheel","Body Slam","Rock Slide","Flamethrower","Wild Charge","Psychic Fangs","Snarl","Bubble","Scald","Mud Shot","Dynamic Punch","Counter","Dazzling Gleam","Psycho Cut","Leaf Blade","Water Pulse","Payback","Rock Throw","Rock Blast","Earthquake","Stomp","Incinerate","Surf","Drain Punch","Magnet Bomb","Discharge","Aerial Ace","Water Gun","Aqua Tail","Ice Shard
 === data/raid_exclusive.json (3328 bytes)
 {
     "144": {
@@ -414,50 +414,50 @@
         "id": 384,
         "name": "Rayquaza",
        
-=== data/raidboss.json (40133 bytes)
+=== data/raidboss.json (39793 bytes)
 {
     "currentList": {
         "mega": [
             {
-                "id": "BANETTE",
-                "form": "BANETTE_MEGA",
+                "id": "BEEDRILL",
+                "form": "BEEDRILL_MEGA",
                 "costume": null,
                 "assets": {
-                    "image": "https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm354.fMEGA.icon.png",
-                    "shinyImage": "https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm354.fMEGA.s.icon.png"
+                    "image": "https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm15.fMEGA.icon.png",
+                    "shinyImage": "https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm15.fMEGA.s.icon.png"
                 },
                 "level": "mega",
                 "names": {
-                    "English": "Mega Banette",
-                    "German": "Mega-Banette",
-                    "French": "M\u00e9ga-Branette",
-                    "Italian": "MegaBanette",
-                    "Japanese": "\u30e1\u30ac\u30b8\u30e5\u30da\u30c3\u30bf",
-                    "Korean": "\uba54\uac00\ub2e4\ud06c\ud3ab",
-                    "Spanish": "Mega-Banette"
+                    "English": "Mega Beedrill",
+                    "German": "Mega-Bibor",
+                    "French": "M\u00e9ga-Dardargnan",
+                    "Italian": "MegaBeedrill",
+                    "Japanese": "\u30e1\u30ac\u30b9\u30d4\u30a2\u30fc",
+                    "Korean": "\uba54\uac00\ub3c5\uce68\ubd95",
+                    "Spanish": "Mega-Beedrill"
                 },
                 "shiny": true,
                 "types": [
-                    "Ghost"
+                    "Bug",
+                    "Poison"
                 ],
                 "counter": {
-                    "Dark": 1.6,
-                    "Ghost": 1.6
+                    "Fire": 1.6,
+                    "Flying": 1.6,
+                    "Psychic": 1.6,
+                    "Rock": 1.6
                 },
                 "weather": [
-                    "fog"
+                    "rain",
+                    "cloudy"
                 ],
                 "cpRange": [
-                    1244,
-                    1313
+                    994,
+                    1054
                 ],
                 "cpRangeBoost": [
-                    1555,
-                    1642
-                ],
-                "battleResult": {
-                    "easy": {
-                        
+                    1242,
+       
 === data/released.json (61247 bytes)
 {
     "1": {
