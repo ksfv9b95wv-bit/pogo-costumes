@@ -375008,7 +375008,41 @@
             }
         },
         "eliteQuickMoves": [],
-        "eliteCinematicMoves": [],
+        "eliteCinematicMoves": {
+            "KOWTOW_CLEAVE": {
+                "id": "KOWTOW_CLEAVE",
+                "power": 85,
+                "energy": -50,
+                "durationMs": 2000,
+                "type": {
+                    "type": "POKEMON_TYPE_DARK",
+                    "names": {
+                        "English": "Dark",
+                        "German": "Unlicht",
+                        "French": "T\u00e9n\u00e8bres",
+                        "Italian": "Buio",
+                        "Japanese": "\u3042\u304f",
+                        "Korean": "\uc545",
+                        "Spanish": "Siniestro"
+                    }
+                },
+                "names": {
+                    "English": "Kowtow Cleave",
+                    "German": "Kniefallspalter",
+                    "French": "G\u00e9nusection",
+                    "Italian": "Genufendente",
+                    "Japanese": "\u30c9\u30b2\u30b6\u30f3",
+                    "Korean": "\ub3c4\uac01\ucc38",
+                    "Spanish": "Genufendiente"
+                },
+                "combat": {
+                    "energy": -40,
+                    "power": 75,
+                    "turns": 1,
+                    "buffs": null
+                }
+            }
+        },
         "assets": {
             "image": "https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm983.icon.png",
             "shinyImage": "https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm983.s.icon.png"

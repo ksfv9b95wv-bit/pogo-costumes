@@ -243,22 +243,22 @@
         ],
         "lvl5": [
             {
-                "id": "CRESSELIA",
-                "form": "CRESSELIA",
+                "id": "DEOXYS",
+                "form": "DEOXYS_ATTACK",
                 "costume": null,
                 "assets": {
-                    "image": "https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm488.icon.png",
-                    "shinyImage": "https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm488.s.icon.png"
+                    "image": "https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm386.fATTACK.icon.png",
+                    "shinyImage": "https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm386.fATTACK.s.icon.png"
                 },
                 "level": "lvl5",
                 "names": {
-                    "English": "Cresselia",
-                    "German": "Cresselia",
-                    "French": "Cresselia",
-                    "Italian": "Cresselia",
-                    "Japanese": "\u30af\u30ec\u30bb\u30ea\u30a2",
-                    "Korean": "\ud06c\ub808\uc138\ub9ac\uc544",
-                    "Spanish": "Cresselia"
+                    "English": "Deoxys (Attack Forme)",
+                    "German": "Deoxys (Angriffsform)",
+                    "French": "Deoxys (Attack Forme)",
+                    "Italian": "Deoxys (Forma Attacco)",
+                    "Japanese": "\u30c7\u30aa\u30ad\u30b7\u30b9 (\u30a2\u30bf\u30c3\u30af\u30d5\u30a9\u30eb\u30e0)",
+                    "Korean": "\ud14c\uc624\ud0a4\uc2a4 (Attack Forme)",
+                    "Spanish": "Deoxys (Forma Ataque)"
                 },
                 "shiny": true,
                 "types": [
@@ -273,90 +273,208 @@
                     "windy"
                 ],
                 "cpRange": [
-                    1555,
-                    1633
+                    1372,
+                    1474
                 ],
                 "cpRangeBoost": [
-                    1944,
-                    2041
+                    1716,
+                    1842
                 ],
                 "battleResult": {
                     "easy": {
                         "name": "easy",
                         "friendshipLevel": 0,
                         "pokemonLevel": 20,
-                        "totalEstimator": 3.835
+                        "totalEstimator": 1.041
                     },
                     "normal": {
                         "name": "normal",
                         "friendshipLevel": 3,
                         "pokemonLevel": 30,
-                        "totalEstimator": 2.692
+                        "totalEstimator": 0.7007
                     },
                     "hard": {
                         "name": "hard",
                         "friendshipLevel": 4,
                         "pokemonLevel": 40,
-                        "totalEstimator": 2.362
+                        "totalEstimator": 0.6031
                     }
                 }
             },
             {
-                "id": "DARKRAI",
-                "form": "DARKRAI",
+                "id": "DEOXYS",
+                "form": "DEOXYS_DEFENSE",
                 "costume": null,
                 "assets": {
-                    "image": "https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm491.icon.png",
-                    "shinyImage": "https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm491.s.icon.png"
+                    "image": "https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm386.fDEFENSE.icon.png",
+                    "shinyImage": "https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm386.fDEFENSE.s.icon.png"
                 },
                 "level": "lvl5",
                 "names": {
-                    "English": "Darkrai",
-                    "German": "Darkrai",
-                    "French": "Darkrai",
-                    "Italian": "Darkrai",
-                    "Japanese": "\u30c0\u30fc\u30af\u30e9\u30a4",
-                    "Korean": "\ub2e4\ud06c\ub77c\uc774",
-                    "Spanish": "Darkrai"
+                    "English": "Deoxys (Defense Forme)",
+                    "German": "Deoxys (Verteidigungsform)",
+                    "French": "Deoxys (Defense Forme)",
+                    "Italian": "Deoxys (Forma Difesa)",
+                    "Japanese": "\u30c7\u30aa\u30ad\u30b7\u30b9 (\u30c7\u30a3\u30d5\u30a7\u30f3\u30b9\u30d5\u30a9\u30eb\u30e0)",
+                    "Korean": "\ud14c\uc624\ud0a4\uc2a4 (Defense Forme)",
+                    "Spanish": "Deoxys (Forma Defensa)"
                 },
                 "shiny": true,
                 "types": [
-                    "Dark"
+                    "Psychic"
                 ],
                 "counter": {
                     "Bug": 1.6,
-                    "Fairy": 1.6,
-                    "Fighting": 1.6
+                    "Dark": 1.6,
+                    "Ghost": 1.6
                 },
                 "weather": [
-                    "fog"
+                    "windy"
                 ],
                 "cpRange": [
-                    2048,
-                    2136
+                    1228,
+                    1299
                 ],
                 "cpRangeBoost": [
-                    2560,
-                    2671
+                    1535,
+                    1624
                 ],
                 "battleResult": {
                     "easy": {
                         "name": "easy",
                         "friendshipLevel": 0,
                         "pokemonLevel": 20,
-                        "totalEstimator": 3.349
+                        "totalEstimator": 4.581
                     },
                     "normal": {
                         "name": "normal",
                         "friendshipLevel": 3,
                         "pokemonLevel": 30,
-                        "totalEstimator": 2.293
+                        "totalEstimator": 3.302
                     },
                     "hard": {
                         "name": "hard",
                         "friendshipLevel": 4,
                         "pokemonLevel": 40,
-                        "totalEstimator": 1.933
+                        "totalEstimator": 2.934
+                    }
+                }
+            },
+            {
+                "id": "DEOXYS",
+                "form": "DEOXYS_SPEED",
+                "costume": null,
+                "assets": {
+                    "image": "https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm386.fSPEED.icon.png",
+                    "shinyImage": "https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm386.fSPEED.s.icon.png"
+                },
+                "level": "lvl5",
+                "names": {
+                    "English": "Deoxys (Speed Forme)",
+                    "German": "Deoxys (Initiativeform)",
+                    "French": "Deoxys (Speed Forme)",
+                    "Italian": "Deoxys (Forma Velocit\u00e0)",
+                    "Japanese": "\u30c7\u30aa\u30ad\u30b7\u30b9 (\u30b9\u30d4\u30fc\u30c9\u30d5\u30a9\u30eb\u30e0)",
+                    "Korean": "\ud14c\uc624\ud0a4\uc2a4 (Speed Forme)",
+                    "Spanish": "Deoxys (Forma Velocidad)"
+                },
+                "shiny": true,
+                "types": [
+                    "Psychic"
+                ],
+                "counter": {
+                    "Bug": 1.6,
+                    "Dark": 1.6,
+                    "Ghost": 1.6
+                },
+                "weather": [
+                    "windy"
+                ],
+                "cpRange": [
+                    1568,
+                    1645
+                ],
+                "cpRangeBoost": [
+                    1960,
+                    2056
+                ],
+                "battleResult": {
+                    "easy": {
+                        "name": "easy",
+                        "friendshipLevel": 0,
+                        "pokemonLevel": 20,
+                        "totalEstimator": 3.191
+                    },
+                    "normal": {
+                        "name": "normal",
+                        "friendshipLevel": 3,
+                        "pokemonLevel": 30,
+                        "totalEstimator": 2.295
+                    },
+                    "hard": {
+                        "name": "hard",
+                        "friendshipLevel": 4,
+                        "pokemonLevel": 40,
+                        "totalEstimator": 2.007
+                    }
+                }
+            },
+            {
+                "id": "DEOXYS",
+                "form": "DEOXYS",
+                "costume": null,
+                "assets": {
+                    "image": "https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm386.icon.png",
+                    "shinyImage": "https://raw.githubusercontent.com/pokemon-go-api/assets/main/Pokemon/pm386.s.icon.png"
+                },
+                "level": "lvl5",
+                "names": {
+                    "English": "Deoxys",
+                    "German": "Deoxys",
+                    "French": "Deoxys",
+                    "Italian": "Deoxys",
+                    "Japanese": "\u30c7\u30aa\u30ad\u30b7\u30b9",
+                    "Korean": "\ud14c\uc624\ud0a4\uc2a4",
+                    "Spanish": "Deoxys"
+                },
+                "shiny": true,
+                "types": [
+                    "Psychic"
+                ],
+                "counter": {
+                    "Bug": 1.6,
+                    "Dark": 1.6,
+                    "Ghost": 1.6
+                },
+                "weather": [
+                    "windy"
+                ],
+                "cpRange": [
+                    1717,
+                    1806
+                ],
+                "cpRangeBoost": [
+                    2146,
+                    2257
+                ],
+                "battleResult": {
+                    "easy": {
+                        "name": "easy",
+                        "friendshipLevel": 0,
+                        "pokemonLevel": 20,
+                        "totalEstimator": 2.08
+                    },
+                    "normal": {
+                        "name": "normal",
+                        "friendshipLevel": 3,
+                        "pokemonLevel": 30,
+                        "totalEstimator": 1.37
+                    },
+                    "hard": {
+                        "name": "hard",
+                        "friendshipLevel": 4,
+                        "pokemonLevel": 40,
+                        "totalEstimator": 1.173
                     }
                 }
             }
@@ -1088,12 +1206,12 @@
         "German": {
             "svg": "/api/graphics/German/default.svg",
             "png": "/api/graphics/German/default.png",
-            "sha512": "6c2e92ed40188e8e22a3d28edccca0887d20cfa14e9518318d5545014999998d2e77b628b0de620903c55bee9ff109a351714d017746a581b8f317b0f849fc9a"
+            "sha512": "8d91c74a8dd96e7516bd70883cbeca5820d20be33b4f70330442d98ffc4aba9a33698a40b9a3d0a3f331198d3d4968e4e5a9ac9509b0f1a9017f3320415cdb87"
         },
         "English": {
             "svg": "/api/graphics/English/default.svg",
             "png": "/api/graphics/English/default.png",
-            "sha512": "819b35a8fdb8751155bf37af48558c01eea9804d783b3e97f60bba66359d0a3085f8ec847c1532dd4c83e621c0549dd60aea425a2ab9cd1144bdb7ea25ac8dd4"
+            "sha512": "6164f93c0658d9242c2c70e53f89f832e173b36be531b12c66353b0ce8d0f59d509eeaf098033da167a8102dcdab796435e63d1b92bfae5f40f35a6770f4bde7"
         }
     }
 }
